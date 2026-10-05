@@ -147,3 +147,24 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# React Router build output and generated route types
+/build/
+.react-router/
+
+# Storybook
+storybook-static/
+*storybook.log
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+
+# Vercel
+.vercel
+
+# Documents such as CV source files are private and must never be committed
+*.doc
+*.docx
+*.pdf

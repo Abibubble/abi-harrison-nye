@@ -1,0 +1,7 @@
+build
+coverage
+storybook-static
+playwright-report
+test-results
+.react-router
+pnpm-lock.yaml
