@@ -25,7 +25,10 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
   text-wrap: balance;
@@ -45,6 +48,15 @@ h2 {
  */
 h3 {
   font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+/* Lower headings are body size, so they use the emphasis weight and spacing too. */
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-emphasis);
   letter-spacing: var(--letter-spacing-emphasis);
 }

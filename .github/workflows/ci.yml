@@ -12,10 +12,13 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# Pinned rather than ubuntu-latest, so the operating system only changes when we choose. Playwright
+# installs browser dependencies for specific Ubuntu versions, so check it supports a new version
+# before moving to it.
 jobs:
   quality:
     name: Types, lint and unit tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -32,7 +35,7 @@ jobs:
 
   storybook:
     name: Storybook accessibility tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -47,7 +50,7 @@ jobs:
 
   e2e:
     name: End to end tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6

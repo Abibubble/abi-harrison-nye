@@ -2,20 +2,14 @@ import { render, screen } from '@testing-library/react';
 import type { ComponentType } from 'react';
 import { describe, expect, it } from 'vitest';
 
-import * as Articles from './articles';
 import * as Contact from './contact';
 import * as Cv from './cv';
 import * as Privacy from './privacy';
-import * as Projects from './projects';
 import * as Talks from './talks';
-import * as Work from './work';
 
 // Sections that are still placeholders. Each moves to its own test file when it's built.
 const PLACEHOLDERS: [string, { default: ComponentType; meta: () => unknown }][] = [
-  ['Work', Work],
-  ['Projects', Projects],
   ['Talks', Talks],
-  ['Articles', Articles],
   ['CV', Cv],
   ['Contact', Contact],
   ['Privacy', Privacy],

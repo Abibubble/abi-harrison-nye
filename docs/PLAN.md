@@ -307,16 +307,16 @@ axe under the strongest settings in the dark theme.
 
 ## Components
 
-| Group             | Components                                                                                                        |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                        |
-| Layout primitives | `Stack`, `Cluster`, `Container`                                                                                   |
-| Content           | `Card`, `Link`, `Tag`, `TagList`, `Time`, `DateRange`, `Abbr`                                                     |
-| Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection` |
-| Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                      |
-| Forms             | `Field`, `TextField`, `TextArea`, `FieldError`, `Button`, `ErrorSummary`, `Notice`                                |
-| Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                  |
-| Utilities         | `ScreenReaderOnly`                                                                                                |
+| Group             | Components                                                                                                                        |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                                        |
+| Layout primitives | `Stack`, `Cluster`, `Container`                                                                                                   |
+| Content           | `Card`, `Heading`, `Link`, `Tag`, `TagList`, `Time`, `DateRange`, `Abbr`, `SignpostList`                                          |
+| Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection`, `ProfilePhoto` |
+| Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                                      |
+| Forms             | `Field`, `TextField`, `TextArea`, `FieldError`, `Button`, `ErrorSummary`, `Notice`                                                |
+| Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                                  |
+| Utilities         | `ScreenReaderOnly`                                                                                                                |
 
 Notes:
 
@@ -625,7 +625,8 @@ Each phase is written test first.
    page, and placeholder pages for every section
 4. **Primitives (done):** layout primitives, content components, form components
 5. **Settings (done):** theme switcher and display settings
-6. **Content pages:** Home, Work, Projects, Articles
+6. **Content pages (done):** Home, Work, Projects, Articles. Projects and Articles show a holding
+   message until entries are added.
 7. **Talks:** talks list, talk pages, transcripts, video
 8. **CV:** CV page built from the Word and PDF versions
 9. **Contact:** form, review step and EmailJS
@@ -638,10 +639,25 @@ Each phase is written test first.
 
 None. All decisions are made.
 
+### Content and headings
+
+- **Headings by context.** `Heading` takes a level, and components like `WorkHistory` take the level
+  of their top heading, so the same component sits correctly on different pages. The Work page starts
+  companies at level 2, and the CV will start them at level 3. Levels 4 to 6 are body size in semi
+  bold.
+- **Content checks.** `src/content/content.test.ts` checks every date is real, roles and articles are
+  newest first, roles before tech come last, external links use https, and there are no stray
+  spaces. It also finds every abbreviation in the content and fails if it isn't in the abbreviations
+  list, which guards AAA 3.1.4 automatically as content is added.
+- **Empty sections.** Projects and Articles show "I'm adding my projects here soon" (or articles)
+  until entries are added, rather than an empty list.
+- **Profile photo.** Until a photo is chosen, the Home page shows "AHN" in a purple circle, hidden
+  from screen readers. Adding a photo to `profile.ts` replaces it, and its alt text is required.
+
 ## Content still needed
 
 - Profile photo (a placeholder is used until then)
-
 - Projects
 - Talks, with transcripts, slide links and videos
 - Articles
+- The web address of the giffgaff Inclusion Toolkit, to list it under sites worked on

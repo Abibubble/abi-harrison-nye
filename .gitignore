@@ -168,3 +168,6 @@ blob-report/
 *.doc
 *.docx
 *.pdf
+
+# Personal list of future work that's blocked or waiting on something
+/TODO.md
