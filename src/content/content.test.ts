@@ -6,6 +6,7 @@ import { ARTICLES } from './articles';
 import { PROFILE, PROFILE_LINKS } from './profile';
 import { PROJECTS } from './projects';
 import { RECOGNITION } from './recognition';
+import { TALKS } from './talks';
 import { BEFORE_TECH_SUMMARY, WORK } from './work';
 
 const ROLES = WORK.flatMap((company) => company.roles);
@@ -27,6 +28,7 @@ const ALL_TEXT = [
   ...RECOGNITION.flatMap((item) => [item.award, item.result, item.awards]),
   ...PROJECTS.flatMap((project) => [project.name, project.summary]),
   ...ARTICLES.flatMap((article) => [article.title, article.publication, article.summary]),
+  ...TALKS.flatMap((talk) => [talk.title, talk.event, talk.location, talk.summary]),
 ];
 
 const ALL_LINKS = [
@@ -34,6 +36,7 @@ const ALL_LINKS = [
   ...WORK.flatMap((company) => (company.sitesWorkedOn ?? []).map((site) => site.href)),
   ...PROJECTS.flatMap((project) => [project.href, project.codeHref]),
   ...ARTICLES.map((article) => article.href),
+  ...TALKS.flatMap((talk) => [talk.video?.href, talk.slidesHref]),
 ].filter((href): href is string => href !== undefined);
 
 describe('site content', () => {

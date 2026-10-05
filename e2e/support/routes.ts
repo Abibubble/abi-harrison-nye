@@ -1,9 +1,9 @@
+import { TALKS } from '../../src/content/talks';
 import type { DisplaySettings } from '../../src/settings/displaySettings';
 
-// Every page on the site. Tests that apply to all pages loop over this list, so new pages get
-// accessibility, reflow and theme coverage just by being added here. Apart from Home, each name is
-// the page's heading, the start of its title, and its link text.
-export const ROUTES = [
+// The site's own pages. Apart from Home, each name is the page's heading, the start of its title,
+// and its link text.
+export const SITE_PAGES = [
   { name: 'Home', path: '/' },
   { name: 'Work', path: '/work' },
   { name: 'Projects', path: '/projects' },
@@ -15,6 +15,13 @@ export const ROUTES = [
   { name: 'Privacy', path: '/privacy' },
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;
+
+// Every page on the site, including each talk's page. Tests that apply to all pages loop over this
+// list, so new pages, including new talks, get accessibility, reflow and theme coverage automatically.
+export const ROUTES: readonly { name: string; path: string }[] = [
+  ...SITE_PAGES,
+  ...TALKS.map((talk) => ({ name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` })),
+];
 
 // Light and dark follow the device's colour scheme. Cream is chosen in the display settings.
 export const THEMES = [

@@ -1,9 +1,17 @@
 import bodyFontUrl from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
 import type { ReactNode } from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  isRouteErrorResponse,
+} from 'react-router';
 
 import type { Route } from './+types/root';
 import { ErrorPage } from './components/ErrorPage';
+import { NotFoundPage } from './components/NotFoundPage';
 import { SiteShell } from './components/SiteShell';
 import { BEFORE_PAINT_SCRIPT } from './settings/beforePaintScript';
 import stylesheetUrl from './styles/index.css?url';
@@ -56,10 +64,10 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary() {
-  return (
-    <SiteShell>
-      <ErrorPage />
-    </SiteShell>
-  );
+// A page that doesn't exist, such as a talk that isn't there, gets the not found page. Anything
+// else that goes wrong gets the general error page.
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const notFound = isRouteErrorResponse(error) && error.status === 404;
+
+  return <SiteShell>{notFound ? <NotFoundPage /> : <ErrorPage />}</SiteShell>;
 }

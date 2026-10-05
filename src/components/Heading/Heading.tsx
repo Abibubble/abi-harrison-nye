@@ -8,17 +8,19 @@ interface HeadingProps {
   children: ReactNode;
   id?: string | undefined;
   className?: string | undefined;
+  /** -1 lets links to this heading move focus to it, without making it a tab stop. */
+  tabIndex?: -1 | undefined;
 }
 
 /**
  * A heading whose level is set by where it's used, so a component can sit at the right level on
  * different pages. For example, work history starts at level 2 on the Work page and level 3 on the CV.
  */
-export function Heading({ level, children, id, className }: HeadingProps) {
+export function Heading({ level, children, id, className, tabIndex }: HeadingProps) {
   const Element = `h${level}` as const;
 
   return (
-    <Element id={id} className={className}>
+    <Element id={id} className={className} tabIndex={tabIndex}>
       {children}
     </Element>
   );

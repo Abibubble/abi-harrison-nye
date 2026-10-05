@@ -1,0 +1,1 @@
+export { TalkItem } from './TalkItem';

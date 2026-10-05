@@ -1,0 +1,5 @@
+.meta {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-muted);
+}

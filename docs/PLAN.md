@@ -452,6 +452,28 @@ issues list.
 For videos on my own channel, YouTube Studio's auto sync feature can turn a transcript into timed
 captions. Captions on conference channels depend on the organiser.
 
+### How talks are built
+
+- **Talk details** live in `src/content/talks.ts`. Each talk's transcript is a Markdown file in
+  `src/content/talks/`, named after its slug, with a README there explaining how to write one.
+- **Transcripts are turned into HTML when the site is built**, in the talk page's loader. Neither the
+  Markdown nor the Markdown library (`marked`) reaches visitors' browsers. A check during the build
+  confirmed the browser bundle contains neither.
+- **One exact route per talk** (`/talks/{slug}`), generated from the talks list, rather than a
+  `/talks/:slug` pattern. With a pattern, an address that isn't a talk would match it in the browser,
+  try to load a talk that doesn't exist, and show an error instead of the not found page. An end to
+  end test checks an address under Talks that isn't a talk shows "Page not found" with no errors.
+- **Talk pages are tested automatically.** The end to end route list includes every talk, so a new
+  talk gets accessibility, reflow and theme checks without any test changes.
+- **Safeguards:** tests fail if a talk has no transcript, a transcript has no talk, a transcript uses
+  first or second level headings (it sits under the page's own), a slug isn't lowercase words and
+  hyphens, a date isn't real, talks aren't newest first, or a video isn't on YouTube.
+- **The talk page** has the event, place and date, the summary, a "Watch the talk" section with the
+  YouTube link, the captions message and any slides, then the transcript under its own heading. The
+  "Read the full transcript" link moves focus to that heading.
+- **Without talks,** the Talks page says "I'm adding my talks here soon."
+- `talksWithoutCaptions()` lists uncaptioned talks, ready for the Accessibility page's known issues.
+
 ## Contact form
 
 - Fields: name, email and message. Each has a visible label, required status shown in text, hint text
@@ -627,7 +649,8 @@ Each phase is written test first.
 5. **Settings (done):** theme switcher and display settings
 6. **Content pages (done):** Home, Work, Projects, Articles. Projects and Articles show a holding
    message until entries are added.
-7. **Talks:** talks list, talk pages, transcripts, video
+7. **Talks (done):** talks list, talk pages, transcripts, video. Waiting on the first talk's
+   content.
 8. **CV:** CV page built from the Word and PDF versions
 9. **Contact:** form, review step and EmailJS
 10. **Statement pages:** Accessibility and Privacy

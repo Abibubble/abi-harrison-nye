@@ -1,6 +1,6 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
 
-import { ROUTES } from './support/routes';
+import { SITE_PAGES } from './support/routes';
 
 const mainNav = (page: Page) => page.getByRole('navigation', { name: 'Main' });
 const menuButton = (page: Page) => page.getByRole('button', { name: 'Menu' });
@@ -70,7 +70,7 @@ test.describe('Moving between pages', () => {
     expect(await page.evaluate(() => document.activeElement?.tagName)).toBe('BODY');
   });
 
-  const linkedPages = ROUTES.filter(({ name }) => name !== 'Home' && name !== 'Page not found');
+  const linkedPages = SITE_PAGES.filter(({ name }) => name !== 'Home' && name !== 'Page not found');
 
   for (const route of linkedPages) {
     test(`moves focus to the heading and updates the title after choosing ${route.name}`, async ({
@@ -181,6 +181,17 @@ test.describe('Page not found', () => {
 
     expect(response.status()).toBe(404);
     expect(await response.text()).toMatch(/<h1[^>]*>Page not found<\/h1>/);
+  });
+
+  test('shows for an address under Talks that isn’t a talk, with no errors', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+
+    const response = await page.goto('/talks/not-a-real-talk');
+
+    expect(response?.status()).toBe(404);
+    await expect(page.getByRole('heading', { level: 1, name: 'Page not found' })).toBeVisible();
+    expect(errors).toEqual([]);
   });
 
   test('works as a normal page, with a way back home', async ({ page }) => {
