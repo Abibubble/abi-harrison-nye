@@ -1,0 +1,31 @@
+.footer {
+  background: var(--color-surface);
+  border-block-start: var(--border-width) solid var(--color-border-decorative);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+  padding-block: var(--space-5);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+}
+
+.copyright {
+  margin: 0;
+  margin-inline-start: auto;
+  color: var(--color-text-muted);
+}

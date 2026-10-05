@@ -1,0 +1,61 @@
+import { screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
+import { expectNoAxeViolations } from '../../test/axe';
+import { renderWithRouter } from '../../test/render';
+import { Link } from './Link';
+
+describe('Link', () => {
+  describe('to a page on this site', () => {
+    it('links to the page', () => {
+      renderWithRouter(<Link to="/work">Work</Link>);
+
+      expect(screen.getByRole('link', { name: 'Work' })).toHaveAttribute('href', '/work');
+    });
+
+    it('has no detectable accessibility issues', async () => {
+      const { container } = renderWithRouter(<Link to="/work">Work</Link>);
+
+      await expectNoAxeViolations(container, { disableRules: ['region'] });
+    });
+  });
+
+  describe('to another site', () => {
+    it('tells everyone it goes to another site, not just people who can see the icon', () => {
+      renderWithRouter(<Link href="https://github.com/Abibubble">GitHub</Link>);
+
+      expect(screen.getByRole('link', { name: 'GitHub (external site)' })).toHaveAttribute(
+        'href',
+        'https://github.com/Abibubble',
+      );
+    });
+
+    it('opens in the same tab, so nothing changes without warning (WCAG 3.2.5)', () => {
+      renderWithRouter(<Link href="https://github.com/Abibubble">GitHub</Link>);
+
+      expect(screen.getByRole('link')).not.toHaveAttribute('target');
+    });
+
+    it('hides the icon from assistive technology, because the text already says it', () => {
+      const { container } = renderWithRouter(<Link href="https://example.com">Example</Link>);
+
+      expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    });
+
+    it('has no detectable accessibility issues', async () => {
+      const { container } = renderWithRouter(<Link href="https://example.com">Example</Link>);
+
+      await expectNoAxeViolations(container, { disableRules: ['region'] });
+    });
+  });
+
+  it('passes a class name through for styling', () => {
+    renderWithRouter(
+      <Link to="/" className="custom">
+        Home
+      </Link>,
+    );
+
+    expect(screen.getByRole('link')).toHaveClass('custom');
+  });
+});

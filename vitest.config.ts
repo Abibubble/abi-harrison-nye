@@ -5,10 +5,13 @@ import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
+import { BUILD_DEFINES } from './build-constants';
+
 const storybookConfigDir = fileURLToPath(new URL('./.storybook', import.meta.url));
 
 // Kept separate from vite.config.ts so the React Router plugin isn't loaded in tests.
 export default defineConfig({
+  define: BUILD_DEFINES,
   plugins: [react()],
   test: {
     coverage: {

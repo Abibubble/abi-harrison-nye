@@ -1,0 +1,15 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-6) var(--space-7);
+}
+
+/* Main is only focused by the skip link. It isn't a control, so it doesn't need a focus ring. */
+.main:focus {
+  outline: none;
+}

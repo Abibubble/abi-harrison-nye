@@ -1,0 +1,26 @@
+.skipLink {
+  display: block;
+  padding: var(--space-3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-action-text);
+  background: var(--color-action);
+}
+
+.skipLink:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skipLink:hover {
+  color: var(--color-action-text);
+}
+
+/* The skip link sits on purple, so the ring goes inside it where it contrasts with the purple. */
+.skipLink:focus-visible {
+  outline-color: var(--color-action-text);
+  outline-offset: calc(var(--focus-ring-width) * -2);
+}

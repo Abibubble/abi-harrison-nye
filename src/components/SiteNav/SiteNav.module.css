@@ -1,0 +1,103 @@
+.toggle {
+  display: none;
+  gap: var(--space-2);
+  align-items: center;
+  min-width: var(--size-target-min);
+  min-height: var(--size-target-min);
+  padding-inline: var(--space-3);
+  margin-inline-start: auto;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  cursor: pointer;
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
+}
+
+.toggle:hover {
+  background: var(--color-surface);
+}
+
+.icon {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.nav {
+  margin-inline-start: auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--size-target-min);
+  min-height: var(--size-target-min);
+  padding-inline: var(--space-3);
+  color: var(--color-text);
+  text-decoration-line: none;
+}
+
+.link:hover {
+  color: var(--color-action-hover);
+  text-decoration-line: underline;
+}
+
+/* The current page is shown by weight and a bar, never by colour alone. */
+.link[aria-current='page'] {
+  font-weight: var(--font-weight-bold);
+}
+
+.link[aria-current='page']::after {
+  position: absolute;
+  inset-inline: var(--space-3);
+  bottom: 0;
+  height: var(--space-1);
+  content: '';
+  background: var(--color-action);
+}
+
+@media (forced-colors: active) {
+  .link[aria-current='page']::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}
+
+@media (width < 48rem) {
+  .nav {
+    flex-basis: 100%;
+  }
+
+  .list {
+    flex-direction: column;
+  }
+
+  .link {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .link[aria-current='page']::after {
+    inset: 0 auto 0 0;
+    width: var(--space-1);
+    height: auto;
+  }
+
+  /* Only collapse the links once JavaScript can open them again. */
+  :global(:root[data-js]) .toggle {
+    display: inline-flex;
+  }
+
+  :global(:root[data-js]) .list:not([data-open='true']) {
+    display: none;
+  }
+}

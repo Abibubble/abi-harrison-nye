@@ -6,7 +6,7 @@ test.describe('Home page', () => {
     const html = await response.text();
 
     expect(response.ok()).toBe(true);
-    expect(html).toContain('<h1>Abi Harrison-Nye</h1>');
+    expect(html).toMatch(/<h1[^>]*>Abi Harrison-Nye<\/h1>/);
   });
 
   test('sets the page language and title', async ({ page }) => {

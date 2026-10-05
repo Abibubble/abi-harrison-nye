@@ -34,22 +34,28 @@ listed under [Open decisions](#open-decisions).
 
 ## Pages
 
-| Route            | Page          | In main nav       | Purpose                                                         |
+| Route            | Page          | Linked from       | Purpose                                                         |
 | ---------------- | ------------- | ----------------- | --------------------------------------------------------------- |
-| `/`              | Home          | Yes               | Short intro, what I care about, links into each section         |
-| `/work`          | My Work       | Yes               | Companies, the roles within each, and sites I worked on         |
-| `/projects`      | Side projects | Yes               | Personal projects                                               |
-| `/talks`         | Talks         | Yes               | Talks I've given, with videos and transcripts                   |
-| `/talks/:slug`   | Talk          | No                | One talk: details, video, slides and full transcript            |
-| `/articles`      | My Articles   | Yes               | Blog posts I've written, linking out to where they're published |
-| `/cv`            | CV            | Yes               | HTML version of my CV, designed to print well                   |
-| `/contact`       | Contact me    | Yes               | EmailJS contact form                                            |
+| `/`              | Home          | Main nav          | Short intro, what I care about, links into each section         |
+| `/work`          | Work          | Main nav          | Companies, the roles within each, and sites I worked on         |
+| `/projects`      | Projects      | Main nav          | Personal projects                                               |
+| `/talks`         | Talks         | Main nav          | Talks I've given, with videos and transcripts                   |
+| `/talks/:slug`   | Talk          | Talks page        | One talk: details, video, slides and full transcript            |
+| `/articles`      | Articles      | Main nav          | Blog posts I've written, linking out to where they're published |
+| `/cv`            | CV            | Main nav          | HTML version of my CV, designed to print well                   |
+| `/contact`       | Contact       | Main nav          | EmailJS contact form                                            |
 | `/accessibility` | Accessibility | Footer and header | Accessibility statement and display settings                    |
 | `/privacy`       | Privacy       | Footer            | Privacy notice                                                  |
-| `*`              | Not found     | No                | Helpful 404 page with links back into the site                  |
+| `*`              | Not found     | None              | Helpful 404 page with links back into the site                  |
 
-The main nav has seven items. On wide screens it's a simple list. On narrow screens it collapses
-behind a "Menu" button that uses `aria-expanded`, so 48px targets don't push content off screen.
+Each page's heading and title match its nav link exactly, so the same thing always has the same name.
+Names are kept short to keep the nav tidy. The main nav has seven items. On wide screens it's a simple list. On narrow screens it collapses
+behind a "Menu" button that uses `aria-expanded`, so 48px targets don't push content off screen. The
+open menu pushes the page down rather than covering it, closes with Escape, and closes by itself after
+choosing a page.
+
+The 404 page is prerendered to `404.html`, which static hosts (including Vercel) serve with a 404
+status for any unknown address.
 
 ## Content model
 
@@ -58,7 +64,7 @@ editing data, not components. TypeScript flags any missing fields.
 
 - **`work.ts`**: companies, each with roles. A role has a title, dates, location, teams, a summary,
   highlights grouped under headings (for example "Software Engineering" and "Accessibility Specialist
-  and Employee Network Group Lead"), and sites worked on (name, URL, description). Both My Work and the
+  and Employee Network Group Lead"), and sites worked on (name, URL, description). Both the Work page and the
   CV page read from this file, so there's a single source of truth. Each role is flagged as tech or
   earlier career.
 - **`projects.ts`**: side projects with name, summary, tech used, and links to the live site and the
@@ -75,23 +81,23 @@ editing data, not components. TypeScript flags any missing fields.
 
 The CV source files stay outside the repo. Their content is transcribed into the files above:
 
-| CV section                              | Content file     | Shown on                                                  |
-| --------------------------------------- | ---------------- | --------------------------------------------------------- |
-| Name, headline, links                   | `profile.ts`     | Home, CV, footer                                          |
-| Location (shown as "Hertfordshire, UK") | `profile.ts`     | CV                                                        |
-| Profile                                 | `profile.ts`     | Home (shortened), CV                                      |
-| Key skills                              | `profile.ts`     | CV                                                        |
-| Experience at giffgaff                  | `work.ts`        | My Work, CV                                               |
-| Earlier career                          | `work.ts`        | CV in full, plus a short "Before tech" summary on My Work |
-| Speaking                                | `talks.ts`       | Talks, CV                                                 |
-| Recognition                             | `recognition.ts` | Home, CV                                                  |
-| Education and training                  | `profile.ts`     | CV                                                        |
-| Interests                               | `profile.ts`     | Home, CV                                                  |
+| CV section                              | Content file     | Shown on                                                        |
+| --------------------------------------- | ---------------- | --------------------------------------------------------------- |
+| Name, headline, links                   | `profile.ts`     | Home, CV, footer                                                |
+| Location (shown as "Hertfordshire, UK") | `profile.ts`     | CV                                                              |
+| Profile                                 | `profile.ts`     | Home (shortened), CV                                            |
+| Key skills                              | `profile.ts`     | CV                                                              |
+| Experience at giffgaff                  | `work.ts`        | Work, CV                                                        |
+| Earlier career                          | `work.ts`        | CV in full, plus a short "Before tech" summary on the Work page |
+| Speaking                                | `talks.ts`       | Talks, CV                                                       |
+| Recognition                             | `recognition.ts` | Home, CV                                                        |
+| Education and training                  | `profile.ts`     | CV                                                              |
+| Interests                               | `profile.ts`     | Home, CV                                                        |
 
 The phone number and email address aren't transcribed. Abbreviations from the CV (TDD, CI/CD, ARIA, GAAD, HAND and so on)
 use the `Abbr` component and are expanded on first use on each page, for AAA 3.1.4.
 
-The giffgaff Inclusion Toolkit is listed under sites worked on in My Work. Details of internal tools
+The giffgaff Inclusion Toolkit is listed under sites worked on, on the Work page. Details of internal tools
 from the CV are fine to publish.
 
 ### Profile photo
@@ -259,21 +265,45 @@ to defaults" button.
 
 | Group             | Components                                                                                                        |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `PageLayout`, `RouteAnnouncer`                                 |
-| Layout primitives | `Stack`, `Cluster`, `Container` (caps line length at 70 characters)                                               |
-| Content           | `Heading`, `Card`, `Link`, `Tag`, `Time`, `Abbr`                                                                  |
+| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                        |
+| Layout primitives | `Stack`, `Cluster`, `Container`                                                                                   |
+| Content           | `Card`, `Link`, `Tag`, `Time`, `Abbr`                                                                             |
 | Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection` |
 | Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                      |
 | Forms             | `TextField`, `TextArea`, `Button`, `ErrorSummary`, `FieldError`, `FormStatus`                                     |
 | Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                  |
-| Utilities         | `VisuallyHidden`                                                                                                  |
+| Utilities         | `ScreenReaderOnly`                                                                                                |
 
 Notes:
 
-- `SiteNav` marks the current page with `aria-current="page"`, which meets AAA 2.4.8 (Location)
-- `RouteAnnouncer` moves focus to the new page's `<h1>` after navigation and updates the document title
-- `Link` labels external links in text and never opens a new tab without the user asking
+- `SiteNav` marks the current page with `aria-current="page"`, which meets AAA 2.4.8 (Location). The
+  current page is shown by bold text and a 4px bar, never by colour alone. Nav links aren't
+  underlined, because they're clearly links from where they sit. Links in text always are.
+- `SiteShell` is the layout every page shares. After moving to another page it moves focus to the new
+  page's `<h1>` (`PageHeading`), or to the main content if there's no heading. It does nothing on the
+  first page load, or for links to a section of a page.
+- `Link` labels external links with an icon and the hidden text "(external site)", and never opens a
+  new tab
+- `SiteHeader` isn't sticky, because a fixed header can cover whatever has focus (2.4.12)
+- `SiteFooter` shows "© [year] Abi Harrison-Nye". The prerendered HTML has the year the site was
+  built (`__BUILD_YEAR__`, set in `build-constants.ts`), and `useCurrentYear` updates it to the
+  visitor's current year once React loads, without a hydration mismatch
+- `Container`, `Link` and `ScreenReaderOnly` were built in the layout phase, because the header and
+  footer needed them
 - Every component has a Storybook story and its own tests
+
+### Accessible names and hidden text
+
+Browsers add a space around visually hidden text when working out a link's name. Hidden text should
+therefore follow a real space and never start with punctuation. For example, the site name link reads
+"Abi Harrison-Nye home page", not "Abi Harrison-Nye , home page".
+
+### Progressive enhancement
+
+Pages are prerendered, so they work before JavaScript loads, or without it. A tiny script in `<head>`
+sets `data-js` on `<html>` before the page is drawn. Styles that only make sense with JavaScript, such
+as collapsing the narrow screen menu, are scoped to `:root[data-js]`. Without JavaScript every nav link
+is simply shown.
 
 ## How the AAA criteria shape the design
 
@@ -377,7 +407,7 @@ captions. Captions on conference channels depend on the organiser.
 - Built from the Word and PDF versions of my CV. The source files stay outside the repo.
 - Sections in the same order as the current CV: profile, key skills, experience, speaking and
   recognition, earlier career, education and training, interests
-- Work history comes from `work.ts`, shared with My Work. Talks and recognition come from their own
+- Work history comes from `work.ts`, shared with the Work page. Talks and recognition come from their own
   content files.
 - No phone number, since the site is public
 - A print stylesheet makes it print cleanly to paper or PDF, so the HTML page can replace the PDF
@@ -491,7 +521,7 @@ Results go on the Accessibility page.
 Set in `vercel.json`:
 
 - A Content Security Policy that only allows the site's own scripts, styles and fonts, plus requests
-  to the EmailJS API. The inline theme script is allowed by its hash.
+  to the EmailJS API. The inline script in `<head>` is allowed by its hash.
 - Strict Transport Security
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `X-Content-Type-Options: nosniff`
@@ -521,10 +551,11 @@ Each phase is written test first.
    rules for `*.docx`, `*.pdf` and `.env`, so the CV source files and secrets can never be committed
    by accident.
 2. **Foundations (done):** tokens, base styles, light and dark themes, fonts, print stylesheet
-3. **Layout:** skip link, header, nav, footer, route focus handling, 404 page
+3. **Layout (done):** skip link, header, nav, footer, focus handling between pages, 404 page, error
+   page, and placeholder pages for every section
 4. **Primitives:** layout primitives, content components, form components
 5. **Settings:** theme switcher and display settings
-6. **Content pages:** Home, My Work, Side projects, My Articles
+6. **Content pages:** Home, Work, Projects, Articles
 7. **Talks:** talks list, talk pages, transcripts, video
 8. **CV:** CV page built from the Word and PDF versions
 9. **Contact:** form, review step and EmailJS
@@ -541,6 +572,6 @@ None. All decisions are made.
 
 - Profile photo (a placeholder is used until then)
 
-- Side projects
+- Projects
 - Talks, with transcripts, slide links and videos
 - Articles
