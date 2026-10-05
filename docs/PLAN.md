@@ -243,30 +243,67 @@ appears in a component stylesheet. Only the token files may contain raw values.
 
 ## Themes and display settings
 
-### Theme switcher
+### How settings work
 
-- Options: Light, Dark, Cream, and Match my system (the default)
-- A compact version lives in the site header. The full set of display settings lives on the
-  Accessibility page.
-- Choices are saved in `localStorage` and applied as `data-` attributes on `<html>`
-- A tiny inline script in `<head>` applies saved settings before the first paint, so there's no flash
-  of the wrong theme
+- **One source of truth.** `src/settings/displaySettings.ts` defines every setting: its legend,
+  options, labels, hints, default and the `data-` attribute it sets on `<html>`. The settings page,
+  the header theme switcher, the before paint script and the tests all read from it.
+- **Saved in this browser only.** Choices are saved in `localStorage` and never sent anywhere. If
+  storage is unavailable, such as in some private browsing modes, settings still apply for the visit.
+  Saved values that aren't valid options are ignored, so tampered data can't reach the page.
+- **No flash.** A small script in `<head>` applies saved settings before the page is drawn. It's
+  generated from the same definitions at build time, so it can't fall out of step. It's tested with
+  every JavaScript file blocked, which proves the head script alone does the work.
+- **In step everywhere.** The header switcher and the settings page share one store, and settings
+  stay in sync across open tabs.
+- **Without JavaScript**, the controls are hidden, and the settings section explains that browser
+  zoom still works.
 - Windows high contrast mode (`forced-colors: active`) is supported. Focus rings, borders and icons
   stay visible.
-- Letting users choose foreground and background colours also meets part of AAA 1.4.8
+- Letting people choose colours and spacing also meets part of AAA 1.4.8.
+- The browser's own interface colour (`theme-color`) follows the device, not the chosen theme. It
+  only affects the address bar on some phones, so it wasn't worth the extra code.
+
+### Header layout and theme switcher
+
+- **Burger until everything fits.** The nav links and display settings sit behind a Menu button until
+  every link fits on one row beside the site name. Then the links sit beside the name, and the display
+  settings move to a slim bar under the header.
+- **The switch point is measured on the header**, using a CSS container query at 62em. Container
+  queries resolve em against the header's own font size, so the switch point grows with the text size
+  setting. 62em was set by measuring the one row header under every font and spacing setting in all
+  three browsers (the widest was 58.85em, with the device's font and increased spacing), plus headroom
+  for wider fonts on real devices. At default text size it's 992px.
+- End to end tests check just either side of the switch point under each setting: one row with no
+  sideways scrolling above it, the Menu button below it. A unit test keeps the value the same in the
+  header and nav stylesheets.
+- **The display settings** are a Theme dropdown and a "More display settings" link. In the menu
+  they're their own section under the links, separated by a line, with the dropdown filling the width
+  up to 480px. In the slim bar they sit side by side on the right. Only one is ever shown, and both
+  use the same settings store. They're outside the `<nav>` landmark, because they aren't navigation.
+- Choosing a theme applies straight away, which is fine for WCAG 3.2.2 because it doesn't change
+  anything else on the page.
+- The "More display settings" link moves focus to the settings heading. Links to a section of a page
+  move focus to that section whenever it can take focus.
+- This replaces the planned header link to the Accessibility page.
 
 ### Display settings (on the Accessibility page)
 
-| Setting      | Options                             | How it works                                                                            |
-| ------------ | ----------------------------------- | --------------------------------------------------------------------------------------- |
-| Theme        | Light, Dark, Cream, Match my system | Swaps the semantic colour tokens                                                        |
-| Text size    | Default, Large, Larger              | Changes the root font size. Every token is in `rem`, so the whole layout scales with it |
-| Text spacing | Default, Increased                  | Increases line, paragraph, letter and word spacing to the WCAG 1.4.12 values            |
-| Motion       | Match my system, Reduce             | Turns off all transitions, overriding the system setting if needed                      |
-| Font         | Site font, System font              | Lets people swap to the font they're used to                                            |
+| Setting      | Options                                 | How it works                                                                                    |
+| ------------ | --------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Theme        | Match my device, Light, Dark, Cream     | Swaps the semantic colour tokens                                                                |
+| Text size    | Default, Large (125%), Larger (150%)    | Sets the root font size as a percentage of the browser's own size. Everything is in `rem`       |
+| Text spacing | Default, Increased                      | At least the WCAG 1.4.12 values for line, letter and word spacing, plus wider paragraph spacing |
+| Motion       | Match my device, Reduce motion          | Turns off all animation and transitions, whatever the device setting                            |
+| Font         | Atkinson Hyperlegible, My device's font | Swaps to the device's own font                                                                  |
 
-Every setting has a visible label, works by keyboard and applies straight away. There's also a "Reset
-to defaults" button.
+Every setting is a group of radio buttons with a visible legend (`RadioGroup`). Each option's label
+wraps its radio, so the whole row is one target at least 48px tall. Changes apply straight away,
+and "Reset to defaults" confirms itself in a status message that screen readers announce.
+
+Form controls inherit letter and word spacing, so the spacing setting reaches dropdowns and text
+fields too. Every page is tested at 320px wide with the largest text and widest spacing, and with
+axe under the strongest settings in the dark theme.
 
 ## Components
 
@@ -587,7 +624,7 @@ Each phase is written test first.
 3. **Layout (done):** skip link, header, nav, footer, focus handling between pages, 404 page, error
    page, and placeholder pages for every section
 4. **Primitives (done):** layout primitives, content components, form components
-5. **Settings:** theme switcher and display settings
+5. **Settings (done):** theme switcher and display settings
 6. **Content pages:** Home, Work, Projects, Articles
 7. **Talks:** talks list, talk pages, transcripts, video
 8. **CV:** CV page built from the Word and PDF versions

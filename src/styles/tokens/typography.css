@@ -29,6 +29,8 @@
   /* WCAG 1.4.8 asks for at least 1.5 within paragraphs. */
   --line-height-body: 1.5;
   --line-height-heading: 1.25;
+  --letter-spacing-body: normal;
+  --word-spacing-body: normal;
 
   /* Narrow screens, including desktop browsers zoomed to 400%. */
   --font-size-body: var(--font-size-1);
@@ -43,4 +45,32 @@
     --font-size-h2: var(--font-size-3);
     --font-size-h3: var(--font-size-2);
   }
+}
+
+/*
+ * Display settings, set as attributes on <html> by src/settings/displaySettings.ts.
+ *
+ * Text size changes the root font size as a percentage, so it builds on whatever size the visitor has
+ * already chosen in their browser. Every size on the site is in rem, so the whole layout scales.
+ */
+:root[data-text-size='large'] {
+  font-size: 125%;
+}
+
+:root[data-text-size='larger'] {
+  font-size: 150%;
+}
+
+/* At least the WCAG 1.4.12 text spacing values, applied across the whole site. */
+:root[data-text-spacing='increased'] {
+  --line-height-body: 2;
+  --line-height-heading: 1.5;
+  --letter-spacing-body: 0.12em;
+  --letter-spacing-emphasis: 0.12em;
+  --word-spacing-body: 0.16em;
+  --space-paragraph: var(--space-6);
+}
+
+:root[data-font='system'] {
+  --font-family-body: var(--font-family-system);
 }

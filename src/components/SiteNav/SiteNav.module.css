@@ -1,3 +1,9 @@
+/*
+ * Burger layout by default. It switches to a single row of links once the header is wide enough to
+ * fit them all beside the site name. The width is measured on the header (a container), in em, so it
+ * moves with the text size setting.
+ */
+
 .toggle {
   display: none;
   gap: var(--space-2);
@@ -24,27 +30,31 @@
   height: var(--space-4);
 }
 
-.nav {
-  margin-inline-start: auto;
+.panel {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
 }
 
 .list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--space-1);
   margin: 0;
 }
 
 .link {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
   min-width: var(--size-target-min);
   min-height: var(--size-target-min);
   padding-inline: var(--space-3);
   color: var(--color-text);
   text-decoration-line: none;
+  white-space: nowrap;
 }
 
 .link:hover {
@@ -60,9 +70,8 @@
 
 .link[aria-current='page']::after {
   position: absolute;
-  inset-inline: var(--space-3);
-  bottom: 0;
-  height: var(--space-1);
+  inset: 0 auto 0 0;
+  width: var(--space-1);
   content: '';
   background: var(--color-action);
 }
@@ -74,32 +83,46 @@
   }
 }
 
-@media (width < 48rem) {
-  .nav {
-    flex-basis: 100%;
+/* The display settings sit in their own section at the bottom of the menu. */
+.display {
+  padding-block-start: var(--space-4);
+  border-block-start: var(--border-width) solid var(--color-border-decorative);
+}
+
+/* Only collapse the panel once JavaScript can open it again. */
+:global(:root[data-js]) .toggle {
+  display: inline-flex;
+}
+
+:global(:root[data-js]) .panel:not([data-open='true']) {
+  display: none;
+}
+
+/* Keep this width in step with the same query in SiteHeader.module.css. */
+@container site-header (width >= 62em) {
+  :global(:root[data-js]) .toggle {
+    display: none;
+  }
+
+  .panel,
+  :global(:root[data-js]) .panel:not([data-open='true']) {
+    display: flex;
+    flex-basis: auto;
+    margin-inline-start: auto;
   }
 
   .list {
-    flex-direction: column;
-  }
-
-  .link {
-    justify-content: flex-start;
-    width: 100%;
+    flex-direction: row;
   }
 
   .link[aria-current='page']::after {
-    inset: 0 auto 0 0;
-    width: var(--space-1);
-    height: auto;
+    inset: auto var(--space-3) 0;
+    width: auto;
+    height: var(--space-1);
   }
 
-  /* Only collapse the links once JavaScript can open them again. */
-  :global(:root[data-js]) .toggle {
-    display: inline-flex;
-  }
-
-  :global(:root[data-js]) .list:not([data-open='true']) {
+  /* The display settings move to the slim bar under the header. */
+  .display {
     display: none;
   }
 }

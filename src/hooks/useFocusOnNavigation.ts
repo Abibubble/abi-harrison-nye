@@ -7,10 +7,12 @@ import { MAIN_CONTENT_ID } from '../components/SkipLink';
 /**
  * Moving between pages doesn't reload the page, so browsers don't reset focus. Without this, keyboard
  * and screen reader users would be left on the link they chose, with no announcement that anything
- * happened. Focus moves to the new page's heading instead, or to the main content if there isn't one.
+ * happened.
  *
- * Nothing happens on the first page load, because the browser has already put focus at the start of
- * the page, or for links to a section of a page, where the browser moves to that section itself.
+ * For a link to a section of a page, focus moves to that section if it can take focus, such as a
+ * heading with tabIndex -1. Sections that can't are left to the browser, which scrolls to them.
+ * Otherwise focus moves to the new page's heading, or to the main content if there isn't one. Nothing
+ * happens on the first page load, because the browser has already put focus at the start of the page.
  */
 export function useFocusOnNavigation(): void {
   const location = useLocation();
@@ -20,7 +22,10 @@ export function useFocusOnNavigation(): void {
     if (location.key === previousKey.current) return;
     previousKey.current = location.key;
 
-    if (location.hash) return;
+    if (location.hash) {
+      document.getElementById(decodeURIComponent(location.hash.slice(1)))?.focus();
+      return;
+    }
 
     const target =
       document.getElementById(PAGE_HEADING_ID) ?? document.getElementById(MAIN_CONTENT_ID);

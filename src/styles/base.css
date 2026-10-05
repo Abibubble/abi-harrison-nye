@@ -1,6 +1,6 @@
 /*
- * Base element styles. The root font size is never set, so 1rem is whatever size the visitor has
- * chosen in their browser.
+ * Base element styles. The root font size is only ever set as a percentage by the text size setting,
+ * so 1rem always builds on whatever size the visitor has chosen in their browser.
  */
 body {
   min-height: 100vh;
@@ -8,6 +8,8 @@ body {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  word-spacing: var(--word-spacing-body);
   color: var(--color-text);
   background: var(--color-bg);
   font-kerning: normal;
@@ -125,6 +127,7 @@ em {
   background: var(--color-selection-bg);
 }
 
+/* Motion is switched off for anyone who asks, either on their device or in the display settings. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -134,4 +137,13 @@ em {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+:root[data-motion='reduce'] *,
+:root[data-motion='reduce'] *::before,
+:root[data-motion='reduce'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }

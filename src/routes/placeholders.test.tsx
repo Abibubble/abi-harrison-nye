@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import type { ComponentType } from 'react';
 import { describe, expect, it } from 'vitest';
 
-import * as Accessibility from './accessibility';
 import * as Articles from './articles';
 import * as Contact from './contact';
 import * as Cv from './cv';
@@ -19,7 +18,6 @@ const PLACEHOLDERS: [string, { default: ComponentType; meta: () => unknown }][] 
   ['Articles', Articles],
   ['CV', Cv],
   ['Contact', Contact],
-  ['Accessibility', Accessibility],
   ['Privacy', Privacy],
 ];
 

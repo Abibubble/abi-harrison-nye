@@ -1,3 +1,5 @@
+import type { DisplaySettings } from '../../src/settings/displaySettings';
+
 // Every page on the site. Tests that apply to all pages loop over this list, so new pages get
 // accessibility, reflow and theme coverage just by being added here. Apart from Home, each name is
 // the page's heading, the start of its title, and its link text.
@@ -14,13 +16,13 @@ export const ROUTES = [
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;
 
-// Light and dark follow the system colour scheme. Cream is chosen explicitly with data-theme.
+// Light and dark follow the device's colour scheme. Cream is chosen in the display settings.
 export const THEMES = [
   { name: 'light', colorScheme: 'light' },
   { name: 'dark', colorScheme: 'dark' },
-  { name: 'cream', colorScheme: 'light', dataTheme: 'cream' },
+  { name: 'cream', colorScheme: 'light', settings: { theme: 'cream' } },
 ] as const satisfies readonly {
   name: string;
   colorScheme: 'light' | 'dark';
-  dataTheme?: string;
+  settings?: Partial<DisplaySettings>;
 }[];

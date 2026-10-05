@@ -21,12 +21,15 @@ video {
   height: auto;
 }
 
+/* Form controls don't inherit text styles by default, including spacing from the display settings. */
 input,
 button,
 textarea,
 select {
   font: inherit;
   color: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
 }
 
 ul[role='list'],

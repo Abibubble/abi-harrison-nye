@@ -1,5 +1,12 @@
+/*
+ * The header is a container, so its layout switches on its own width, measured in em. Container
+ * queries resolve em against the header's font size, which grows with the text size setting, so the
+ * switch point moves with it. CSS can't use a variable in a query, so the width is written out here
+ * and in SiteNav.module.css, and a test checks the two match.
+ */
 .header {
   border-block-end: var(--border-width) solid var(--color-border-decorative);
+  container: site-header / inline-size;
 }
 
 .inner {
@@ -24,4 +31,28 @@
 .siteName:hover {
   color: var(--color-action-hover);
   text-decoration-line: underline;
+}
+
+/* The slim display settings bar, only shown once the nav links are beside the name. */
+.subnav {
+  display: none;
+  background: var(--color-surface);
+  border-block-start: var(--border-width) solid var(--color-border-decorative);
+}
+
+.subnavInner {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: var(--space-1);
+}
+
+/* Keep this width in step with the same query in SiteNav.module.css. */
+@container site-header (width >= 62em) {
+  .inner {
+    flex-wrap: nowrap;
+  }
+
+  .subnav {
+    display: block;
+  }
 }

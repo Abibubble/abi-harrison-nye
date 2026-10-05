@@ -44,12 +44,26 @@ describe('SiteNav', () => {
   });
 
   describe('menu button', () => {
-    it('controls the list of links and starts closed', () => {
+    it('controls the panel with the links and theme switcher, and starts closed', () => {
       renderWithRouter(<SiteNav />);
-      const list = within(mainNav()).getByRole('list');
+      const panelId = menuButton().getAttribute('aria-controls') ?? '';
+      const panel = document.getElementById(panelId);
 
       expect(menuButton()).toHaveAttribute('aria-expanded', 'false');
-      expect(menuButton()).toHaveAttribute('aria-controls', list.id);
+      expect(panel).toContainElement(mainNav());
+      expect(panel).toContainElement(screen.getByRole('combobox', { name: 'Theme' }));
+    });
+
+    it('closes with Escape while the theme switcher has focus', async () => {
+      const user = userEvent.setup();
+      renderWithRouter(<SiteNav />);
+
+      await user.click(menuButton());
+      screen.getByRole('combobox', { name: 'Theme' }).focus();
+      await user.keyboard('{Escape}');
+
+      expect(menuButton()).toHaveAttribute('aria-expanded', 'false');
+      expect(menuButton()).toHaveFocus();
     });
 
     it('opens and closes the menu', async () => {

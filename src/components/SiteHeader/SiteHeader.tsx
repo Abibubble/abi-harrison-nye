@@ -3,9 +3,17 @@ import { Container } from '../Container';
 import { Link } from '../Link';
 import { ScreenReaderOnly } from '../ScreenReaderOnly';
 import { SiteNav } from '../SiteNav';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 import styles from './SiteHeader.module.css';
 
-// Not sticky: a fixed header can cover whatever has keyboard focus (WCAG 2.4.12).
+/**
+ * The site name and navigation. Until there's room for every nav link on one line, they sit behind a
+ * Menu button, along with the display settings. Once there's room, the links sit beside the name and
+ * the display settings move to a slim bar underneath. "Room" is measured on the header itself, so it
+ * accounts for the visitor's text size.
+ *
+ * Not sticky: a fixed header can cover whatever has keyboard focus (WCAG 2.4.12).
+ */
 export function SiteHeader() {
   return (
     <header className={styles.header}>
@@ -21,6 +29,13 @@ export function SiteHeader() {
           <SiteNav />
         </div>
       </Container>
+      <div className={styles.subnav} data-print="hide">
+        <Container>
+          <div className={styles.subnavInner}>
+            <ThemeSwitcher />
+          </div>
+        </Container>
+      </div>
     </header>
   );
 }

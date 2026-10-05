@@ -2,6 +2,7 @@ import { test } from '@playwright/test';
 
 import { TEXT_SPACING_CSS, expectNoHorizontalScroll } from './support/layout';
 import { ROUTES } from './support/routes';
+import { STRONGEST_SETTINGS, saveDisplaySettings } from './support/settings';
 
 for (const route of ROUTES) {
   test.describe(`${route.name} page`, () => {
@@ -25,6 +26,17 @@ for (const route of ROUTES) {
       await page.setViewportSize({ width: 320, height: 640 });
       await page.goto(route.path);
       await page.addStyleTag({ content: TEXT_SPACING_CSS });
+
+      await expectNoHorizontalScroll(page);
+    });
+
+    test('reflows at 320px with the largest text and widest spacing in the display settings', async ({
+      page,
+    }) => {
+      await saveDisplaySettings(page, STRONGEST_SETTINGS);
+      await page.setViewportSize({ width: 320, height: 640 });
+      await page.goto(route.path);
+      await page.getByRole('button', { name: 'Menu' }).click();
 
       await expectNoHorizontalScroll(page);
     });

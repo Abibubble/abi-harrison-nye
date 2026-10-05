@@ -25,6 +25,7 @@ function renderSite(path = '/') {
             <>
               <PageHeading>Home</PageHeading>
               <Link to="/projects#latest">Latest project</Link>
+              <Link to="/projects#settings">Project settings</Link>
             </>
           ),
         },
@@ -35,6 +36,9 @@ function renderSite(path = '/') {
             <>
               <PageHeading>Projects</PageHeading>
               <h2 id="latest">Latest</h2>
+              <h2 id="settings" tabIndex={-1}>
+                Settings
+              </h2>
             </>
           ),
         },
@@ -92,7 +96,16 @@ describe('SiteShell', () => {
     expect(screen.getByRole('main')).toHaveFocus();
   });
 
-  it('leaves focus to the browser for links to a section of a page', async () => {
+  it('moves focus to the section for a link to part of a page, when the section can take focus', async () => {
+    const user = userEvent.setup();
+    renderSite();
+
+    await user.click(screen.getByRole('link', { name: 'Project settings' }));
+
+    expect(await screen.findByRole('heading', { name: 'Settings' })).toHaveFocus();
+  });
+
+  it('leaves focus to the browser for links to a section that can’t take focus', async () => {
     const user = userEvent.setup();
     renderSite();
 
