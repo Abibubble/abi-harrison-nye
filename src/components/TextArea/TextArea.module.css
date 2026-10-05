@@ -1,0 +1,10 @@
+.count {
+  color: var(--color-text-muted);
+}
+
+/* Over the limit, the count says "too many" in bold, so it doesn't rely on colour alone. */
+.over {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-error);
+  letter-spacing: var(--letter-spacing-emphasis);
+}

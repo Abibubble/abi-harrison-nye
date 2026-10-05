@@ -26,5 +26,12 @@ export default defineConfig({
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !isCI,
     timeout: 120_000,
+    // Made up EmailJS settings, so the contact form gets as far as sending. These take priority over
+    // any real ones in .env, and the tests intercept every request to EmailJS, so nothing is sent.
+    env: {
+      VITE_EMAILJS_SERVICE_ID: 'e2e-service',
+      VITE_EMAILJS_TEMPLATE_ID: 'e2e-template',
+      VITE_EMAILJS_PUBLIC_KEY: 'e2e-public-key',
+    },
   },
 });

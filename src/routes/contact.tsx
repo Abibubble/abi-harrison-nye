@@ -1,11 +1,25 @@
-import { ComingSoon } from '../components/ComingSoon';
+import { ContactForm } from '../components/ContactForm';
+import { PageHeading } from '../components/PageHeading';
+import { Stack } from '../components/Stack';
 import { pageTitle } from '../content/site';
 import type { Route } from './+types/contact';
 
 export function meta(): Route.MetaDescriptors {
-  return [{ title: pageTitle('Contact') }];
+  return [
+    { title: pageTitle('Contact') },
+    { name: 'description', content: 'Send me a message, and I’ll reply by email.' },
+  ];
 }
 
 export default function Contact() {
-  return <ComingSoon title="Contact" />;
+  return (
+    <Stack gap={6}>
+      <Stack gap={4}>
+        <PageHeading>Contact</PageHeading>
+        <p>Send me a message using this form, and I’ll reply by email.</p>
+        <p>All fields are required. You’ll be able to check your message before it’s sent.</p>
+      </Stack>
+      <ContactForm />
+    </Stack>
+  );
 }

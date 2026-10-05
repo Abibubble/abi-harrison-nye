@@ -479,17 +479,25 @@ captions. Captions on conference channels depend on the organiser.
 - Fields: name, email and message. Each has a visible label, required status shown in text, hint text
   and the right `autocomplete` value.
 - Validation runs on submit, not on every keystroke
+- The message has a 5,000 character limit, well within the 50KB EmailJS accepts. A count under the
+  field follows the GOV.UK character count pattern: nothing is cut off past the limit, the count
+  says how many characters too many, and screen readers hear it once typing pauses near the limit.
 - On error: an error summary at the top with links to each field, and inline errors linked to their
   fields using `aria-describedby`
 - A "Check your message" review step before sending, with the option to go back and edit
 - After sending, focus moves to a clear success or failure message. What the user typed is kept if
-  sending fails, and the failure message offers a "Try again" button.
+  sending fails, and the review step offers a "Try sending again" button.
 - The sender's email is set as the reply to address in the EmailJS template, so replies go straight
   to them
 - No CAPTCHA, since it conflicts with the accessible authentication criteria. Spam protection comes
-  from a hidden honeypot field, EmailJS rate limiting and allowed domain settings.
-- EmailJS IDs and the public key go in `VITE_` environment variables, with an `.env.example` committed.
-  These keys are public by design, so the EmailJS allowed domain setting is what protects the account.
+  from a hidden honeypot field and EmailJS's own rate limit, plus allowed domain settings on a paid
+  plan.
+- EmailJS IDs and the public key go in `VITE_` environment variables, listed in the README and an
+  `.env.example`. These keys are public by design, and can only send the one template to my own
+  address. Paid plans add an allowed domain setting, which protects the monthly allowance from other
+  sites using the keys. Without the keys, the form says the message couldn't be sent.
+- Messages go straight to the EmailJS REST API with `fetch`, rather than through the EmailJS
+  package, so there's one less dependency
 - The form is the only visible contact method. No email address appears anywhere on the site,
   including the structured data. GitHub and LinkedIn appear as profile links, not as contact options.
 - EmailJS is mocked in all tests, so nothing is ever really sent
@@ -675,7 +683,7 @@ Each phase is written test first.
 7. **Talks (done):** talks list, talk pages, transcripts, video. Waiting on the first talk's
    content.
 8. **CV (done):** CV page built from the Word and PDF versions
-9. **Contact:** form, review step and EmailJS
+9. **Contact (done):** form, review step and EmailJS. Waiting on the EmailJS account setup.
 10. **Statement pages:** Accessibility and Privacy
 11. **SEO:** meta tags, sitemap, robots, structured data, icons
 12. **Audit:** full automated suite, manual testing, performance pass

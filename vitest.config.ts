@@ -14,6 +14,12 @@ export default defineConfig({
   define: BUILD_DEFINES,
   plugins: [react()],
   test: {
+    // Blank EmailJS settings, so the real ones in .env never reach the tests and nothing can be sent.
+    env: {
+      VITE_EMAILJS_SERVICE_ID: '',
+      VITE_EMAILJS_TEMPLATE_ID: '',
+      VITE_EMAILJS_PUBLIC_KEY: '',
+    },
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{ts,tsx}'],

@@ -18,6 +18,37 @@ pnpm dev
 
 The dev server runs at http://localhost:5173.
 
+## Contact form (EmailJS)
+
+The contact form sends messages through [EmailJS](https://www.emailjs.com). It needs three settings,
+in a `.env` file at the root of the repo locally, and as environment variables on the host:
+
+```bash
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+```
+
+Without them, the form works up to the last step, then says the message couldn't be sent.
+
+These values are public by design, as every visitor's browser sees them. Someone with them can only
+send this template to the address set in it, so the worst they can do is fill that inbox. In the
+EmailJS dashboard:
+
+1. Add an email service, connected to the address messages should go to.
+2. Create a template using `{{from_name}}`, `{{reply_to}}` and `{{message}}`, with To Email set to
+   your own address and Reply To set to `{{reply_to}}`, so replies go straight to the sender.
+3. Under Account, then Security, make sure Use Private Key is unticked, as the form can't keep a
+   private key secret, and leave the API for non browser applications unticked too.
+4. On a paid plan, also set the allowed domains to the site's domain, so other sites can't use the
+   public key. The free plan doesn't include this.
+
+There's no rate limit setting in the dashboard. Spam protection comes from the hidden honeypot field
+in the form, and EmailJS's own limit of one request per second.
+
+The tests never send anything. Unit tests use a fake, and the end to end tests intercept requests to
+EmailJS.
+
 ## Scripts
 
 | Script                 | What it does                                                              |
