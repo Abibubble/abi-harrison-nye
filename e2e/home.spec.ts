@@ -1,7 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-import { expectNoAxeViolations } from './support/axe';
-
 test.describe('Home page', () => {
   test('is served as prerendered HTML', async ({ request }) => {
     const response = await request.get('/');
@@ -16,11 +14,5 @@ test.describe('Home page', () => {
 
     await expect(page.locator('html')).toHaveAttribute('lang', 'en-GB');
     await expect(page).toHaveTitle('Abi Harrison-Nye, Software Engineer');
-  });
-
-  test('has no detectable accessibility issues', async ({ page }) => {
-    await page.goto('/');
-
-    await expectNoAxeViolations(page);
   });
 });

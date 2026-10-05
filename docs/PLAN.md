@@ -118,43 +118,96 @@ Tokens use `rem`, so everything scales with the user's chosen font size.
 | `--space-6` | 3    | 48  |
 | `--space-7` | 6    | 96  |
 
-The type scale uses the same steps:
+The type scale uses the same steps. Headings are one step smaller on narrow screens (under 768px,
+which includes desktop browsers zoomed to 400%), so a name like "Abi Harrison-Nye" doesn't wrap at the
+hyphen:
 
-| Token              | Size | Line height  | Used for                 |
-| ------------------ | ---- | ------------ | ------------------------ |
-| `--font-size-body` | 16px | 24px (1.5)   | Body text, form controls |
-| `--font-size-h3`   | 24px | 32px         | Third level headings     |
-| `--font-size-h2`   | 32px | 48px         | Second level headings    |
-| `--font-size-h1`   | 48px | 48px or more | Page headings            |
+| Token              | Narrow | Wide | Line height | Used for                 |
+| ------------------ | ------ | ---- | ----------- | ------------------------ |
+| `--font-size-body` | 16px   | 16px | 1.5         | Body text, form controls |
+| `--font-size-h3`   | 16px   | 24px | 1.25        | Third level headings     |
+| `--font-size-h2`   | 24px   | 32px | 1.25        | Second level headings    |
+| `--font-size-h1`   | 32px   | 48px | 1.25        | Page headings            |
 
-The minimum size for interactive elements is 48px (`--space-6`). AAA target size (2.5.5) needs 44px,
-which isn't on the scale, so we round up to the next step.
+Line heights are unitless rather than pixel sizes, so they scale with the font size and with any text
+spacing a visitor applies.
+
+Other sizing decisions:
+
+- **Interactive elements** are at least 48px (`--size-target-min`). AAA target size (2.5.5) needs
+  44px, which isn't on the scale, so we round up to the next step.
+- **Line length** is capped at 70 characters (`--size-measure`). WCAG 1.4.8 allows up to 80, and 70 is
+  more comfortable to read.
+- **Focus rings** are 4px wide with a 4px gap (`--focus-ring-width`, `--focus-ring-offset`).
+
+Two sizes are agreed exceptions to the scale:
+
+- **Paragraph spacing** is 40px (`--space-paragraph`). WCAG 1.4.8 asks for at least 1.5 times the line
+  height, which is 36px. The nearest step on the scale, 48px, felt too airy.
+- **Borders** are 2px (`--border-width`), because 4px is too heavy for form fields and cards.
 
 ### Colour
 
 There are two layers:
 
-1. **Primitive tokens** (`--purple-100` to `--purple-900` plus neutrals, reds and greens). These are
-   never used directly in components.
+1. **Primitive tokens** (`--purple-50` to `--purple-950`, plus mauve neutrals, reds and greens) in
+   `src/styles/tokens/primitives.css`. These are never used directly in components.
 2. **Semantic tokens** (`--color-text`, `--color-text-muted`, `--color-bg`, `--color-surface`,
-   `--color-action`, `--color-action-text`, `--color-focus`, `--color-error`, `--color-success`,
-   `--color-border`). Components only ever use these. Each theme maps them to different primitives.
+   `--color-action`, `--color-action-hover`, `--color-action-text`, `--color-focus`, `--color-error`,
+   `--color-success`, `--color-border`, `--color-border-decorative`, and selection colours) in
+   `src/styles/tokens/colours.css`. Components only ever use these.
 
-Starting palette, checked against the 7:1 AAA contrast requirement:
+There are three themes:
 
-| Semantic token                                 | Light theme | Ratio | Dark theme | Ratio |
-| ---------------------------------------------- | ----------- | ----- | ---------- | ----- |
-| `--color-bg`                                   | `#FBF8FF`   |       | `#160C24`  |       |
-| `--color-surface`                              | `#F3ECFC`   |       | `#22143A`  |       |
-| `--color-text`                                 | `#1F1430`   | 16.6  | `#F4EEFF`  | 16.7  |
-| `--color-action` (links, primary purple)       | `#5B2A99`   | 8.9   | `#CDB4FF`  | 10.4  |
-| `--color-text-muted`                           | `#4A3D5C`   | 9.5   | `#CFC3E3`  | 11.3  |
-| `--color-action-text` (text on purple buttons) | `#FFFFFF`   | 9.4   | `#160C24`  | 10.4  |
-| `--color-error`                                | `#9B1C1C`   | 7.8   | `#FFB3B3`  | 11.1  |
-| `--color-success`                              | `#1E5E2E`   | 7.4   | `#A6E3B4`  | 12.8  |
+- **Light and Dark** are written as `light-dark(light value, dark value)`, so each is just a colour
+  scheme. With no `data-theme` attribute the site follows the system setting. `data-theme="light"` or
+  `data-theme="dark"` on `<html>` overrides it. The build adds a fallback for older browsers
+  automatically.
+- **Cream** (`data-theme="cream"`) is a warm light theme, which sets every semantic colour directly.
 
-Ratios are against `--color-bg`, except the button text row, which is against `--color-action`. Body
-text and links also pass 7:1 on `--color-surface`.
+`tokens.test.ts` checks every text, focus and border pairing against 7:1 in all three themes. It also
+checks that Cream sets every semantic colour, so a new token can't be forgotten there.
+
+The palette:
+
+| Semantic token                                 | Light     | Ratio | Dark      | Ratio | Cream     | Ratio |
+| ---------------------------------------------- | --------- | ----- | --------- | ----- | --------- | ----- |
+| `--color-bg`                                   | `#F5EFFA` |       | `#160C24` |       | `#FBF5E6` |       |
+| `--color-surface`                              | `#EDE5F6` |       | `#22143A` |       | `#F3EAD3` |       |
+| `--color-text`                                 | `#2B2138` | 13.5  | `#E2D9F0` | 13.9  | `#2B2138` | 14.0  |
+| `--color-action` (links, primary purple)       | `#5B2A99` | 8.3   | `#CDB4FF` | 10.4  | `#5B2A99` | 8.6   |
+| `--color-text-muted`                           | `#4A3D5C` | 8.8   | `#BFB2D6` | 9.5   | `#4A3D5C` | 9.1   |
+| `--color-action-text` (text on purple buttons) | `#FFFFFF` | 9.4   | `#160C24` | 10.4  | `#FFFFFF` | 9.4   |
+| `--color-error`                                | `#8A1919` | 8.3   | `#FFB3B3` | 11.1  | `#8A1919` | 8.6   |
+| `--color-success`                              | `#1A5629` | 7.7   | `#A6E3B4` | 12.8  | `#1A5629` | 8.0   |
+
+Ratios are against `--color-bg`, except the button text row, which is against `--color-action`. Every
+pairing also passes 7:1 on `--color-surface`.
+
+### Colour and dyslexia
+
+A neurodiversity audit of the first palette found its contrast was close to the maximum (about 16.6:1)
+in both themes. That's well above AAA's 7:1 floor, but it causes problems for some readers:
+
+- Near black text on a near white background glares for some dyslexic readers and people with visual
+  stress. The British Dyslexia Association recommends a light background that isn't white.
+- Very bright text on a very dark background can appear to glow and blur (halation), especially for
+  people with astigmatism.
+
+So the palette aims for contrast that's comfortably above 7:1 but not at the maximum (roughly 13 to
+14:1 for body text):
+
+- **Light:** the background is a deeper lavender tint, and the text is a softer off black.
+- **Dark:** the body text and muted text are dimmer, so the dark theme doesn't glare.
+- **Cream:** a warm background option, because some dyslexic readers find warm backgrounds easier
+  to read than cool ones. Preferences vary a lot, so the real fix is letting people choose.
+- **Error red** was darkened to `#8A1919` so it still passes 7:1 on the deeper surfaces.
+
+### Global CSS
+
+Global styles live in `src/styles/` and sit in cascade layers (`reset`, `tokens`, `base`, `print`).
+Component CSS Modules aren't layered, so they always win over the global styles without needing extra
+specificity.
 
 ### Enforcement
 
@@ -167,6 +220,9 @@ appears in a component stylesheet. Only the token files may contain raw values.
   with low vision, with letters that are easy to tell apart (such as I, l and 1). It's free under the
   SIL Open Font License.
 - **Atkinson Hyperlegible Mono** for code in transcripts and articles
+- **No italics.** Slanted letters are harder to read for many dyslexic people, so no italic font is
+  loaded, the browser is told not to fake one, and `<em>` is shown in bold. Content should use bold
+  for emphasis.
 - Hosted with the site as variable `woff2` files, subset to the characters we need, so there are no
   requests to Google or any other third party
 - The body font is preloaded, with `font-display: swap` so text is never invisible while it loads
@@ -176,7 +232,7 @@ appears in a component stylesheet. Only the token files may contain raw values.
 
 ### Theme switcher
 
-- Options: Light, Dark, and Match my system (the default)
+- Options: Light, Dark, Cream, and Match my system (the default)
 - A compact version lives in the site header. The full set of display settings lives on the
   Accessibility page.
 - Choices are saved in `localStorage` and applied as `data-` attributes on `<html>`
@@ -188,13 +244,13 @@ appears in a component stylesheet. Only the token files may contain raw values.
 
 ### Display settings (on the Accessibility page)
 
-| Setting      | Options                      | How it works                                                                            |
-| ------------ | ---------------------------- | --------------------------------------------------------------------------------------- |
-| Theme        | Light, Dark, Match my system | Swaps the semantic colour tokens                                                        |
-| Text size    | Default, Large, Larger       | Changes the root font size. Every token is in `rem`, so the whole layout scales with it |
-| Text spacing | Default, Increased           | Increases line, paragraph, letter and word spacing to the WCAG 1.4.12 values            |
-| Motion       | Match my system, Reduce      | Turns off all transitions, overriding the system setting if needed                      |
-| Font         | Site font, System font       | Lets people swap to the font they're used to                                            |
+| Setting      | Options                             | How it works                                                                            |
+| ------------ | ----------------------------------- | --------------------------------------------------------------------------------------- |
+| Theme        | Light, Dark, Cream, Match my system | Swaps the semantic colour tokens                                                        |
+| Text size    | Default, Large, Larger              | Changes the root font size. Every token is in `rem`, so the whole layout scales with it |
+| Text spacing | Default, Increased                  | Increases line, paragraph, letter and word spacing to the WCAG 1.4.12 values            |
+| Motion       | Match my system, Reduce             | Turns off all transitions, overriding the system setting if needed                      |
+| Font         | Site font, System font              | Lets people swap to the font they're used to                                            |
 
 Every setting has a visible label, works by keyboard and applies straight away. There's also a "Reset
 to defaults" button.
@@ -204,7 +260,7 @@ to defaults" button.
 | Group             | Components                                                                                                        |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `PageLayout`, `RouteAnnouncer`                                 |
-| Layout primitives | `Stack`, `Cluster`, `Container` (caps line length at 80 characters)                                               |
+| Layout primitives | `Stack`, `Cluster`, `Container` (caps line length at 70 characters)                                               |
 | Content           | `Heading`, `Card`, `Link`, `Tag`, `Time`, `Abbr`                                                                  |
 | Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection` |
 | Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                      |
@@ -336,6 +392,14 @@ A single `@media print` stylesheet applied across the site:
 - Avoids page breaks in the middle of a role, project or talk
 - Sensible margins and font sizes for A4 and US Letter
 
+Components opt in with data attributes, so they don't need their own print styles:
+
+| Attribute                    | Effect                                       |
+| ---------------------------- | -------------------------------------------- |
+| `data-print="hide"`          | Not printed, for example the navigation      |
+| `data-print="keep-together"` | Never split across two pages, such as a role |
+| `data-print-url="hide"`      | An external link whose URL isn't printed     |
+
 ## SEO and sharing basics
 
 - A unique, descriptive `<title>` on every page (also WCAG 2.4.2)
@@ -456,7 +520,7 @@ Each phase is written test first.
    ESLint, Prettier, Stylelint, Vitest, Playwright, Storybook, and the CI workflow. `.gitignore` gets
    rules for `*.docx`, `*.pdf` and `.env`, so the CV source files and secrets can never be committed
    by accident.
-2. **Foundations:** tokens, base styles, light and dark themes, print stylesheet
+2. **Foundations (done):** tokens, base styles, light and dark themes, fonts, print stylesheet
 3. **Layout:** skip link, header, nav, footer, route focus handling, 404 page
 4. **Primitives:** layout primitives, content components, form components
 5. **Settings:** theme switcher and display settings
