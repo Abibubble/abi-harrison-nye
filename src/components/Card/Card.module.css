@@ -1,0 +1,12 @@
+.card {
+  padding: var(--space-4);
+  background: var(--color-surface);
+
+  /* The surface colour alone is a subtle change, so a border marks the edge, including in high contrast mode. */
+  border: var(--border-width) solid var(--color-border-decorative);
+  border-radius: var(--radius-medium);
+}
+
+.card > :last-child {
+  margin-block-end: 0;
+}

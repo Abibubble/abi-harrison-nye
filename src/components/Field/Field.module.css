@@ -1,0 +1,62 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field > * {
+  margin: 0;
+}
+
+/* A bar beside the whole field marks it as having an error, alongside the message itself. */
+.invalid {
+  padding-inline-start: var(--space-3);
+  border-inline-start: var(--space-1) solid var(--color-error);
+}
+
+.label {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.hint {
+  color: var(--color-text-muted);
+}
+
+.error {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-error);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.control {
+  width: 100%;
+  min-height: var(--size-target-min);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
+input.control {
+  max-width: var(--size-input-max);
+}
+
+textarea.control {
+  max-width: var(--size-measure);
+  resize: vertical;
+}

@@ -227,8 +227,15 @@ appears in a component stylesheet. Only the token files may contain raw values.
   SIL Open Font License.
 - **Atkinson Hyperlegible Mono** for code in transcripts and articles
 - **No italics.** Slanted letters are harder to read for many dyslexic people, so no italic font is
-  loaded, the browser is told not to fake one, and `<em>` is shown in bold. Content should use bold
-  for emphasis.
+  loaded, the browser is told not to fake one, and `<em>` is shown with weight instead. Content should
+  use bold for emphasis.
+- **Semi bold, not bold, at body size.** Full bold letters blur together for people with
+  astigmatism, especially light text on a dark background. All bold text at body size (buttons,
+  labels, error messages, the current nav page, third level headings, and `strong`, `b` and `em`) uses
+  `--font-weight-emphasis` (semi bold, 600) with `--letter-spacing-emphasis` (0.05em). The two tokens
+  are always used together. First and second level headings stay full bold, because the blurring is
+  much less at larger sizes. This was chosen by comparing options side by side with Abi, who has
+  astigmatism.
 - Hosted with the site as variable `woff2` files, subset to the characters we need, so there are no
   requests to Google or any other third party
 - The body font is preloaded, with `font-display: swap` so text is never invisible while it loads
@@ -267,10 +274,10 @@ to defaults" button.
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                        |
 | Layout primitives | `Stack`, `Cluster`, `Container`                                                                                   |
-| Content           | `Card`, `Link`, `Tag`, `Time`, `Abbr`                                                                             |
+| Content           | `Card`, `Link`, `Tag`, `TagList`, `Time`, `DateRange`, `Abbr`                                                     |
 | Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection` |
 | Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                      |
-| Forms             | `TextField`, `TextArea`, `Button`, `ErrorSummary`, `FieldError`, `FormStatus`                                     |
+| Forms             | `Field`, `TextField`, `TextArea`, `FieldError`, `Button`, `ErrorSummary`, `Notice`                                |
 | Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                  |
 | Utilities         | `ScreenReaderOnly`                                                                                                |
 
@@ -290,7 +297,33 @@ Notes:
   visitor's current year once React loads, without a hydration mismatch
 - `Container`, `Link` and `ScreenReaderOnly` were built in the layout phase, because the header and
   footer needed them
-- Every component has a Storybook story and its own tests
+- Every component has a Storybook story and its own tests. Components with colour combinations also
+  have Dark and Cream stories, so axe checks their contrast in every theme in a real browser.
+
+### Building blocks
+
+- **No inline styles.** The Content Security Policy blocks `style` attributes in prerendered HTML, so
+  an ESLint rule forbids the `style` prop. Spacing props such as `gap` map to CSS Module classes
+  (`src/styles/gap.ts`) instead.
+- **`Stack` and `Cluster`** take a `gap` as a step on the spacing scale (1 to 7). Their gap replaces
+  the children's own margins.
+- **`Time` and `DateRange`** take dates as `YYYY`, `YYYY-MM` or `YYYY-MM-DD` and write them in words,
+  such as "3 April 2025" or "August 2021 to present". They use UTC so prerendered HTML and the browser
+  always agree, and they reject dates that don't exist, such as 30 February.
+- **`Abbr`** only accepts abbreviations listed in `src/content/abbreviations.ts`, which will also feed
+  the glossary on the Accessibility page. `<Abbr name="WCAG" expand />` writes the full form out in the
+  text, for the first use on each page.
+- **`Button`** has no disabled option. Disabled buttons can't be focused, don't explain why, and are
+  often too faint. Let people press it and explain what's needed instead.
+- **Form fields** (`TextField`, `TextArea`) share `Field`: a visible label, an optional hint and an
+  error message, all connected to the control. Fields are required unless marked optional, which is
+  said in the label text. Errors appear between the label and the control, with an icon, bold text,
+  hidden "Error:" text and a bar beside the field.
+- **`ErrorSummary`** lists every error after submitting, each linking to its field. Focus moves to it
+  on every submission with errors, and choosing an error focuses the field and scrolls its label into
+  view.
+- **`Notice`** shows the result of something the user did, such as sending a form. It replaces the
+  planned `FormStatus`, and `ErrorSummary` is built on it.
 
 ### Accessible names and hidden text
 
@@ -553,7 +586,7 @@ Each phase is written test first.
 2. **Foundations (done):** tokens, base styles, light and dark themes, fonts, print stylesheet
 3. **Layout (done):** skip link, header, nav, footer, focus handling between pages, 404 page, error
    page, and placeholder pages for every section
-4. **Primitives:** layout primitives, content components, form components
+4. **Primitives (done):** layout primitives, content components, form components
 5. **Settings:** theme switcher and display settings
 6. **Content pages:** Home, Work, Projects, Articles
 7. **Talks:** talks list, talk pages, transcripts, video

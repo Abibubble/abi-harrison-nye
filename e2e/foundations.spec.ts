@@ -87,23 +87,34 @@ test.describe('Fonts', () => {
     expect(hasItalicFace).toBe(false);
   });
 
-  test('shows emphasis in bold rather than italics', async ({ page }) => {
+  test('shows emphasis in semi bold with extra spacing, rather than italics', async ({ page }) => {
     await page.goto('/');
     const styles = await page.evaluate(() => {
       document.body.insertAdjacentHTML(
         'beforeend',
-        '<p><em id="em">Emphasis</em> <i id="i">Title</i> <cite id="cite">Source</cite></p>',
+        `<p>
+          <em id="em">Emphasis</em> <strong id="strong">Important</strong>
+          <i id="i">Title</i> <cite id="cite">Source</cite>
+        </p>`,
       );
-      return ['em', 'i', 'cite'].map((id) => {
+      return ['em', 'strong', 'i', 'cite'].map((id) => {
         const style = getComputedStyle(document.getElementById(id) as Element);
-        return { id, fontStyle: style.fontStyle, fontWeight: style.fontWeight };
+        return {
+          id,
+          fontStyle: style.fontStyle,
+          fontWeight: style.fontWeight,
+          letterSpacing: style.letterSpacing,
+        };
       });
     });
 
+    // 0.05em of 16px is 0.8px. Semi bold with extra space stops letters blurring together, which
+    // full bold does for people with astigmatism.
     expect(styles).toEqual([
-      { id: 'em', fontStyle: 'normal', fontWeight: '700' },
-      { id: 'i', fontStyle: 'normal', fontWeight: '400' },
-      { id: 'cite', fontStyle: 'normal', fontWeight: '400' },
+      { id: 'em', fontStyle: 'normal', fontWeight: '600', letterSpacing: '0.8px' },
+      { id: 'strong', fontStyle: 'normal', fontWeight: '600', letterSpacing: '0.8px' },
+      { id: 'i', fontStyle: 'normal', fontWeight: '400', letterSpacing: 'normal' },
+      { id: 'cite', fontStyle: 'normal', fontWeight: '400', letterSpacing: 'normal' },
     ]);
   });
 });

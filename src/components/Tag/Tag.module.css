@@ -1,0 +1,9 @@
+/* Tags use the body text size, as nothing on the site is smaller than 16px. */
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border-decorative);
+  border-radius: var(--radius-small);
+}

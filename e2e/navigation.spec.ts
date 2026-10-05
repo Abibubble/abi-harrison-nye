@@ -32,6 +32,23 @@ test.describe('Skip link', () => {
     await page.keyboard.press('Enter');
     await expect(page.getByRole('main')).toBeFocused();
   });
+
+  test('appears as a compact button at the top left, without moving the page', async ({ page }) => {
+    await page.goto('/');
+    const headerBefore = await page.getByRole('banner').boundingBox();
+
+    const skipLink = page.getByRole('link', { name: 'Skip to main content' });
+    await skipLink.focus();
+    const link = await skipLink.boundingBox();
+    const headerAfter = await page.getByRole('banner').boundingBox();
+    const viewport = page.viewportSize();
+
+    expect(link?.x).toBeLessThan(48);
+    expect(link?.y).toBeLessThan(48);
+    expect(link?.width).toBeLessThan((viewport?.width ?? 0) / 2);
+    expect(link?.height).toBeGreaterThanOrEqual(48);
+    expect(headerAfter?.y).toBe(headerBefore?.y);
+  });
 });
 
 test.describe('Moving between pages', () => {

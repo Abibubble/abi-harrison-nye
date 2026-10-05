@@ -37,8 +37,14 @@ h2 {
   font-size: var(--font-size-h2);
 }
 
+/*
+ * Third level headings are body size on narrow screens, where full bold blurs for people with
+ * astigmatism, so they use the emphasis weight and spacing at every size.
+ */
 h3 {
   font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
 }
 
 p,
@@ -93,14 +99,9 @@ abbr[title] {
   cursor: help;
 }
 
-strong,
-b {
-  font-weight: var(--font-weight-bold);
-}
-
 /*
  * Slanted letters are harder to read for many dyslexic people, so nothing is italic and emphasis is
- * bold instead, as the British Dyslexia Association style guide recommends.
+ * shown by weight instead, as the British Dyslexia Association style guide recommends.
  */
 em,
 i,
@@ -111,8 +112,12 @@ address {
   font-style: normal;
 }
 
+/* Emphasis in running text uses the same semi bold and spacing as buttons and labels. */
+strong,
+b,
 em {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
 }
 
 ::selection {

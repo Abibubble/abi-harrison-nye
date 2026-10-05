@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
-import { BUILD_DEFINES } from './build-constants';
+import { BUILD_DEFINES } from './build-constants.ts';
 
 const storybookConfigDir = fileURLToPath(new URL('./.storybook', import.meta.url));
 

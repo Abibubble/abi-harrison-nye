@@ -1,0 +1,46 @@
+.notice {
+  max-width: var(--size-measure);
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border: var(--border-width) solid currentcolor;
+  border-inline-start-width: var(--space-2);
+  border-radius: var(--radius-small);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.inner {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: var(--space-5);
+  height: var(--space-5);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  color: var(--color-text);
+}
+
+.content > * {
+  margin: 0;
+}
+
+/* Styled like a third level heading, including the emphasis weight it uses at body size. */
+.title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}

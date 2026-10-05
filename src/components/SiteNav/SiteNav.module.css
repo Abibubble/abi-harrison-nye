@@ -6,8 +6,9 @@
   min-height: var(--size-target-min);
   padding-inline: var(--space-3);
   margin-inline-start: auto;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-emphasis);
   color: var(--color-text);
+  letter-spacing: var(--letter-spacing-emphasis);
   cursor: pointer;
   background: var(--color-bg);
   border: var(--border-width) solid var(--color-border);
@@ -53,7 +54,8 @@
 
 /* The current page is shown by weight and a bar, never by colour alone. */
 .link[aria-current='page'] {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
 }
 
 .link[aria-current='page']::after {

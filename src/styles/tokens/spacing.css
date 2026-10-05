@@ -25,6 +25,9 @@
 
   /* Content width for page layouts: 1152px, which is 12 steps of 96px. */
   --size-content-max: calc(var(--space-7) * 12);
+
+  /* Single line form fields: 480px, which is 5 steps of 96px. Wide enough for an email address. */
+  --size-input-max: calc(var(--space-7) * 5);
   --radius-small: var(--space-1);
   --radius-medium: var(--space-2);
   --radius-round: 50%;

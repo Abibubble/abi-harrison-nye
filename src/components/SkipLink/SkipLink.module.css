@@ -1,15 +1,30 @@
+/*
+ * Hidden until focused, then shown as a compact button at the top left, over the header. Covering the
+ * header briefly is fine, because focus is on the skip link itself (WCAG 2.4.12), and it disappears as
+ * soon as focus moves on. It doesn't push the page down, so nothing jumps.
+ */
 .skipLink {
-  display: block;
-  padding: var(--space-3);
-  font-weight: var(--font-weight-bold);
+  position: absolute;
+  inset-block-start: var(--space-2);
+  inset-inline-start: var(--space-3);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+  padding-inline: var(--space-4);
+  font-weight: var(--font-weight-emphasis);
   color: var(--color-action-text);
+  letter-spacing: var(--letter-spacing-emphasis);
+  text-decoration-line: none;
   background: var(--color-action);
+  border-radius: var(--radius-small);
 }
 
 .skipLink:not(:focus) {
-  position: absolute;
   width: 1px;
   height: 1px;
+  min-height: 0;
+  padding: 0;
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
@@ -17,6 +32,7 @@
 
 .skipLink:hover {
   color: var(--color-action-text);
+  text-decoration-line: underline;
 }
 
 /* The skip link sits on purple, so the ring goes inside it where it contrasts with the purple. */

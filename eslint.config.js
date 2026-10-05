@@ -40,6 +40,18 @@ export default defineConfig([
       'react/prop-types': 'off',
       // Safari drops list semantics when list bullets are removed, so unstyled lists need the role.
       'jsx-a11y/no-redundant-roles': ['error', { ul: ['list'], ol: ['list'] }],
+      'react/forbid-dom-props': [
+        'error',
+        {
+          forbid: [
+            {
+              propName: 'style',
+              message:
+                'The Content Security Policy blocks inline styles in prerendered HTML. Use a CSS Module.',
+            },
+          ],
+        },
+      ],
     },
   },
   {
