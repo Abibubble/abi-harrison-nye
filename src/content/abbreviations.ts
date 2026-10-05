@@ -4,7 +4,10 @@
  */
 export const ABBREVIATIONS = {
   AI: 'artificial intelligence',
+  API: 'application programming interface',
   ARIA: 'Accessible Rich Internet Applications',
+  BA: 'Bachelor of Arts',
+  BTEC: 'Business and Technology Education Council',
   'CI/CD': 'continuous integration and continuous delivery',
   CSS: 'Cascading Style Sheets',
   CV: 'curriculum vitae',
@@ -12,6 +15,7 @@ export const ABBREVIATIONS = {
   GAAD: 'Global Accessibility Awareness Day',
   HAND: 'Home of Accessibility and NeuroDiversity',
   HTML: 'HyperText Markup Language',
+  SQL: 'Structured Query Language',
   TDD: 'test driven development',
   UK: 'United Kingdom',
   WCAG: 'Web Content Accessibility Guidelines',

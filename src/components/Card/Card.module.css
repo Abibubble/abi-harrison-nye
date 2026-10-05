@@ -10,3 +10,11 @@
 .card > :last-child {
   margin-block-end: 0;
 }
+
+/* On paper, headings already separate items, so boxes would only use space and ink. */
+@media print {
+  .card {
+    padding: 0;
+    border: none;
+  }
+}

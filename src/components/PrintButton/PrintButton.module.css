@@ -1,0 +1,4 @@
+/* Printing from a button needs JavaScript, so it's hidden without it. The browser's own print still works. */
+:global(:root:not([data-js])) .printButton {
+  display: none;
+}

@@ -1,0 +1,4 @@
+/* The choice needs JavaScript, so it's hidden without it. The browser's own print gives the clear layout. */
+:global(:root:not([data-js])) .options {
+  display: none;
+}

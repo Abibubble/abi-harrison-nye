@@ -1,16 +1,19 @@
 /*
  * Print rules. Components opt in with data attributes rather than needing their own print styles:
  *
- *   data-print="hide"          Not printed, for example navigation and the theme switcher
+ *   data-print="hide"           Not printed, for example navigation and the theme switcher
  *   data-print="keep-together"  Never split across two pages, for example a job role
- *   data-print-url="hide"      A link whose URL shouldn't be printed after it
+ *   data-print-url="hide"       A link whose URL shouldn't be printed after it
+ *   data-print-compact="hide"   Not printed in the compact layout, for example the site header,
+ *                               which only repeats the name already at the top of the CV
  */
 @media print {
   body {
     background: none;
   }
 
-  [data-print='hide'] {
+  [data-print='hide'],
+  :root[data-print-layout='compact'] [data-print-compact='hide'] {
     display: none !important;
   }
 
@@ -19,6 +22,11 @@
   blockquote,
   pre {
     break-inside: avoid;
+  }
+
+  /* Compact fills each page, so items can break across pages rather than leave gaps. */
+  :root[data-print-layout='compact'] [data-print='keep-together'] {
+    break-inside: auto;
   }
 
   h1,

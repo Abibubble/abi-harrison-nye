@@ -16,7 +16,8 @@ import styles from './SiteHeader.module.css';
  */
 export function SiteHeader() {
   return (
-    <header className={styles.header}>
+    // The compact print layout leaves the header out, as the CV already has my name at the top.
+    <header className={styles.header} data-print-compact="hide">
       <Container>
         <div className={styles.inner}>
           <Link to="/" className={styles.siteName}>

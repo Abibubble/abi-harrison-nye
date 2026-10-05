@@ -10,3 +10,11 @@
   padding-inline-start: var(--space-4);
   margin: 0;
 }
+
+/* The spacing scale is smaller on paper, so lists need a larger step to leave room for bullets. */
+@media print {
+  .highlights,
+  .sites {
+    padding-inline-start: var(--space-7);
+  }
+}

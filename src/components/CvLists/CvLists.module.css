@@ -1,0 +1,30 @@
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.skillGroup > * {
+  margin: 0;
+}
+
+.term {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.detail {
+  color: var(--color-text-muted);
+}
+
+/* The compact print layout puts each category on the same line as its skills, as "Tools: Git, ...". */
+@media print {
+  :global(:root[data-print-layout='compact']) .skillGroup > * {
+    display: inline;
+  }
+
+  :global(:root[data-print-layout='compact']) .term::after {
+    content: ': ';
+  }
+}

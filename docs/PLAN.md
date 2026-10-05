@@ -499,10 +499,29 @@ captions. Captions on conference channels depend on the organiser.
 - Built from the Word and PDF versions of my CV. The source files stay outside the repo.
 - Sections in the same order as the current CV: profile, key skills, experience, speaking and
   recognition, earlier career, education and training, interests
-- Work history comes from `work.ts`, shared with the Work page. Talks and recognition come from their own
-  content files.
-- No phone number, since the site is public
-- A print stylesheet makes it print cleanly to paper or PDF, so the HTML page can replace the PDF
+- Work history comes from `work.ts`, shared with the Work page. Talks and recognition come from their
+  own content files. CV only content (profile, skills, qualifications, short courses) is in `cv.ts`.
+- No phone number or email address, since the site is public. The top has my name, headline,
+  location, GitHub, LinkedIn and a link to the contact form. A test checks no phone number or email
+  address ever appears.
+- A "Print layout" choice and a "Print or save as PDF" button. They need JavaScript, so they're
+  hidden without it, and the browser's own print gives the clear layout.
+  - **Clear** (the default): 11pt text with 1.5 line spacing, on four A4 pages.
+  - **Compact**: 9.5pt text with 1.2 line spacing, lines up to 80 characters, smaller gaps, 1cm
+    margins, skills on one line per category, and roles allowed to break across pages. It fits on two
+    A4 pages with nothing left out, with about 7% to spare. It leaves out the site header, which only
+    repeats the name already at the top of the CV, and it overrides the text spacing setting.
+  - The choice applies as soon as it's made, as `data-print-layout="compact"` on `<html>`, so it also
+    works when printing from the browser's menu.
+  - An end to end test prints both layouts to PDF in Chromium and fails if compact needs more than two
+    pages. Page counts were measured in Chromium. Firefox and Safari lay out print slightly
+    differently, so check those by hand.
+- Talks without their own page yet, such as the LDX3 talk before its transcript exists, are listed
+  in `SPEAKING_WITHOUT_PAGES` as plain text. A test fails if a talk is in both lists, as a reminder to
+  remove it once it has a page.
+- Small changes from the original CV: "five years' experience" became "since 2021" so it doesn't go
+  out of date, abbreviations are written out on first use, and "HTML5", "CSS3" and "SASS" became
+  "HTML", "CSS" and "Sass".
 
 ## Print stylesheet
 
@@ -513,6 +532,10 @@ A single `@media print` stylesheet applied across the site:
 - Prints the full URL after each external link, since links can't be clicked on paper
 - Avoids page breaks in the middle of a role, project or talk
 - Sensible margins and font sizes for A4 and US Letter
+- A smaller spacing scale for paper (the same steps, in points), and cards without borders or
+  padding. Screen spacing spread the CV over six pages.
+- Sizes built from the spacing scale, such as the content width, are reset for print, so they don't
+  shrink with it. An end to end test checks printed content uses the full page width.
 
 Components opt in with data attributes, so they don't need their own print styles:
 
@@ -651,7 +674,7 @@ Each phase is written test first.
    message until entries are added.
 7. **Talks (done):** talks list, talk pages, transcripts, video. Waiting on the first talk's
    content.
-8. **CV:** CV page built from the Word and PDF versions
+8. **CV (done):** CV page built from the Word and PDF versions
 9. **Contact:** form, review step and EmailJS
 10. **Statement pages:** Accessibility and Privacy
 11. **SEO:** meta tags, sitemap, robots, structured data, icons

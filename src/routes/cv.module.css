@@ -1,0 +1,9 @@
+.contact > * {
+  margin: 0;
+}
+
+.name {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}

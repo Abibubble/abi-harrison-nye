@@ -3,12 +3,10 @@ import type { ComponentType } from 'react';
 import { describe, expect, it } from 'vitest';
 
 import * as Contact from './contact';
-import * as Cv from './cv';
 import * as Privacy from './privacy';
 
 // Sections that are still placeholders. Each moves to its own test file when it's built.
 const PLACEHOLDERS: [string, { default: ComponentType; meta: () => unknown }][] = [
-  ['CV', Cv],
   ['Contact', Contact],
   ['Privacy', Privacy],
 ];
