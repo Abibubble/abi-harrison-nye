@@ -12,7 +12,7 @@ export interface ProfilePhoto {
 export const PROFILE = {
   headline: 'Software engineer and accessibility specialist',
   location: 'Hertfordshire, UK',
-  /** No photo has been chosen yet, so the Home page shows a placeholder with my initials. */
+  /** No photo has been chosen yet, so the Home page shows a placeholder with the site’s mark. */
   photo: undefined as ProfilePhoto | undefined,
   interests: [
     'I’ve been a brass musician for over 20 years, and play in a brass band and a ska punk band.',

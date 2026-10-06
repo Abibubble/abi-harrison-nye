@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import type { TalkPageData } from '../content/talkPage';
 import { renderTranscript } from '../content/transcripts';
 import { expectNoAxeViolations } from '../test/axe';
+import { pageMeta } from '../seo/pageMeta';
 import Talk, { loader, meta, slugFrom } from './talk';
 
 const PAGE: TalkPageData = {
@@ -73,13 +74,16 @@ describe('Talk page', () => {
     );
   });
 
-  it('has the talk’s title and summary as its page title and description', () => {
+  it('has the talk’s title and summary as its page title and description, at its own address', () => {
     const args = { loaderData: PAGE } as Parameters<typeof meta>[0];
 
-    expect(meta(args)).toEqual([
-      { title: 'Example talk, Abi Harrison-Nye' },
-      { name: 'description', content: 'A talk used to test this page.' },
-    ]);
+    expect(meta(args)).toEqual(
+      pageMeta({
+        title: 'Example talk, Abi Harrison-Nye',
+        description: 'A talk used to test this page.',
+        path: `/talks/${PAGE.talk.slug}`,
+      }),
+    );
   });
 
   it('has no page title of its own when there’s no talk, leaving it to the not found page', () => {

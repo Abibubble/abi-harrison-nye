@@ -3,13 +3,15 @@ import { Stack } from '../components/Stack';
 import { TalkItem } from '../components/TalkItem';
 import { pageTitle } from '../content/site';
 import { type Talk, TALKS } from '../content/talks';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/talks';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Talks') },
-    { name: 'description', content: 'Talks I’ve given, each with a video and a full transcript.' },
-  ];
+  return pageMeta({
+    title: pageTitle('Talks'),
+    description: 'Talks I’ve given, each with a video and a full transcript.',
+    path: '/talks',
+  });
 }
 
 export function TalksPage({ talks }: { talks: readonly Talk[] }) {

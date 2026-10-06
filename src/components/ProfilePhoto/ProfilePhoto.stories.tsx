@@ -5,7 +5,7 @@ import { ProfilePhoto } from './ProfilePhoto';
 const meta = {
   title: 'Content/ProfilePhoto',
   component: ProfilePhoto,
-  args: { photo: undefined, initials: 'AHN' },
+  args: { photo: undefined },
 } satisfies Meta<typeof ProfilePhoto>;
 
 export default meta;

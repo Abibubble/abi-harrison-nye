@@ -3,13 +3,15 @@ import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { type Article, ARTICLES } from '../content/articles';
 import { pageTitle } from '../content/site';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/articles';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Articles') },
-    { name: 'description', content: 'Things I’ve written, with links to where they’re published.' },
-  ];
+  return pageMeta({
+    title: pageTitle('Articles'),
+    description: 'Things I’ve written, with links to where they’re published.',
+    path: '/articles',
+  });
 }
 
 export function ArticlesPage({ articles }: { articles: readonly Article[] }) {

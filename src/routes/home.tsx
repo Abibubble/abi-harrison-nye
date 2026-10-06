@@ -9,17 +9,21 @@ import { HOME_SIGNPOSTS } from '../content/home';
 import { PROFILE } from '../content/profile';
 import { RECOGNITION } from '../content/recognition';
 import { SITE_NAME } from '../content/site';
+import { pageMeta } from '../seo/pageMeta';
+import { personSchema } from '../seo/person';
 import type { Route } from './+types/home';
 import styles from './home.module.css';
 
 export function meta(): Route.MetaDescriptors {
   return [
-    { title: `${SITE_NAME}, Software Engineer` },
-    {
-      name: 'description',
-      content:
+    ...pageMeta({
+      title: `${SITE_NAME}, Software Engineer`,
+      description:
         'Software engineer and accessibility specialist at giffgaff, building accessible React and TypeScript, and leading an accessibility and neurodiversity network.',
-    },
+      path: '/',
+    }),
+    // Tells search engines who the site belongs to. It's data, not a script, so it never runs.
+    { 'script:ld+json': personSchema() },
   ];
 }
 
@@ -27,7 +31,7 @@ export default function Home() {
   return (
     <Stack gap={7}>
       <div className={styles.intro}>
-        <ProfilePhoto photo={PROFILE.photo} initials="AHN" />
+        <ProfilePhoto photo={PROFILE.photo} />
         <Stack gap={4}>
           <Stack gap={2}>
             <PageHeading>{SITE_NAME}</PageHeading>

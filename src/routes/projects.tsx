@@ -3,13 +3,15 @@ import { ProjectItem } from '../components/ProjectItem';
 import { Stack } from '../components/Stack';
 import { type Project, PROJECTS } from '../content/projects';
 import { pageTitle } from '../content/site';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/projects';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Projects') },
-    { name: 'description', content: 'Things I’ve built outside work.' },
-  ];
+  return pageMeta({
+    title: pageTitle('Projects'),
+    description: 'Things I’ve built outside work.',
+    path: '/projects',
+  });
 }
 
 export function ProjectsPage({ projects }: { projects: readonly Project[] }) {

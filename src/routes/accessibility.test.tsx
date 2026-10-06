@@ -241,11 +241,16 @@ describe('Accessibility page', () => {
     expect(definitions).toEqual(Object.values(ABBREVIATIONS));
   });
 
-  it('has a title and description', () => {
-    expect(meta()).toEqual([
-      { title: 'Accessibility, Abi Harrison-Nye' },
-      expect.objectContaining({ name: 'description' }),
-    ]);
+  it('has a title, description and canonical address', () => {
+    const tags = meta();
+
+    expect(tags).toContainEqual({ title: 'Accessibility, Abi Harrison-Nye' });
+    expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
+    expect(tags).toContainEqual({
+      tagName: 'link',
+      rel: 'canonical',
+      href: 'http://localhost:4173/accessibility',
+    });
   });
 
   it('has no detectable accessibility issues', async () => {

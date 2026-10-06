@@ -38,11 +38,16 @@ describe('Articles page', () => {
     expect(screen.queryByText('I’m adding my articles here soon.')).not.toBeInTheDocument();
   });
 
-  it('has a title and description', () => {
-    expect(meta()).toEqual([
-      { title: 'Articles, Abi Harrison-Nye' },
-      expect.objectContaining({ name: 'description' }),
-    ]);
+  it('has a title, description and canonical address', () => {
+    const tags = meta();
+
+    expect(tags).toContainEqual({ title: 'Articles, Abi Harrison-Nye' });
+    expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
+    expect(tags).toContainEqual({
+      tagName: 'link',
+      rel: 'canonical',
+      href: 'http://localhost:4173/articles',
+    });
   });
 
   it('has no detectable accessibility issues', async () => {

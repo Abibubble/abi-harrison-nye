@@ -5,17 +5,16 @@ import { Stack } from '../components/Stack';
 import { WorkHistory } from '../components/WorkHistory';
 import { pageTitle } from '../content/site';
 import { BEFORE_TECH_SUMMARY, WORK } from '../content/work';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/work';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Work') },
-    {
-      name: 'description',
-      content:
-        'My work as a software engineer and accessibility specialist at giffgaff, and the sites I’ve worked on.',
-    },
-  ];
+  return pageMeta({
+    title: pageTitle('Work'),
+    description:
+      'My work as a software engineer and accessibility specialist at giffgaff, and the sites I’ve worked on.',
+    path: '/work',
+  });
 }
 
 const TECH_ROLES = WORK.filter((company) => !company.earlierCareer);

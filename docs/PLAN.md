@@ -103,7 +103,7 @@ from the CV are fine to publish.
 ### Profile photo
 
 The Home page has a space for a photo, which isn't chosen yet. Until then, a `ProfilePhoto` component
-shows a placeholder: my initials as real text (not an image of text) in a purple circle, hidden from
+shows a placeholder: the site's `</>` mark in a purple circle, hidden from
 screen readers with `aria-hidden` because my name is already in the page heading. When a photo is
 added to `profile.ts`, the component switches to it. The photo field requires alt text, and a test
 checks that it's never empty.
@@ -565,6 +565,16 @@ Components opt in with data attributes, so they don't need their own print style
 - Person structured data (JSON-LD) on the Home page
 - The site URL comes from an environment variable, so canonical URLs and the sitemap update when the
   custom domain is added
+- **Done in phase 11:**
+  - `SITE_URL` sets the address. Local builds fall back to the preview address, and Vercel builds
+    fail without it, so the live site can never point at localhost.
+  - `pageMeta()` in `src/seo` gives every page its title, description, canonical address and Open
+    Graph tags. The not found page has `noindex` and no canonical address.
+  - The sitemap and robots.txt are written after prerendering, from the pages that were actually
+    built, so they can't miss one.
+  - The icons, share image and web app manifest are drawn from the `</>` mark in
+    `src/brand/mark.ts` by `pnpm brand-images`, and committed in `public/`.
+  - Person structured data on Home, with no email address or phone number.
 
 ## Privacy notice
 
@@ -690,7 +700,7 @@ Each phase is written test first.
 8. **CV (done):** CV page built from the Word and PDF versions
 9. **Contact (done):** form, review step and EmailJS. Waiting on the EmailJS account setup.
 10. **Statement pages (done):** Accessibility and Privacy. Waiting on a review of the drafted text.
-11. **SEO:** meta tags, sitemap, robots, structured data, icons
+11. **SEO (done):** meta tags, sitemap, robots, structured data, icons
 12. **Audit:** full automated suite, manual testing, performance pass
 13. **Launch:** deploy, then add the custom domain when it's ready
 
@@ -710,7 +720,7 @@ None. All decisions are made.
   list, which guards AAA 3.1.4 automatically as content is added.
 - **Empty sections.** Projects and Articles show "I'm adding my projects here soon" (or articles)
   until entries are added, rather than an empty list.
-- **Profile photo.** Until a photo is chosen, the Home page shows "AHN" in a purple circle, hidden
+- **Profile photo.** Until a photo is chosen, the Home page shows the `</>` mark in a purple circle, hidden
   from screen readers. Adding a photo to `profile.ts` replaces it, and its alt text is required.
 
 ## Content still needed

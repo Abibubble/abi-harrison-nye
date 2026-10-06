@@ -104,11 +104,16 @@ describe('Privacy page', () => {
     expect(container.textContent).not.toMatch(/\S+@\S+\.\S+/);
   });
 
-  it('has a title and description', () => {
-    expect(meta()).toEqual([
-      { title: 'Privacy, Abi Harrison-Nye' },
-      expect.objectContaining({ name: 'description' }),
-    ]);
+  it('has a title, description and canonical address', () => {
+    const tags = meta();
+
+    expect(tags).toContainEqual({ title: 'Privacy, Abi Harrison-Nye' });
+    expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
+    expect(tags).toContainEqual({
+      tagName: 'link',
+      rel: 'canonical',
+      href: 'http://localhost:4173/privacy',
+    });
   });
 
   it('has no detectable accessibility issues', async () => {

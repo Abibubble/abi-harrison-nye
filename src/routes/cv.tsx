@@ -20,17 +20,16 @@ import { RECOGNITION } from '../content/recognition';
 import { SITE_NAME, pageTitle } from '../content/site';
 import { TALKS } from '../content/talks';
 import { WORK } from '../content/work';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/cv';
 import styles from './cv.module.css';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('CV') },
-    {
-      name: 'description',
-      content: `${SITE_NAME}’s CV: software engineer and accessibility specialist at giffgaff.`,
-    },
-  ];
+  return pageMeta({
+    title: pageTitle('CV'),
+    description: `${SITE_NAME}’s CV: software engineer and accessibility specialist at giffgaff.`,
+    path: '/cv',
+  });
 }
 
 function CvSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {

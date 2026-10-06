@@ -8,6 +8,7 @@ import {
 import { TalkDetail } from '../components/TalkDetail';
 import { pageTitle } from '../content/site';
 import { loadTalkPage } from '../content/talkPage';
+import { pageMeta } from '../seo/pageMeta';
 
 /*
  * Each talk has its own exact route using this file (see routes.ts), so there are none until there's
@@ -34,10 +35,11 @@ export function loader({ request }: LoaderFunctionArgs) {
 export function meta({ loaderData }: MetaArgs<typeof loader>): MetaDescriptor[] {
   if (!loaderData) return [];
 
-  return [
-    { title: pageTitle(loaderData.talk.title) },
-    { name: 'description', content: loaderData.talk.summary },
-  ];
+  return pageMeta({
+    title: pageTitle(loaderData.talk.title),
+    description: loaderData.talk.summary,
+    path: `/talks/${loaderData.talk.slug}`,
+  });
 }
 
 export default function Talk() {

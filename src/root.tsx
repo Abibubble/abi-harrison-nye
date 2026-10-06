@@ -26,6 +26,11 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: 'anonymous',
   },
   { rel: 'stylesheet', href: stylesheetUrl },
+  // Icons drawn by `pnpm brand-images`. Browsers that support SVG icons use that, others the .ico.
+  { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
+  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {

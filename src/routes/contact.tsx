@@ -2,13 +2,15 @@ import { ContactForm } from '../components/ContactForm';
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { pageTitle } from '../content/site';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/contact';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Contact') },
-    { name: 'description', content: 'Send me a message, and I’ll reply by email.' },
-  ];
+  return pageMeta({
+    title: pageTitle('Contact'),
+    description: 'Send me a message, and I’ll reply by email.',
+    path: '/contact',
+  });
 }
 
 export default function Contact() {

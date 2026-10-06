@@ -5,6 +5,7 @@ import { HOME_SIGNPOSTS } from '../content/home';
 import { RECOGNITION } from '../content/recognition';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
+import { personSchema } from '../seo/person';
 import Home, { meta } from './home';
 
 describe('Home page', () => {
@@ -55,6 +56,15 @@ describe('Home page', () => {
 
     expect(tags).toContainEqual({ title: 'Abi Harrison-Nye, Software Engineer' });
     expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
+    expect(tags).toContainEqual({
+      tagName: 'link',
+      rel: 'canonical',
+      href: 'http://localhost:4173/',
+    });
+  });
+
+  it('tells search engines who the site belongs to, with structured data', () => {
+    expect(meta()).toContainEqual({ 'script:ld+json': personSchema() });
   });
 
   it('has no detectable accessibility issues', async () => {

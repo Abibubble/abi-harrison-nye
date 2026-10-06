@@ -18,6 +18,13 @@ pnpm dev
 
 The dev server runs at http://localhost:5173.
 
+## Site address
+
+Canonical addresses, share previews and the sitemap use the `SITE_URL` environment variable, such as
+`https://example.com`. Local builds use http://localhost:4173 without it. Builds on Vercel fail
+without it, so the live site can never point at localhost. Set it in the Vercel project's
+environment variables, and change it when the custom domain is added.
+
 ## Contact form (EmailJS)
 
 The contact form sends messages through [EmailJS](https://www.emailjs.com). It needs three settings,
@@ -73,6 +80,7 @@ The tests never send anything or use EmailJS credits:
 | `pnpm test:e2e`        | Builds the site and runs Playwright tests in Chromium, Firefox and WebKit |
 | `pnpm storybook`       | Starts Storybook at http://localhost:6006                                 |
 | `pnpm build-storybook` | Builds a static copy of Storybook into `storybook-static`                 |
+| `pnpm brand-images`    | Redraws the icons and share image in `public/` from the site's mark       |
 | `pnpm commit:check`    | Runs every check that must pass before committing                         |
 
 ## Before committing

@@ -18,17 +18,16 @@ import {
   talksWithoutCaptions,
 } from '../content/talks';
 import styles from './accessibility.module.css';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/accessibility';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Accessibility') },
-    {
-      name: 'description',
-      content:
-        'How accessible this site is, what doesn’t work yet, how to report a problem, and display settings to make it work for you.',
-    },
-  ];
+  return pageMeta({
+    title: pageTitle('Accessibility'),
+    description:
+      'How accessible this site is, what doesn’t work yet, how to report a problem, and display settings to make it work for you.',
+    path: '/accessibility',
+  });
 }
 
 const SECTIONS = {

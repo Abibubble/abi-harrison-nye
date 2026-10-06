@@ -8,17 +8,16 @@ import { Time } from '../components/Time';
 import { pageTitle } from '../content/site';
 import { MESSAGE_RETENTION, PRIVACY_CONTACT_FORM_ID, PRIVACY_UPDATED } from '../content/statements';
 import styles from './privacy.module.css';
+import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/privacy';
 
 export function meta(): Route.MetaDescriptors {
-  return [
-    { title: pageTitle('Privacy') },
-    {
-      name: 'description',
-      content:
-        'What information this site collects, why, and what happens to it. There’s no tracking, analytics or advertising.',
-    },
-  ];
+  return pageMeta({
+    title: pageTitle('Privacy'),
+    description:
+      'What information this site collects, why, and what happens to it. There’s no tracking, analytics or advertising.',
+    path: '/privacy',
+  });
 }
 
 const SECTIONS = {
