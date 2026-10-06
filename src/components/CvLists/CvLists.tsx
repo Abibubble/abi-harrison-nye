@@ -1,6 +1,6 @@
 import type { Qualification, SkillGroup, SpeakingEngagement } from '../../content/cv';
-import { AbbrText } from '../Abbr';
 import type { Talk } from '../../content/talks';
+import { AbbrText } from '../Abbr';
 import { Link } from '../Link';
 import { Stack } from '../Stack';
 import { DateRange, Time } from '../Time';

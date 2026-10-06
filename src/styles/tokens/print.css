@@ -63,8 +63,8 @@
     --space-3: 3pt;
     --space-4: 4pt;
     --space-5: 4pt;
-    --space-6: 6pt;
-    --space-7: 10pt;
+    --space-6: 4pt;
+    --space-7: 6pt;
     --space-paragraph: 3pt;
 
     /* WCAG 1.4.8 allows lines of up to 80 characters. Compact uses all of that. */

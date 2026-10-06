@@ -10,7 +10,6 @@ const listeners = new Set<() => void>();
 
 const isTheme = (value: unknown): value is Theme => THEMES.some((theme) => theme === value);
 
-// Same mechanism as the site: the theme is a data attribute on <html>.
 export function applyTheme(globals: Record<string, unknown>): Theme {
   const theme = isTheme(globals.theme) ? globals.theme : 'light';
   document.documentElement.dataset.theme = theme;
@@ -24,7 +23,6 @@ export function applyTheme(globals: Record<string, unknown>): Theme {
   return currentTheme;
 }
 
-// Decorators only run for stories, so docs pages need to hear about toolbar changes directly.
 const channel = addons.getChannel();
 const onGlobals = ({ globals }: { globals: Record<string, unknown> }) => applyTheme(globals);
 channel.on(SET_GLOBALS, onGlobals);

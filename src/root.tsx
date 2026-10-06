@@ -18,6 +18,8 @@ import { SiteShell } from './components/SiteShell';
 import { BEFORE_PAINT_SCRIPT } from './settings/beforePaintScript';
 import stylesheetUrl from './styles/index.css?url';
 
+const { BASE_URL } = import.meta.env;
+
 export const links: Route.LinksFunction = () => [
   // Preloading the body font means text appears in it straight away rather than swapping.
   {
@@ -29,10 +31,11 @@ export const links: Route.LinksFunction = () => [
   },
   { rel: 'stylesheet', href: stylesheetUrl },
   // Icons drawn by `pnpm brand-images`. Browsers that support SVG icons use that, others the .ico.
-  { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
-  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-  { rel: 'manifest', href: '/site.webmanifest' },
+  // They start with the base path, as the site may not be at the root of its domain.
+  { rel: 'icon', href: `${BASE_URL}favicon.ico`, sizes: '32x32' },
+  { rel: 'icon', href: `${BASE_URL}favicon.svg`, type: 'image/svg+xml' },
+  { rel: 'apple-touch-icon', href: `${BASE_URL}apple-touch-icon.png` },
+  { rel: 'manifest', href: `${BASE_URL}site.webmanifest` },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -44,6 +47,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
+        {/* GitHub Pages can't send headers, so the referrer policy goes here instead. */}
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="theme-color" content="#f5effa" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#160c24" media="(prefers-color-scheme: dark)" />
         {/*

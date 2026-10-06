@@ -9,7 +9,6 @@ export async function expectNoHorizontalScroll(page: Page): Promise<void> {
   expect(scrollWidth, 'page scrolls sideways').toBeLessThanOrEqual(viewportWidth);
 }
 
-// The WCAG 1.4.12 text spacing values. Content must still work with these applied.
 export const TEXT_SPACING_CSS = `
   * {
     line-height: 1.5 !important;

@@ -108,8 +108,6 @@ test.describe('Fonts', () => {
       });
     });
 
-    // 0.05em of 16px is 0.8px. Semi bold with extra space stops letters blurring together, which
-    // full bold does for people with astigmatism.
     expect(styles).toEqual([
       { id: 'em', fontStyle: 'normal', fontWeight: '600', letterSpacing: '0.8px' },
       { id: 'strong', fontStyle: 'normal', fontWeight: '600', letterSpacing: '0.8px' },
@@ -127,8 +125,8 @@ test.describe('Print', () => {
       document.body.insertAdjacentHTML(
         'beforeend',
         `<a id="external" href="https://example.com/">Example</a>
-         <a id="no-url" href="https://example.com/" data-print-url="hide">Example</a>
-         <div id="hidden" data-print="hide">Not printed</div>`,
+        <a id="no-url" href="https://example.com/" data-print-url="hide">Example</a>
+        <div id="hidden" data-print="hide">Not printed</div>`,
       );
     });
     await page.emulateMedia({ media: 'print' });

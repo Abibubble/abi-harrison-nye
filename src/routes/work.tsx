@@ -4,9 +4,9 @@ import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
 import { PlainSummary } from '../components/PlainSummary';
 import { Stack } from '../components/Stack';
-import { WorkHistory } from '../components/WorkHistory';
+import { SiteList, WorkHistory } from '../components/WorkHistory';
 import { pageTitle } from '../content/site';
-import { BEFORE_TECH_SUMMARY, WORK } from '../content/work';
+import { BEFORE_TECH_SUMMARY, VOLUNTEERING, WORK } from '../content/work';
 import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/work';
 
@@ -30,6 +30,13 @@ export default function Work() {
         <PlainSummary />
       </Stack>
       <WorkHistory companies={TECH_ROLES} headingLevel={2} />
+      <Stack as="section" gap={4} aria-labelledby="volunteering">
+        <Heading level={2} id="volunteering">
+          Volunteering
+        </Heading>
+        <p>Sites I’ve helped with as a volunteer, outside work.</p>
+        <SiteList sites={VOLUNTEERING} />
+      </Stack>
       <Stack as="section" gap={4} aria-labelledby="before-tech">
         <Heading level={2} id="before-tech">
           Before tech

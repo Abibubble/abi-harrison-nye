@@ -9,7 +9,7 @@ import { PLAIN_SUMMARY, PROFILE, PROFILE_LINKS } from './profile';
 import { PROJECTS } from './projects';
 import { RECOGNITION } from './recognition';
 import { TALKS } from './talks';
-import { BEFORE_TECH_SUMMARY, WORK } from './work';
+import { BEFORE_TECH_SUMMARY, VOLUNTEERING, WORK } from './work';
 
 const ROLES = WORK.flatMap((company) => company.roles);
 
@@ -39,6 +39,7 @@ const ALL_TEXT = [
   ...QUALIFICATIONS.flatMap((item) => [item.title, item.provider, item.detail ?? '']),
   SHORT_COURSES,
   ...SPEAKING_WITHOUT_PAGES.flatMap((talk) => [talk.title, talk.event, talk.location]),
+  ...VOLUNTEERING.flatMap((site) => [site.name, site.description]),
   PLAIN_SUMMARY,
   ...GLOSSARY.flatMap((entry) => [entry.term, entry.definition]),
 ];
@@ -46,6 +47,7 @@ const ALL_TEXT = [
 const ALL_LINKS = [
   ...PROFILE_LINKS.map((link) => link.href),
   ...WORK.flatMap((company) => (company.sitesWorkedOn ?? []).map((site) => site.href)),
+  ...VOLUNTEERING.map((site) => site.href),
   ...PROJECTS.flatMap((project) => [project.href, project.codeHref]),
   ...ARTICLES.map((article) => article.href),
   ...TALKS.flatMap((talk) => [talk.video?.href, talk.slidesHref]),

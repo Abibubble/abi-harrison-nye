@@ -96,6 +96,7 @@ describe('Talk page', () => {
     'http://localhost/talks/debt-to-done',
     'http://localhost/talks/debt-to-done/',
     'http://localhost/talks/debt-to-done.data',
+    'https://abibubble.github.io/abi-harrison-nye/talks/debt-to-done/',
   ])('finds the talk’s slug in its address: %s', (url) => {
     expect(slugFrom(url)).toBe('debt-to-done');
   });

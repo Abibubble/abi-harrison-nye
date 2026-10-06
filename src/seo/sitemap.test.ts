@@ -24,7 +24,7 @@ describe('pagePaths', () => {
 });
 
 describe('sitemapXml', () => {
-  it('lists the full address of every page', () => {
+  it('lists the full address of every page, ending in a slash as they’re served', () => {
     expect(sitemapXml('https://example.com', ['/', '/work'])).toBe(
       [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -33,7 +33,7 @@ describe('sitemapXml', () => {
         '    <loc>https://example.com/</loc>',
         '  </url>',
         '  <url>',
-        '    <loc>https://example.com/work</loc>',
+        '    <loc>https://example.com/work/</loc>',
         '  </url>',
         '</urlset>',
         '',
@@ -43,7 +43,7 @@ describe('sitemapXml', () => {
 
   it('escapes characters XML treats specially', () => {
     expect(sitemapXml('https://example.com', ["/a&b'"])).toContain(
-      '<loc>https://example.com/a&amp;b&apos;</loc>',
+      '<loc>https://example.com/a&amp;b&apos;/</loc>',
     );
   });
 });

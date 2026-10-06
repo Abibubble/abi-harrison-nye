@@ -6,7 +6,6 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/react-vite',
     options: {
-      // Components are built on their own here, so skip the React Router app plugin.
       builder: { viteConfigPath: '.storybook/vite.config.ts' },
     },
   },

@@ -9,7 +9,7 @@ import { PlainSummary } from '../components/PlainSummary';
 import { PrintOptions } from '../components/PrintOptions';
 import { RecognitionList } from '../components/RecognitionList';
 import { Stack } from '../components/Stack';
-import { WorkHistory } from '../components/WorkHistory';
+import { SiteList, WorkHistory } from '../components/WorkHistory';
 import {
   CV_PROFILE,
   QUALIFICATIONS,
@@ -21,7 +21,7 @@ import { PROFILE, PROFILE_LINKS } from '../content/profile';
 import { RECOGNITION } from '../content/recognition';
 import { SITE_NAME, pageTitle } from '../content/site';
 import { TALKS } from '../content/talks';
-import { WORK } from '../content/work';
+import { VOLUNTEERING, WORK } from '../content/work';
 import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/cv';
 import styles from './cv.module.css';
@@ -102,6 +102,10 @@ export default function Cv() {
           <Heading level={3}>Recognition</Heading>
           <RecognitionList items={RECOGNITION} />
         </Stack>
+      </CvSection>
+
+      <CvSection id="volunteering" title="Volunteering">
+        <SiteList sites={VOLUNTEERING} />
       </CvSection>
 
       <CvSection id="earlier-career" title="Earlier career">

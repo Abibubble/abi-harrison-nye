@@ -2,10 +2,11 @@ import type { MetaDescriptor } from 'react-router';
 
 import { SITE_NAME } from '../content/site';
 import { SHARE_IMAGE } from './shareImage';
+import { fileUrl, pageUrl } from './siteUrl';
 
-/** A full address on this site, such as https://example.com/work, for links shared elsewhere. */
-export function absoluteUrl(path: string): string {
-  return new URL(path, __SITE_URL__).href;
+/** The full address of a page on this site, for links shared elsewhere. */
+export function absolutePageUrl(path: string): string {
+  return pageUrl(__SITE_URL__, path);
 }
 
 interface PageMetaOptions {
@@ -21,7 +22,7 @@ interface PageMetaOptions {
  * canonical address, and Open Graph tags for share previews, with the default share image.
  */
 export function pageMeta({ title, description, path }: PageMetaOptions): MetaDescriptor[] {
-  const url = absoluteUrl(path);
+  const url = absolutePageUrl(path);
 
   return [
     { title },
@@ -33,7 +34,7 @@ export function pageMeta({ title, description, path }: PageMetaOptions): MetaDes
     { property: 'og:url', content: url },
     { property: 'og:title', content: title },
     { property: 'og:description', content: description },
-    { property: 'og:image', content: absoluteUrl(SHARE_IMAGE.path) },
+    { property: 'og:image', content: fileUrl(__SITE_URL__, SHARE_IMAGE.path) },
     { property: 'og:image:width', content: String(SHARE_IMAGE.width) },
     { property: 'og:image:height', content: String(SHARE_IMAGE.height) },
     { property: 'og:image:alt', content: SHARE_IMAGE.alt },

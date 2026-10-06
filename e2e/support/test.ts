@@ -4,19 +4,12 @@ export * from '@playwright/test';
 
 const EMAILJS = /^https?:\/\/api\.emailjs\.com\//;
 
-/** A stand in for EmailJS, so the end to end tests never send anything or use up any credits. */
+// A stand in for EmailJS, so the tests don't send anything or use up any credits
 interface FakeEmailJs {
-  /** Answers the next requests to EmailJS with these statuses, in order. */
   answerWith: (...statuses: number[]) => void;
-  /** The body of every request that reached the stand in. */
   requests: unknown[];
 }
 
-/**
- * Playwright's test, with EmailJS blocked in every test. A test that sends a message has to plan
- * the answer with `emailJs.answerWith()`. Any request without one is blocked, and fails the test, so
- * a forgotten answer can never reach the real EmailJS, even with real settings in the build.
- */
 export const test = base.extend<{ emailJs: FakeEmailJs }>({
   emailJs: [
     async ({ context }, use) => {

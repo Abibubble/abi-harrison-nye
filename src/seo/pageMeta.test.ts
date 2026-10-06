@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
-import { absoluteUrl, pageMeta } from './pageMeta';
+import { absolutePageUrl, pageMeta } from './pageMeta';
 import { SHARE_IMAGE } from './shareImage';
 
 // The tests build with no SITE_URL, so addresses use the local preview address.
 const SITE = 'http://localhost:4173';
 
-describe('absoluteUrl', () => {
-  it('puts the site’s address in front of a path', () => {
-    expect(absoluteUrl('/work')).toBe(`${SITE}/work`);
-    expect(absoluteUrl('/')).toBe(`${SITE}/`);
+describe('absolutePageUrl', () => {
+  it('puts the site’s address in front of a page, ending in a slash', () => {
+    expect(absolutePageUrl('/work')).toBe(`${SITE}/work/`);
+    expect(absolutePageUrl('/')).toBe(`${SITE}/`);
   });
 });
 
@@ -22,13 +22,13 @@ describe('pageMeta', () => {
   });
 
   it('has the canonical address, so search engines know the one true address of the page', () => {
-    expect(meta).toContainEqual({ tagName: 'link', rel: 'canonical', href: `${SITE}/work` });
+    expect(meta).toContainEqual({ tagName: 'link', rel: 'canonical', href: `${SITE}/work/` });
   });
 
   it('has Open Graph tags for share previews, matching the title and description', () => {
     expect(meta).toEqual(
       expect.arrayContaining([
-        { property: 'og:url', content: `${SITE}/work` },
+        { property: 'og:url', content: `${SITE}/work/` },
         { property: 'og:title', content: 'Work, Abi' },
         { property: 'og:description', content: 'What I do.' },
         { property: 'og:site_name', content: 'Abi Harrison-Nye' },

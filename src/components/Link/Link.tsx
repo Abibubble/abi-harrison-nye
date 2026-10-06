@@ -19,6 +19,11 @@ interface ExternalLinkProps extends BaseProps {
   /** A page on another site. */
   href: string;
   to?: never;
+  /**
+   * Leave out the web address when printed. Printing adds it after links to other sites, so they
+   * work on paper, but a link that already shows its address, like giffgaff.com, doesn't need it.
+   */
+  showsAddress?: boolean;
 }
 
 export type LinkProps = InternalLinkProps | ExternalLinkProps;
@@ -37,7 +42,11 @@ export function Link({ children, className, ...destination }: LinkProps) {
   }
 
   return (
-    <a href={destination.href} className={className}>
+    <a
+      href={destination.href}
+      className={className}
+      data-print-url={destination.showsAddress ? 'hide' : undefined}
+    >
       {children}
       {/* A real space rather than a margin, so every browser keeps it in the link's name. */}{' '}
       <svg

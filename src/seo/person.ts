@@ -1,7 +1,7 @@
 import { PROFILE, PROFILE_LINKS } from '../content/profile';
 import { SITE_NAME } from '../content/site';
 import { WORK } from '../content/work';
-import { absoluteUrl } from './pageMeta';
+import { absolutePageUrl } from './pageMeta';
 
 /** Where I work now: the company with a role that hasn't ended. */
 function currentEmployer(): string | undefined {
@@ -19,7 +19,7 @@ export function personSchema() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: SITE_NAME,
-    url: absoluteUrl('/'),
+    url: absolutePageUrl('/'),
     jobTitle: 'Software Engineer',
     description: PROFILE.headline,
     ...(employer && { worksFor: { '@type': 'Organization', name: employer } }),

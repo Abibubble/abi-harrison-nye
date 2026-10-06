@@ -175,3 +175,6 @@ blob-report/
 # Lighthouse CI reports
 .lighthouseci
 lighthouse-report
+
+# The built site served under its GitHub Pages base path, for pnpm test:pages
+.pages-preview

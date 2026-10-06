@@ -4,8 +4,6 @@ import { themes } from 'storybook/theming';
 
 import { useStorybookTheme } from './theme';
 
-// Docs pages use Storybook's own light or dark theme to match the toolbar, so dark tokens aren't shown
-// on a white page.
 export function ThemedDocsContainer({ children, context }: PropsWithChildren<DocsContainerProps>) {
   const theme = useStorybookTheme();
 

@@ -1,7 +1,7 @@
 import { useId } from 'react';
-import { AbbrText } from '../Abbr';
 
-import type { Company, Role } from '../../content/work';
+import type { Company, Role, SiteWorkedOn } from '../../content/work';
+import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
 import { type HeadingLevel, Heading, nextLevel } from '../Heading';
 import { Link } from '../Link';
@@ -54,6 +54,27 @@ export function RoleItem({ role, headingLevel }: RoleItemProps) {
   );
 }
 
+/** A site's address as people write it, such as giffgaff.com for https://www.giffgaff.com. */
+function addressOf(href: string): string {
+  return new URL(href).hostname.replace(/^www\./, '');
+}
+
+/** Websites, each linked by name, with what I worked on. Also used for volunteering. */
+export function SiteList({ sites }: { sites: readonly SiteWorkedOn[] }) {
+  return (
+    <ul className={styles.sites}>
+      {sites.map((site) => (
+        <li key={site.href}>
+          <Link href={site.href} showsAddress={site.name === addressOf(site.href)}>
+            {site.name}
+          </Link>
+          : <AbbrText>{site.description}</AbbrText>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 interface CompanySectionProps {
   company: Company;
   headingLevel: HeadingLevel;
@@ -74,13 +95,7 @@ function CompanySection({ company, headingLevel }: CompanySectionProps) {
       {company.sitesWorkedOn && (
         <Stack gap={2}>
           <Heading level={roleLevel}>Sites I’ve worked on</Heading>
-          <ul className={styles.sites}>
-            {company.sitesWorkedOn.map((site) => (
-              <li key={site.href}>
-                <Link href={site.href}>{site.name}</Link>: <AbbrText>{site.description}</AbbrText>
-              </li>
-            ))}
-          </ul>
+          <SiteList sites={company.sitesWorkedOn} />
         </Stack>
       )}
     </Stack>

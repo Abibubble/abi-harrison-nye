@@ -9,12 +9,11 @@ import { BUILD_DEFINES } from './build-constants.ts';
 
 const storybookConfigDir = fileURLToPath(new URL('./.storybook', import.meta.url));
 
-// Kept separate from vite.config.ts so the React Router plugin isn't loaded in tests.
 export default defineConfig({
   define: BUILD_DEFINES,
   plugins: [react()],
   test: {
-    // Blank EmailJS settings, so the real ones in .env never reach the tests and nothing can be sent.
+    // Blank EmailJS settings, so the real ones in .env never reach the tests and nothing can be sent
     env: {
       VITE_EMAILJS_SERVICE_ID: '',
       VITE_EMAILJS_TEMPLATE_ID: '',
@@ -28,7 +27,6 @@ export default defineConfig({
         'src/**/*.test.{ts,tsx}',
         'src/test/**',
         'src/routes.ts',
-        // The document shell needs the framework runtime, so it's covered by the end to end tests.
         'src/root.tsx',
       ],
       thresholds: {

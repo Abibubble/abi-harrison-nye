@@ -104,7 +104,7 @@ describe('Privacy page', () => {
       'doesn’t use cookies, analytics or advertising',
     );
     expect(region('Other sites')).toHaveTextContent('Nothing from YouTube loads here');
-    expect(region('Hosting')).toHaveTextContent('hosted by Vercel');
+    expect(region('Hosting')).toHaveTextContent('hosted by GitHub Pages');
     expect(region('Changes to this notice')).toHaveTextContent(
       'It was last updated on 6 October 2026.',
     );
@@ -124,7 +124,7 @@ describe('Privacy page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/privacy',
+      href: 'http://localhost:4173/privacy/',
     });
   });
 

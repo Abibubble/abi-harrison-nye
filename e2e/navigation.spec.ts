@@ -22,7 +22,6 @@ test.describe('Skip link', () => {
     browserName,
   }) => {
     await page.goto('/');
-    // Safari only moves to links with Option+Tab unless "Press Tab to highlight each item" is on.
     await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
 
     const skipLink = page.getByRole('link', { name: 'Skip to main content' });

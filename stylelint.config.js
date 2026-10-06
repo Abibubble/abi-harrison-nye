@@ -36,14 +36,12 @@ export default {
           'none',
           'auto',
           '0',
-          // Windows high contrast system colours.
           '/^(Canvas|CanvasText|LinkText|VisitedText|ButtonFace|ButtonText|ButtonBorder|Highlight|HighlightText|GrayText|Field|FieldText|Mark|MarkText|AccentColor|AccentColorText)$/',
         ],
         expandShorthand: true,
         disableFix: true,
       },
     ],
-    // CSS Modules class names are used as JavaScript properties, so they're camelCase.
     'selector-class-pattern': [
       '^[a-z][a-zA-Z0-9]*$',
       { message: 'Use camelCase class names in CSS Modules' },

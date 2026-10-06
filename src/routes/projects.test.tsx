@@ -39,7 +39,7 @@ describe('Projects page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/projects',
+      href: 'http://localhost:4173/projects/',
     });
   });
 

@@ -35,7 +35,7 @@ describe('Contact page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/contact',
+      href: 'http://localhost:4173/contact/',
     });
   });
 

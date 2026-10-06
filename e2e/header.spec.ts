@@ -4,8 +4,6 @@ import { expectNoHorizontalScroll } from './support/layout';
 import { saveDisplaySettings } from './support/settings';
 import type { DisplaySettings } from '../src/settings/displaySettings';
 
-// The header switches from the Menu button to a single row of links at this width, in em of the
-// root font size. Keep in step with SiteHeader.module.css.
 const SWITCH_POINT_EM = 62;
 
 const menuButton = (page: Page) => page.getByRole('button', { name: 'Menu' });

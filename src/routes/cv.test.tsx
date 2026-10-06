@@ -53,6 +53,7 @@ describe('CV page', () => {
       'Key skills',
       'Experience',
       'Speaking and recognition',
+      'Volunteering',
       'Earlier career',
       'Education and training',
       'Interests',
@@ -98,7 +99,7 @@ describe('CV page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/cv',
+      href: 'http://localhost:4173/cv/',
     });
   });
 

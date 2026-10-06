@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import { WORK } from '../content/work';
@@ -41,8 +41,28 @@ describe('Work page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/work',
+      href: 'http://localhost:4173/work/',
     });
+  });
+
+  it('lists the sites I’ve volunteered on, in their own section', () => {
+    renderWithRouter(<Work />);
+
+    const section = within(screen.getByRole('region', { name: 'Volunteering' }));
+    expect(section.getByRole('link', { name: /attractionsource\.com/ })).toHaveAttribute(
+      'href',
+      'https://attractionsource.com',
+    );
+    expect(section.getByRole('link', { name: /towerstimes\.co\.uk/ })).toBeInTheDocument();
+  });
+
+  it('lists every giffgaff site I’ve worked on under giffgaff', () => {
+    renderWithRouter(<Work />);
+
+    const giffgaff = within(screen.getByRole('region', { name: 'giffgaff' }));
+    for (const name of [/giffgaff\.com/, /giffgaff Inclusion Toolkit/, /giffgaff\.design/]) {
+      expect(giffgaff.getByRole('link', { name })).toBeInTheDocument();
+    }
   });
 
   it('has no detectable accessibility issues', async () => {

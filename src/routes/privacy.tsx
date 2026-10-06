@@ -139,10 +139,13 @@ export default function Privacy() {
 
       <PageContentsSection section={SECTIONS.hosting}>
         <p>
-          This site is hosted by Vercel. Like most web hosts, Vercel’s servers keep short term logs
-          of each visit, including your internet address and browser, to keep the site running and
-          secure. I don’t use these logs to identify anyone. You can read{' '}
-          <Link href="https://vercel.com/legal/privacy-policy">Vercel’s privacy policy</Link>.
+          This site is hosted by GitHub Pages. When you visit, GitHub logs your internet address and
+          stores it for security purposes. I don’t have access to these logs, and don’t use them to
+          identify anyone. You can read{' '}
+          <Link href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
+            GitHub’s privacy statement
+          </Link>
+          .
         </p>
       </PageContentsSection>
 

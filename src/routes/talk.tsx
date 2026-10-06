@@ -21,8 +21,9 @@ import { pageMeta } from '../seo/pageMeta';
  * asks for the page's data at /talks/debt-to-done.data, so that ending is removed too.
  */
 export function slugFrom(url: string): string {
+  // Anything before /talks/ is the base path, such as /abi-harrison-nye on GitHub Pages.
   return new URL(url).pathname
-    .replace(/^\/talks\//, '')
+    .replace(/^.*\/talks\//, '')
     .replace(/\/$/, '')
     .replace(/\.data$/, '');
 }

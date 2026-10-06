@@ -5,12 +5,10 @@ import { type Page, expect, test } from './support/test';
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
-/** Every element the Tab key should reach, in page order, marked so they can be told apart. */
 async function markFocusable(page: Page): Promise<string[]> {
   return page.evaluate((selector) => {
     const elements = [...document.querySelectorAll<HTMLElement>(selector)].filter((element) => {
       if (element.tabIndex < 0 || element.closest('[aria-hidden="true"], [inert]')) return false;
-      // Tab stops on one radio button in each group, the chosen one. Arrow keys move between them.
       if (element instanceof HTMLInputElement && element.type === 'radio') {
         const group = [
           ...document.querySelectorAll<HTMLInputElement>(
@@ -38,7 +36,6 @@ interface FocusCheck {
   onTop: boolean;
 }
 
-/** What's focused, how thick its focus ring is, and whether it can be seen. */
 async function checkFocus(page: Page): Promise<FocusCheck> {
   return page.evaluate(() => {
     const element = document.activeElement as HTMLElement;
@@ -50,7 +47,6 @@ async function checkFocus(page: Page): Promise<FocusCheck> {
     return {
       index: element.dataset.audit,
       outline: style.outlineStyle === 'none' ? 0 : parseFloat(style.outlineWidth),
-      // Something taller than the window, like a long text box, only needs its top in view.
       inView: rect.top >= 0 && rect.top < window.innerHeight && rect.left >= 0,
       onTop: top !== null && (top === element || element.contains(top) || top.contains(element)),
     };
@@ -65,7 +61,6 @@ test.describe('Audit', () => {
     }) => {
       await page.goto(path);
       const expected = await markFocusable(page);
-      // Safari's Tab key only moves between form controls by default. Option and Tab reaches links.
       const tab = browserName === 'webkit' ? 'Alt+Tab' : 'Tab';
 
       const problems: string[] = [];
@@ -98,7 +93,6 @@ test.describe('Audit', () => {
           .filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0)
           .filter((element) => !element.closest('[aria-hidden="true"]'))
           .flatMap((element) => {
-            // A link in a sentence or block of text is allowed to be smaller.
             const block = element.closest(BLOCKS);
             if (
               element.tagName === 'A' &&
@@ -107,9 +101,7 @@ test.describe('Audit', () => {
             ) {
               return [];
             }
-            // Measured while focused, as the skip link only appears then.
             element.focus();
-            // A radio button or checkbox can also be chosen by its label.
             const target =
               element instanceof HTMLInputElement && ['radio', 'checkbox'].includes(element.type)
                 ? (element.closest('label') ?? element.labels?.[0] ?? element)
@@ -136,8 +128,6 @@ test.describe('Audit', () => {
       const notWrittenOut = await page.evaluate(
         (abbreviations) => {
           const main = document.querySelector('main')?.cloneNode(true) as HTMLElement;
-          // Page names are shown as they are in the navigation: the page heading, and headings that
-          // link to another page. The lists explain every abbreviation.
           const pageNames = [...document.querySelectorAll('nav[aria-label="Main"] a')].map((link) =>
             link.textContent.trim(),
           );
@@ -148,7 +138,6 @@ test.describe('Audit', () => {
           for (const id of ['abbreviations', 'glossary']) {
             main.querySelector(`[aria-labelledby="${id}"]`)?.remove();
           }
-          // Each block on its own, so text from neighbouring blocks never runs together.
           const text = [...main.querySelectorAll('p, li, dt, dd, h2, h3, h4, h5, h6, td, th')]
             .filter((block) => !block.querySelector('p, li, dt, dd'))
             .map((block) => block.textContent.replace(/\s+/g, ' '))

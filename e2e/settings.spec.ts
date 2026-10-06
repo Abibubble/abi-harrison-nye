@@ -54,7 +54,6 @@ test.describe('Saved settings', () => {
     page,
   }) => {
     await saveDisplaySettings(page, { theme: 'cream', textSize: 'larger' });
-    // Block every script file, leaving only the small script inside the page itself.
     await page.route('**/*.js', (route) => route.abort());
 
     await page.goto('/');

@@ -20,10 +20,11 @@ The dev server runs at http://localhost:5173.
 
 ## Site address
 
-Canonical addresses, share previews and the sitemap use the `SITE_URL` environment variable, such as
-`https://example.com`. Local builds use http://localhost:4173 without it. Builds on Vercel fail
-without it, so the live site can never point at localhost. Set it in the Vercel project's
-environment variables, and change it when the custom domain is added.
+Canonical addresses, share previews, the sitemap and the base path all come from the `SITE_URL`
+environment variable. It can include a path, such as `https://abibubble.github.io/abi-harrison-nye`,
+and every page and file address then starts with `/abi-harrison-nye/`. Local builds use
+http://localhost:4173 without it. The GitHub Pages build fails without it, so the live site can never
+point at localhost. When the custom domain is added, changing `SITE_URL` is all it takes.
 
 ## Contact form (EmailJS)
 
@@ -62,6 +63,35 @@ The tests never send anything or use EmailJS credits:
   without planning an answer with `emailJs.answerWith()`. A lint rule stops specs importing
   Playwright's own `test` instead.
 
+## Deploying
+
+The site is hosted on GitHub Pages. CI builds it on every push and pull request, checks it works
+under its base path with `pnpm test:pages`, and deploys it from `main` once every other check has
+passed.
+
+The build reads these repository variables, set under Settings, then Secrets and variables, then
+Actions, on the Variables tab. They're variables rather than secrets, as they're all public anyway.
+
+| Variable                   | Value                                                                      |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `SITE_URL`                 | The site's address, such as `https://abibubble.github.io/abi-harrison-nye` |
+| `VITE_EMAILJS_SERVICE_ID`  | From the EmailJS dashboard, as in `.env`                                   |
+| `VITE_EMAILJS_TEMPLATE_ID` | From the EmailJS dashboard, as in `.env`                                   |
+| `VITE_EMAILJS_PUBLIC_KEY`  | From the EmailJS dashboard, as in `.env`                                   |
+
+GitHub Pages can't send custom headers. Every page gets its own Content Security Policy as a meta tag
+at build time, allowing exactly its own inline scripts, and the referrer policy is a meta tag too.
+
+To check the GitHub Pages build locally:
+
+```bash
+SITE_URL=https://abibubble.github.io/abi-harrison-nye pnpm build
+```
+
+```bash
+SITE_URL=https://abibubble.github.io/abi-harrison-nye pnpm test:pages
+```
+
 ## Scripts
 
 | Script                 | What it does                                                              |
@@ -79,6 +109,7 @@ The tests never send anything or use EmailJS credits:
 | `pnpm test:storybook`  | Tests every Storybook story in a real browser, including axe checks       |
 | `pnpm test:e2e`        | Builds the site and runs Playwright tests in Chromium, Firefox and WebKit |
 | `pnpm test:lighthouse` | Runs Lighthouse on every page of the build, with minimum scores           |
+| `pnpm test:pages`      | Checks the build works under its base path, as GitHub Pages serves it     |
 | `pnpm storybook`       | Starts Storybook at http://localhost:6006                                 |
 | `pnpm build-storybook` | Builds a static copy of Storybook into `storybook-static`                 |
 | `pnpm brand-images`    | Redraws the icons and share image in `public/` from the site's mark       |

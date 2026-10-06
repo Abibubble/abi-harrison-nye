@@ -1,7 +1,5 @@
 import { type Page, expect, test } from './support/test';
 
-// EmailJS is blocked in every test. Tests that send plan its answer with emailJs.answerWith().
-
 async function fillIn(page: Page) {
   await page.getByRole('textbox', { name: 'Your name' }).fill('Sam');
   await page.getByRole('textbox', { name: 'Your email address' }).fill('sam@example.com');

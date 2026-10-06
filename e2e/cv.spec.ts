@@ -1,6 +1,5 @@
 import { type Page, expect, test } from './support/test';
 
-/** Prints the page to an A4 PDF, as "Save as PDF" would, and counts its pages. */
 async function printedPages(page: Page): Promise<number> {
   const pdf = await page.pdf({ format: 'A4' });
   return pdf.toString('latin1').match(/\/Type\s*\/Page[^s]/g)?.length ?? 0;

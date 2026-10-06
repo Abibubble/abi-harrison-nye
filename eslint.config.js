@@ -16,6 +16,9 @@ export default defineConfig([
     'playwright-report',
     'test-results',
     '.react-router',
+    '.pages-preview',
+    '.lighthouseci',
+    'lighthouse-report',
   ]),
   js.configs.recommended,
   tseslint.configs.strictTypeChecked,
@@ -34,11 +37,9 @@ export default defineConfig([
   storybook.configs['flat/recommended'],
   {
     rules: {
-      // Type imports keep runtime bundles free of anything only used for types.
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       'react/prop-types': 'off',
-      // Safari drops list semantics when list bullets are removed, so unstyled lists need the role.
       'jsx-a11y/no-redundant-roles': ['error', { ul: ['list'], ol: ['list'] }],
       'react/forbid-dom-props': [
         'error',
@@ -72,12 +73,10 @@ export default defineConfig([
     },
   },
   {
-    // Plain JavaScript config files aren't part of the TypeScript project.
     files: ['**/*.js', '**/*.cjs'],
     extends: [tseslint.configs.disableTypeChecked],
   },
   {
-    // CommonJS files, such as the Lighthouse CI config, can only load modules with require().
     files: ['**/*.cjs'],
     rules: { '@typescript-eslint/no-require-imports': 'off' },
   },

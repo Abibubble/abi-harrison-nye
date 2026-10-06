@@ -262,7 +262,7 @@ describe('Accessibility page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/accessibility',
+      href: 'http://localhost:4173/accessibility/',
     });
   });
 

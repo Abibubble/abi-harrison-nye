@@ -7,8 +7,6 @@ import { WCAG_TAGS } from '../src/test/wcag-tags';
 import { ThemedDocsContainer } from './ThemedDocsContainer';
 import { applyTheme } from './theme';
 
-// The site sets this before the page is drawn, so styles that need JavaScript, such as the collapsed
-// menu on narrow screens, behave the same here.
 document.documentElement.dataset.js = '';
 
 const preview: Preview = {
@@ -31,13 +29,10 @@ const preview: Preview = {
     theme: 'light',
   },
   decorators: [
-    // Stories, including story tests, which run without the toolbar.
     (Story, { globals }) => {
       applyTheme(globals);
       return Story();
     },
-    // Components with links need a router. A story can set the current address with
-    // parameters: { router: { path: '/work' } }.
     (Story, { parameters }) => {
       const { path = '/' } = (parameters.router ?? {}) as { path?: string };
       return (
@@ -52,11 +47,8 @@ const preview: Preview = {
       container: ThemedDocsContainer,
     },
     a11y: {
-      // Any violation fails the story's test, not just a warning in the panel.
       test: 'error',
       options: { runOnly: { type: 'tag', values: WCAG_TAGS } },
-      // Stories show components on their own, outside the page's landmarks. Whole pages are checked
-      // for this in the end to end tests.
       config: { rules: [{ id: 'region', enabled: false }] },
     },
     controls: {

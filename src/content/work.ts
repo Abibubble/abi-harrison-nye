@@ -80,6 +80,18 @@ export const WORK: Company[] = [
         description:
           'The phones journey, including range pages, product pages, checkout and landing pages.',
       },
+      {
+        name: 'giffgaff Inclusion Toolkit',
+        href: 'https://www.giffgaff.com/inclusion-toolkit',
+        description:
+          'A free library of accessibility and neurodiversity resources. I built and deployed it, set up its events and logging, monitor it for security issues, and keep it up to date.',
+      },
+      {
+        name: 'giffgaff.design',
+        href: 'https://giffgaff.design',
+        description:
+          'giffgaff’s design system site, with the components, design guidelines and writing standards used across the website, app and emails.',
+      },
     ],
   },
   {
@@ -125,6 +137,22 @@ export const WORK: Company[] = [
     name: 'J D Wetherspoon',
     earlierCareer: true,
     roles: [{ title: 'Shift Leader', from: '2012-02', to: '2017-04', highlightGroups: [] }],
+  },
+];
+
+/** Sites I've helped with as a volunteer, outside work. */
+export const VOLUNTEERING: SiteWorkedOn[] = [
+  {
+    name: 'attractionsource.com',
+    href: 'https://attractionsource.com',
+    description:
+      'One of the largest online communities for fans of theme parks and attractions in the UK.',
+  },
+  {
+    name: 'towerstimes.co.uk',
+    href: 'https://towerstimes.co.uk',
+    description:
+      'An unofficial community site for Alton Towers Resort, with news, guides and history.',
   },
 ];
 

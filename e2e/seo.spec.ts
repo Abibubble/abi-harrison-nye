@@ -1,7 +1,7 @@
+import { pageUrl } from '../src/seo/siteUrl';
 import { ROUTES } from './support/routes';
 import { expect, test } from './support/test';
 
-// The end to end build has no SITE_URL, so addresses use the local preview address.
 const SITE = 'http://localhost:4173';
 const PAGES = ROUTES.filter((route) => route.name !== 'Page not found');
 
@@ -12,7 +12,7 @@ test.describe('Search engines and sharing', () => {
     }) => {
       await page.goto(path);
       const head = page.locator('head');
-      const url = `${SITE}${path}`;
+      const url = pageUrl(SITE, path);
 
       await expect(head.locator('meta[name="description"]')).toHaveAttribute('content', /\w/);
       await expect(head.locator('link[rel="canonical"]')).toHaveAttribute('href', url);
@@ -50,7 +50,7 @@ test.describe('Search engines and sharing', () => {
     const sitemap = await (await request.get('/sitemap.xml')).text();
 
     const listed = [...sitemap.matchAll(/<loc>(.+?)<\/loc>/g)].map(([, loc]) => loc);
-    expect(listed.sort()).toEqual(PAGES.map((route) => `${SITE}${route.path}`).sort());
+    expect(listed.sort()).toEqual(PAGES.map((route) => pageUrl(SITE, route.path)).sort());
   });
 
   test('robots.txt allows everything and points to the sitemap', async ({ request }) => {

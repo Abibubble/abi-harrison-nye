@@ -28,7 +28,7 @@ listed under [Open decisions](#open-decisions).
 | Fonts             | Atkinson Hyperlegible Next for text, Atkinson Hyperlegible Mono for code, both hosted with the site (see [Fonts](#fonts)) |
 | Long form content | Markdown files processed at build time (talk transcripts, CV sections if useful)                                          |
 | Component docs    | Storybook, run locally and built in CI. Not linked from the site                                                          |
-| Hosting           | Vercel, with preview deployments for every pull request. Custom domain to follow                                          |
+| Hosting           | GitHub Pages, deployed by CI from `main`. At abibubble.github.io/abi-harrison-nye until the custom domain is ready        |
 | Video             | Unlisted YouTube videos, linked from each talk page                                                                       |
 | Analytics         | None for now                                                                                                              |
 
@@ -54,7 +54,7 @@ behind a "Menu" button that uses `aria-expanded`, so 48px targets don't push con
 open menu pushes the page down rather than covering it, closes with Escape, and closes by itself after
 choosing a page.
 
-The 404 page is prerendered to `404.html`, which static hosts (including Vercel) serve with a 404
+The 404 page is prerendered to `404.html`, which static hosts (including GitHub Pages) serve with a 404
 status for any unknown address.
 
 ## Content model
@@ -566,8 +566,10 @@ Components opt in with data attributes, so they don't need their own print style
 - The site URL comes from an environment variable, so canonical URLs and the sitemap update when the
   custom domain is added
 - **Done in phase 11:**
-  - `SITE_URL` sets the address. Local builds fall back to the preview address, and Vercel builds
-    fail without it, so the live site can never point at localhost.
+  - `SITE_URL` sets the address, and the base path comes from it. Local builds fall back to the
+    preview address, and the GitHub Pages build fails without it, so the live site can never point
+    at localhost. robots.txt only counts at the root of a domain, so it starts working once the
+    custom domain is added.
   - `pageMeta()` in `src/seo` gives every page its title, description, canonical address and Open
     Graph tags. The not found page has `noindex` and no canonical address.
   - The sitemap and robots.txt are written after prerendering, from the pages that were actually
@@ -586,7 +588,7 @@ The contact form collects names, email addresses and messages, so UK GDPR applie
 - That there are no analytics or tracking cookies
 - What the display settings store in `localStorage` (preferences only, nothing personal)
 - That YouTube videos are links, not embeds, so YouTube only sees visitors who choose to follow a link
-- That the site is hosted on Vercel, which keeps standard server logs
+- That the site is hosted on GitHub Pages, which logs visitors' internet addresses for security
 
 ## Accessibility page
 
@@ -656,14 +658,21 @@ Results go on the Accessibility page.
 
 ## Security headers
 
-Set in `vercel.json`:
-
 - A Content Security Policy that only allows the site's own scripts, styles and fonts, plus requests
-  to the EmailJS API. The inline script in `<head>` is allowed by its hash.
-- Strict Transport Security
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `X-Content-Type-Options: nosniff`
-- A Permissions Policy that turns off camera, microphone, location and similar features
+  to the EmailJS API. React Router adds several inline scripts to each page, which change with every
+  build, so the policy is written into each page as a meta tag when the site is built, with a hash
+  for each of its inline scripts. An end to end test checks nothing is blocked on any page, and that
+  an unknown script is.
+
+- The referrer policy, `strict-origin-when-cross-origin`, as a meta tag.
+- HTTPS, which GitHub Pages enforces. For the custom domain, tick Enforce HTTPS in the Pages
+  settings.
+
+GitHub Pages can't send custom headers, so these aren't possible, as they only work as headers:
+`frame-ancestors` and `X-Frame-Options` (stopping other sites framing this one),
+`X-Content-Type-Options: nosniff`, and a Permissions Policy. The site has no sign in, payments or
+actions anyone could be tricked into by framing, and uses none of the features a Permissions Policy
+turns off, so the risk is low. If the site moves to a host that allows headers, add them then.
 
 ## Tooling and CI
 
@@ -704,7 +713,9 @@ Each phase is written test first.
 12. **Audit (automated part done):** new checks for tab order, focus, target size and high contrast
     on every page, Lighthouse CI, and an expert review. Waiting on the manual testing and the content
     fixes from the review.
-13. **Launch:** deploy, then add the custom domain when it's ready
+13. **Launch (ready):** GitHub Pages, deployed by CI, with the base path from `SITE_URL` and a
+    Content Security Policy built into each page. Waiting on the Pages settings and repository
+    variables, then the custom domain.
 
 ## Open decisions
 
