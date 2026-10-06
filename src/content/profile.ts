@@ -25,3 +25,16 @@ export const PROFILE_LINKS: ProfileLink[] = [
   { label: 'GitHub', href: 'https://github.com/Abibubble' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abi-harrison-nye' },
 ];
+
+/**
+ * My work in plain words, at the top of the Work and CV pages, for anyone who finds the detail hard
+ * going (WCAG 3.1.5). Short sentences and everyday words, aiming for a reading age of 9.
+ */
+export const PLAIN_SUMMARY = [
+  'I’m a software engineer at giffgaff.',
+  'I build the parts of the website where people choose and buy phones.',
+  'I make sure they work well for everyone, including disabled people.',
+  'I also started a staff network at giffgaff for accessibility and neurodiversity, and I lead it.',
+  'I’ve helped apprentices become engineers too.',
+  'Before tech, I taught people to drive and worked in pubs.',
+].join(' ');

@@ -78,6 +78,7 @@ The tests never send anything or use EmailJS credits:
 | `pnpm test:coverage`   | Runs unit tests with a 90% coverage threshold                             |
 | `pnpm test:storybook`  | Tests every Storybook story in a real browser, including axe checks       |
 | `pnpm test:e2e`        | Builds the site and runs Playwright tests in Chromium, Firefox and WebKit |
+| `pnpm test:lighthouse` | Runs Lighthouse on every page of the build, with minimum scores           |
 | `pnpm storybook`       | Starts Storybook at http://localhost:6006                                 |
 | `pnpm build-storybook` | Builds a static copy of Storybook into `storybook-static`                 |
 | `pnpm brand-images`    | Redraws the icons and share image in `public/` from the site's mark       |
@@ -96,3 +97,5 @@ Run `pnpm commit:check`. It runs the same checks as CI, fastest first, and stops
 7. Storybook build
 8. Production build
 9. End to end tests in Chromium, Firefox and WebKit, including axe checks
+10. Lighthouse on every page: at least 95 for performance, and 100 for accessibility, best practice
+    and SEO

@@ -393,9 +393,9 @@ is simply shown.
 | 2.4.12 Focus not obscured (enhanced) | The header isn't sticky, or if it is, `scroll-padding-top` keeps focus fully visible                                                                                                        |
 | 2.4.13 Focus appearance              | A thick, high contrast focus ring on every interactive element                                                                                                                              |
 | 2.5.5 Target size (enhanced)         | 48px minimum                                                                                                                                                                                |
-| 3.1.3 Unusual words                  | Jargon is explained, or linked to a glossary on the Accessibility page                                                                                                                      |
-| 3.1.4 Abbreviations                  | Expanded on first use, using an `Abbr` component                                                                                                                                            |
-| 3.1.5 Reading level                  | Plain language throughout. Long technical content gets a plain summary                                                                                                                      |
+| 3.1.3 Unusual words                  | Technical words are explained in the Glossary on the Accessibility page, linked from the Work and CV pages                                                                                  |
+| 3.1.4 Abbreviations                  | Written out on first use on each page by `Abbr` and `AbbrText`, and checked on every page. AI, BA, CSS, CV, HTML and UK stay short                                                          |
+| 3.1.5 Reading level                  | Plain language throughout. The Work and CV pages start with a plain summary                                                                                                                 |
 | 3.2.5 Change on request              | Nothing changes or opens without the user asking                                                                                                                                            |
 | 3.3.5 Help                           | Hint text on form fields                                                                                                                                                                    |
 | 3.3.6 Error prevention (all)         | The contact form has a review step before sending                                                                                                                                           |
@@ -701,7 +701,9 @@ Each phase is written test first.
 9. **Contact (done):** form, review step and EmailJS. Waiting on the EmailJS account setup.
 10. **Statement pages (done):** Accessibility and Privacy. Waiting on a review of the drafted text.
 11. **SEO (done):** meta tags, sitemap, robots, structured data, icons
-12. **Audit:** full automated suite, manual testing, performance pass
+12. **Audit (automated part done):** new checks for tab order, focus, target size and high contrast
+    on every page, Lighthouse CI, and an expert review. Waiting on the manual testing and the content
+    fixes from the review.
 13. **Launch:** deploy, then add the custom domain when it's ready
 
 ## Open decisions

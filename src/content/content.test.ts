@@ -4,7 +4,8 @@ import { formatDate } from '../components/Time';
 import { ABBREVIATIONS } from './abbreviations';
 import { ARTICLES } from './articles';
 import { CV_PROFILE, QUALIFICATIONS, SHORT_COURSES, SKILLS, SPEAKING_WITHOUT_PAGES } from './cv';
-import { PROFILE, PROFILE_LINKS } from './profile';
+import { GLOSSARY } from './glossary';
+import { PLAIN_SUMMARY, PROFILE, PROFILE_LINKS } from './profile';
 import { PROJECTS } from './projects';
 import { RECOGNITION } from './recognition';
 import { TALKS } from './talks';
@@ -38,6 +39,8 @@ const ALL_TEXT = [
   ...QUALIFICATIONS.flatMap((item) => [item.title, item.provider, item.detail ?? '']),
   SHORT_COURSES,
   ...SPEAKING_WITHOUT_PAGES.flatMap((talk) => [talk.title, talk.event, talk.location]),
+  PLAIN_SUMMARY,
+  ...GLOSSARY.flatMap((entry) => [entry.term, entry.definition]),
 ];
 
 const ALL_LINKS = [
@@ -100,6 +103,22 @@ describe('site content', () => {
       expect(Object.keys(ABBREVIATIONS), `${abbreviation} has no expansion`).toContain(
         abbreviation,
       );
+    }
+  });
+
+  it('explains each glossary term once, in alphabetical order, in full sentences', () => {
+    const terms = GLOSSARY.map((entry) => entry.term);
+
+    expect(terms).toEqual([...terms].sort((a, b) => a.localeCompare(b, 'en-GB')));
+    expect(new Set(terms).size).toBe(terms.length);
+    for (const { term, definition } of GLOSSARY) {
+      expect(definition, term).toMatch(/^[A-Z].*\.$/);
+    }
+  });
+
+  it('writes glossary definitions without abbreviations, so they need no explaining themselves', () => {
+    for (const { term, definition } of GLOSSARY) {
+      expect(definition, term).not.toMatch(/\b[A-Z]{2,}\b/);
     }
   });
 

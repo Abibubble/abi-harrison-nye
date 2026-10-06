@@ -39,7 +39,7 @@ export const WORK: Company[] = [
         from: '2021-08',
         location: 'Uxbridge (hybrid)',
         summary:
-          'I’ve worked in the Devices (current), Recommendations Experience, Future Capabilities, FE Core Services, Design System and Leanness teams. I joined from a work experience placement, from March to July 2021.',
+          'I’ve worked in the Devices (current), Recommendations Experience, Future Capabilities, Frontend Core Services, Design System and Leanness teams. I joined from a work experience placement, from March to July 2021.',
         highlightGroups: [
           {
             heading: 'Software engineering',
@@ -63,7 +63,7 @@ export const WORK: Company[] = [
               'Advised designers, the brand team and an external agency throughout a company-wide brand refresh, using research to make the case on colour contrast, motion, photosensitivity and pattern glare.',
               'Engineered a Claude skill for accessibility audits that catches up to 50% of issues automatically, up from around 30% with previous tools.',
               'Integrated pa11y automated accessibility testing into continuous integration pipelines.',
-              'Ran “Oh My GAAD: Bug Bash”, a two-month Global Accessibility Awareness Day campaign that uncovered 72 issues and fixed around 32 before it closed.',
+              'Ran a two-month Global Accessibility Awareness Day (GAAD) campaign, “Oh My GAAD: Bug Bash”, that uncovered 72 issues and fixed around 32 before it closed.',
               'Designed, built and launched the giffgaff Inclusion Toolkit, a public library of accessibility and neurodiversity resources, including infographics and meeting templates, free for any organisation to use.',
               'Founded Home of Accessibility and NeuroDiversity (HAND), giffgaff’s accessibility and neurodiversity employee network group, and led its steering committee of three to deliver workshops, awareness campaigns and support programmes.',
               'Worked with senior leaders to make sure no employee was forced into mandatory office days that would harm their wellbeing, and created a meeting invite template giving neurodivergent colleagues full context and accessibility information.',

@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { AbbrText } from '../Abbr';
 
 import type { Company, Role } from '../../content/work';
 import { Card } from '../Card';
@@ -24,16 +25,26 @@ export function RoleItem({ role, headingLevel }: RoleItemProps) {
           <Heading level={headingLevel}>{role.title}</Heading>
           <p className={styles.meta}>
             <DateRange from={role.from} to={role.to} />
-            {role.location && `, ${role.location}`}
+            {role.location && (
+              <>
+                , <AbbrText>{role.location}</AbbrText>
+              </>
+            )}
           </p>
         </Stack>
-        {role.summary && <p>{role.summary}</p>}
+        {role.summary && (
+          <p>
+            <AbbrText>{role.summary}</AbbrText>
+          </p>
+        )}
         {role.highlightGroups.map((group) => (
           <Stack key={group.heading} gap={2}>
             <Heading level={groupLevel}>{group.heading}</Heading>
             <ul className={styles.highlights}>
               {group.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
+                <li key={highlight}>
+                  <AbbrText>{highlight}</AbbrText>
+                </li>
               ))}
             </ul>
           </Stack>
@@ -66,7 +77,7 @@ function CompanySection({ company, headingLevel }: CompanySectionProps) {
           <ul className={styles.sites}>
             {company.sitesWorkedOn.map((site) => (
               <li key={site.href}>
-                <Link href={site.href}>{site.name}</Link>: {site.description}
+                <Link href={site.href}>{site.name}</Link>: <AbbrText>{site.description}</AbbrText>
               </li>
             ))}
           </ul>

@@ -24,7 +24,7 @@ const SECTIONS = {
   whoIsResponsible: { id: 'who-is-responsible', title: 'Who’s responsible for your information' },
   contactForm: { id: PRIVACY_CONTACT_FORM_ID, title: 'The contact form' },
   yourRights: { id: 'your-rights', title: 'Your rights' },
-  displaySettings: { id: 'display-settings-storage', title: 'Display settings' },
+  displaySettings: { id: 'display-settings-storage', title: 'What the display settings save' },
   noTracking: { id: 'no-tracking', title: 'No tracking' },
   otherSites: { id: 'other-sites', title: 'Other sites' },
   hosting: { id: 'hosting', title: 'Hosting' },
@@ -49,7 +49,7 @@ export default function Privacy() {
       <PageContentsSection section={SECTIONS.whoIsResponsible}>
         <p>
           I’m Abi Harrison-Nye, and I’m responsible for how your information is used on this site.
-          Under <Abbr name="UK" expand /> data protection law, that makes me the data controller.
+          Under <Abbr name="UK" /> data protection law, that makes me the data controller.
         </p>
         <p>
           You can ask me anything about your information using the{' '}

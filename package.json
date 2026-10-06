@@ -27,10 +27,11 @@
     "test:coverage": "vitest run --project unit --coverage",
     "test:storybook": "vitest run --project storybook --passWithNoTests",
     "test:e2e": "playwright test",
+    "test:lighthouse": "lhci autorun",
     "storybook": "storybook dev --port 6006 --no-open",
     "build-storybook": "storybook build --quiet",
     "brand-images": "node scripts/brand-images.ts",
-    "commit:check": "pnpm format:check && pnpm lint:css && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:storybook && pnpm build-storybook && pnpm build && pnpm test:e2e"
+    "commit:check": "pnpm format:check && pnpm lint:css && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:storybook && pnpm build-storybook && pnpm build && pnpm test:e2e && pnpm test:lighthouse"
   },
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-mono": "^5.3.0",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.39.5",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.63.0",
     "@react-router/dev": "^8.4.0",
     "@storybook/addon-a11y": "^10.6.1",

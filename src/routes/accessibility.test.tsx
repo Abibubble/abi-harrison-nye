@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { ABBREVIATIONS } from '../content/abbreviations';
+import { GLOSSARY } from '../content/glossary';
 import type * as Statements from '../content/statements';
 import type * as Talks from '../content/talks';
 import type { Talk } from '../content/talks';
@@ -229,6 +230,18 @@ describe('Accessibility page', () => {
 
     const region = screen.getByRole('region', { name: 'Report a problem' });
     expect(within(region).getByRole('link')).toHaveAttribute('href', '/contact');
+  });
+
+  it('explains every technical word in the glossary (WCAG 3.1.3)', () => {
+    renderWithRouter(<Accessibility />);
+
+    const glossary = within(screen.getByRole('region', { name: 'Glossary' }));
+    expect(glossary.getAllByRole('term').map((term) => term.textContent)).toEqual(
+      GLOSSARY.map((entry) => entry.term),
+    );
+    expect(glossary.getAllByRole('definition').map((item) => item.textContent)).toEqual(
+      GLOSSARY.map((entry) => entry.definition),
+    );
   });
 
   it('lists every abbreviation used on the site, with what it stands for (WCAG 3.1.4)', () => {

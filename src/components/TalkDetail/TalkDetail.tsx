@@ -1,4 +1,5 @@
 import type { Talk } from '../../content/talks';
+import { AbbrText } from '../Abbr';
 import { Heading } from '../Heading';
 import { Link } from '../Link';
 import { PageHeading } from '../PageHeading';
@@ -26,7 +27,9 @@ export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
             {talk.event}, {talk.location}, <Time date={talk.date} />
           </p>
         </Stack>
-        <p>{talk.summary}</p>
+        <p>
+          <AbbrText>{talk.summary}</AbbrText>
+        </p>
       </Stack>
 
       {(talk.video ?? talk.slidesHref) && (

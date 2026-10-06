@@ -53,3 +53,21 @@
     margin-block-end: var(--space-3);
   }
 }
+
+/* Each term above its definition, as terms can be long. */
+.definitions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--size-measure);
+  margin: 0;
+}
+
+.definitions dt {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.definitions dd {
+  margin: 0;
+}

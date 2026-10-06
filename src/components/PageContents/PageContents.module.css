@@ -16,7 +16,14 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
   padding-inline-start: var(--space-4);
   margin: 0;
+}
+
+/* A list of links isn't text, so each link needs to be a full size target (WCAG 2.5.5). */
+.list a {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--size-target-min);
+  min-height: var(--size-target-min);
 }

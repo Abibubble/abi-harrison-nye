@@ -11,7 +11,6 @@ export const ABBREVIATIONS = {
   'CI/CD': 'continuous integration and continuous delivery',
   CSS: 'Cascading Style Sheets',
   CV: 'curriculum vitae',
-  FE: 'frontend',
   GAAD: 'Global Accessibility Awareness Day',
   GDPR: 'General Data Protection Regulation',
   HAND: 'Home of Accessibility and NeuroDiversity',
@@ -23,3 +22,9 @@ export const ABBREVIATIONS = {
 } as const;
 
 export type Abbreviation = keyof typeof ABBREVIATIONS;
+
+/**
+ * Abbreviations most people know, which are never written out in the text, as that would make it
+ * harder to read. They're still marked up with their full form, and listed on the Accessibility page.
+ */
+export const ALWAYS_SHORT: readonly Abbreviation[] = ['AI', 'BA', 'CSS', 'CV', 'HTML', 'UK'];

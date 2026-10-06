@@ -25,9 +25,9 @@ export interface SpeakingEngagement {
 
 /** The profile at the top of the CV. Abbreviations are written out in full the first time. */
 export const CV_PROFILE = [
-  'Software engineer and accessibility specialist at giffgaff since 2021, building customer-facing React and TypeScript micro frontends, creating the company’s original design system, and mentoring apprentices into engineering roles.',
+  'Software engineer and accessibility specialist at giffgaff since 2021, building customer-facing React and TypeScript micro frontends. Built and maintained the company’s React design system, and mentored apprentices into full engineering roles.',
   'A trained accessibility auditor who champions accessibility across the business, bringing an inclusive, test-driven approach that helps teams ship products meeting the Web Content Accessibility Guidelines (WCAG).',
-  'Founder and Chair of Home of Accessibility and NeuroDiversity (HAND), giffgaff’s nationally recognised accessibility and neurodiversity employee network group, and a LeadDev LDX3 speaker on building an accessibility-first culture.',
+  'Founder and current Lead for the Home of Accessibility and NeuroDiversity (HAND), giffgaff’s nationally recognised accessibility and neurodiversity employee network group. Spoke at LeadDev LDX3 in June 2026, with a talk titled ‘Moving accessibility from debt to done’.',
 ];
 
 export const SKILLS: SkillGroup[] = [

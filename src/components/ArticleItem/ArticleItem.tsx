@@ -1,4 +1,5 @@
 import type { Article } from '../../content/articles';
+import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
 import { type HeadingLevel, Heading } from '../Heading';
 import { Link } from '../Link';
@@ -22,7 +23,9 @@ export function ArticleItem({ article, headingLevel }: ArticleItemProps) {
         <p className={styles.meta}>
           {article.publication}, <Time date={article.date} />
         </p>
-        <p>{article.summary}</p>
+        <p>
+          <AbbrText>{article.summary}</AbbrText>
+        </p>
       </Stack>
     </Card>
   );

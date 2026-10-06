@@ -1,4 +1,5 @@
 import type { Project } from '../../content/projects';
+import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
 import { Cluster } from '../Cluster';
 import { type HeadingLevel, Heading } from '../Heading';
@@ -20,7 +21,9 @@ export function ProjectItem({ project, headingLevel }: ProjectItemProps) {
     <Card as="article">
       <Stack gap={3}>
         <Heading level={headingLevel}>{project.name}</Heading>
-        <p>{project.summary}</p>
+        <p>
+          <AbbrText>{project.summary}</AbbrText>
+        </p>
         {project.tech.length > 0 && (
           <TagList tags={project.tech} label={`Technologies used for ${project.name}`} />
         )}

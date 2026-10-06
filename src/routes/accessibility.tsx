@@ -9,6 +9,7 @@ import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { Time } from '../components/Time';
 import { ABBREVIATIONS, type Abbreviation } from '../content/abbreviations';
+import { GLOSSARY } from '../content/glossary';
 import { pageTitle } from '../content/site';
 import { ACCESSIBILITY_REVIEWED, MANUAL_TESTING } from '../content/statements';
 import {
@@ -38,6 +39,7 @@ const SECTIONS = {
   otherSites: { id: 'other-sites', title: 'Content on other sites' },
   testing: { id: 'testing', title: 'How I test this site' },
   reportAProblem: { id: 'report-a-problem', title: 'Report a problem' },
+  glossary: { id: 'glossary', title: 'Glossary' },
   abbreviations: { id: 'abbreviations', title: 'Abbreviations' },
 } satisfies Record<string, PageSection>;
 
@@ -152,8 +154,14 @@ export default function Accessibility() {
           </li>
           <li>Nothing flashes, moves on its own or has a time limit.</li>
           <li>
-            Abbreviations are written out in full the first time they’re used on a page, and{' '}
-            <a href={`#${SECTIONS.abbreviations.id}`}>listed on this page</a>.
+            Abbreviations in the text of each page are written out in full the first time they’re
+            used, apart from a few most people know, such as <Abbr name="UK" />. Every abbreviation
+            is <a href={`#${SECTIONS.abbreviations.id}`}>listed on this page</a>.
+          </li>
+          <li>
+            Technical words are explained in the{' '}
+            <a href={`#${SECTIONS.glossary.id}`}>glossary on this page</a>, and the Work and{' '}
+            <Abbr name="CV" /> pages start with a short summary in plain words.
           </li>
           <li>
             Every talk has a full transcript, which describes the slides and anything else shown on
@@ -260,6 +268,18 @@ export default function Accessibility() {
           share it, it also helps to know what you were using, such as your browser or screen
           reader.
         </p>
+      </PageContentsSection>
+
+      <PageContentsSection section={SECTIONS.glossary}>
+        <p>These are technical words used on this site, explained in plain words.</p>
+        <dl className={styles.definitions}>
+          {GLOSSARY.map(({ term, definition }) => (
+            <div key={term}>
+              <dt>{term}</dt>
+              <dd>{definition}</dd>
+            </div>
+          ))}
+        </dl>
       </PageContentsSection>
 
       <PageContentsSection section={SECTIONS.abbreviations}>

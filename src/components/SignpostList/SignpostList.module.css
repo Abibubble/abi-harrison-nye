@@ -16,3 +16,11 @@
 .card > * {
   margin: 0;
 }
+
+/* The heading link stands alone rather than in a sentence, so it needs a full size target (WCAG 2.5.5). */
+.card a {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--size-target-min);
+  min-height: var(--size-target-min);
+}

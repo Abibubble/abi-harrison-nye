@@ -1,4 +1,4 @@
-import { Abbr } from '../components/Abbr';
+import { Abbr, AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
 import { PageHeading } from '../components/PageHeading';
 import { ProfilePhoto } from '../components/ProfilePhoto';
@@ -73,7 +73,9 @@ export default function Home() {
           Outside work
         </Heading>
         {PROFILE.interests.map((interest) => (
-          <p key={interest}>{interest}</p>
+          <p key={interest}>
+            <AbbrText>{interest}</AbbrText>
+          </p>
         ))}
       </Stack>
     </Stack>

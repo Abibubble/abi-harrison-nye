@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react';
 
 import { QualificationList, SkillsList, SpeakingList } from '../components/CvLists';
+import { AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
+import { PlainSummary } from '../components/PlainSummary';
 import { PrintOptions } from '../components/PrintOptions';
 import { RecognitionList } from '../components/RecognitionList';
 import { Stack } from '../components/Stack';
@@ -55,7 +57,7 @@ export default function Cv() {
         <div className={styles.contact}>
           <p className={styles.name}>{SITE_NAME}</p>
           <p>
-            {PROFILE.headline}, {PROFILE.location}
+            {PROFILE.headline}, <AbbrText>{PROFILE.location}</AbbrText>
           </p>
           <p>
             {PROFILE_LINKS.map((link, index) => (
@@ -68,12 +70,15 @@ export default function Cv() {
             <Link to="/contact">send me a message</Link>
           </p>
         </div>
+        <PlainSummary />
         <PrintOptions />
       </Stack>
 
       <CvSection id="profile" title="Profile">
         {CV_PROFILE.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+          <p key={paragraph}>
+            <AbbrText>{paragraph}</AbbrText>
+          </p>
         ))}
       </CvSection>
 
@@ -106,13 +111,15 @@ export default function Cv() {
       <CvSection id="education" title="Education and training">
         <QualificationList items={QUALIFICATIONS} />
         <p>
-          <strong>Short courses:</strong> {SHORT_COURSES}
+          <strong>Short courses:</strong> <AbbrText>{SHORT_COURSES}</AbbrText>
         </p>
       </CvSection>
 
       <CvSection id="interests" title="Interests">
         {PROFILE.interests.map((interest) => (
-          <p key={interest}>{interest}</p>
+          <p key={interest}>
+            <AbbrText>{interest}</AbbrText>
+          </p>
         ))}
       </CvSection>
     </Stack>

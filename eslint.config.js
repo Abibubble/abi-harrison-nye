@@ -73,8 +73,13 @@ export default defineConfig([
   },
   {
     // Plain JavaScript config files aren't part of the TypeScript project.
-    files: ['**/*.js'],
+    files: ['**/*.js', '**/*.cjs'],
     extends: [tseslint.configs.disableTypeChecked],
+  },
+  {
+    // CommonJS files, such as the Lighthouse CI config, can only load modules with require().
+    files: ['**/*.cjs'],
+    rules: { '@typescript-eslint/no-require-imports': 'off' },
   },
   prettier,
 ]);

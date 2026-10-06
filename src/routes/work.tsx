@@ -1,6 +1,8 @@
+import { Abbr, AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
+import { PlainSummary } from '../components/PlainSummary';
 import { Stack } from '../components/Stack';
 import { WorkHistory } from '../components/WorkHistory';
 import { pageTitle } from '../content/site';
@@ -25,15 +27,22 @@ export default function Work() {
       <Stack gap={4}>
         <PageHeading>Work</PageHeading>
         <p>What I’ve worked on as a software engineer, and as an accessibility specialist.</p>
+        <PlainSummary />
       </Stack>
       <WorkHistory companies={TECH_ROLES} headingLevel={2} />
       <Stack as="section" gap={4} aria-labelledby="before-tech">
         <Heading level={2} id="before-tech">
           Before tech
         </Heading>
-        <p>{BEFORE_TECH_SUMMARY}</p>
         <p>
-          You can read about those roles in full on <Link to="/cv">my CV</Link>.
+          <AbbrText>{BEFORE_TECH_SUMMARY}</AbbrText>
+        </p>
+        <p>
+          You can read about those roles in full on{' '}
+          <Link to="/cv">
+            my <Abbr name="CV" />
+          </Link>
+          .
         </p>
       </Stack>
     </Stack>

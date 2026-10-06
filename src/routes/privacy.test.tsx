@@ -50,11 +50,11 @@ describe('Privacy page', () => {
     );
   });
 
-  it('writes out abbreviations in full the first time', () => {
+  it('writes out abbreviations in full the first time, apart from ones most people know', () => {
     renderWithRouter(<Privacy />);
 
     expect(region('Who’s responsible for your information')).toHaveTextContent(
-      'United Kingdom (UK) data protection law',
+      'Under UK data protection law',
     );
     expect(region('The contact form')).toHaveTextContent(
       'General Data Protection Regulation (GDPR)',
@@ -74,10 +74,22 @@ describe('Privacy page', () => {
     ).toHaveAttribute('href', 'https://ico.org.uk/make-a-complaint/');
   });
 
+  it('gives each link a different name from any link going somewhere else (WCAG 2.4.9)', () => {
+    renderWithRouter(<Privacy />);
+
+    const destinations = new Map<string, string>();
+    for (const link of screen.getAllByRole('link')) {
+      const name = link.textContent.toLowerCase();
+      const href = link.getAttribute('href') ?? '';
+      expect(destinations.get(name) ?? href, name).toBe(href);
+      destinations.set(name, href);
+    }
+  });
+
   it('explains what the display settings store, linking to them', () => {
     renderWithRouter(<Privacy />);
 
-    const section = region('Display settings');
+    const section = region('What the display settings save');
     expect(section).toHaveTextContent('never sent to me or anyone else');
     expect(within(section).getByRole('link', { name: 'display settings' })).toHaveAttribute(
       'href',

@@ -1,4 +1,5 @@
 import type { Qualification, SkillGroup, SpeakingEngagement } from '../../content/cv';
+import { AbbrText } from '../Abbr';
 import type { Talk } from '../../content/talks';
 import { Link } from '../Link';
 import { Stack } from '../Stack';
@@ -12,7 +13,9 @@ export function SkillsList({ groups }: { groups: readonly SkillGroup[] }) {
       {groups.map((group) => (
         <div key={group.category} className={styles.skillGroup}>
           <dt className={styles.term}>{group.category}</dt>
-          <dd>{group.skills.join(', ')}</dd>
+          <dd>
+            <AbbrText>{group.skills.join(', ')}</AbbrText>
+          </dd>
         </div>
       ))}
     </dl>
@@ -25,9 +28,17 @@ export function QualificationList({ items }: { items: readonly Qualification[] }
     <Stack as="ul" gap={3}>
       {items.map((item) => (
         <li key={item.title}>
-          <strong>{item.title}</strong>, {item.provider},{' '}
+          <strong>
+            <AbbrText>{item.title}</AbbrText>
+          </strong>
+          , <AbbrText>{item.provider}</AbbrText>,{' '}
           {item.to ? <DateRange from={item.from} to={item.to} /> : <Time date={item.from} />}
-          {item.detail && <span className={styles.detail}> {item.detail}</span>}
+          {item.detail && (
+            <span className={styles.detail}>
+              {' '}
+              <AbbrText>{item.detail}</AbbrText>
+            </span>
+          )}
         </li>
       ))}
     </Stack>
@@ -52,8 +63,15 @@ export function SpeakingList({ talks, withoutPages }: SpeakingListProps) {
     <Stack as="ul" gap={3}>
       {items.map((item) => (
         <li key={item.title}>
-          {item.href ? <Link to={item.href}>{item.title}</Link> : `“${item.title}”`}, {item.event},{' '}
-          {item.location}, <Time date={item.date} />
+          {item.href ? (
+            <Link to={item.href}>{item.title}</Link>
+          ) : (
+            <>
+              “<AbbrText>{item.title}</AbbrText>”
+            </>
+          )}
+          , <AbbrText>{item.event}</AbbrText>, <AbbrText>{item.location}</AbbrText>,{' '}
+          <Time date={item.date} />
         </li>
       ))}
     </Stack>

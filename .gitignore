@@ -171,3 +171,7 @@ blob-report/
 
 # Personal list of future work that's blocked or waiting on something
 /TODO.md
+
+# Lighthouse CI reports
+.lighthouseci
+lighthouse-report

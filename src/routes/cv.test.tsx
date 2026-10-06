@@ -15,9 +15,9 @@ describe('CV page', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'CV' })).toBeInTheDocument();
     expect(screen.getByText('Abi Harrison-Nye')).toBeInTheDocument();
-    expect(
-      screen.getByText('Software engineer and accessibility specialist, Hertfordshire, UK'),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/^Software engineer and accessibility specialist,/)).toHaveTextContent(
+      'Software engineer and accessibility specialist, Hertfordshire, UK',
+    );
   });
 
   it('never shows a phone number or email address', () => {

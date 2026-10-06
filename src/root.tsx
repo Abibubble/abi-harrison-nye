@@ -7,9 +7,11 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  useLocation,
 } from 'react-router';
 
 import type { Route } from './+types/root';
+import { AbbreviationScope } from './components/Abbr';
 import { ErrorPage } from './components/ErrorPage';
 import { NotFoundPage } from './components/NotFoundPage';
 import { SiteShell } from './components/SiteShell';
@@ -62,9 +64,14 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
+
   return (
     <SiteShell>
-      <Outlet />
+      {/* Keyed by the address, so each page writes out its own first use of each abbreviation. */}
+      <AbbreviationScope key={pathname}>
+        <Outlet />
+      </AbbreviationScope>
     </SiteShell>
   );
 }

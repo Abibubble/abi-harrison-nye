@@ -1,4 +1,5 @@
 import type { Talk } from '../../content/talks';
+import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
 import { type HeadingLevel, Heading } from '../Heading';
 import { Link } from '../Link';
@@ -27,7 +28,9 @@ export function TalkItem({ talk, headingLevel }: TalkItemProps) {
         <p className={styles.meta}>
           {talk.event}, {talk.location}, <Time date={talk.date} />
         </p>
-        <p>{talk.summary}</p>
+        <p>
+          <AbbrText>{talk.summary}</AbbrText>
+        </p>
         <p className={styles.meta}>{mediaSummary(talk)}</p>
       </Stack>
     </Card>
