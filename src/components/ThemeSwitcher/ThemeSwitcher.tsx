@@ -27,20 +27,36 @@ export function ThemeSwitcher({ layout = 'inline' }: ThemeSwitcherProps) {
         <label htmlFor={id} className={styles.label}>
           Theme
         </label>
-        <select
-          id={id}
-          className={styles.select}
-          value={settings.theme}
-          onChange={(event) => {
-            update({ theme: event.target.value as DisplaySettings['theme'] });
-          }}
-        >
-          {SETTINGS.theme.options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        {/* The browser's own arrow is replaced, so the space around it is the same everywhere. */}
+        <span className={styles.selectWrap}>
+          <select
+            id={id}
+            className={styles.select}
+            value={settings.theme}
+            onChange={(event) => {
+              update({ theme: event.target.value as DisplaySettings['theme'] });
+            }}
+          >
+            {SETTINGS.theme.options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <svg
+            className={styles.chevron}
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m4 6 4 4 4-4" />
+          </svg>
+        </span>
       </div>
       <Link to={`/accessibility#${DISPLAY_SETTINGS_ID}`} className={styles.link}>
         More display settings

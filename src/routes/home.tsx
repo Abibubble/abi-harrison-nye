@@ -39,17 +39,17 @@ export default function Home() {
           </Stack>
           <p>
             I’m a software engineer at giffgaff, where I’ve worked since 2021. I build the pages and
-            journeys people use to buy phones, in React and TypeScript, and I created giffgaff’s
-            original design system.
+            journeys people use to buy phones, in React and TypeScript, and I built and maintained
+            giffgaff’s React design system.
           </p>
           <p>
-            I’m a trained accessibility auditor. I founded and lead <Abbr name="HAND" expand />,
-            giffgaff’s accessibility and neurodiversity employee network group, and I mentor
-            apprentices into engineering roles.
+            I’m a trained accessibility auditor. I’m the founder and current Lead for the{' '}
+            <Abbr name="HAND" expand />, giffgaff’s accessibility and neurodiversity employee
+            network group. I also mentored apprentices into full engineering roles.
           </p>
           <p>
-            In June 2026 I spoke at LeadDev LDX3 in London about moving accessibility from debt to
-            done.
+            In June 2026 I spoke at LeadDev LDX3 in London, with a talk titled ‘Moving accessibility
+            from debt to done’.
           </p>
         </Stack>
       </div>

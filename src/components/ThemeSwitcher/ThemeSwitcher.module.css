@@ -41,18 +41,60 @@
   letter-spacing: var(--letter-spacing-emphasis);
 }
 
+/* Holds the dropdown and its arrow, which sits on top of the dropdown's right hand end. */
+.selectWrap {
+  position: relative;
+  display: inline-grid;
+  max-width: 100%;
+}
+
+/*
+ * Styled like the secondary button, in purple, so it reads as a control to use. A dark border made it
+ * look like it was already selected, as it was close to the focus ring.
+ */
 .select {
   max-width: 100%;
   min-height: var(--size-target-min);
-  padding-inline: var(--space-2);
-  color: var(--color-text);
+
+  /* Room on the right for the arrow, plus 4px after it and 8px before it. */
+  padding-inline: var(--space-2) calc(var(--space-1) + var(--space-4) + var(--space-2));
+  color: var(--color-action);
+  appearance: none;
   cursor: pointer;
-  background: var(--color-bg);
-  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-action);
   border-radius: var(--radius-small);
 }
 
+.select:hover {
+  color: var(--color-action-hover);
+  border-color: var(--color-action-hover);
+}
+
+/* Some browsers draw the list of options in the dropdown's colours, so they're set separately. */
+.select option {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* 4px clear of the inside of the border. Clicks go through it to the dropdown. */
+.chevron {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: calc(var(--border-width) + var(--space-1));
+  width: var(--space-4);
+  height: var(--space-4);
+  margin-block: auto;
+  color: var(--color-action);
+  pointer-events: none;
+}
+
+.selectWrap:hover .chevron {
+  color: var(--color-action-hover);
+}
+
 /* Fills a phone's width, but no wider than other single line fields. */
+.stacked .selectWrap,
 .stacked .select {
   width: 100%;
   max-width: var(--size-input-max);

@@ -19,8 +19,8 @@ describe('Home page', () => {
   it('expands HAND the first time it appears (WCAG 3.1.4)', () => {
     renderWithRouter(<Home />);
 
-    expect(screen.getByText(/I founded and lead/)).toHaveTextContent(
-      'Home of Accessibility and NeuroDiversity (HAND)',
+    expect(screen.getByText(/the founder and current Lead/)).toHaveTextContent(
+      'the founder and current Lead for the Home of Accessibility and NeuroDiversity (HAND),',
     );
   });
 
