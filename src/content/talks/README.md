@@ -16,6 +16,13 @@ The tests fail if a talk has no transcript, or a transcript has no talk.
 - Write abbreviations out in full the first time, followed by the abbreviation in brackets.
 - Code blocks use the site's monospaced font.
 
+## Video details
+
+Each video in `talks.ts` says whether it has `captions`, and whether it's `describedAloud`, meaning
+everything shown on screen is also said in the talk. Videos without either are listed as known
+issues on the Accessibility page automatically, so be accurate. Every video is also listed as not
+having sign language interpretation.
+
 ## Example
 
 ```md

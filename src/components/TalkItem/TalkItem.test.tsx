@@ -13,7 +13,7 @@ const TALK: Talk = {
   location: 'London',
   date: '2026-06',
   summary: 'A talk used to test this component.',
-  video: { href: 'https://www.youtube.com/watch?v=example', captions: true },
+  video: { href: 'https://www.youtube.com/watch?v=example', captions: true, describedAloud: true },
 };
 
 describe('TalkItem', () => {
@@ -38,10 +38,13 @@ describe('TalkItem', () => {
 
   it.each([
     [
-      { href: 'https://www.youtube.com/watch?v=a', captions: true },
+      { href: 'https://www.youtube.com/watch?v=a', captions: true, describedAloud: true },
       'Video with captions, and transcript',
     ],
-    [{ href: 'https://www.youtube.com/watch?v=a', captions: false }, 'Video and transcript'],
+    [
+      { href: 'https://www.youtube.com/watch?v=a', captions: false, describedAloud: false },
+      'Video and transcript',
+    ],
     [undefined, 'Transcript'],
   ])('says what’s available: %o gives “%s”', (video, summary) => {
     renderWithRouter(<TalkItem talk={{ ...TALK, video }} headingLevel={2} />);

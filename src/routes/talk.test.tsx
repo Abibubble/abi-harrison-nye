@@ -15,7 +15,11 @@ const PAGE: TalkPageData = {
     location: 'London',
     date: '2026-06-12',
     summary: 'A talk used to test this page.',
-    video: { href: 'https://www.youtube.com/watch?v=example', captions: false },
+    video: {
+      href: 'https://www.youtube.com/watch?v=example',
+      captions: false,
+      describedAloud: false,
+    },
     slidesHref: 'https://example.com/slides',
   },
   transcriptHtml: renderTranscript('### Introduction\n\nOn screen: the title slide.'),

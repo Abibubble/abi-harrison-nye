@@ -10,7 +10,11 @@ const href = 'https://www.youtube.com/watch?v=example';
 describe('TalkVideo', () => {
   it('links to the video on YouTube, naming the talk so the link makes sense alone', () => {
     renderWithRouter(
-      <TalkVideo title="Example talk" video={{ href, captions: true }} transcriptId="transcript" />,
+      <TalkVideo
+        title="Example talk"
+        video={{ href, captions: true, describedAloud: true }}
+        transcriptId="transcript"
+      />,
     );
 
     expect(
@@ -20,7 +24,11 @@ describe('TalkVideo', () => {
 
   it('says when the video has captions', () => {
     renderWithRouter(
-      <TalkVideo title="Example talk" video={{ href, captions: true }} transcriptId="transcript" />,
+      <TalkVideo
+        title="Example talk"
+        video={{ href, captions: true, describedAloud: true }}
+        transcriptId="transcript"
+      />,
     );
 
     expect(screen.getByText('The video has captions.')).toBeInTheDocument();
@@ -30,7 +38,7 @@ describe('TalkVideo', () => {
     renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: false }}
+        video={{ href, captions: false, describedAloud: false }}
         transcriptId="transcript"
       />,
     );
@@ -46,7 +54,7 @@ describe('TalkVideo', () => {
     const { container } = renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: false }}
+        video={{ href, captions: false, describedAloud: false }}
         transcriptId="transcript"
       />,
     );

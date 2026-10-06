@@ -32,7 +32,11 @@ const meta = {
       location: 'London',
       date: '2026-06-12',
       summary: 'An example to show how a talk’s page looks. Real talks are added in talks.ts.',
-      video: { href: 'https://www.youtube.com/watch?v=example', captions: false },
+      video: {
+        href: 'https://www.youtube.com/watch?v=example',
+        captions: false,
+        describedAloud: false,
+      },
       slidesHref: 'https://example.com/slides',
     },
     transcriptHtml: EXAMPLE_TRANSCRIPT,
@@ -49,7 +53,11 @@ export const WithCaptions: Story = {
   args: {
     talk: {
       ...meta.args.talk,
-      video: { href: 'https://www.youtube.com/watch?v=example', captions: true },
+      video: {
+        href: 'https://www.youtube.com/watch?v=example',
+        captions: true,
+        describedAloud: true,
+      },
     },
   },
 };

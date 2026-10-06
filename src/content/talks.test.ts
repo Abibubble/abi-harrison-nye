@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
 import { formatDate } from '../components/Time';
-import { type Talk, TALKS, findTalk, talksWithoutCaptions } from './talks';
+import {
+  type Talk,
+  TALKS,
+  findTalk,
+  talksNeedingAudioDescription,
+  talksWithVideos,
+  talksWithoutCaptions,
+} from './talks';
 import { TRANSCRIPTS, bySlug, renderTranscript } from './transcripts';
 
 const EXAMPLE_TALKS: Talk[] = [
@@ -12,7 +19,11 @@ const EXAMPLE_TALKS: Talk[] = [
     location: 'London',
     date: '2026-06',
     summary: 'A talk with captions.',
-    video: { href: 'https://www.youtube.com/watch?v=example1', captions: true },
+    video: {
+      href: 'https://www.youtube.com/watch?v=example1',
+      captions: true,
+      describedAloud: true,
+    },
   },
   {
     slug: 'uncaptioned-talk',
@@ -21,7 +32,11 @@ const EXAMPLE_TALKS: Talk[] = [
     location: 'Online',
     date: '2025-11-20',
     summary: 'A talk without captions yet.',
-    video: { href: 'https://www.youtube.com/watch?v=example2', captions: false },
+    video: {
+      href: 'https://www.youtube.com/watch?v=example2',
+      captions: false,
+      describedAloud: false,
+    },
   },
   {
     slug: 'talk-without-video',
@@ -56,6 +71,33 @@ describe('talksWithoutCaptions', () => {
 
   it('looks at the real talks by default', () => {
     expect(talksWithoutCaptions()).toEqual(TALKS.filter((talk) => talk.video?.captions === false));
+  });
+});
+
+describe('talksNeedingAudioDescription', () => {
+  it('lists talks whose videos show things not described aloud, but not talks without videos', () => {
+    expect(talksNeedingAudioDescription(EXAMPLE_TALKS).map((talk) => talk.slug)).toEqual([
+      'uncaptioned-talk',
+    ]);
+  });
+
+  it('looks at the real talks by default', () => {
+    expect(talksNeedingAudioDescription()).toEqual(
+      TALKS.filter((talk) => talk.video?.describedAloud === false),
+    );
+  });
+});
+
+describe('talksWithVideos', () => {
+  it('lists only talks with videos', () => {
+    expect(talksWithVideos(EXAMPLE_TALKS).map((talk) => talk.slug)).toEqual([
+      'captioned-talk',
+      'uncaptioned-talk',
+    ]);
+  });
+
+  it('looks at the real talks by default', () => {
+    expect(talksWithVideos()).toEqual(TALKS.filter((talk) => talk.video));
   });
 });
 

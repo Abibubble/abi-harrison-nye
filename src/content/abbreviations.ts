@@ -13,6 +13,7 @@ export const ABBREVIATIONS = {
   CV: 'curriculum vitae',
   FE: 'frontend',
   GAAD: 'Global Accessibility Awareness Day',
+  GDPR: 'General Data Protection Regulation',
   HAND: 'Home of Accessibility and NeuroDiversity',
   HTML: 'HyperText Markup Language',
   SQL: 'Structured Query Language',

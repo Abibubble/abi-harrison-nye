@@ -1,0 +1,55 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: var(--size-measure);
+  margin: 0;
+}
+
+/* Each known issue: what it fails, who it affects, the workaround and the plan. */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--size-measure);
+  margin: 0;
+}
+
+.details dt,
+.glossary dt {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.details dd,
+.glossary dd {
+  margin: 0;
+}
+
+.details ul {
+  margin: 0;
+}
+
+/* Abbreviations in a narrow column beside what they stand for, or above it on narrow screens. */
+.glossary {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-4);
+  max-width: var(--size-measure);
+  margin: 0;
+}
+
+.glossary > div {
+  display: contents;
+}
+
+@media (width < 30em) {
+  .glossary {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .glossary dd {
+    margin-block-end: var(--space-3);
+  }
+}

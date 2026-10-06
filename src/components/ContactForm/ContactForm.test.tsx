@@ -135,7 +135,7 @@ describe('ContactForm', () => {
 
       expect(screen.getByRole('link', { name: 'How your information is used' })).toHaveAttribute(
         'href',
-        '/privacy',
+        '/privacy#contact-form',
       );
     });
 

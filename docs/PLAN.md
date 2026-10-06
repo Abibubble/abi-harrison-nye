@@ -580,16 +580,21 @@ The contact form collects names, email addresses and messages, so UK GDPR applie
 
 ## Accessibility page
 
-- **Conformance status:** partially conformant with WCAG 2.2 Level AAA. Everything outside video
-  meets AAA. The video shortfalls are listed in full below.
+- **Conformance status:** aims for WCAG 2.2 Level AAA. No formal conformance claim until the audit.
+  The page says it doesn't fully meet AAA whenever there are talk videos, since none have sign
+  language, and lists the shortfalls in full below.
 - Date last tested, and how it was tested (automated tools, manual checks and the assistive technology
   used)
 - **Known issues**, each with the criterion, who it affects, the workaround and the plan:
   - Captions (1.2.2): an automatically generated list of talks without captions. Workaround: the full
     transcript on each talk page. Plan: add captions over time.
-  - Audio description (1.2.5 and 1.2.7): talks where slides or demos aren't fully described aloud.
-    Workaround: the transcript describes everything shown on screen.
-- **Exceptions:** sign language interpretation (1.2.6) isn't provided for videos, with the reason
+  - Audio description (1.2.5 and 1.2.7): talks where slides or demos aren't fully described aloud,
+    from each video's `describedAloud`. Workaround: the transcript describes everything shown on
+    screen.
+  - Sign language (1.2.6): isn't provided for any video, with the reason. Listed as a known issue,
+    since WCAG has no exceptions, only while there are talk videos.
+- Manual testing is only listed once it's been done, from `MANUAL_TESTING`
+- An "On this page" contents list, as the page is long. The Privacy notice has one too.
 - A note that YouTube videos are hosted on YouTube, which is outside this site's control
 - How to report a problem, linking to the contact form
 - Display settings
@@ -684,7 +689,7 @@ Each phase is written test first.
    content.
 8. **CV (done):** CV page built from the Word and PDF versions
 9. **Contact (done):** form, review step and EmailJS. Waiting on the EmailJS account setup.
-10. **Statement pages:** Accessibility and Privacy
+10. **Statement pages (done):** Accessibility and Privacy. Waiting on a review of the drafted text.
 11. **SEO:** meta tags, sitemap, robots, structured data, icons
 12. **Audit:** full automated suite, manual testing, performance pass
 13. **Launch:** deploy, then add the custom domain when it's ready

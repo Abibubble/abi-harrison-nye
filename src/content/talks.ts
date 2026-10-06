@@ -3,6 +3,11 @@ export interface TalkVideo {
   href: string;
   /** Whether the video has accurate captions. Uncaptioned videos are listed as known issues. */
   captions: boolean;
+  /**
+   * Whether everything shown on screen, such as slides and demos, is also described aloud, so the
+   * video needs no audio description. Videos that aren't are listed as known issues.
+   */
+  describedAloud: boolean;
 }
 
 export interface Talk {
@@ -31,4 +36,14 @@ export function findTalk(slug: string, talks: readonly Talk[] = TALKS): Talk | u
 /** Talks whose videos don't have captions yet, for the known issues on the Accessibility page. */
 export function talksWithoutCaptions(talks: readonly Talk[] = TALKS): Talk[] {
   return talks.filter((talk) => talk.video && !talk.video.captions);
+}
+
+/** Talks with videos that show things not described aloud, for the Accessibility page's known issues. */
+export function talksNeedingAudioDescription(talks: readonly Talk[] = TALKS): Talk[] {
+  return talks.filter((talk) => talk.video && !talk.video.describedAloud);
+}
+
+/** Talks with videos, which don't have sign language interpretation, as the Accessibility page says. */
+export function talksWithVideos(talks: readonly Talk[] = TALKS): Talk[] {
+  return talks.filter((talk) => talk.video);
 }

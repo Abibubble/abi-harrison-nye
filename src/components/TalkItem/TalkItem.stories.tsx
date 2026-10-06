@@ -14,7 +14,11 @@ const meta = {
       location: 'London',
       date: '2026-06',
       summary: 'An example to show how a talk looks in the list.',
-      video: { href: 'https://www.youtube.com/watch?v=example', captions: true },
+      video: {
+        href: 'https://www.youtube.com/watch?v=example',
+        captions: true,
+        describedAloud: true,
+      },
     },
   },
 } satisfies Meta<typeof TalkItem>;

@@ -9,6 +9,7 @@ import {
   validateMessage,
 } from '../../contact/message';
 import { sendMessage } from '../../contact/sendMessage';
+import { PRIVACY_CONTACT_FORM_ID } from '../../content/statements';
 import { Button } from '../Button';
 import { Cluster } from '../Cluster';
 import { ErrorSummary, type FormError } from '../ErrorSummary';
@@ -139,7 +140,7 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
           <p>
             When you send it, your message comes to me by email through EmailJS, a service that
             delivers emails from websites. I’ll only use your email address to reply to you.{' '}
-            <Link to="/privacy">How your information is used</Link>.
+            <Link to={`/privacy#${PRIVACY_CONTACT_FORM_ID}`}>How your information is used</Link>.
           </p>
           <Cluster gap={3}>
             <Button onClick={() => void sendIt()}>
