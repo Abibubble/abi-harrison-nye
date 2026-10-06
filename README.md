@@ -46,8 +46,14 @@ EmailJS dashboard:
 There's no rate limit setting in the dashboard. Spam protection comes from the hidden honeypot field
 in the form, and EmailJS's own limit of one request per second.
 
-The tests never send anything. Unit tests use a fake, and the end to end tests intercept requests to
-EmailJS.
+The tests never send anything or use EmailJS credits:
+
+- Unit and Storybook tests get blank EmailJS settings, whatever's in `.env`. Unit tests also block
+  every real request, and fail any test that makes one.
+- End to end tests build the site with made up settings. They import `test` from
+  `e2e/support/test.ts`, which blocks EmailJS in every test, and fails any test that reaches it
+  without planning an answer with `emailJs.answerWith()`. A lint rule stops specs importing
+  Playwright's own `test` instead.
 
 ## Scripts
 

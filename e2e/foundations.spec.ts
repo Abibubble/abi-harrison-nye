@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from './support/test';
 
 const LIGHT_BACKGROUND = 'rgb(245, 239, 250)';
 const DARK_BACKGROUND = 'rgb(22, 12, 36)';

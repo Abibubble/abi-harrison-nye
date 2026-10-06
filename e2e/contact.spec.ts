@@ -1,17 +1,6 @@
-import { type Page, type Route, expect, test } from '@playwright/test';
+import { type Page, expect, test } from './support/test';
 
-const EMAILJS = 'https://api.emailjs.com/**';
-
-/** Every request to EmailJS, answered with the given status, so nothing is ever really sent. */
-async function interceptEmailJs(page: Page, ...statuses: number[]) {
-  const requests: unknown[] = [];
-  await page.route(EMAILJS, async (route: Route) => {
-    requests.push(route.request().postDataJSON());
-    const status = statuses.shift() ?? 200;
-    await route.fulfill({ status, body: status === 200 ? 'OK' : 'Error' });
-  });
-  return requests;
-}
+// EmailJS is blocked in every test. Tests that send plan its answer with emailJs.answerWith().
 
 async function fillIn(page: Page) {
   await page.getByRole('textbox', { name: 'Your name' }).fill('Sam');
@@ -20,8 +9,12 @@ async function fillIn(page: Page) {
 }
 
 test.describe('Contact form', () => {
-  test('sends a message after checking it, with nothing sent until then', async ({ page }) => {
-    const requests = await interceptEmailJs(page, 200);
+  test('sends a message after checking it, with nothing sent until then', async ({
+    page,
+    emailJs,
+  }) => {
+    emailJs.answerWith(200);
+    const { requests } = emailJs;
     await page.goto('/contact');
     await fillIn(page);
 
@@ -46,8 +39,8 @@ test.describe('Contact form', () => {
     ]);
   });
 
-  test('can be completed with the keyboard alone', async ({ page, browserName }) => {
-    await interceptEmailJs(page, 200);
+  test('can be completed with the keyboard alone', async ({ page, browserName, emailJs }) => {
+    emailJs.answerWith(200);
     await page.goto('/contact');
     await page.getByRole('textbox', { name: 'Your name' }).focus();
     const next = browserName === 'webkit' ? 'Alt+Tab' : 'Tab';
@@ -70,8 +63,8 @@ test.describe('Contact form', () => {
     await expect(page.getByRole('alert', { name: 'Message sent' })).toBeVisible();
   });
 
-  test('lists problems at the top, linking to each field', async ({ page }) => {
-    const requests = await interceptEmailJs(page);
+  test('lists problems at the top, linking to each field', async ({ page, emailJs }) => {
+    const { requests } = emailJs;
     await page.goto('/contact');
 
     await page.getByRole('button', { name: 'Continue' }).click();
@@ -85,8 +78,9 @@ test.describe('Contact form', () => {
 
   test('counts characters, and stops a message over the limit without cutting it off', async ({
     page,
+    emailJs,
   }) => {
-    const requests = await interceptEmailJs(page);
+    const { requests } = emailJs;
     await page.goto('/contact');
     await fillIn(page);
     const message = page.getByRole('textbox', { name: 'Your message' });
@@ -103,8 +97,8 @@ test.describe('Contact form', () => {
     expect(requests).toHaveLength(0);
   });
 
-  test('keeps everything when sending fails, and can try again', async ({ page }) => {
-    await interceptEmailJs(page, 500, 200);
+  test('keeps everything when sending fails, and can try again', async ({ page, emailJs }) => {
+    emailJs.answerWith(500, 200);
     await page.goto('/contact');
     await fillIn(page);
     await page.getByRole('button', { name: 'Continue' }).click();

@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from './support/test';
 
 /** Prints the page to an A4 PDF, as "Save as PDF" would, and counts its pages. */
 async function printedPages(page: Page): Promise<number> {

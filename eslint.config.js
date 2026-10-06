@@ -55,6 +55,23 @@ export default defineConfig([
     },
   },
   {
+    files: ['e2e/**/*.spec.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@playwright/test',
+              message:
+                'Import from ./support/test instead. It blocks EmailJS, so tests never send real messages.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     // Plain JavaScript config files aren't part of the TypeScript project.
     files: ['**/*.js'],
     extends: [tseslint.configs.disableTypeChecked],

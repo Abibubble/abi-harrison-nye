@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from './support/test';
 
 import { saveDisplaySettings } from './support/settings';
 

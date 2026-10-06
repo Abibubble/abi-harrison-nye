@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './support/test';
 
 test.describe('Footer copyright', () => {
   test('is prerendered with the year the site was built', async ({ request }) => {

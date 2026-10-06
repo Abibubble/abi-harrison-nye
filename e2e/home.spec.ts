@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './support/test';
 
 test.describe('Home page', () => {
   test('is served as prerendered HTML', async ({ request }) => {

@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test } from './support/test';
 
 import { expectNoAxeViolations } from './support/axe';
 import { ROUTES, THEMES } from './support/routes';
