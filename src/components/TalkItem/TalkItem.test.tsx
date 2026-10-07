@@ -12,7 +12,7 @@ const TALK: Talk = {
   event: 'Example conference',
   location: 'London',
   date: '2026-06',
-  summary: 'A talk used to test this component.',
+  summary: 'A talk used to test this component',
   video: { href: 'https://www.youtube.com/watch?v=example', captions: true, describedAloud: true },
 };
 
@@ -33,7 +33,7 @@ describe('TalkItem', () => {
     expect(screen.getByText(/Example conference/)).toHaveTextContent(
       'Example conference, London, June 2026',
     );
-    expect(screen.getByText('A talk used to test this component.')).toBeInTheDocument();
+    expect(screen.getByText('A talk used to test this component')).toBeInTheDocument();
   });
 
   it.each([

@@ -17,7 +17,6 @@ function mediaSummary(talk: Talk): string {
   return talk.video.captions ? 'Video with captions, and transcript' : 'Video and transcript';
 }
 
-/** One talk in the list, linking to its page with the video and transcript. */
 export function TalkItem({ talk, headingLevel }: TalkItemProps) {
   return (
     <Card as="article">

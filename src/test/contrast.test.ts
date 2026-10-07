@@ -16,7 +16,7 @@ describe('contrastRatio', () => {
   });
 
   it('matches a known WCAG value', () => {
-    // #767676 on white is the well known lightest grey that passes AA at 4.5:1.
+    // #767676 on white is the well known lightest grey that passes AA at 4.5:1
     expect(contrastRatio('#767676', '#ffffff')).toBeCloseTo(4.54, 2);
   });
 

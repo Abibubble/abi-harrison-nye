@@ -39,7 +39,7 @@ describe('QualificationList', () => {
             provider: 'Example College',
             from: '2020',
             to: '2021',
-            detail: 'Merit.',
+            detail: 'Merit',
           },
           { title: 'Training', provider: 'Example Trainer', from: '2025-10' },
         ]}
@@ -47,7 +47,7 @@ describe('QualificationList', () => {
     );
     const items = screen.getAllByRole('listitem');
 
-    expect(nth(items, 0)).toHaveTextContent('Diploma, Example College, 2020 to 2021 Merit.');
+    expect(nth(items, 0)).toHaveTextContent('Diploma, Example College, 2020 to 2021 Merit');
     expect(nth(items, 1)).toHaveTextContent('Training, Example Trainer, October 2025');
   });
 });
@@ -60,7 +60,7 @@ describe('SpeakingList', () => {
       event: 'Example conference',
       location: 'London',
       date: '2025-03',
-      summary: 'A talk.',
+      summary: 'A talk',
     },
   ];
   const withoutPages = [

@@ -16,8 +16,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** The first use on a page, with the full form written out. */
 export const FirstUse: Story = { args: { expand: true } };
 
-/** Later uses, with the full form on hover only. */
 export const LaterUse: Story = {};

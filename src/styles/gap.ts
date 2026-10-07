@@ -1,6 +1,6 @@
 import styles from './gap.module.css';
 
-/** A step on the spacing scale: 1 is 4px, 2 is 8px, 3 is 16px, 4 is 24px, 5 is 32px, 6 is 48px, 7 is 96px. */
+/** A step on the spacing scale: 1 is 4px, 2 is 8px, 3 is 16px, 4 is 24px, 5 is 32px, 6 is 48px, 7 is 96px */
 export type SpaceStep = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 const GAP_CLASSES: Record<SpaceStep, string | undefined> = {
@@ -15,7 +15,7 @@ const GAP_CLASSES: Record<SpaceStep, string | undefined> = {
 
 /**
  * The class for a gap on the spacing scale. Spacing uses classes rather than inline styles, because
- * the Content Security Policy blocks inline styles in prerendered HTML.
+ * the Content Security Policy blocks inline styles in prerendered HTML
  */
 export function gapClass(step: SpaceStep): string | undefined {
   return GAP_CLASSES[step];

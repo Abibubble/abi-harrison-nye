@@ -45,7 +45,7 @@ const SECTIONS = {
 
 interface KnownIssueProps {
   title: string;
-  /** The success criteria it fails, such as "1.2.2 Captions (Prerecorded), Level A". */
+  /** The success criteria it fails, such as "1.2.2 Captions (Prerecorded), Level A" */
   criteria: string[];
   affects: string;
   workaround: ReactNode;
@@ -53,7 +53,7 @@ interface KnownIssueProps {
   talks: Talk[];
 }
 
-/** One known issue, saying who it affects, how to get around it and what I'm doing about it. */
+/** One known issue, saying who it affects, how to get around it and what I'm doing about it */
 function KnownIssue({ title, criteria, affects, workaround, plan, talks }: KnownIssueProps) {
   return (
     <Stack gap={3}>

@@ -1,4 +1,4 @@
-/** Content only on the CV page. Work, talks and recognition come from their own content files. */
+/** Content only on the CV page. Work, talks and recognition come from their own content files */
 
 export interface SkillGroup {
   category: string;
@@ -10,7 +10,7 @@ export interface Qualification {
   provider: string;
   /** YYYY or YYYY-MM */
   from: string;
-  /** YYYY or YYYY-MM. Left out for a single date. */
+  /** YYYY or YYYY-MM. Left out for a single date */
   to?: string;
   detail?: string;
 }
@@ -23,7 +23,7 @@ export interface SpeakingEngagement {
   date: string;
 }
 
-/** The profile at the top of the CV. Abbreviations are written out in full the first time. */
+/** The profile at the top of the CV. Abbreviations are written out in full the first time */
 export const CV_PROFILE = [
   'Software engineer and accessibility specialist at giffgaff since 2021, building customer-facing React and TypeScript micro frontends. Built and maintained the company’s React design system, and mentored apprentices into full engineering roles.',
   'A trained accessibility auditor who champions accessibility across the business, bringing an inclusive, test-driven approach that helps teams ship products meeting the Web Content Accessibility Guidelines (WCAG).',
@@ -91,7 +91,7 @@ export const SKILLS: SkillGroup[] = [
   },
 ];
 
-/** Newest first. */
+/** Newest first */
 export const QUALIFICATIONS: Qualification[] = [
   { title: 'Accessibility Auditor Training', provider: 'Hassell Inclusion', from: '2025-10' },
   {
@@ -116,7 +116,7 @@ export const SHORT_COURSES =
 
 /**
  * Talks that don't have their own page yet, because their transcript isn't ready. The CV lists them
- * as plain text. Once a talk is added to talks.ts, remove it from here and the CV links to its page.
+ * as plain text. Once a talk is added to talks.ts, remove it from here and the CV links to its page
  */
 export const SPEAKING_WITHOUT_PAGES: SpeakingEngagement[] = [
   {

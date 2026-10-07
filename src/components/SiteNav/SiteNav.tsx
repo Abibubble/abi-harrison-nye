@@ -5,27 +5,15 @@ import { MAIN_NAV } from '../../content/navigation';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import styles from './SiteNav.module.css';
 
-/**
- * The main navigation. Until every link fits on one line beside the site name, the links and the
- * display settings sit in a panel behind a Menu button, once JavaScript has loaded. Without
- * JavaScript the links are always shown, so the navigation never depends on it. Once everything
- * fits, the links are always shown and the display settings move to SiteHeader's slim bar.
- *
- * The open menu pushes the page down rather than covering it, so it can never hide whatever has
- * focus (WCAG 2.4.12). The display settings sit outside the nav landmark, as they aren't navigation.
- */
 export function SiteNav() {
   const { pathname } = useLocation();
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // The menu remembers which page it was opened on, so it closes by itself after navigating.
   const [openOnPath, setOpenOnPath] = useState<string | null>(null);
   const isOpen = openOnPath === pathname;
 
-  // Escape closes the open menu when focus is on the button or inside the menu. Focus goes back to
-  // the button, because the link that had it is about to be hidden.
   useEffect(() => {
     if (!isOpen) return;
 

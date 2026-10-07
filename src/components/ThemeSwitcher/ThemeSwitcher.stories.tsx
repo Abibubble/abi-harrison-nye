@@ -10,5 +10,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Uses the real settings, so choosing a theme here changes Storybook’s theme too. */
 export const Default: Story = {};

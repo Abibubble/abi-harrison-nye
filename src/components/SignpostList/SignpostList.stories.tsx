@@ -12,7 +12,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Narrow the canvas to see the cards wrap into fewer columns. */
 export const Default: Story = {};
 
 export const InTheCreamTheme: Story = { globals: { theme: 'cream' } };

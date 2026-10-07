@@ -15,17 +15,17 @@ test.describe('Theme switcher in the header', () => {
     await page.goto('/');
 
     await themeSelect(page).selectOption('Dark');
-    expect(await bodyBackground(page)).toBe(DARK_BACKGROUND);
+    await expect.poll(() => bodyBackground(page)).toBe(DARK_BACKGROUND);
 
     await page
       .getByRole('navigation', { name: 'Main' })
       .getByRole('link', { name: 'Work' })
       .click();
     await expect(page.getByRole('heading', { level: 1, name: 'Work' })).toBeVisible();
-    expect(await bodyBackground(page)).toBe(DARK_BACKGROUND);
+    await expect.poll(() => bodyBackground(page)).toBe(DARK_BACKGROUND);
 
     await page.reload();
-    expect(await bodyBackground(page)).toBe(DARK_BACKGROUND);
+    await expect.poll(() => bodyBackground(page)).toBe(DARK_BACKGROUND);
     await expect(themeSelect(page)).toHaveValue('dark');
   });
 
@@ -49,7 +49,10 @@ test.describe('Theme switcher in the header', () => {
   });
 });
 
-test.describe('Saved settings', () => {
+test.describe('Saved settings, with no JavaScript files', () => {
+  // The JavaScript files are blocked, so React never starts.
+  test.use({ waitForReact: false });
+
   test('apply before the page is drawn, even before any JavaScript files load', async ({
     page,
   }) => {
@@ -58,12 +61,14 @@ test.describe('Saved settings', () => {
 
     await page.goto('/');
 
-    expect(await bodyBackground(page)).toBe(CREAM_BACKGROUND);
+    await expect.poll(() => bodyBackground(page)).toBe(CREAM_BACKGROUND);
     expect(await page.evaluate(() => getComputedStyle(document.documentElement).fontSize)).toBe(
       '24px',
     );
   });
+});
 
+test.describe('Saved settings', () => {
   test('are ignored if they’ve been tampered with', async ({ page }) => {
     await page.addInitScript(() => {
       localStorage.setItem('display-settings', '{"theme": "<script>", "textSize": 1000}');

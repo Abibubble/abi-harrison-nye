@@ -1,4 +1,4 @@
-/* One class per step of the spacing scale, shared by layout components such as Stack and Cluster. */
+/* One class per step of the spacing scale, shared by layout components such as Stack and Cluster */
 .gap1 {
   gap: var(--space-1);
 }

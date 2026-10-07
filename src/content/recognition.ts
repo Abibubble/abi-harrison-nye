@@ -1,16 +1,16 @@
 export interface Recognition {
-  /** The award or category. */
+  /** The award or category */
   award: string;
-  /** The outcome, such as "Finalist" or "Highly Commended". */
+  /** The outcome, such as "Finalist" or "Highly Commended" */
   result: string;
-  /** Who it recognised, when it wasn't me personally. */
+  /** Who it recognised, when it wasn't me personally */
   recipient?: string;
-  /** The awards it was part of. */
+  /** The awards it was part of */
   awards: string;
   year: number;
 }
 
-/** Newest first. */
+/** Newest first */
 export const RECOGNITION: Recognition[] = [
   {
     award: 'Network Inspirational Role Model',

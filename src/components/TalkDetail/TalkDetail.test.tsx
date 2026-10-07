@@ -11,7 +11,7 @@ const TALK: Talk = {
   event: 'Example meetup',
   location: 'Online',
   date: '2025-03',
-  summary: 'A talk used to test this component.',
+  summary: 'A talk used to test this component',
 };
 
 describe('TalkDetail', () => {

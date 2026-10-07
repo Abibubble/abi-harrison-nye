@@ -5,14 +5,12 @@ export interface ProfileLink {
 
 export interface ProfilePhoto {
   src: string;
-  /** Describes the photo for people who can't see it. Required, and checked by a test. */
   alt: string;
 }
 
 export const PROFILE = {
   headline: 'Software engineer and accessibility specialist',
   location: 'Hertfordshire, UK',
-  /** No photo has been chosen yet, so the Home page shows a placeholder with the site’s mark. */
   photo: undefined as ProfilePhoto | undefined,
   interests: [
     'I’ve been a brass musician for over 20 years, and play in a brass band and a ska punk band.',
@@ -28,7 +26,7 @@ export const PROFILE_LINKS: ProfileLink[] = [
 
 /**
  * My work in plain words, at the top of the Work and CV pages, for anyone who finds the detail hard
- * going (WCAG 3.1.5). Short sentences and everyday words, aiming for a reading age of 9.
+ * going (WCAG 3.1.5). Short sentences and everyday words, aiming for a reading age of 9
  */
 export const PLAIN_SUMMARY = [
   'I’m a software engineer at giffgaff.',

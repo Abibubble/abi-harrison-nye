@@ -1,13 +1,13 @@
-/* The photo sits beside the introduction when there's room, and above it when there isn't. */
+/* The photo sits beside the introduction when there's room, and above it when there isn't */
 .intro {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-5);
   align-items: flex-start;
-}
 
-.intro > :last-child {
-  flex: 1 1 calc(var(--space-7) * 4);
+  > :last-child {
+    flex: 1 1 calc(var(--space-7) * 4);
+  }
 }
 
 .headline {

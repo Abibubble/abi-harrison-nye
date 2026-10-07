@@ -1,10 +1,6 @@
 import { Link } from '../Link';
 import { PageHeading } from '../PageHeading';
 
-/**
- * Shown for any address that isn't a page, whether it's typed in or reached from a link within the
- * site, such as a talk that doesn't exist.
- */
 export function NotFoundPage() {
   return (
     <>

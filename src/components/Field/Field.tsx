@@ -4,7 +4,6 @@ import { cx } from '../../utils/cx';
 import styles from './Field.module.css';
 import { FieldError } from './FieldError';
 
-/** Props the field gives its control, so the label, hint and error are all connected to it. */
 export interface FieldControlProps {
   id: string;
   className: string | undefined;
@@ -16,20 +15,12 @@ export interface FieldControlProps {
 export interface FieldProps {
   id: string;
   label: string;
-  /** Help shown under the label, such as the format to use (WCAG 3.3.5). */
   hint?: string | undefined;
-  /** An error message. Says what's wrong and how to fix it. */
   error?: string | undefined;
-  /** Fields are required unless marked optional, which is said in the label rather than with a symbol. */
   optional?: boolean | undefined;
   children: (control: FieldControlProps) => ReactNode;
 }
 
-/**
- * The parts every form field shares: a visible label, an optional hint, an error message, and the
- * connections between them and the control, so screen readers read them out together. The error sits
- * between the label and the control, where people look when correcting it.
- */
 export function Field({ id, label, hint, error, optional = false, children }: FieldProps) {
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;

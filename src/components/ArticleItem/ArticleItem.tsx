@@ -12,7 +12,6 @@ interface ArticleItemProps {
   headingLevel: HeadingLevel;
 }
 
-/** One article, linking to where it's published. The link is its title, so it makes sense alone. */
 export function ArticleItem({ article, headingLevel }: ArticleItemProps) {
   return (
     <Card as="article">

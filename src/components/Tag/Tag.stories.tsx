@@ -14,5 +14,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Narrow the canvas to see the tags wrap. */
 export const Default: Story = {};

@@ -1,4 +1,3 @@
-/* 192px, which is two steps of 96px. */
 .photo,
 .placeholder {
   flex-shrink: 0;
@@ -17,11 +16,10 @@
   color: var(--color-action-text);
   background: var(--color-action);
 
-  /* The circle's edge still shows in Windows high contrast mode, where backgrounds are removed. */
+  /* The circle's edge still shows in Windows high contrast mode, where backgrounds are removed */
   border: var(--border-width) solid transparent;
 }
 
-/* The mark fills the middle of the circle, clear of its curved edge. 96px, one step of 96px. */
 .mark {
   width: var(--space-7);
   height: var(--space-7);

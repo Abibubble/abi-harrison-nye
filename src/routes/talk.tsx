@@ -13,22 +13,22 @@ import { pageMeta } from '../seo/pageMeta';
 /*
  * Each talk has its own exact route using this file (see routes.ts), so there are none until there's
  * a talk, and React Router doesn't generate types for it until then. It uses React Router's general
- * types instead.
+ * types instead
  */
 
 /**
  * The talk's slug, from an address like /talks/debt-to-done. When prerendering, React Router also
- * asks for the page's data at /talks/debt-to-done.data, so that ending is removed too.
+ * asks for the page's data at /talks/debt-to-done.data, so that ending is removed too
  */
 export function slugFrom(url: string): string {
-  // Anything before /talks/ is the base path, such as /abi-harrison-nye on GitHub Pages.
+  // Anything before /talks/ is the base path, such as /abi-harrison-nye on GitHub Pages
   return new URL(url).pathname
     .replace(/^.*\/talks\//, '')
     .replace(/\/$/, '')
     .replace(/\.data$/, '');
 }
 
-// Runs when the site is built, so the transcript arrives as finished HTML.
+// Runs when the site is built, so the transcript arrives as finished HTML
 export function loader({ request }: LoaderFunctionArgs) {
   return loadTalkPage(slugFrom(request.url));
 }

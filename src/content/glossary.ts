@@ -6,7 +6,7 @@ export interface GlossaryTerm {
 /**
  * Technical words used on the site, explained in plain words, for the glossary on the Accessibility
  * page (WCAG 3.1.3). Abbreviations have their own list. In alphabetical order, and written without
- * abbreviations, so nothing in a definition needs explaining itself.
+ * abbreviations, so nothing in a definition needs explaining itself
  */
 export const GLOSSARY: GlossaryTerm[] = [
   {

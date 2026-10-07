@@ -10,17 +10,10 @@ interface TextAreaProps
       ComponentPropsWithRef<'textarea'>,
       'id' | 'required' | 'className' | 'aria-describedby' | 'aria-invalid'
     > {
-  /** Set this when an error summary needs to link to the field. */
   id?: string | undefined;
-  /**
-   * Shows how many characters are left. It needs `value`, so the count can follow what's typed.
-   * Nothing is cut off past the limit, as that loses pasted text without warning. Validation should
-   * catch it instead.
-   */
   characterLimit?: number | undefined;
 }
 
-/** A multi line text input with its label, hint and error message. People can make it taller. */
 export function TextArea({
   id,
   label,

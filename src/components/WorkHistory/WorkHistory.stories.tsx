@@ -12,10 +12,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** As on the Work page. */
 export const TechRoles: Story = {};
 
-/** As on the CV page, one heading level lower, including roles before tech. */
 export const AllRoles: Story = { args: { companies: WORK, headingLevel: 3 } };
 
 export const InTheDarkTheme: Story = { globals: { theme: 'dark' } };

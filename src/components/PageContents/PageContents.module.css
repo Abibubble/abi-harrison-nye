@@ -1,4 +1,3 @@
-/* A bar down the side sets the contents apart from the page around it, without a box. */
 .contents {
   display: flex;
   flex-direction: column;
@@ -7,7 +6,6 @@
   border-inline-start: var(--space-1) solid var(--color-border-decorative);
 }
 
-/* The size of body text, as it labels the list rather than starting a part of the page. */
 .heading {
   margin: 0;
   font-size: var(--font-size-body);
@@ -18,12 +16,11 @@
   flex-direction: column;
   padding-inline-start: var(--space-4);
   margin: 0;
-}
 
-/* A list of links isn't text, so each link needs to be a full size target (WCAG 2.5.5). */
-.list a {
-  display: inline-flex;
-  align-items: center;
-  min-width: var(--size-target-min);
-  min-height: var(--size-target-min);
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-width: var(--size-target-min);
+    min-height: var(--size-target-min);
+  }
 }

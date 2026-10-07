@@ -11,7 +11,7 @@ import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
 import Accessibility, { meta } from './accessibility';
 
-// The talks and manual testing shown, so each test can set up the situation it needs.
+// The talks and manual testing shown, so each test can set up the situation it needs
 const fake = vi.hoisted(() => ({ talks: [] as Talk[], manualTesting: [] as string[] }));
 
 vi.mock('../content/talks', async (importOriginal) => {

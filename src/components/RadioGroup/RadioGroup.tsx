@@ -16,11 +16,6 @@ interface RadioGroupProps<Value extends string> {
   onChange: (value: Value) => void;
 }
 
-/**
- * A set of options where only one can be chosen, grouped under a visible legend. Uses real radio
- * buttons, so arrow keys move between options and screen readers say how many there are. Each label is
- * part of its option's target, which is at least 48px tall.
- */
 export function RadioGroup<Value extends string>({
   legend,
   name,
@@ -40,7 +35,6 @@ export function RadioGroup<Value extends string>({
 
           return (
             <div key={option.value} className={styles.option}>
-              {/* The label wraps the radio, so the radio and its text are one target, 48px tall. */}
               <label className={styles.label}>
                 <input
                   id={inputId}

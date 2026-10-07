@@ -1,6 +1,6 @@
 /*
- * Primitive colour tokens. These are the raw palette and must never be used directly in components.
- * Components use the semantic tokens in colours.css, which map to these per theme.
+ * Primitive colour tokens. These are the raw palette and must never be used directly in components
+ * Components use the semantic tokens in colours.css, which map to these per theme
  */
 :root {
   --purple-50: #f5effa;

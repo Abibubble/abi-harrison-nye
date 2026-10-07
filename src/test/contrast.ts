@@ -1,4 +1,4 @@
-// WCAG 2.2 relative luminance and contrast ratio.
+// WCAG 2.2 relative luminance and contrast ratio
 // https://www.w3.org/TR/WCAG22/#dfn-relative-luminance
 
 function channelToLinear(channel: number): number {

@@ -10,7 +10,7 @@ const ARTICLE: Article = {
   title: 'An example article',
   publication: 'Example blog',
   date: '2026-04-03',
-  summary: 'An article used to test this component.',
+  summary: 'An article used to test this component',
   href: 'https://example.com/article',
 };
 

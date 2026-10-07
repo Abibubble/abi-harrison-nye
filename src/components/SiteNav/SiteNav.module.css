@@ -1,9 +1,3 @@
-/*
- * Burger layout by default. It switches to a single row of links once the header is wide enough to
- * fit them all beside the site name. The width is measured on the header (a container), in em, so it
- * moves with the text size setting.
- */
-
 .toggle {
   display: none;
   gap: var(--space-2);
@@ -19,10 +13,10 @@
   background: var(--color-bg);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-small);
-}
 
-.toggle:hover {
-  background: var(--color-surface);
+  &:hover {
+    background: var(--color-surface);
+  }
 }
 
 .icon {
@@ -55,25 +49,24 @@
   color: var(--color-text);
   text-decoration-line: none;
   white-space: nowrap;
-}
 
-.link:hover {
-  color: var(--color-action-hover);
-  text-decoration-line: underline;
-}
+  &:hover {
+    color: var(--color-action-hover);
+    text-decoration-line: underline;
+  }
 
-/* The current page is shown by weight and a bar, never by colour alone. */
-.link[aria-current='page'] {
-  font-weight: var(--font-weight-emphasis);
-  letter-spacing: var(--letter-spacing-emphasis);
-}
+  &[aria-current='page'] {
+    font-weight: var(--font-weight-emphasis);
+    letter-spacing: var(--letter-spacing-emphasis);
 
-.link[aria-current='page']::after {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--space-1);
-  content: '';
-  background: var(--color-action);
+    &::after {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--space-1);
+      content: '';
+      background: var(--color-action);
+    }
+  }
 }
 
 @media (forced-colors: active) {
@@ -83,13 +76,12 @@
   }
 }
 
-/* The display settings sit in their own section at the bottom of the menu. */
 .display {
   padding-block-start: var(--space-4);
   border-block-start: var(--border-width) solid var(--color-border-decorative);
 }
 
-/* Only collapse the panel once JavaScript can open it again. */
+/* Only collapse the panel once JavaScript can open it again */
 :global(:root[data-js]) .toggle {
   display: inline-flex;
 }
@@ -98,7 +90,7 @@
   display: none;
 }
 
-/* Keep this width in step with the same query in SiteHeader.module.css. */
+/* Should match SiteHeader.module.css */
 @container site-header (width >= 62em) {
   :global(:root[data-js]) .toggle {
     display: none;
@@ -121,7 +113,6 @@
     height: var(--space-1);
   }
 
-  /* The display settings move to the slim bar under the header. */
   .display {
     display: none;
   }

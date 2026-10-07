@@ -112,3 +112,36 @@ test.describe('Contact form', () => {
     await expect(page.getByRole('alert', { name: 'Message sent' })).toBeVisible();
   });
 });
+
+test.describe('Contact form, before React has started', () => {
+  test.use({ waitForReact: false });
+
+  test('never puts what was typed in the address, and keeps it for when React starts', async ({
+    page,
+  }) => {
+    // Hold the JavaScript back, like a slow connection, so the prerendered form is used first.
+    let release = (): void => undefined;
+    const held = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route('**/assets/*.js', async (route) => {
+      await held;
+      await route.continue();
+    });
+    await page.goto('/contact', { waitUntil: 'domcontentloaded' });
+
+    await fillIn(page);
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.keyboard.press('Enter');
+    expect(new URL(page.url()).search).toBe('');
+
+    release();
+    await page.locator('html[data-hydrated]').waitFor({ state: 'attached' });
+    await page.getByRole('button', { name: 'Continue' }).click();
+
+    await expect(page.getByRole('region', { name: 'Check your message' })).toContainText(
+      'sam@example.com',
+    );
+    expect(new URL(page.url()).search).toBe('');
+  });
+});

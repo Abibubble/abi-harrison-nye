@@ -10,7 +10,6 @@
   margin: 0;
 }
 
-/* The controls need JavaScript, so without it there's an explanation instead. */
 :global(:root:not([data-js])) .controls {
   display: none;
 }
@@ -24,8 +23,8 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
-}
 
-.reset > p {
-  margin: 0;
+  > p {
+    margin: 0;
+  }
 }

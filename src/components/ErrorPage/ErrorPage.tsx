@@ -1,7 +1,6 @@
 import { Link } from '../Link';
 import { PageHeading } from '../PageHeading';
 
-/** Shown if something goes wrong while showing a page. Plain, calm and with a way forward. */
 export function ErrorPage() {
   return (
     <>

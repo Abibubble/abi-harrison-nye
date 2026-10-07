@@ -2,29 +2,32 @@
   max-width: var(--size-measure);
 }
 
+.contentWidthButton {
+  align-self: flex-start;
+}
+
 .summary {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
   max-width: var(--size-measure);
   margin: 0;
+
+  dt {
+    font-weight: var(--font-weight-emphasis);
+    letter-spacing: var(--letter-spacing-emphasis);
+  }
+
+  dd {
+    margin: 0;
+  }
 }
 
-.summary dt {
-  font-weight: var(--font-weight-emphasis);
-  letter-spacing: var(--letter-spacing-emphasis);
-}
-
-.summary dd {
-  margin: 0;
-}
-
-/* Keeps the line breaks people typed. */
 .messageText {
   white-space: pre-wrap;
 }
 
-/* Off screen and out of the way. Not display: none, which some bots know to skip. */
+/* Hides a decoy field off screen. It’s excluded from screen readers and keyboard navigation. Spam bots may fill it in. If they do, the form pretends the message was sent and doesn’t actually send it */
 .honeypot {
   position: absolute;
   inset-inline-start: -100vw;

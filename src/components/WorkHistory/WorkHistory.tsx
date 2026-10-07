@@ -14,7 +14,6 @@ interface RoleItemProps {
   headingLevel: HeadingLevel;
 }
 
-/** One role: its title, dates, location, context and highlights. */
 export function RoleItem({ role, headingLevel }: RoleItemProps) {
   const groupLevel = nextLevel(headingLevel);
 
@@ -54,12 +53,10 @@ export function RoleItem({ role, headingLevel }: RoleItemProps) {
   );
 }
 
-/** A site's address as people write it, such as giffgaff.com for https://www.giffgaff.com. */
 function addressOf(href: string): string {
   return new URL(href).hostname.replace(/^www\./, '');
 }
 
-/** Websites, each linked by name, with what I worked on. Also used for volunteering. */
 export function SiteList({ sites }: { sites: readonly SiteWorkedOn[] }) {
   return (
     <ul className={styles.sites}>
@@ -104,11 +101,9 @@ function CompanySection({ company, headingLevel }: CompanySectionProps) {
 
 interface WorkHistoryProps {
   companies: readonly Company[];
-  /** The level of each company's heading. Roles and highlights sit under it. */
   headingLevel: HeadingLevel;
 }
 
-/** Companies I've worked for, each with its roles and the sites I worked on there. */
 export function WorkHistory({ companies, headingLevel }: WorkHistoryProps) {
   return (
     <Stack gap={6}>

@@ -2,18 +2,15 @@
   padding: var(--space-4);
   background: var(--color-surface);
 
-  /* The surface colour alone is a subtle change, so a border marks the edge, including in high contrast mode. */
+  /* The background colour alone is a subtle change, so a border marks the edge, including in high contrast mode */
   border: var(--border-width) solid var(--color-border-decorative);
   border-radius: var(--radius-medium);
-}
 
-.card > :last-child {
-  margin-block-end: 0;
-}
+  > :last-child {
+    margin-block-end: 0;
+  }
 
-/* On paper, headings already separate items, so boxes would only use space and ink. */
-@media print {
-  .card {
+  @media print {
     padding: 0;
     border: none;
   }

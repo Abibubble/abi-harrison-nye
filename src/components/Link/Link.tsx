@@ -10,28 +10,18 @@ interface BaseProps {
 }
 
 interface InternalLinkProps extends BaseProps {
-  /** A page on this site. */
   to: string;
   href?: never;
 }
 
 interface ExternalLinkProps extends BaseProps {
-  /** A page on another site. */
   href: string;
   to?: never;
-  /**
-   * Leave out the web address when printed. Printing adds it after links to other sites, so they
-   * work on paper, but a link that already shows its address, like giffgaff.com, doesn't need it.
-   */
   showsAddress?: boolean;
 }
 
 export type LinkProps = InternalLinkProps | ExternalLinkProps;
 
-/**
- * Links to pages on this site use client side navigation. Links to other sites are marked with an
- * icon and hidden text, and always open in the same tab so nothing changes without warning.
- */
 export function Link({ children, className, ...destination }: LinkProps) {
   if (destination.to !== undefined) {
     return (
@@ -48,7 +38,7 @@ export function Link({ children, className, ...destination }: LinkProps) {
       data-print-url={destination.showsAddress ? 'hide' : undefined}
     >
       {children}
-      {/* A real space rather than a margin, so every browser keeps it in the link's name. */}{' '}
+      {/* A real space rather than a margin, so every browser keeps it in the link's name */}{' '}
       <svg
         className={styles.externalIcon}
         aria-hidden="true"

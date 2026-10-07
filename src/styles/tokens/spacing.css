@@ -1,6 +1,6 @@
 /*
  * Spacing and sizing. Every size comes from the 4, 8, 16, 24, 32, 48, 96 pixel scale. Values are in
- * rem so the whole layout scales with the visitor's text size.
+ * rem so the whole layout scales with the visitor's text size
  */
 :root {
   --space-1: 0.25rem; /* 4px */
@@ -13,26 +13,26 @@
 
   /*
    * Spacing between paragraphs. WCAG 1.4.8 asks for at least 1.5 times the line height (36px), which
-   * isn't on the scale, so this is one of the two agreed sizes off it.
+  * isn't on the scale, so this is one of the two agreed sizes off it
    */
   --space-paragraph: 2.5rem; /* 40px */
 
-  /* Interactive elements are at least 48px. AAA 2.5.5 asks for 44px, which isn't on the scale. */
+  /* Interactive elements are at least 48px. AAA 2.5.5 asks for 44px, which isn't on the scale */
   --size-target-min: var(--space-6);
 
-  /* WCAG 1.4.8 limits lines to 80 characters. 70 is more comfortable to read. */
+  /* WCAG 1.4.8 limits lines to 80 characters. 70 is more comfortable to read */
   --size-measure: 70ch;
 
-  /* Content width for page layouts: 1152px, which is 12 steps of 96px. */
+  /* Content width for page layouts: 1152px, which is 12 steps of 96px */
   --size-content-max: calc(var(--space-7) * 12);
 
-  /* Single line form fields: 480px, which is 5 steps of 96px. Wide enough for an email address. */
+  /* Single line form fields: 480px, which is 5 steps of 96px. Wide enough for an email address */
   --size-input-max: calc(var(--space-7) * 5);
   --radius-small: var(--space-1);
   --radius-medium: var(--space-2);
   --radius-round: 50%;
 
-  /* The other agreed size off the scale: 4px borders are too heavy for form fields and cards. */
+  /* The other agreed size off the scale: 4px borders are too heavy for form fields and cards */
   --border-width: 0.125rem; /* 2px */
   --focus-ring-width: var(--space-1);
   --focus-ring-offset: var(--space-1);

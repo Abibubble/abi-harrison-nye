@@ -6,7 +6,6 @@ import { Stack } from '../Stack';
 import { DateRange, Time } from '../Time';
 import styles from './CvLists.module.css';
 
-/** Skills grouped by category, as a description list: each category followed by its skills. */
 export function SkillsList({ groups }: { groups: readonly SkillGroup[] }) {
   return (
     <dl className={styles.skills}>
@@ -22,15 +21,14 @@ export function SkillsList({ groups }: { groups: readonly SkillGroup[] }) {
   );
 }
 
-/** Qualifications and training, each with where, when and any result. */
 export function QualificationList({ items }: { items: readonly Qualification[] }) {
   return (
     <Stack as="ul" gap={3}>
       {items.map((item) => (
         <li key={item.title}>
-          <strong>
+          <span className={styles.qualificationTitle}>
             <AbbrText>{item.title}</AbbrText>
-          </strong>
+          </span>
           , <AbbrText>{item.provider}</AbbrText>,{' '}
           {item.to ? <DateRange from={item.from} to={item.to} /> : <Time date={item.from} />}
           {item.detail && (
@@ -46,13 +44,10 @@ export function QualificationList({ items }: { items: readonly Qualification[] }
 }
 
 interface SpeakingListProps {
-  /** Talks with their own page, which are linked. */
   talks: readonly Talk[];
-  /** Talks without a page yet, listed as plain text. */
   withoutPages: readonly SpeakingEngagement[];
 }
 
-/** Every talk I've given, newest first, linking to the ones with their own page. */
 export function SpeakingList({ talks, withoutPages }: SpeakingListProps) {
   const items = [
     ...talks.map((talk) => ({ ...talk, href: `/talks/${talk.slug}` })),

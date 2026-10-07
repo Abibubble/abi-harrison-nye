@@ -19,11 +19,14 @@ const FONT = join(
   '..',
   'node_modules/@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2',
 );
-const COLOUR_TOKENS = await Promise.all(
-  ['primitives', 'colours'].map((file) =>
-    readFile(join(import.meta.dirname, `../src/styles/tokens/${file}.css`), 'utf8'),
-  ),
-).then((files) => files.join('\n'));
+const COLOUR_TOKEN_FILES = ['primitives.css', 'colours.css'];
+const COLOUR_TOKENS = (
+  await Promise.all(
+    COLOUR_TOKEN_FILES.map((file) =>
+      readFile(join(import.meta.dirname, '../src/styles/tokens', file), 'utf8'),
+    ),
+  )
+).join('\n');
 
 const browser = await chromium.launch();
 
@@ -33,15 +36,25 @@ async function png(
   height: number,
 ): Promise<{ image: Buffer; pageBackground: string }> {
   const page = await browser.newPage({ viewport: { width, height } });
-  await page.setContent(
-    `<html data-theme="light"><head><style>${COLOUR_TOKENS}</style></head><body style="margin:0">${html}<span id="colour-probe" style="background:var(--color-bg)"></span></body></html>`,
-  );
+  const pageHtml = `
+    <html data-theme="light">
+      <head><style>${COLOUR_TOKENS}</style></head>
+      <body style="margin:0">
+        ${html}
+        <span id="colour-probe" style="background:var(--color-bg)"></span>
+      </body>
+    </html>`;
+
+  await page.setContent(pageHtml);
   await page.evaluate(() => document.fonts.ready);
+
   const pageBackground = await page
     .locator('#colour-probe')
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   const image = await page.screenshot({ omitBackground: true });
+
   await page.close();
+
   return { image, pageBackground };
 }
 
@@ -66,12 +79,42 @@ const font = (await readFile(FONT)).toString('base64');
 
 const shareHtml = `
 <style>
-  @font-face { font-family: Atkinson; src: url(data:font/woff2;base64,${font}); }
+  @font-face {
+    font-family: Atkinson;
+    src: url(data:font/woff2;base64,${font});
+  }
+  .share-image {
+    box-sizing: border-box;
+    width: ${String(SHARE_IMAGE.width)}px;
+    height: ${String(SHARE_IMAGE.height)}px;
+    padding: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    background: var(--color-bg);
+    border-bottom: 32px solid ${MARK.background};
+    font-family: Atkinson;
+    color: var(--color-text);
+  }
+  .share-image__mark {
+    width: 128px;
+    height: 128px;
+  }
+  .share-image__name {
+    font-size: 88px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .share-image__headline {
+    font-size: 44px;
+    line-height: 1.3;
+  }
 </style>
-<div style="box-sizing:border-box;width:${String(SHARE_IMAGE.width)}px;height:${String(SHARE_IMAGE.height)}px;padding:96px;display:flex;flex-direction:column;justify-content:center;gap:32px;background:var(--color-bg);border-bottom:32px solid ${MARK.background};font-family:Atkinson;color:var(--color-text)">
-  <div style="width:128px;height:128px">${markSvg()}</div>
-  <div style="font-size:88px;font-weight:700;line-height:1.1">${SITE_NAME}</div>
-  <div style="font-size:44px;line-height:1.3">${PROFILE.headline}</div>
+<div class="share-image">
+  <div class="share-image__mark">${markSvg()}</div>
+  <div class="share-image__name">${SITE_NAME}</div>
+  <div class="share-image__headline">${PROFILE.headline}</div>
 </div>`;
 
 const icon32 = await png(iconHtml(32, true), 32, 32);
@@ -81,7 +124,7 @@ const icon512 = await png(iconHtml(512, true), 512, 512);
 const shareImage = await png(shareHtml, SHARE_IMAGE.width, SHARE_IMAGE.height);
 
 await Promise.all([
-  writeFile(join(PUBLIC, 'favicon.svg'), `${markSvg()}\n`),
+  writeFile(join(PUBLIC, 'favicon.svg'), `${markSvg({ stylesheet: COLOUR_TOKENS })}\n`),
   writeFile(join(PUBLIC, 'favicon.ico'), ico(icon32.image, 32)),
   writeFile(join(PUBLIC, 'apple-touch-icon.png'), appleTouchIcon.image),
   writeFile(join(PUBLIC, 'icon-192.png'), icon192.image),

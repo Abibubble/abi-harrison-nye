@@ -6,7 +6,7 @@ import { SETTINGS, SETTING_NAMES, STORAGE_KEY } from './displaySettings';
 const root = document.documentElement;
 
 function runScript() {
-  // The script is a string so it can go straight into the page's <head>. This runs it the same way.
+  // The script is a string so it can go straight into the page's <head>. This runs it the same way
   // eslint-disable-next-line @typescript-eslint/no-implied-eval -- running our own build time script
   const script = new Function(BEFORE_PAINT_SCRIPT) as () => void;
   script();

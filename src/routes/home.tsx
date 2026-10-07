@@ -22,7 +22,7 @@ export function meta(): Route.MetaDescriptors {
         'Software engineer and accessibility specialist at giffgaff, building accessible React and TypeScript, and leading an accessibility and neurodiversity network.',
       path: '/',
     }),
-    // Tells search engines who the site belongs to. It's data, not a script, so it never runs.
+    // Tells search engines who the site belongs to. It's data, not a script, so it never runs
     { 'script:ld+json': personSchema() },
   ];
 }

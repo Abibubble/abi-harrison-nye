@@ -5,11 +5,9 @@ const ENDPOINT = 'https://api.emailjs.com/api/v1.0/email/send';
 export interface EmailConfig {
   serviceId: string;
   templateId: string;
-  /** EmailJS public keys are designed to be public. They can only send my template to me. */
   publicKey: string;
 }
 
-/** The EmailJS settings from environment variables, or nothing if any are missing. */
 export function emailConfigFromEnv(
   env: Record<string, unknown> = import.meta.env,
 ): EmailConfig | undefined {
@@ -29,11 +27,6 @@ export function emailConfigFromEnv(
   return { serviceId, templateId, publicKey };
 }
 
-/**
- * Sends a message to me by email, through EmailJS. The EmailJS template uses {{from_name}},
- * {{reply_to}} and {{message}}, and sets Reply To to {{reply_to}}, so I can reply straight to the
- * sender. Throws if it isn't set up or doesn't succeed.
- */
 export async function sendMessage(
   message: ContactMessage,
   config: EmailConfig | undefined = emailConfigFromEnv(),

@@ -7,10 +7,10 @@ export interface Role {
   title: string;
   /** YYYY-MM */
   from: string;
-  /** YYYY-MM. Left out for a current role. */
+  /** YYYY-MM. Left out for a current role */
   to?: string;
   location?: string;
-  /** A sentence or two of context, such as the teams I've worked in. */
+  /** A sentence or two of context, such as the teams I've worked in */
   summary?: string;
   highlightGroups: HighlightGroup[];
 }
@@ -25,11 +25,11 @@ export interface Company {
   name: string;
   roles: Role[];
   sitesWorkedOn?: SiteWorkedOn[];
-  /** Roles before I moved into tech. Shown in full on the CV, and summarised on the Work page. */
+  /** Roles before I moved into tech. Shown in full on the CV, and summarised on the Work page */
   earlierCareer?: boolean;
 }
 
-/** Newest first. Shared by the Work page and the CV page. */
+/** Newest first. Shared by the Work page and the CV page */
 export const WORK: Company[] = [
   {
     name: 'giffgaff',
@@ -140,7 +140,7 @@ export const WORK: Company[] = [
   },
 ];
 
-/** Sites I've helped with as a volunteer, outside work. */
+/** Sites I've helped with as a volunteer, outside work */
 export const VOLUNTEERING: SiteWorkedOn[] = [
   {
     name: 'attractionsource.com',
@@ -156,6 +156,6 @@ export const VOLUNTEERING: SiteWorkedOn[] = [
   },
 ];
 
-/** A short summary of the roles before tech, for the Work page. The CV has them in full. */
+/** A short summary of the roles before tech, for the Work page. The CV has them in full */
 export const BEFORE_TECH_SUMMARY =
   'Before moving into software engineering in 2021, I spent eight years in hospitality, as a shift leader and then an assistant manager, and worked as a driving instructor.';

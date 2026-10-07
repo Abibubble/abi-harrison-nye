@@ -20,11 +20,6 @@ const LAYOUTS = [
   },
 ] as const;
 
-/**
- * A choice of how the page prints, and a button to print it. The choice applies as soon as it's made,
- * so it also works when printing from the browser's own menu. Clear is the default, and is what
- * prints without JavaScript.
- */
 export function PrintOptions() {
   const [layout, setLayout] = useState<PrintLayout>('clear');
 
@@ -50,9 +45,7 @@ export function PrintOptions() {
           value={layout}
           onChange={setLayout}
         />
-        <div>
-          <PrintButton />
-        </div>
+        <PrintButton />
       </Stack>
     </div>
   );

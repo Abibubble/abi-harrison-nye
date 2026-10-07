@@ -11,7 +11,6 @@ interface SiteShellProps {
   children: ReactNode;
 }
 
-/** The layout every page shares: skip link, header, main content and footer. */
 export function SiteShell({ children }: SiteShellProps) {
   useFocusOnNavigation();
 

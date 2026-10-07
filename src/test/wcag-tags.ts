@@ -1,4 +1,4 @@
-// The axe rule tags every accessibility check runs against: unit tests, Storybook and end to end.
+// The axe rule tags every accessibility check runs against: unit tests, Storybook and end to end
 export const WCAG_TAGS = [
   'wcag2a',
   'wcag2aa',

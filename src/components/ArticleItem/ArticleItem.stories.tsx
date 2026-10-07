@@ -11,7 +11,7 @@ const meta = {
       title: 'An example article',
       publication: 'Example blog',
       date: '2026-04-03',
-      summary: 'An example to show how an article looks. Real articles are added in articles.ts.',
+      summary: 'An example to show how an article looks; real articles are added in articles.ts',
       href: 'https://example.com',
     },
   },

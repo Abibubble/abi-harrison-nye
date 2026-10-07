@@ -5,14 +5,9 @@ import { Stack } from '../Stack';
 interface TalkVideoProps {
   title: string;
   video: Video;
-  /** The id of the transcript heading, linked to when there are no captions. */
   transcriptId: string;
 }
 
-/**
- * A link to watch a talk on YouTube, and whether it has captions. Videos are linked rather than
- * embedded, so nothing from YouTube loads on this site. Without captions, it points to the transcript.
- */
 export function TalkVideo({ title, video, transcriptId }: TalkVideoProps) {
   return (
     <Stack gap={2}>

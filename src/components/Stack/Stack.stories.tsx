@@ -22,5 +22,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Use the gap control to try each step of the spacing scale. */
 export const Default: Story = {};

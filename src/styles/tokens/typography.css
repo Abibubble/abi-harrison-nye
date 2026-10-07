@@ -1,6 +1,6 @@
 /*
  * Typography. Font sizes come from the same 16, 24, 32, 48 pixel steps as the spacing scale. Line
- * heights are unitless so they scale with the font size and with any text spacing a visitor applies.
+ * heights are unitless so they scale with the font size and with any text spacing a visitor applies
  */
 :root {
   --font-family-body:
@@ -19,20 +19,20 @@
   /*
    * Emphasis: bold text at body size, such as buttons, labels and error messages. Full bold letters
    * blur together for people with astigmatism, especially light text on a dark background, such as
-   * white on a purple button. Semi bold with a little extra space keeps each letter distinct.
+  * white on a purple button. Semi bold with a little extra space keeps each letter distinct
    * Headings stay bold, because the blurring is much less at larger sizes. Always use these two
-   * tokens together.
+  * tokens together
    */
   --font-weight-emphasis: var(--font-weight-semibold);
   --letter-spacing-emphasis: 0.05em;
 
-  /* WCAG 1.4.8 asks for at least 1.5 within paragraphs. */
+  /* WCAG 1.4.8 asks for at least 1.5 within paragraphs */
   --line-height-body: 1.5;
   --line-height-heading: 1.25;
   --letter-spacing-body: normal;
   --word-spacing-body: normal;
 
-  /* Narrow screens, including desktop browsers zoomed to 400%. */
+  /* Narrow screens, including desktop browsers zoomed to 400% */
   --font-size-body: var(--font-size-1);
   --font-size-h1: var(--font-size-3);
   --font-size-h2: var(--font-size-2);
@@ -48,10 +48,10 @@
 }
 
 /*
- * Display settings, set as attributes on <html> by src/settings/displaySettings.ts.
+ * Display settings, set as attributes on <html> by src/settings/displaySettings.ts
  *
  * Text size changes the root font size as a percentage, so it builds on whatever size the visitor has
- * already chosen in their browser. Every size on the site is in rem, so the whole layout scales.
+ * already chosen in their browser. Every size on the site is in rem, so the whole layout scales
  */
 :root[data-text-size='large'] {
   font-size: 125%;
@@ -61,7 +61,7 @@
   font-size: 150%;
 }
 
-/* At least the WCAG 1.4.12 text spacing values, applied across the whole site. */
+/* At least the WCAG 1.4.12 text spacing values, applied across the whole site */
 :root[data-text-spacing='increased'] {
   --line-height-body: 2;
   --line-height-heading: 1.5;

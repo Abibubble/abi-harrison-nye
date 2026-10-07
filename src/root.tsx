@@ -1,5 +1,5 @@
 import bodyFontUrl from '@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2?url';
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import {
   Links,
   Meta,
@@ -21,7 +21,6 @@ import stylesheetUrl from './styles/index.css?url';
 const { BASE_URL } = import.meta.env;
 
 export const links: Route.LinksFunction = () => [
-  // Preloading the body font means text appears in it straight away rather than swapping.
   {
     rel: 'preload',
     href: bodyFontUrl,
@@ -30,8 +29,7 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: 'anonymous',
   },
   { rel: 'stylesheet', href: stylesheetUrl },
-  // Icons drawn by `pnpm brand-images`. Browsers that support SVG icons use that, others the .ico.
-  // They start with the base path, as the site may not be at the root of its domain.
+  // Icons drawn by `pnpm brand-images`. Browsers that support SVG icons use that, others the .ico
   { rel: 'icon', href: `${BASE_URL}favicon.ico`, sizes: '32x32' },
   { rel: 'icon', href: `${BASE_URL}favicon.svg`, type: 'image/svg+xml' },
   { rel: 'apple-touch-icon', href: `${BASE_URL}apple-touch-icon.png` },
@@ -39,21 +37,26 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: ReactNode }) {
+  // Marks that React has taken over the prerendered page, so tests know when it's ready to use
+  useEffect(() => {
+    document.documentElement.dataset.hydrated = '';
+  }, []);
+
   return (
     // The before paint script adds attributes to <html> before React loads, which React would
-    // otherwise warn about.
+    // otherwise warn about
     <html lang="en-GB" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
-        {/* GitHub Pages can't send headers, so the referrer policy goes here instead. */}
+        {/* GitHub Pages can't send headers, so the referrer policy goes here instead */}
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="theme-color" content="#f5effa" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#160c24" media="(prefers-color-scheme: dark)" />
         {/*
          * Applies saved display settings and marks that JavaScript is running, before the page is
-         * drawn, so there's no flash of the wrong theme or text size.
+         * drawn, so there's no flash of the wrong theme or text size
          */}
         <script dangerouslySetInnerHTML={{ __html: BEFORE_PAINT_SCRIPT }} />
         <Meta />
@@ -73,7 +76,7 @@ export default function App() {
 
   return (
     <SiteShell>
-      {/* Keyed by the address, so each page writes out its own first use of each abbreviation. */}
+      {/* Keyed by the address, so each page writes out its own first use of each abbreviation */}
       <AbbreviationScope key={pathname}>
         <Outlet />
       </AbbreviationScope>
@@ -82,7 +85,7 @@ export default function App() {
 }
 
 // A page that doesn't exist, such as a talk that isn't there, gets the not found page. Anything
-// else that goes wrong gets the general error page.
+// else that goes wrong gets the general error page
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const notFound = isRouteErrorResponse(error) && error.status === 404;
 

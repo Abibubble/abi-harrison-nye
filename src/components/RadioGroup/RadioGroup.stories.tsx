@@ -27,5 +27,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Click an option or its label, or use the arrow keys to move between options. */
 export const Default: Story = {};

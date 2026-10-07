@@ -8,15 +8,9 @@ import { Link } from '../Link';
 import styles from './ThemeSwitcher.module.css';
 
 interface ThemeSwitcherProps {
-  /** Side by side for the slim bar under the header, or stacked to fill the width of the menu. */
   layout?: 'inline' | 'stacked';
 }
 
-/**
- * A quick way to change the theme from any page, with a link to the rest of the display settings.
- * Changing the theme doesn't change anything else, so it applies as soon as an option is chosen
- * (WCAG 3.2.2). It needs JavaScript, so it's hidden without it.
- */
 export function ThemeSwitcher({ layout = 'inline' }: ThemeSwitcherProps) {
   const { settings, update } = useDisplaySettings();
   const id = useId();
@@ -27,7 +21,6 @@ export function ThemeSwitcher({ layout = 'inline' }: ThemeSwitcherProps) {
         <label htmlFor={id} className={styles.label}>
           Theme
         </label>
-        {/* The browser's own arrow is replaced, so the space around it is the same everywhere. */}
         <span className={styles.selectWrap}>
           <select
             id={id}

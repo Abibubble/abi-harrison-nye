@@ -10,7 +10,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Hidden until it receives focus. Click in the canvas and press Tab to see it. */
 export const Hidden: Story = {};
 
 export const Focused: Story = {

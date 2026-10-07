@@ -11,7 +11,3 @@
   color: var(--color-error);
   letter-spacing: var(--letter-spacing-emphasis);
 }
-
-.link:hover {
-  color: var(--color-error);
-}

@@ -9,12 +9,10 @@ interface TextFieldProps
       ComponentPropsWithRef<'input'>,
       'id' | 'type' | 'required' | 'className' | 'aria-describedby' | 'aria-invalid'
     > {
-  /** Set this when an error summary needs to link to the field. */
   id?: string | undefined;
   type?: 'text' | 'email' | 'tel' | 'url';
 }
 
-/** A single line text input with its label, hint and error message. */
 export function TextField({
   id,
   label,

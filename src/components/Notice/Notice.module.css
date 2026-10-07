@@ -38,7 +38,6 @@
   margin: 0;
 }
 
-/* Styled like a third level heading, including the emphasis weight it uses at body size. */
 .title {
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-emphasis);

@@ -33,8 +33,6 @@ describe('SiteHeader', () => {
   it('has the display settings in a bar for wide screens, as well as in the menu', () => {
     renderWithRouter(<SiteHeader />);
 
-    // Only one is ever shown, depending on the header's width. jsdom doesn't apply layout, so it
-    // sees both here. The end to end tests check that only one shows in a real browser.
     expect(
       within(screen.getByRole('banner')).getAllByRole('combobox', { name: 'Theme' }),
     ).toHaveLength(2);

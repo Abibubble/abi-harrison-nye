@@ -1,4 +1,6 @@
 import { screen } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
+import { MemoryRouter } from 'react-router';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -27,6 +29,23 @@ async function fillIn(user: UserEvent) {
 }
 
 describe('ContactForm', () => {
+  it('can’t be sent by the browser itself before React is running, which would put it in the address', () => {
+    const prerendered = renderToString(
+      <MemoryRouter>
+        <ContactForm />
+      </MemoryRouter>,
+    );
+
+    expect(prerendered).toMatch(/<button type="button"[^>]*>Continue<\/button>/);
+    expect(prerendered).not.toContain('type="submit"');
+  });
+
+  it('can be sent once React is running', () => {
+    renderForm();
+
+    expect(button('Continue')).toHaveAttribute('type', 'submit');
+  });
+
   describe('writing', () => {
     it('has a visible, labelled field for each part of the message, with autocomplete', () => {
       renderForm();

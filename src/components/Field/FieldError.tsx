@@ -8,10 +8,6 @@ interface FieldErrorProps {
   children: ReactNode;
 }
 
-/**
- * An error message for a form field. It's shown with an icon and bold text as well as colour, and
- * starts with hidden text saying it's an error, so it's clear however someone perceives it.
- */
 export function FieldError({ id, children }: FieldErrorProps) {
   return (
     <p id={id} className={styles.error}>

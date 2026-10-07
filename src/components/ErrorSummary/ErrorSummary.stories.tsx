@@ -26,7 +26,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Choose an error to move to its field. */
 export const Default: Story = {};
 
 export const InTheDarkTheme: Story = { globals: { theme: 'dark' } };

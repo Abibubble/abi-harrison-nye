@@ -7,7 +7,6 @@ interface NoticeProps {
   variant: 'success' | 'error';
   title: string;
   children?: ReactNode;
-  /** The parent moves focus here, so keyboard and screen reader users go straight to the message. */
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -16,11 +15,6 @@ const ICONS = {
   error: <path d="M12 7v6M12 17h.01" />,
 };
 
-/**
- * A message about the result of something the user just did, such as sending a form. Only show one in
- * response to an action: it's announced as soon as it appears. The parent should also move focus to it.
- * The outcome is shown with an icon and a heading as well as colour.
- */
 export function Notice({ variant, title, children, ref }: NoticeProps) {
   const titleId = useId();
 

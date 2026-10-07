@@ -6,7 +6,7 @@
   margin: 0;
 }
 
-/* Each known issue: what it fails, who it affects, the workaround and the plan. */
+/* Each known issue: what it fails, who it affects, the workaround and the plan */
 .details {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@
   margin: 0;
 }
 
-/* Abbreviations in a narrow column beside what they stand for, or above it on narrow screens. */
+/* Abbreviations in a narrow column beside what they stand for, or above it on narrow screens */
 .glossary {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -54,7 +54,7 @@
   }
 }
 
-/* Each term above its definition, as terms can be long. */
+/* Each term above its definition, as terms can be long */
 .definitions {
   display: flex;
   flex-direction: column;

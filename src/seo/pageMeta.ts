@@ -4,22 +4,22 @@ import { SITE_NAME } from '../content/site';
 import { SHARE_IMAGE } from './shareImage';
 import { fileUrl, pageUrl } from './siteUrl';
 
-/** The full address of a page on this site, for links shared elsewhere. */
+/** The full address of a page on this site, for links shared elsewhere */
 export function absolutePageUrl(path: string): string {
   return pageUrl(__SITE_URL__, path);
 }
 
 interface PageMetaOptions {
-  /** The whole page title, usually from pageTitle(). */
+  /** The whole page title, usually from pageTitle() */
   title: string;
   description: string;
-  /** The page's address on this site, such as /work. */
+  /** The page's address on this site, such as /work */
   path: string;
 }
 
 /**
  * Everything in a page's <head> that search engines and social media use: the title, description,
- * canonical address, and Open Graph tags for share previews, with the default share image.
+ * canonical address, and Open Graph tags for share previews, with the default share image
  */
 export function pageMeta({ title, description, path }: PageMetaOptions): MetaDescriptor[] {
   const url = absolutePageUrl(path);
@@ -38,7 +38,7 @@ export function pageMeta({ title, description, path }: PageMetaOptions): MetaDes
     { property: 'og:image:width', content: String(SHARE_IMAGE.width) },
     { property: 'og:image:height', content: String(SHARE_IMAGE.height) },
     { property: 'og:image:alt', content: SHARE_IMAGE.alt },
-    // X and others read the Open Graph tags above, and only need to know to show a large image.
+    // X and others read the Open Graph tags above, and only need to know to show a large image
     { name: 'twitter:card', content: 'summary_large_image' },
   ];
 }

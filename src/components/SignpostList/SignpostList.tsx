@@ -14,10 +14,6 @@ interface SignpostListProps {
   headingLevel: HeadingLevel;
 }
 
-/**
- * Cards pointing to other parts of the site. Each card's heading is the link, so the link text is
- * the page's name, and the description says what's there.
- */
 export function SignpostList({ signposts, headingLevel }: SignpostListProps) {
   return (
     <ul role="list" className={styles.list}>

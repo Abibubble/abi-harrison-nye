@@ -1,6 +1,6 @@
 /**
  * Every abbreviation used on the site, with its expansion. The Abbr component only accepts
- * abbreviations listed here, and the Accessibility page's glossary is built from this list (WCAG 3.1.4).
+ * abbreviations listed here, and the Accessibility page's glossary is built from this list (WCAG 3.1.4)
  */
 export const ABBREVIATIONS = {
   AI: 'artificial intelligence',
@@ -25,6 +25,6 @@ export type Abbreviation = keyof typeof ABBREVIATIONS;
 
 /**
  * Abbreviations most people know, which are never written out in the text, as that would make it
- * harder to read. They're still marked up with their full form, and listed on the Accessibility page.
+ * harder to read. They're still marked up with their full form, and listed on the Accessibility page
  */
 export const ALWAYS_SHORT: readonly Abbreviation[] = ['AI', 'BA', 'CSS', 'CV', 'HTML', 'UK'];

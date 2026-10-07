@@ -6,10 +6,6 @@ interface ProfilePhotoProps {
   photo: Photo | undefined;
 }
 
-/**
- * My photo, or a placeholder with the site's </> mark until a photo is chosen. The placeholder is
- * decoration, so it's hidden from screen readers. My name is already in the heading.
- */
 export function ProfilePhoto({ photo }: ProfilePhotoProps) {
   if (photo) {
     return <img className={styles.photo} src={photo.src} alt={photo.alt} />;

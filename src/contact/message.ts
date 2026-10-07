@@ -9,27 +9,16 @@ export interface ContactMessage {
 
 export const EMPTY_MESSAGE: ContactMessage = { name: '', email: '', message: '' };
 
-/** The id of each field, so error messages can link to it. */
 export const FIELD_IDS: Record<keyof ContactMessage, string> = {
   name: 'contact-name',
   email: 'contact-email',
   message: 'contact-message',
 };
 
-/**
- * The longest message, in characters. Plenty for a message, and well within the 50KB EmailJS accepts
- * on the free plan, so a long message is stopped here with a clear error rather than failing to send.
- */
 export const MESSAGE_LIMIT = 5000;
 
-// Deliberately simple: something, an @, something, a dot, something. Strict patterns reject real
-// addresses, and the only real test of an address is whether a reply arrives.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * Checks a message before it's sent. Each error says what's wrong and how to fix it, in the same
- * order as the fields (WCAG 3.3.1 and 3.3.3).
- */
 export function validateMessage(message: ContactMessage): FormError[] {
   const errors: FormError[] = [];
   const email = message.email.trim();
@@ -59,7 +48,6 @@ export function validateMessage(message: ContactMessage): FormError[] {
   return errors;
 }
 
-/** The message with spaces trimmed from the ends of each field, ready to send. */
 export function tidyMessage(message: ContactMessage): ContactMessage {
   return {
     name: message.name.trim(),

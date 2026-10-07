@@ -1,6 +1,5 @@
 import type { Signpost } from '../components/SignpostList';
 
-/** The cards on the Home page pointing to each section. */
 export const HOME_SIGNPOSTS: Signpost[] = [
   {
     title: 'Work',

@@ -18,10 +18,6 @@
   gap: var(--space-1);
 }
 
-/*
- * The label holds the radio and its text, and is at least 48px tall, so the whole row is one target
- * (WCAG 2.5.5).
- */
 .label {
   display: inline-flex;
   gap: var(--space-3);
@@ -30,7 +26,6 @@
   cursor: pointer;
 }
 
-/* Native radios, sized up and coloured to match, keep their behaviour in every browser and mode. */
 .input {
   flex-shrink: 0;
   width: var(--space-4);
@@ -40,7 +35,6 @@
   accent-color: var(--color-action);
 }
 
-/* Hints line up under the option's text, past the radio. */
 .hint {
   padding-inline-start: calc(var(--space-4) + var(--space-3));
   margin: 0;

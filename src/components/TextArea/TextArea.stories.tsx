@@ -3,7 +3,6 @@ import { type ComponentProps, useState } from 'react';
 
 import { TextArea } from './TextArea';
 
-/** Keeps track of what's typed, so the character count can follow it. */
 function WithState({ value: initialValue = '', ...args }: ComponentProps<typeof TextArea>) {
   const [value, setValue] = useState(String(initialValue));
   return (
@@ -36,17 +35,15 @@ export const WithAnError: Story = {
   args: { error: 'Enter a message' },
 };
 
-/** Type to see the count change. Screen readers hear it once typing pauses near the limit. */
 export const WithACharacterLimit: Story = {
   args: { characterLimit: 200 },
   render: (args) => <WithState {...args} />,
 };
 
-/** Nothing is cut off past the limit. The count says how many characters to remove. */
 export const OverTheCharacterLimit: Story = {
   args: {
     characterLimit: 40,
-    value: 'This message is a little bit too long to fit.',
+    value: 'This message is a little bit too long to fit',
     error: 'Your message must be 40 characters or fewer',
   },
   render: (args) => <WithState {...args} />,

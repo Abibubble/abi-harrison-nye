@@ -9,10 +9,6 @@ interface PageContentsSectionProps {
   children: ReactNode;
 }
 
-/**
- * A section listed in PageContents. Its heading can take focus, so following a link from the
- * contents moves focus here, and screen readers start reading from the right place.
- */
 export function PageContentsSection({ section, children }: PageContentsSectionProps) {
   return (
     <Stack as="section" gap={4} aria-labelledby={section.id}>

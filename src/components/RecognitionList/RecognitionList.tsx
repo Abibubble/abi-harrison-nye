@@ -7,7 +7,6 @@ interface RecognitionListProps {
   items: readonly Recognition[];
 }
 
-/** Awards and commendations, each with its result first, as that's what people scan for. */
 export function RecognitionList({ items }: RecognitionListProps) {
   return (
     <Stack as="ul" gap={3}>

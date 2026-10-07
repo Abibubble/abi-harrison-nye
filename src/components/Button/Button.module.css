@@ -12,7 +12,7 @@
   text-decoration-line: none;
   cursor: pointer;
 
-  /* Transparent borders still show in Windows high contrast mode, so the button keeps its edges. */
+  /* Transparent borders still show in Windows high contrast mode, so the button keeps its edges */
   border: var(--border-width) solid transparent;
   border-radius: var(--radius-small);
 }
@@ -20,20 +20,20 @@
 .primary {
   color: var(--color-action-text);
   background: var(--color-action);
-}
 
-.primary:hover {
-  background: var(--color-action-hover);
+  &:hover {
+    background: var(--color-action-hover);
+  }
 }
 
 .secondary {
   color: var(--color-action);
   background: transparent;
   border-color: var(--color-action);
-}
 
-.secondary:hover {
-  color: var(--color-action-hover);
-  background: var(--color-surface);
-  border-color: var(--color-action-hover);
+  &:hover {
+    color: var(--color-action-hover);
+    background: var(--color-surface);
+    border-color: var(--color-action-hover);
+  }
 }

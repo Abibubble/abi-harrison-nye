@@ -1,4 +1,3 @@
-/* Tags use the body text size, as nothing on the site is smaller than 16px. */
 .tag {
   display: inline-block;
   padding: var(--space-1) var(--space-2);

@@ -8,10 +8,6 @@ export interface TalkPageData {
   transcriptHtml: string;
 }
 
-/**
- * Everything a talk's page needs, found by its slug. Runs when the site is built. Throws a 404 for a
- * talk that doesn't exist, so the not found page is shown.
- */
 export function loadTalkPage(
   slug: string,
   talks: readonly Talk[] = TALKS,

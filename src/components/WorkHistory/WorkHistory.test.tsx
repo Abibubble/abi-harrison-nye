@@ -15,15 +15,15 @@ const COMPANIES: Company[] = [
         title: 'Software Engineer',
         from: '2021-08',
         location: 'London (hybrid)',
-        summary: 'Worked across several teams.',
+        summary: 'Worked across several teams',
         highlightGroups: [
-          { heading: 'Engineering', highlights: ['Built things.', 'Fixed things.'] },
-          { heading: 'Accessibility', highlights: ['Audited things.'] },
+          { heading: 'Engineering', highlights: ['Built things', 'Fixed things'] },
+          { heading: 'Accessibility', highlights: ['Audited things'] },
         ],
       },
     ],
     sitesWorkedOn: [
-      { name: 'example.com', href: 'https://example.com', description: 'The main site.' },
+      { name: 'example.com', href: 'https://example.com', description: 'The main site' },
     ],
   },
   {
@@ -55,7 +55,7 @@ describe('WorkHistory', () => {
     const role = nth(screen.getAllByRole('article'), 0);
 
     expect(role).toHaveTextContent('August 2021 to present, London (hybrid)');
-    expect(role).toHaveTextContent('Worked across several teams.');
+    expect(role).toHaveTextContent('Worked across several teams');
   });
 
   it('lists the highlights in each group', () => {

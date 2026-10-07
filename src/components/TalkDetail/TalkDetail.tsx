@@ -16,7 +16,6 @@ interface TalkDetailProps {
   transcriptHtml: string;
 }
 
-/** A talk's own page: its details, the video and slides, and the full transcript. */
 export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
   return (
     <Stack gap={6}>
@@ -49,7 +48,6 @@ export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
       )}
 
       <Stack as="section" gap={4} aria-labelledby={TRANSCRIPT_ID}>
-        {/* Links to the transcript move focus here, so it can be focused by script. */}
         <Heading level={2} id={TRANSCRIPT_ID} tabIndex={-1}>
           Transcript
         </Heading>

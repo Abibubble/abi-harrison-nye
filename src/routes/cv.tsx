@@ -47,7 +47,7 @@ function CvSection({ id, title, children }: { id: string; title: string; childre
 
 /**
  * My CV, from the same content as the rest of the site, so it's always up to date. It's designed to
- * print well, so it can be printed or saved as a PDF instead of keeping a separate file.
+ * print well, so it can be printed or saved as a PDF instead of keeping a separate file
  */
 export default function Cv() {
   return (
@@ -115,7 +115,8 @@ export default function Cv() {
       <CvSection id="education" title="Education and training">
         <QualificationList items={QUALIFICATIONS} />
         <p>
-          <strong>Short courses:</strong> <AbbrText>{SHORT_COURSES}</AbbrText>
+          <span className={styles.shortCoursesLabel}>Short courses:</span>{' '}
+          <AbbrText>{SHORT_COURSES}</AbbrText>
         </p>
       </CvSection>
 

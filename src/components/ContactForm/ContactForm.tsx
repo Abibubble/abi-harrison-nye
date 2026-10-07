@@ -1,4 +1,11 @@
-import { type SubmitEvent, useEffect, useRef, useState } from 'react';
+import {
+  type SubmitEvent,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 
 import {
   type ContactMessage,
@@ -25,25 +32,46 @@ type Step = 'writing' | 'checking' | 'sending' | 'sent' | 'failed';
 const CHECK_HEADING_ID = 'check-your-message';
 
 interface ContactFormProps {
-  /** Sends the message. Tests and Storybook pass a fake, so nothing is really sent. */
   send?: (message: ContactMessage) => Promise<void>;
 }
 
-/**
- * The contact form. People write their message, check it, then send it (WCAG 3.3.6). Errors are
- * only shown after pressing Continue, never while typing. Nothing typed is ever lost, including when
- * sending fails, and there are no time limits. A hidden field catches spam bots instead of a CAPTCHA.
- */
+const subscribeToNothing = () => () => undefined;
+
+function useIsReady(): boolean {
+  return useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false,
+  );
+}
+
+function typedBeforeReady(): ContactMessage {
+  const valueOf = (id: string) =>
+    (document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | null)?.value ?? '';
+  return {
+    name: valueOf(FIELD_IDS.name),
+    email: valueOf(FIELD_IDS.email),
+    message: valueOf(FIELD_IDS.message),
+  };
+}
+
+/** The confirmation step meets WCAG 3.3.6; a honeypot catches spam without a CAPTCHA */
 export function ContactForm({ send = sendMessage }: ContactFormProps) {
   const [message, setMessage] = useState<ContactMessage>(EMPTY_MESSAGE);
   const [errors, setErrors] = useState<FormError[]>([]);
   const [step, setStep] = useState<Step>('writing');
   const [honeypot, setHoneypot] = useState('');
+  const ready = useIsReady();
   const checkHeadingRef = useRef<HTMLHeadingElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
   const previousStep = useRef(step);
 
-  // Move focus to whatever has just appeared, so keyboard and screen reader users are taken to it.
+  useLayoutEffect(() => {
+    const typed = typedBeforeReady();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (typed.name || typed.email || typed.message) setMessage(typed);
+  }, []);
+
   useEffect(() => {
     const from = previousStep.current;
     previousStep.current = step;
@@ -61,7 +89,7 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
   function checkMessage(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Only spam bots fill in the hidden field. Let them think it worked, without sending anything.
+    // Only spam bots fill in the hidden field. Let them think it worked, without sending anything
     if (honeypot) {
       setStep('sent');
       return;
@@ -98,11 +126,9 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
             Thanks{name ? `, ${name}` : ''}. I’ll reply to {email || 'you'} as soon as I can.
           </p>
         </Notice>
-        <div>
-          <Button variant="secondary" onClick={startAgain}>
-            Send another message
-          </Button>
-        </div>
+        <Button className={styles.contentWidthButton} variant="secondary" onClick={startAgain}>
+          Send another message
+        </Button>
       </Stack>
     );
   }
@@ -155,7 +181,6 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
               Change your message
             </Button>
           </Cluster>
-          {/* Always present, so screen readers announce it when sending starts. */}
           <p role="status" className={styles.status}>
             {step === 'sending' ? 'Sending your message…' : ''}
           </p>
@@ -205,7 +230,7 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
             update('message', event.target.value);
           }}
         />
-        {/* Hidden from everyone, including screen readers and keyboards. Only bots fill it in. */}
+        {/* Hidden from everyone, including screen readers and keyboards. Only bots fill it in */}
         <div className={styles.honeypot} aria-hidden="true">
           <label htmlFor="contact-website">Leave this empty</label>
           <input
@@ -220,9 +245,9 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
             }}
           />
         </div>
-        <div>
-          <Button type="submit">Continue</Button>
-        </div>
+        <Button className={styles.contentWidthButton} type={ready ? 'submit' : 'button'}>
+          Continue
+        </Button>
       </Stack>
     </form>
   );

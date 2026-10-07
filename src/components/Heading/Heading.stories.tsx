@@ -14,7 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-/** Every level, to compare sizes and weights. Levels 4 to 6 are body size, in semi bold. */
 export const AllLevels: Story = {
   render: () => (
     <Stack gap={3}>

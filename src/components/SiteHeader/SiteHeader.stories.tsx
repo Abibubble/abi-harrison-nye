@@ -11,7 +11,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Narrow the canvas below 768px to see the Menu button. */
 export const OnTheHomePage: Story = {};
 
 export const OnAnotherPage: Story = {

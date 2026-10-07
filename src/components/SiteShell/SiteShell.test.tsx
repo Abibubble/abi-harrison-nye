@@ -9,7 +9,6 @@ import { PageHeading } from '../PageHeading';
 import { MAIN_CONTENT_ID } from '../SkipLink';
 import { SiteShell } from './SiteShell';
 
-// Like the real app, the shell is a layout that stays in place while the pages inside it change.
 function renderSite(path = '/') {
   const Stub = createRoutesStub([
     {

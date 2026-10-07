@@ -4,11 +4,11 @@ import { expect } from 'vitest';
 import { WCAG_TAGS } from './wcag-tags';
 
 // jsdom doesn't do layout, so contrast can't be measured here. The end to end tests check it in real
-// browsers.
+// browsers
 const JSDOM_UNSUPPORTED_RULES = ['color-contrast', 'color-contrast-enhanced'];
 
 interface AxeCheckOptions {
-  /** Extra rules to turn off, for example `region` when testing a component outside a page. */
+  /** Extra rules to turn off, for example `region` when testing a component outside a page */
   disableRules?: string[];
 }
 

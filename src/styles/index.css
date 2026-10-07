@@ -1,6 +1,6 @@
 /*
  * Global styles. Everything here sits in a cascade layer, so component CSS Modules (which aren't
- * layered) always win over it without needing extra specificity.
+ * layered) always win over it without needing extra specificity
  */
 @layer reset, tokens, base, print;
 

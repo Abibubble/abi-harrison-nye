@@ -13,10 +13,10 @@ import { BEFORE_TECH_SUMMARY, VOLUNTEERING, WORK } from './work';
 
 const ROLES = WORK.flatMap((company) => company.roles);
 
-/** Names written in capitals that aren't abbreviations, so have nothing to expand. */
+/** Names written in capitals that aren't abbreviations, so have nothing to expand */
 const NAMES_IN_CAPITALS = ['LDX3'];
 
-/** Every piece of text written for the site, for checks that apply to all of it. */
+/** Every piece of text written for the site, for checks that apply to all of it */
 const ALL_TEXT = [
   BEFORE_TECH_SUMMARY,
   ...PROFILE.interests,
@@ -94,7 +94,7 @@ describe('site content', () => {
   });
 
   it('expands every abbreviation it uses, either in the text or in the glossary (WCAG 3.1.4)', () => {
-    // Words in capitals, such as WCAG, including pairs like CI/CD and plurals like APIs.
+    // Words in capitals, such as WCAG, including pairs like CI/CD and plurals like APIs
     const used = ALL_TEXT.flatMap((text) =>
       [...text.matchAll(/\b([A-Z][A-Z0-9]+(?:\/[A-Z][A-Z0-9]+)*)s?\b/g)].map(
         ([, word = '']) => word,

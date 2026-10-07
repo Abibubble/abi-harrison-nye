@@ -14,11 +14,15 @@
   letter-spacing: var(--letter-spacing-emphasis);
 }
 
+.qualificationTitle {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
 .detail {
   color: var(--color-text-muted);
 }
 
-/* The compact print layout puts each category on the same line as its skills, as "Tools: Git, ...". */
 @media print {
   :global(:root[data-print-layout='compact']) .skillGroup > * {
     display: inline;

@@ -8,7 +8,7 @@ import { ProjectItem } from './ProjectItem';
 
 const PROJECT: Project = {
   name: 'Example project',
-  summary: 'A project used to test this component.',
+  summary: 'A project used to test this component',
   tech: ['React', 'TypeScript'],
   href: 'https://example.com',
   codeHref: 'https://github.com/example/example',
@@ -19,7 +19,7 @@ describe('ProjectItem', () => {
     renderWithRouter(<ProjectItem project={PROJECT} headingLevel={2} />);
 
     expect(screen.getByRole('heading', { level: 2, name: 'Example project' })).toBeInTheDocument();
-    expect(screen.getByText('A project used to test this component.')).toBeInTheDocument();
+    expect(screen.getByText('A project used to test this component')).toBeInTheDocument();
   });
 
   it('lists the technologies used, named for this project', () => {
@@ -44,7 +44,7 @@ describe('ProjectItem', () => {
   it('leaves out tags and links it doesn’t have', () => {
     renderWithRouter(
       <ProjectItem
-        project={{ name: 'Bare project', summary: 'Nothing else.', tech: [] }}
+        project={{ name: 'Bare project', summary: 'Nothing else', tech: [] }}
         headingLevel={2}
       />,
     );

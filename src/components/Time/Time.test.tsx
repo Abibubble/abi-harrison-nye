@@ -15,7 +15,6 @@ describe('formatDate', () => {
   });
 
   it('gives the same result in any time zone, because it uses UTC', () => {
-    // The first moment of a month is the last day of the month before in time zones west of UTC.
     expect(formatDate('2026-01-01')).toBe('1 January 2026');
   });
 

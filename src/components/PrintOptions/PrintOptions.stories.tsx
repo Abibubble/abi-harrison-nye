@@ -10,5 +10,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Choose a layout, then use the button or the browser’s print preview to see it. */
 export const Default: Story = {};

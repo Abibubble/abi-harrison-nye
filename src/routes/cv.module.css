@@ -7,3 +7,8 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
 }
+
+.shortCoursesLabel {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}

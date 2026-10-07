@@ -12,10 +12,6 @@ interface ProjectItemProps {
   headingLevel: HeadingLevel;
 }
 
-/**
- * One side project. Its links name the project, so each one makes sense on its own when listed with
- * every other link on the page (WCAG 2.4.9).
- */
 export function ProjectItem({ project, headingLevel }: ProjectItemProps) {
   return (
     <Card as="article">

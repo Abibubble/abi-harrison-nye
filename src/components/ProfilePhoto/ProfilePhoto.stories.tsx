@@ -11,7 +11,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Shown until a photo is chosen. */
 export const Placeholder: Story = {};
 
 export const InTheDarkTheme: Story = { globals: { theme: 'dark' } };

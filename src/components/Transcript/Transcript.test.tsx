@@ -7,7 +7,7 @@ import { Transcript } from './Transcript';
 
 const MARKDOWN = `### Introduction
 
-On screen: the title slide.
+On screen: the title slide
 
 Hello, I’m **Abi**.
 
@@ -21,7 +21,7 @@ describe('Transcript', () => {
     render(<Transcript html={renderTranscript(MARKDOWN)} />);
 
     expect(screen.getByRole('heading', { level: 3, name: 'Introduction' })).toBeInTheDocument();
-    expect(screen.getByText('On screen: the title slide.')).toBeInTheDocument();
+    expect(screen.getByText('On screen: the title slide')).toBeInTheDocument();
     expect(screen.getByText('const accessible = true;')).toBeInTheDocument();
   });
 

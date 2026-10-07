@@ -14,7 +14,6 @@ const TALKS: Talk[] = [
   },
 ];
 
-/** The status React Router turns a thrown data() response into. */
 function thrownStatus(load: () => unknown): number | undefined {
   try {
     load();
