@@ -1,7 +1,7 @@
 .switcher {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--spacer-8) var(--spacer-24);
 }
 
 .inline {
@@ -21,7 +21,7 @@
 .field {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--spacer-8);
   align-items: center;
   min-width: 0;
 }
@@ -44,7 +44,7 @@
 .select {
   max-width: 100%;
   min-height: var(--size-target-min);
-  padding-inline: var(--space-2) calc(var(--space-1) + var(--space-4) + var(--space-2));
+  padding-inline: var(--spacer-8) calc(var(--spacer-4) + var(--spacer-24) + var(--spacer-8));
   color: var(--color-action);
   appearance: none;
   cursor: pointer;
@@ -66,9 +66,9 @@
 .chevron {
   position: absolute;
   inset-block: 0;
-  inset-inline-end: calc(var(--border-width) + var(--space-1));
-  width: var(--space-4);
-  height: var(--space-4);
+  inset-inline-end: calc(var(--border-width) + var(--spacer-4));
+  width: var(--spacer-24);
+  height: var(--spacer-24);
   margin-block: auto;
   color: var(--color-action);
   pointer-events: none;

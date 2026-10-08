@@ -6,7 +6,7 @@
 
 .main {
   flex: 1;
-  padding-block: var(--space-6) var(--space-7);
+  padding-block: var(--spacer-48) var(--spacer-96);
 
   &:focus {
     outline: none;

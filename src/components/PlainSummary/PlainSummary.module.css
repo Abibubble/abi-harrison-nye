@@ -1,10 +1,10 @@
 .summary {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--spacer-8);
   max-width: var(--size-measure);
-  padding-inline-start: var(--space-3);
-  border-inline-start: var(--space-1) solid var(--color-border-decorative);
+  padding-inline-start: var(--spacer-16);
+  border-inline-start: var(--spacer-4) solid var(--color-border-decorative);
 
   > * {
     margin: 0;

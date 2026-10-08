@@ -70,7 +70,6 @@ describe('Home page', () => {
   it('has no detectable accessibility issues', async () => {
     const { container } = renderWithRouter(<Home />);
 
-    // The page is tested on its own here, outside the site's landmarks
     await expectNoAxeViolations(container, { disableRules: ['region'] });
   });
 });

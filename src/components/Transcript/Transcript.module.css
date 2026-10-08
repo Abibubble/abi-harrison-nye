@@ -1,6 +1,6 @@
 .transcript {
   > * {
-    margin-block: 0 var(--space-4);
+    margin-block: 0 var(--spacer-24);
   }
 
   > :last-child {
@@ -9,7 +9,7 @@
 
   :global(h3),
   :global(h4) {
-    margin-block-start: var(--space-6);
+    margin-block-start: var(--spacer-48);
   }
 
   > :first-child {
@@ -18,12 +18,12 @@
 
   :global(ul),
   :global(ol) {
-    padding-inline-start: var(--space-4);
+    padding-inline-start: var(--spacer-24);
   }
 
   :global(pre) {
     max-width: var(--size-measure);
-    padding: var(--space-3);
+    padding: var(--spacer-16);
     white-space: pre-wrap;
     background: var(--color-surface);
     border: var(--border-width) solid var(--color-border-decorative);
@@ -31,7 +31,7 @@
   }
 
   :global(blockquote) {
-    padding-inline-start: var(--space-4);
-    border-inline-start: var(--space-1) solid var(--color-border-decorative);
+    padding-inline-start: var(--spacer-24);
+    border-inline-start: var(--spacer-4) solid var(--color-border-decorative);
   }
 }

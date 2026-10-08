@@ -53,7 +53,6 @@ interface KnownIssueProps {
   talks: Talk[];
 }
 
-/** One known issue, saying who it affects, how to get around it and what I'm doing about it */
 function KnownIssue({ title, criteria, affects, workaround, plan, talks }: KnownIssueProps) {
   return (
     <Stack gap={3}>

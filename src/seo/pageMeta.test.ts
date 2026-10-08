@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { absolutePageUrl, pageMeta } from './pageMeta';
 import { SHARE_IMAGE } from './shareImage';
 
-// The tests build with no SITE_URL, so addresses use the local preview address
 const SITE = 'http://localhost:4173';
 
 describe('absolutePageUrl', () => {

@@ -1,9 +1,5 @@
 import { fileUrl, pageUrl } from './siteUrl';
 
-/**
- * The address of each prerendered page, from the paths of its HTML file, such as work/index.html
- * for /work. Files that aren't a page's index.html, such as 404.html, aren't pages to list
- */
 export function pagePaths(htmlFiles: readonly string[]): string[] {
   return htmlFiles
     .map((file) => file.split('\\').join('/'))
@@ -21,7 +17,6 @@ function escapeXml(text: string): string {
     .replaceAll("'", '&apos;');
 }
 
-/** A sitemap listing every page, so search engines can find them all */
 export function sitemapXml(siteUrl: string, paths: readonly string[]): string {
   const urls = paths.map(
     (path) => `  <url>\n    <loc>${escapeXml(pageUrl(siteUrl, path))}</loc>\n  </url>`,
@@ -36,7 +31,6 @@ export function sitemapXml(siteUrl: string, paths: readonly string[]): string {
   ].join('\n');
 }
 
-/** Lets every search engine see every page, and tells them where the sitemap is */
 export function robotsTxt(siteUrl: string): string {
   return ['User-agent: *', 'Allow: /', '', `Sitemap: ${fileUrl(siteUrl, '/sitemap.xml')}`, ''].join(
     '\n',

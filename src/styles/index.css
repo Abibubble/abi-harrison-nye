@@ -11,7 +11,6 @@
 @import url('./tokens/colours.css') layer(tokens);
 @import url('./tokens/spacing.css') layer(tokens);
 @import url('./tokens/typography.css') layer(tokens);
-@import url('./tokens/motion.css') layer(tokens);
 @import url('./tokens/print.css') layer(tokens);
 @import url('./base.css') layer(base);
 @import url('./print.css') layer(print);

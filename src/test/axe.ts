@@ -3,12 +3,11 @@ import { expect } from 'vitest';
 
 import { WCAG_TAGS } from './wcag-tags';
 
-// jsdom doesn't do layout, so contrast can't be measured here. The end to end tests check it in real
-// browsers
+// jsdom doesn't do layout, so contrast can't be measured here. The end to end tests check it in real browsers
 const JSDOM_UNSUPPORTED_RULES = ['color-contrast', 'color-contrast-enhanced'];
 
 interface AxeCheckOptions {
-  /** Extra rules to turn off, for example `region` when testing a component outside a page */
+  // Extra rules to turn off, for example `region` when testing a component outside a page
   disableRules?: string[];
 }
 
@@ -16,6 +15,7 @@ function formatViolations(violations: Result[]): string {
   return violations
     .map((violation) => {
       const targets = violation.nodes.map((node) => `    ${node.target.join(' ')}`).join('\n');
+
       return `${violation.id} (${violation.impact ?? 'unknown'}): ${violation.help}\n${targets}`;
     })
     .join('\n\n');

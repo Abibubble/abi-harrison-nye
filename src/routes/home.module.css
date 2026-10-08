@@ -1,12 +1,11 @@
-/* The photo sits beside the introduction when there's room, and above it when there isn't */
 .intro {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
+  gap: var(--spacer-32);
   align-items: flex-start;
 
   > :last-child {
-    flex: 1 1 calc(var(--space-7) * 4);
+    flex: 1 1 calc(var(--spacer-96) * 4);
   }
 }
 

@@ -27,7 +27,6 @@ describe('personSchema', () => {
   it('never includes an email address or phone number, as the form is the only way to get in touch', () => {
     const text = JSON.stringify(schema);
 
-    // Something like name@example.com, which "@type" and "@context" aren't
     expect(text).not.toMatch(/[\w.+-]+@[\w-]+\.\w+/);
     expect(text).not.toMatch(/email|telephone/i);
     expect(text).not.toMatch(/\d{5,}/);

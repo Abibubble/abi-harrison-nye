@@ -13,7 +13,6 @@ const primitives = new Map(
   ),
 );
 
-// colours.css has no nested blocks, so each selector maps straight to its declarations
 const colourBlocks = new Map(
   [
     ...readTokens('./colours.css')
@@ -54,8 +53,6 @@ function resolve(token: string, theme: Theme): string {
   return hex;
 }
 
-// AAA 1.4.6 needs 7:1 for text. Focus rings and meaningful borders need 3:1 (1.4.11 and 2.4.13), but
-// this palette keeps them at 7:1 too, so one bar covers everything
 const AAA_TEXT = 7;
 
 const PAIRINGS: [foreground: string, background: string][] = [
@@ -84,7 +81,6 @@ describe('colour tokens', () => {
   it('writes every light and dark colour in a form this test can read', () => {
     const declared = rootBlock.match(/--color-[\w-]+:/g) ?? [];
 
-    // Catches a token written another way, which would otherwise be skipped silently
     expect(themes.light.size).toBeGreaterThan(0);
     expect(themes.light.size).toBe(declared.length);
   });
@@ -111,7 +107,6 @@ describe('colour tokens', () => {
 const ALLOWED_PIXEL_SIZES = [4, 8, 16, 24, 32, 48, 96];
 const ROOT_FONT_SIZE = 16;
 
-// Sizes deliberately off the scale, agreed in docs/PLAN.md. Adding to this list needs a good reason
 const AGREED_EXCEPTIONS = new Map([
   ['space-paragraph', 40],
   ['border-width', 2],
@@ -127,9 +122,7 @@ function remTokens(file: string, prefix = ''): Map<string, number> {
 
 describe('size tokens', () => {
   it('defines the 4, 8, 16, 24, 32, 48, 96 pixel spacing scale', () => {
-    const scale = [...remTokens('./spacing.css', 'space-')]
-      .filter(([name]) => !AGREED_EXCEPTIONS.has(name))
-      .map(([, pixels]) => pixels);
+    const scale = [...remTokens('./spacing.css', 'spacer-').values()];
 
     expect(scale).toEqual(ALLOWED_PIXEL_SIZES);
   });

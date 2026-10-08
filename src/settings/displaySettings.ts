@@ -1,9 +1,3 @@
-/**
- * Display settings: the single source of truth for every setting, its options, how it's saved, and
- * how it's applied to the page. The settings page, the header theme switcher, the script that applies
- * settings before the page is drawn, and the tests all read from here
- */
-
 export const STORAGE_KEY = 'display-settings';
 
 interface SettingOption<Value extends string> {
@@ -97,7 +91,6 @@ function isOption(name: SettingName, value: unknown): boolean {
   return SETTINGS[name].options.some((option) => option.value === value);
 }
 
-/** Reads saved settings, keeping only values that are still valid options */
 export function parseSettings(saved: string | null): DisplaySettings {
   let parsed: unknown;
   try {
@@ -117,7 +110,6 @@ export function parseSettings(saved: string | null): DisplaySettings {
   return settings;
 }
 
-/** Sets each setting as an attribute on <html>, which the CSS responds to. Defaults are left off */
 export function applySettings(settings: DisplaySettings, root = document.documentElement): void {
   for (const name of SETTING_NAMES) {
     const { attribute, default: defaultValue } = SETTINGS[name];
@@ -139,11 +131,6 @@ export interface DisplaySettingsStore {
   reset: () => void;
 }
 
-/**
- * Keeps settings in memory, saves them to local storage, applies them to the page, and tells
- * subscribers when they change, including when they're changed in another tab. Storage can be
- * unavailable, for example in some private browsing modes, so every use of it is allowed to fail
- */
 export function createDisplaySettingsStore(getStorage: () => Storage): DisplaySettingsStore {
   let current: DisplaySettings | undefined;
   const listeners = new Set<Listener>();

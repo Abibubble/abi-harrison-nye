@@ -19,9 +19,9 @@
   /*
    * Emphasis: bold text at body size, such as buttons, labels and error messages. Full bold letters
    * blur together for people with astigmatism, especially light text on a dark background, such as
-  * white on a purple button. Semi bold with a little extra space keeps each letter distinct
+   * white on a purple button. Semi bold with a little extra space keeps each letter distinct
    * Headings stay bold, because the blurring is much less at larger sizes. Always use these two
-  * tokens together
+   * tokens together
    */
   --font-weight-emphasis: var(--font-weight-semibold);
   --letter-spacing-emphasis: 0.05em;
@@ -68,7 +68,7 @@
   --letter-spacing-body: 0.12em;
   --letter-spacing-emphasis: 0.12em;
   --word-spacing-body: 0.16em;
-  --space-paragraph: var(--space-6);
+  --space-paragraph: var(--spacer-48);
 }
 
 :root[data-font='system'] {

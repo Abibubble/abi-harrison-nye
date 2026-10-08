@@ -6,9 +6,9 @@
 .inner {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--spacer-16);
   align-items: center;
-  padding-block: var(--space-3);
+  padding-block: var(--spacer-16);
 }
 
 .siteName {
@@ -36,7 +36,7 @@
 .subnavInner {
   display: flex;
   justify-content: flex-end;
-  padding-block: var(--space-1);
+  padding-block: var(--spacer-4);
 }
 
 /* Should match SiteNav.module.css */

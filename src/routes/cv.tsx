@@ -45,10 +45,6 @@ function CvSection({ id, title, children }: { id: string; title: string; childre
   );
 }
 
-/**
- * My CV, from the same content as the rest of the site, so it's always up to date. It's designed to
- * print well, so it can be printed or saved as a PDF instead of keeping a separate file
- */
 export default function Cv() {
   return (
     <Stack gap={6}>

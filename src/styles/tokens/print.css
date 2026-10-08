@@ -25,28 +25,21 @@
     --font-size-h2: 16pt;
     --font-size-h3: 13pt;
 
-    /*
-     * The same spacing steps, sized for paper. Screen spacing is generous for reading on a device,
-    * but on paper it spreads a two page CV over six
-     */
-    --space-1: 2pt;
-    --space-2: 3pt;
-    --space-3: 6pt;
-    --space-4: 8pt;
-    --space-5: 10pt;
-    --space-6: 14pt;
-    --space-7: 20pt;
+    /* The same spacing steps, sized for paper (which gets spread larger on paper than on a webpage */
+    --spacer-4: 2pt;
+    --spacer-8: 3pt;
+    --spacer-16: 6pt;
+    --spacer-24: 8pt;
+    --spacer-32: 10pt;
+    --spacer-48: 14pt;
+    --spacer-96: 20pt;
     --space-paragraph: 6pt;
 
     /* Sizes built from the spacing scale would shrink with it, so paper uses its full width */
     --size-content-max: 100%;
   }
 
-  /*
-   * The compact print layout, chosen on the CV page. Smaller text, tighter lines and smaller gaps,
-   * with nothing left out. It's an explicit choice, so it also overrides the text spacing setting,
-  * which would otherwise spread it back over more pages
-   */
+  /* The compact print layout, chosen on the CV page. Smaller text, tighter lines and smaller gaps */
   :root[data-print-layout='compact'] {
     --font-size-body: 9.5pt;
     --font-size-2: 11pt;
@@ -58,13 +51,13 @@
     --letter-spacing-body: normal;
     --letter-spacing-emphasis: 0.03em;
     --word-spacing-body: normal;
-    --space-1: 1pt;
-    --space-2: 1.5pt;
-    --space-3: 3pt;
-    --space-4: 3pt;
-    --space-5: 3pt;
-    --space-6: 4pt;
-    --space-7: 6pt;
+    --spacer-4: 1pt;
+    --spacer-8: 1.5pt;
+    --spacer-16: 3pt;
+    --spacer-24: 3pt;
+    --spacer-32: 3pt;
+    --spacer-48: 4pt;
+    --spacer-96: 6pt;
     --space-paragraph: 2pt;
 
     /* WCAG 1.4.8 allows lines of up to 80 characters. Compact uses all of that */
@@ -75,7 +68,6 @@
     margin: 1.5cm;
   }
 
-  /* Compact pages have smaller margins. A named page is the only way to change margins by layout */
   :root[data-print-layout='compact'] body {
     page: compact;
   }

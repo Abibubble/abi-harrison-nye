@@ -98,7 +98,7 @@ a:hover {
 }
 
 :target {
-  scroll-margin-block: var(--space-6);
+  scroll-margin-block: var(--spacer-48);
 }
 
 code,
@@ -139,7 +139,10 @@ em {
   background: var(--color-selection-bg);
 }
 
-/* Motion is switched off for anyone who asks, either on their device or in the display settings */
+/*
+ * Motion is opt-in. Declare animation and transition styles only inside
+ * @media (prefers-reduced-motion: no-preference). This remains a fallback for reduced-motion users.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

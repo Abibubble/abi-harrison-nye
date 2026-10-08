@@ -1,12 +1,12 @@
 .skipLink {
   position: absolute;
-  inset-block-start: var(--space-2);
-  inset-inline-start: var(--space-3);
+  inset-block-start: var(--spacer-8);
+  inset-inline-start: var(--spacer-16);
   z-index: 1;
   display: inline-flex;
   align-items: center;
   min-height: var(--size-target-min);
-  padding-inline: var(--space-4);
+  padding-inline: var(--spacer-24);
   font-weight: var(--font-weight-emphasis);
   color: var(--color-action-text);
   letter-spacing: var(--letter-spacing-emphasis);

@@ -1,5 +1,5 @@
 .card {
-  padding: var(--space-4);
+  padding: var(--spacer-24);
   background: var(--color-surface);
 
   /* The background colour alone is a subtle change, so a border marks the edge, including in high contrast mode */

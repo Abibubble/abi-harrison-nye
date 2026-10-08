@@ -1,16 +1,15 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--spacer-8);
   max-width: var(--size-measure);
   margin: 0;
 }
 
-/* Each known issue: what it fails, who it affects, the workaround and the plan */
 .details {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--spacer-16);
   max-width: var(--size-measure);
   margin: 0;
 }
@@ -30,11 +29,10 @@
   margin: 0;
 }
 
-/* Abbreviations in a narrow column beside what they stand for, or above it on narrow screens */
 .glossary {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--spacer-8) var(--spacer-24);
   max-width: var(--size-measure);
   margin: 0;
 }
@@ -50,15 +48,14 @@
   }
 
   .glossary dd {
-    margin-block-end: var(--space-3);
+    margin-block-end: var(--spacer-16);
   }
 }
 
-/* Each term above its definition, as terms can be long */
 .definitions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--spacer-16);
   max-width: var(--size-measure);
   margin: 0;
 }
