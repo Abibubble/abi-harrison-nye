@@ -16,6 +16,7 @@ import {
   validateMessage,
 } from '../../contact/message';
 import { sendMessage } from '../../contact/sendMessage';
+import { rememberSent, secondsUntilNextMessage, tooFastForAPerson } from '../../contact/spamChecks';
 import { PRIVACY_CONTACT_FORM_ID } from '../../content/statements';
 import { Button } from '../Button';
 import { Cluster } from '../Cluster';
@@ -27,12 +28,14 @@ import { TextArea } from '../TextArea';
 import { TextField } from '../TextField';
 import styles from './ContactForm.module.css';
 
-type Step = 'writing' | 'checking' | 'sending' | 'sent' | 'failed';
+type Step = 'writing' | 'checking' | 'sending' | 'sent' | 'failed' | 'tooSoon';
 
 const CHECK_HEADING_ID = 'check-your-message';
 
 interface ContactFormProps {
   send?: (message: ContactMessage) => Promise<void>;
+  /** How long ago the page started loading, so typing before React starts counts. Tests set it */
+  pageAgeInMs?: () => number;
 }
 
 const subscribeToNothing = () => () => undefined;
@@ -56,7 +59,10 @@ function typedBeforeReady(): ContactMessage {
 }
 
 /** The confirmation step meets WCAG 3.3.6; a honeypot catches spam without a CAPTCHA */
-export function ContactForm({ send = sendMessage }: ContactFormProps) {
+export function ContactForm({
+  send = sendMessage,
+  pageAgeInMs = () => performance.now(),
+}: ContactFormProps) {
   const [message, setMessage] = useState<ContactMessage>(EMPTY_MESSAGE);
   const [errors, setErrors] = useState<FormError[]>([]);
   const [step, setStep] = useState<Step>('writing');
@@ -78,7 +84,7 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
     if (from === step) return;
 
     if (step === 'checking' && from === 'writing') checkHeadingRef.current?.focus();
-    if (step === 'sent' || step === 'failed') resultRef.current?.focus();
+    if (step === 'sent' || step === 'failed' || step === 'tooSoon') resultRef.current?.focus();
     if (step === 'writing') document.getElementById(FIELD_IDS.name)?.focus();
   }, [step]);
 
@@ -97,14 +103,27 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
 
     const found = validateMessage(message);
     setErrors(found);
-    if (found.length === 0) setStep('checking');
+    if (found.length > 0) return;
+
+    // Too fast for a person to have read the form and filled it in, so it's a bot. Like the hidden
+    // field, it looks like it worked, so the bot doesn't try another way
+    if (tooFastForAPerson(pageAgeInMs())) {
+      setStep('sent');
+      return;
+    }
+    setStep('checking');
   }
 
   async function sendIt() {
     if (step === 'sending') return;
+    if (secondsUntilNextMessage(Date.now()) > 0) {
+      setStep('tooSoon');
+      return;
+    }
     setStep('sending');
     try {
       await send(tidyMessage(message));
+      rememberSent(Date.now());
       setStep('sent');
     } catch {
       setStep('failed');
@@ -133,10 +152,18 @@ export function ContactForm({ send = sendMessage }: ContactFormProps) {
     );
   }
 
-  if (step === 'checking' || step === 'sending' || step === 'failed') {
+  if (step === 'checking' || step === 'sending' || step === 'failed' || step === 'tooSoon') {
     const tidy = tidyMessage(message);
     return (
       <Stack gap={5}>
+        {step === 'tooSoon' && (
+          <Notice ref={resultRef} variant="error" title="Wait a minute before sending this">
+            <p>
+              You sent a message less than a minute ago. Nothing you wrote has been lost, so you can
+              send this one in a minute.
+            </p>
+          </Notice>
+        )}
         {step === 'failed' && (
           <Notice ref={resultRef} variant="error" title="Your message wasn’t sent">
             <p>

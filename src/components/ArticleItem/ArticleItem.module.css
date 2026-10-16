@@ -1,3 +1,10 @@
 .meta {
   color: var(--color-text-muted);
 }
+
+/* The heading link stands on its own rather than in a sentence, so it needs a full size target
+   (WCAG 2.5.5). Padding adds the height without changing how the title wraps */
+.title a {
+  display: inline-block;
+  padding-block: var(--spacer-4);
+}

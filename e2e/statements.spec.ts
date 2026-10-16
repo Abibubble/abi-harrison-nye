@@ -1,4 +1,4 @@
-import { expect, test } from './support/test';
+import { expect, test, waitLikeAPerson } from './support/test';
 
 test.describe('Accessibility and Privacy pages', () => {
   for (const path of ['/accessibility', '/privacy']) {
@@ -26,6 +26,7 @@ test.describe('Accessibility and Privacy pages', () => {
     await page.getByRole('textbox', { name: 'Your name' }).fill('Sam');
     await page.getByRole('textbox', { name: 'Your email address' }).fill('sam@example.com');
     await page.getByRole('textbox', { name: 'Your message' }).fill('Hello!');
+    await waitLikeAPerson(page);
     await page.getByRole('button', { name: 'Continue' }).click();
 
     await page.getByRole('link', { name: 'How your information is used' }).click();
@@ -40,7 +41,7 @@ test.describe('Accessibility and Privacy pages', () => {
     await page.goto('/privacy');
 
     await page
-      .getByRole('region', { name: 'Display settings' })
+      .getByRole('region', { name: 'What’s saved in your browser' })
       .getByRole('link', { name: 'display settings' })
       .click();
 

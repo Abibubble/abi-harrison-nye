@@ -1,9 +1,10 @@
-import { type Page, expect, test } from './support/test';
+import { type Page, expect, test, waitLikeAPerson } from './support/test';
 
 async function fillIn(page: Page) {
   await page.getByRole('textbox', { name: 'Your name' }).fill('Sam');
   await page.getByRole('textbox', { name: 'Your email address' }).fill('sam@example.com');
   await page.getByRole('textbox', { name: 'Your message' }).fill('Hello!\nSecond line.');
+  await waitLikeAPerson(page);
 }
 
 test.describe('Contact form', () => {
@@ -50,6 +51,7 @@ test.describe('Contact form', () => {
     await page.keyboard.type('Hello!');
     await page.keyboard.press(next);
     await expect(page.getByRole('button', { name: 'Continue' })).toBeFocused();
+    await waitLikeAPerson(page);
     await page.keyboard.press('Enter');
 
     await expect(page.getByRole('heading', { name: 'Check your message' })).toBeFocused();

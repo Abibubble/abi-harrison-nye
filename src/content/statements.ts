@@ -8,7 +8,7 @@ export const ACCESSIBILITY_REVIEWED = '2026-10-06';
 export const MANUAL_TESTING: string[] = [];
 
 /** When the privacy notice last changed. Update it whenever the notice does */
-export const PRIVACY_UPDATED = '2026-10-06';
+export const PRIVACY_UPDATED = '2026-10-15';
 
 /** The privacy notice's section on the contact form, which the form links to */
 export const PRIVACY_CONTACT_FORM_ID = 'contact-form';

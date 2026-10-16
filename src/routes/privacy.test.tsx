@@ -65,6 +65,7 @@ describe('Privacy page', () => {
     renderWithRouter(<Privacy />);
 
     const section = region('Your rights');
+    expect(section).toHaveTextContent('I’ll reply within one week.');
     expect(within(section).getByRole('link', { name: 'contact form' })).toHaveAttribute(
       'href',
       '/contact',
@@ -89,8 +90,9 @@ describe('Privacy page', () => {
   it('explains what the display settings store, linking to them', () => {
     renderWithRouter(<Privacy />);
 
-    const section = region('What the display settings save');
+    const section = region('What’s saved in your browser');
     expect(section).toHaveTextContent('never sent to me or anyone else');
+    expect(section).toHaveTextContent('the time you last sent a message');
     expect(within(section).getByRole('link', { name: 'display settings' })).toHaveAttribute(
       'href',
       '/accessibility#display-settings',
@@ -106,7 +108,7 @@ describe('Privacy page', () => {
     expect(region('Other sites')).toHaveTextContent('Nothing from YouTube loads here');
     expect(region('Hosting')).toHaveTextContent('hosted by GitHub Pages');
     expect(region('Changes to this notice')).toHaveTextContent(
-      'It was last updated on 6 October 2026.',
+      'It was last updated on 15 October 2026.',
     );
   });
 

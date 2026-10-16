@@ -205,7 +205,7 @@ export default function Accessibility() {
               criteria={['1.2.6 Sign Language (Prerecorded), Level AAA']}
               affects="People whose first language is a sign language, such as British Sign Language."
               workaround="Each talk’s page has a full transcript, and captions where the video has them."
-              plan="I don’t plan to add sign language interpretation. It isn’t affordable for a personal site, so I’m putting that effort into captions and transcripts instead."
+              plan="I don’t plan to add British Sign Language interpretation. It costs more than I can pay for a personal site. Instead, every talk has a full transcript, and I’m adding captions to every video. If you need a talk in British Sign Language, contact me and I’ll see what I can do."
               talks={withVideos}
             />
           </>

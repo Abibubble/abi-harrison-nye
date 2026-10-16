@@ -24,7 +24,7 @@ const SECTIONS = {
   whoIsResponsible: { id: 'who-is-responsible', title: 'Who’s responsible for your information' },
   contactForm: { id: PRIVACY_CONTACT_FORM_ID, title: 'The contact form' },
   yourRights: { id: 'your-rights', title: 'Your rights' },
-  displaySettings: { id: 'display-settings-storage', title: 'What the display settings save' },
+  displaySettings: { id: 'display-settings-storage', title: 'What’s saved in your browser' },
   noTracking: { id: 'no-tracking', title: 'No tracking' },
   otherSites: { id: 'other-sites', title: 'Other sites' },
   hosting: { id: 'hosting', title: 'Hosting' },
@@ -93,8 +93,7 @@ export default function Privacy() {
           <li>stop using it</li>
         </ul>
         <p>
-          To ask, use the <Link to="/contact">contact form</Link>. I’ll reply within one month, as
-          the law requires.
+          To ask, use the <Link to="/contact">contact form</Link>. I’ll reply within one week.
         </p>
         <p>
           If you’re unhappy with how I’ve used your information, you can{' '}
@@ -113,9 +112,15 @@ export default function Privacy() {
           your preferences, such as the theme and text size, and nothing personal.
         </p>
         <p>
-          They stay in your browser and are never sent to me or anyone else. Local storage isn’t a
-          cookie, and nothing else on the site uses it. To remove them, choose “Reset to defaults”
-          in the display settings, or clear this site’s data in your browser.
+          The contact form also saves the time you last sent a message, so the same browser can’t
+          send more than one message a minute. It’s only a time, with nothing about you or your
+          message.
+        </p>
+        <p>
+          Both stay in your browser and are never sent to me or anyone else. Local storage isn’t a
+          cookie, and nothing else on the site uses it. To remove your display settings, choose
+          “Reset to defaults” in the display settings. To remove both, clear this site’s data in
+          your browser.
         </p>
       </PageContentsSection>
 

@@ -1,5 +1,5 @@
 import { ROUTES } from './support/routes';
-import { type Page, expect, test } from './support/test';
+import { type Page, expect, test, waitLikeAPerson } from './support/test';
 
 async function recordViolations(page: Page): Promise<() => Promise<string[]>> {
   await page.addInitScript(() => {
@@ -40,6 +40,7 @@ test.describe('Content Security Policy', () => {
     await page.getByRole('textbox', { name: 'Your name' }).fill('Sam');
     await page.getByRole('textbox', { name: 'Your email address' }).fill('sam@example.com');
     await page.getByRole('textbox', { name: 'Your message' }).fill('Hello!');
+    await waitLikeAPerson(page);
     await page.getByRole('button', { name: 'Continue' }).click();
     await page.getByRole('button', { name: 'Send message' }).click();
 

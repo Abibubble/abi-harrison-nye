@@ -123,6 +123,6 @@ export const SPEAKING_WITHOUT_PAGES: SpeakingEngagement[] = [
     title: 'Moving accessibility from debt to done at giffgaff',
     event: 'LeadDev LDX3',
     location: 'London',
-    date: '2026-06',
+    date: '2026-06-02',
   },
 ];

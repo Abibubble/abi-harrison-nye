@@ -2,12 +2,17 @@ import { screen } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import type { ContactMessage } from '../../contact/message';
 import { expectNoAxeViolations } from '../../test/axe';
 import { renderWithRouter } from '../../test/render';
 import { ContactForm } from './ContactForm';
+
+// Each test starts as a browser that hasn't sent a message yet
+afterEach(() => {
+  localStorage.clear();
+});
 
 const nameField = () => screen.getByRole('textbox', { name: 'Your name' });
 const emailField = () => screen.getByRole('textbox', { name: 'Your email address' });
@@ -18,7 +23,8 @@ function renderForm(
   send = vi.fn<(message: ContactMessage) => Promise<void>>().mockResolvedValue(),
 ) {
   const user = userEvent.setup();
-  renderWithRouter(<ContactForm send={send} />);
+  // A page a person has had open for a minute, so the speed check lets the message through
+  renderWithRouter(<ContactForm send={send} pageAgeInMs={() => 60_000} />);
   return { user, send };
 }
 
@@ -29,6 +35,48 @@ async function fillIn(user: UserEvent) {
 }
 
 describe('ContactForm', () => {
+  describe('spam checks', () => {
+    it('quietly drops a message sent too fast for a person, as spam bots do', async () => {
+      const send = vi.fn<(message: ContactMessage) => Promise<void>>().mockResolvedValue();
+      const user = userEvent.setup();
+      renderWithRouter(<ContactForm send={send} pageAgeInMs={() => 1000} />);
+      await fillIn(user);
+
+      await user.click(button('Continue'));
+
+      expect(screen.getByRole('alert', { name: 'Message sent' })).toBeInTheDocument();
+      expect(send).not.toHaveBeenCalled();
+    });
+
+    it('still shows errors for an incomplete message, however fast', async () => {
+      const user = userEvent.setup();
+      renderWithRouter(<ContactForm pageAgeInMs={() => 0} />);
+
+      await user.click(button('Continue'));
+
+      expect(screen.getByRole('alert', { name: 'There’s a problem' })).toBeInTheDocument();
+    });
+
+    it('asks people to wait a minute between messages, keeping what they wrote', async () => {
+      const { user, send } = renderForm();
+      await fillIn(user);
+      await user.click(button('Continue'));
+      await user.click(button('Send message'));
+      await user.click(button('Send another message'));
+      await fillIn(user);
+      await user.click(button('Continue'));
+
+      await user.click(button('Send message'));
+
+      const notice = screen.getByRole('alert', { name: 'Wait a minute before sending this' });
+      expect(notice.parentElement).toHaveFocus();
+      expect(send).toHaveBeenCalledTimes(1);
+      expect(screen.getByRole('region', { name: 'Check your message' })).toHaveTextContent(
+        'sam@example.com',
+      );
+    });
+  });
+
   it('can’t be sent by the browser itself before React is running, which would put it in the address', () => {
     const prerendered = renderToString(
       <MemoryRouter>

@@ -146,13 +146,13 @@ export const VOLUNTEERING: SiteWorkedOn[] = [
     name: 'attractionsource.com',
     href: 'https://attractionsource.com',
     description:
-      'One of the largest online communities for fans of theme parks and attractions in the UK.',
+      'One of the largest online communities for fans of theme parks and attractions in the UK. I keep the site and its server running, improve its accessibility, and help writers who aren’t technical add pages in WordPress.',
   },
   {
     name: 'towerstimes.co.uk',
     href: 'https://towerstimes.co.uk',
     description:
-      'An unofficial community site for Alton Towers Resort, with news, guides and history.',
+      'An unofficial community site for Alton Towers Resort, with news, guides and history. I keep the site and its server running, improve its accessibility, and help writers who aren’t technical add pages in WordPress.',
   },
 ];
 

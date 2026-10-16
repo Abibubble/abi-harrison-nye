@@ -167,7 +167,8 @@ describe('Accessibility page', () => {
 
       const issue = knownIssue('Talk videos don’t have sign language interpretation');
       expect(issue).toHaveTextContent('1.2.6 Sign Language (Prerecorded), Level AAA');
-      expect(issue).toHaveTextContent('I don’t plan to add sign language interpretation.');
+      expect(issue).toHaveTextContent('I don’t plan to add British Sign Language interpretation.');
+      expect(issue).toHaveTextContent('If you need a talk in British Sign Language, contact me');
       expect(within(issue).getAllByRole('link')).toHaveLength(2);
     });
 

@@ -10,6 +10,11 @@ export interface GlossaryTerm {
  */
 export const GLOSSARY: GlossaryTerm[] = [
   {
+    term: 'A11y',
+    definition:
+      'A short way of writing accessibility. The 11 stands for the 11 letters between the a and the y.',
+  },
+  {
     term: 'Accessibility auditor',
     definition:
       'Someone trained to check websites and apps against accessibility guidelines, and to explain how to fix any problems they find.',

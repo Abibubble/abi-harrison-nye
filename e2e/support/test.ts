@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test';
+import { type Page, test as base, expect } from '@playwright/test';
 
 export * from '@playwright/test';
 
@@ -64,3 +64,11 @@ export const test = base.extend<{ emailJs: FakeEmailJs } & Options>({
     { auto: true },
   ],
 });
+
+/**
+ * Waits until the page has been open 3 seconds, as the contact form treats anything sent faster as
+ * a spam bot. Call it before sending a message.
+ */
+export async function waitLikeAPerson(page: Page): Promise<void> {
+  await page.waitForFunction(() => performance.now() >= 3000);
+}

@@ -16,7 +16,7 @@ export function ArticleItem({ article, headingLevel }: ArticleItemProps) {
   return (
     <Card as="article">
       <Stack gap={2}>
-        <Heading level={headingLevel}>
+        <Heading level={headingLevel} className={styles.title}>
           <Link href={article.href}>{article.title}</Link>
         </Heading>
         <p className={styles.meta}>

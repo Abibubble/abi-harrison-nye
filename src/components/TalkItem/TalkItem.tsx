@@ -21,7 +21,7 @@ export function TalkItem({ talk, headingLevel }: TalkItemProps) {
   return (
     <Card as="article">
       <Stack gap={2}>
-        <Heading level={headingLevel}>
+        <Heading level={headingLevel} className={styles.title}>
           <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
         </Heading>
         <p className={styles.meta}>
