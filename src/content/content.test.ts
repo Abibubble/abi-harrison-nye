@@ -3,13 +3,20 @@ import { describe, expect, it } from 'vitest';
 import { formatDate } from '../components/Time';
 import { ABBREVIATIONS } from './abbreviations';
 import { ARTICLES } from './articles';
-import { CV_PROFILE, QUALIFICATIONS, SHORT_COURSES, SKILLS, SPEAKING_WITHOUT_PAGES } from './cv';
+import {
+  CV_INTERESTS,
+  CV_PROFILE,
+  QUALIFICATIONS,
+  SHORT_COURSES,
+  SKILLS,
+  SPEAKING_WITHOUT_PAGES,
+} from './cv';
 import { GLOSSARY } from './glossary';
 import { PLAIN_SUMMARY, PROFILE, PROFILE_LINKS } from './profile';
 import { PROJECTS } from './projects';
 import { RECOGNITION } from './recognition';
 import { TALKS } from './talks';
-import { BEFORE_TECH_SUMMARY, VOLUNTEERING, WORK } from './work';
+import { BEFORE_TECH_SUMMARY, VOLUNTEERING, VOLUNTEERING_ROLE, WORK } from './work';
 
 const ROLES = WORK.flatMap((company) => company.roles);
 
@@ -40,6 +47,8 @@ const ALL_TEXT = [
   SHORT_COURSES,
   ...SPEAKING_WITHOUT_PAGES.flatMap((talk) => [talk.title, talk.event, talk.location]),
   ...VOLUNTEERING.flatMap((site) => [site.name, site.description]),
+  VOLUNTEERING_ROLE,
+  CV_INTERESTS,
   PLAIN_SUMMARY,
   ...GLOSSARY.flatMap((entry) => [entry.term, entry.definition]),
 ];
@@ -138,9 +147,5 @@ describe('site content', () => {
         `${talk.title} now has a page, so remove it from SPEAKING_WITHOUT_PAGES`,
       ).not.toContain(talk.title);
     }
-  });
-
-  it('has alt text for the profile photo, once there is one', () => {
-    if (PROFILE.photo) expect(PROFILE.photo.alt.trim()).not.toBe('');
   });
 });

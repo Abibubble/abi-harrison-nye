@@ -1,8 +1,9 @@
 import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { SKILLS } from '../content/cv';
-import { WORK } from '../content/work';
+import { CV_INTERESTS, SKILLS } from '../content/cv';
+import { PROFILE } from '../content/profile';
+import { VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
 import Cv, { meta } from './cv';
@@ -58,6 +59,22 @@ describe('CV page', () => {
       'Education and training',
       'Interests',
     ]);
+  });
+
+  it('says what I do as a volunteer once, not for each site', () => {
+    renderWithRouter(<Cv />);
+
+    expect(within(section('Volunteering')).getAllByText(VOLUNTEERING_ROLE)).toHaveLength(1);
+  });
+
+  it('keeps the interests short, so the compact CV fits on two pages', () => {
+    renderWithRouter(<Cv />);
+
+    const interests = within(section('Interests'));
+    expect(interests.getByText(CV_INTERESTS)).toBeInTheDocument();
+    for (const interest of PROFILE.interests) {
+      expect(interests.queryByText(interest)).not.toBeInTheDocument();
+    }
   });
 
   it('writes HAND out in full in the profile, where it first appears', () => {

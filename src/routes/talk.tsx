@@ -32,7 +32,7 @@ export function meta({ loaderData }: MetaArgs<typeof loader>): MetaDescriptor[] 
 }
 
 export default function Talk() {
-  const { talk, transcriptHtml } = useLoaderData<typeof loader>();
+  const { talk, transcriptHtml, aboutHtml } = useLoaderData<typeof loader>();
 
-  return <TalkDetail talk={talk} transcriptHtml={transcriptHtml} />;
+  return <TalkDetail talk={talk} transcriptHtml={transcriptHtml} aboutHtml={aboutHtml} />;
 }

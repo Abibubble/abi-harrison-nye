@@ -3,3 +3,26 @@
   line-height: var(--line-height-heading);
   color: var(--color-text-muted);
 }
+
+.about {
+  max-width: var(--size-measure);
+}
+
+/* A full size target, as it stands on its own (WCAG 2.5.5). It stays a list item, as other
+   displays hide the open and close arrow in some browsers */
+.summary {
+  display: list-item;
+  min-height: var(--size-target-min);
+  padding-block: var(--spacer-8);
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-action);
+  letter-spacing: var(--letter-spacing-emphasis);
+  cursor: pointer;
+}
+
+/* A link on its own, rather than in a sentence, needs a full size target (WCAG 2.5.5) */
+.standalone a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+}

@@ -3,8 +3,10 @@
 }
 
 /* The heading link stands on its own rather than in a sentence, so it needs a full size target
-   (WCAG 2.5.5). Padding adds the height without changing how the title wraps */
+   (WCAG 2.5.5). Padding adds the height without changing how the title wraps. The maximum width
+   stops a long word making the link wider than the screen, so the word wraps instead (WCAG 1.4.10) */
 .title a {
   display: inline-block;
+  max-width: 100%;
   padding-block: var(--spacer-4);
 }

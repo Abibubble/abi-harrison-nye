@@ -20,8 +20,8 @@ export function TalksPage({ talks }: { talks: readonly Talk[] }) {
       <Stack gap={4}>
         <PageHeading>Talks</PageHeading>
         <p>
-          Talks I’ve given. Each one has a full transcript, which also describes everything shown on
-          screen.
+          Talks I’ve given. Each one has a full, checked transcript. Where I still have the slides,
+          the transcript describes them too.
         </p>
       </Stack>
       {talks.length > 0 ? (

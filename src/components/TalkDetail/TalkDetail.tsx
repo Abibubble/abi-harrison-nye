@@ -14,9 +14,12 @@ const TRANSCRIPT_ID = 'transcript';
 interface TalkDetailProps {
   talk: Talk;
   transcriptHtml: string;
+  aboutHtml?: string | undefined;
 }
 
-export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
+const { BASE_URL } = import.meta.env;
+
+export function TalkDetail({ talk, transcriptHtml, aboutHtml }: TalkDetailProps) {
   return (
     <Stack gap={6}>
       <Stack gap={4}>
@@ -29,9 +32,15 @@ export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
         <p>
           <AbbrText>{talk.summary}</AbbrText>
         </p>
+        {aboutHtml && (
+          <details className={styles.about}>
+            <summary className={styles.summary}>More about this talk</summary>
+            <Transcript html={aboutHtml} />
+          </details>
+        )}
       </Stack>
 
-      {(talk.video ?? talk.slidesHref) && (
+      {(talk.video ?? talk.slidesHref ?? talk.slidesFile) && (
         <Stack as="section" gap={3} aria-labelledby="watch">
           <Heading level={2} id="watch">
             {talk.video ? 'Watch the talk' : 'Slides'}
@@ -44,6 +53,15 @@ export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
               <Link href={talk.slidesHref}>Slides for “{talk.title}”</Link>
             </p>
           )}
+          {talk.slidesFile && (
+            <p>
+              {/* A file rather than a page, so a plain link, which the browser downloads or opens */}
+              <a href={`${BASE_URL}${talk.slidesFile.path}`}>
+                Slides for “{talk.title}” (PDF, {talk.slidesFile.size})
+              </a>
+              . The slides aren’t fully accessible, but the transcript describes each one.
+            </p>
+          )}
         </Stack>
       )}
 
@@ -54,7 +72,7 @@ export function TalkDetail({ talk, transcriptHtml }: TalkDetailProps) {
         <Transcript html={transcriptHtml} />
       </Stack>
 
-      <p>
+      <p className={styles.standalone}>
         <Link to="/talks">See all my talks</Link>
       </p>
     </Stack>

@@ -111,6 +111,13 @@ export const QUALIFICATIONS: Qualification[] = [
   },
 ];
 
+/**
+ * A shorter version of the interests on the home page, so the compact CV fits on two A4 pages.
+ * e2e/cv.spec.ts fails if it no longer fits
+ */
+export const CV_INTERESTS =
+  'Playing brass (for over 20 years), learning languages, theme parks and roller coasters, motor racing, escape rooms, and spending time with my two rescue cats.';
+
 export const SHORT_COURSES =
   'freeCodeCamp Responsive Web Design, and Mimo courses in HTML, CSS and JavaScript, Python, SQL, React, Git, and APIs.';
 
@@ -118,11 +125,4 @@ export const SHORT_COURSES =
  * Talks that don't have their own page yet, because their transcript isn't ready. The CV lists them
  * as plain text. Once a talk is added to talks.ts, remove it from here and the CV links to its page
  */
-export const SPEAKING_WITHOUT_PAGES: SpeakingEngagement[] = [
-  {
-    title: 'Moving accessibility from debt to done at giffgaff',
-    event: 'LeadDev LDX3',
-    location: 'London',
-    date: '2026-06-02',
-  },
-];
+export const SPEAKING_WITHOUT_PAGES: SpeakingEngagement[] = [];

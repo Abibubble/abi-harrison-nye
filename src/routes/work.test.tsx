@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { WORK } from '../content/work';
+import { VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
 import Work, { meta } from './work';
@@ -54,6 +54,13 @@ describe('Work page', () => {
       'https://attractionsource.com',
     );
     expect(section.getByRole('link', { name: /towerstimes\.co\.uk/ })).toBeInTheDocument();
+  });
+
+  it('says what I do as a volunteer once, not for each site', () => {
+    renderWithRouter(<Work />);
+
+    const section = within(screen.getByRole('region', { name: 'Volunteering' }));
+    expect(section.getAllByText(VOLUNTEERING_ROLE)).toHaveLength(1);
   });
 
   it('lists every giffgaff site I’ve worked on under giffgaff', () => {

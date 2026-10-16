@@ -146,15 +146,19 @@ export const VOLUNTEERING: SiteWorkedOn[] = [
     name: 'attractionsource.com',
     href: 'https://attractionsource.com',
     description:
-      'One of the largest online communities for fans of theme parks and attractions in the UK. I keep the site and its server running, improve its accessibility, and help writers who aren’t technical add pages in WordPress.',
+      'One of the largest online communities for fans of theme parks and attractions in the UK.',
   },
   {
     name: 'towerstimes.co.uk',
     href: 'https://towerstimes.co.uk',
     description:
-      'An unofficial community site for Alton Towers Resort, with news, guides and history. I keep the site and its server running, improve its accessibility, and help writers who aren’t technical add pages in WordPress.',
+      'An unofficial community site for Alton Towers Resort, with news, guides and history.',
   },
 ];
+
+/** What I do as a volunteer. It's the same on every site, so it's said once after the list */
+export const VOLUNTEERING_ROLE =
+  'On both sites, I keep the site and its server running, improve its accessibility, and help writers who aren’t technical add pages in WordPress.';
 
 /** A short summary of the roles before tech, for the Work page. The CV has them in full */
 export const BEFORE_TECH_SUMMARY =

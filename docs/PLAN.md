@@ -100,13 +100,10 @@ use the `Abbr` component and are expanded on first use on each page, for AAA 3.1
 The giffgaff Inclusion Toolkit is listed under sites worked on, on the Work page. Details of internal tools
 from the CV are fine to publish.
 
-### Profile photo
+### No profile photo
 
-The Home page has a space for a photo, which isn't chosen yet. Until then, a `ProfilePhoto` component
-shows a placeholder: the site's `</>` mark in a purple circle, hidden from
-screen readers with `aria-hidden` because my name is already in the page heading. When a photo is
-added to `profile.ts`, the component switches to it. The photo field requires alt text, and a test
-checks that it's never empty.
+The site has no photo of me. It isn't needed, and a photo can count against people in job
+applications. The Home page goes straight from the heading to the introduction.
 
 ## Design tokens
 
@@ -307,16 +304,16 @@ axe under the strongest settings in the dark theme.
 
 ## Components
 
-| Group             | Components                                                                                                                        |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                                        |
-| Layout primitives | `Stack`, `Cluster`, `Container`                                                                                                   |
-| Content           | `Card`, `Heading`, `Link`, `Tag`, `TagList`, `Time`, `DateRange`, `Abbr`, `SignpostList`                                          |
-| Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection`, `ProfilePhoto` |
-| Media             | `ProfilePhoto`, `VideoLink`, `CaptionStatus`                                                                                      |
-| Forms             | `Field`, `TextField`, `TextArea`, `FieldError`, `Button`, `ErrorSummary`, `Notice`                                                |
-| Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                                  |
-| Utilities         | `ScreenReaderOnly`                                                                                                                |
+| Group             | Components                                                                                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Layout            | `SkipLink`, `SiteHeader`, `SiteNav`, `SiteFooter`, `SiteShell`, `PageHeading`, `ErrorPage`                        |
+| Layout primitives | `Stack`, `Cluster`, `Container`                                                                                   |
+| Content           | `Card`, `Heading`, `Link`, `Tag`, `TagList`, `Time`, `DateRange`, `Abbr`, `SignpostList`                          |
+| Section specific  | `WorkHistory`, `RoleItem`, `ProjectItem`, `TalkItem`, `Transcript`, `ArticleItem`, `RecognitionList`, `CvSection` |
+| Media             | `VideoLink`, `CaptionStatus`                                                                                      |
+| Forms             | `Field`, `TextField`, `TextArea`, `FieldError`, `Button`, `ErrorSummary`, `Notice`                                |
+| Settings          | `ThemeSwitcher`, `DisplaySettings`, `RadioGroup`                                                                  |
+| Utilities         | `ScreenReaderOnly`                                                                                                |
 
 Notes:
 
@@ -733,13 +730,8 @@ None. All decisions are made.
   list, which guards AAA 3.1.4 automatically as content is added.
 - **Empty sections.** Projects and Articles show "I'm adding my projects here soon" (or articles)
   until entries are added, rather than an empty list.
-- **Profile photo.** Until a photo is chosen, the Home page shows the `</>` mark in a purple circle, hidden
-  from screen readers. Adding a photo to `profile.ts` replaces it, and its alt text is required.
 
 ## Content still needed
 
-- Profile photo (a placeholder is used until then)
-- Projects
-- Talks, with transcripts, slide links and videos
-- Articles
-- The web address of the giffgaff Inclusion Toolkit, to list it under sites worked on
+- More projects
+- More talks as they happen, with transcripts, slides and videos

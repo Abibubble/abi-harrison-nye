@@ -12,7 +12,7 @@ describe('TalkVideo', () => {
     renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: true, describedAloud: true }}
+        video={{ href, captions: 'accurate', describedAloud: true }}
         transcriptId="transcript"
       />,
     );
@@ -26,7 +26,7 @@ describe('TalkVideo', () => {
     renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: true, describedAloud: true }}
+        video={{ href, captions: 'accurate', describedAloud: true }}
         transcriptId="transcript"
       />,
     );
@@ -34,11 +34,29 @@ describe('TalkVideo', () => {
     expect(screen.getByText('The video has captions.')).toBeInTheDocument();
   });
 
+  it('says when the captions are automatic, as they may have mistakes', () => {
+    renderWithRouter(
+      <TalkVideo
+        title="Example talk"
+        video={{ href, captions: 'automatic', describedAloud: true }}
+        transcriptId="transcript"
+      />,
+    );
+
+    expect(
+      screen.getByText(/only has automatic captions, which may have mistakes/),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'full transcript' })).toHaveAttribute(
+      'href',
+      '/#transcript',
+    );
+  });
+
   it('says when captions aren’t available yet, linking to the transcript instead', () => {
     renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: false, describedAloud: false }}
+        video={{ href, captions: 'none', describedAloud: false }}
         transcriptId="transcript"
       />,
     );
@@ -54,7 +72,7 @@ describe('TalkVideo', () => {
     const { container } = renderWithRouter(
       <TalkVideo
         title="Example talk"
-        video={{ href, captions: false, describedAloud: false }}
+        video={{ href, captions: 'none', describedAloud: false }}
         transcriptId="transcript"
       />,
     );

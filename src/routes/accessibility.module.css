@@ -27,6 +27,13 @@
 
 .details ul {
   margin: 0;
+
+  /* Each talk link is on its own line, so it needs a full size target (WCAG 2.5.5) */
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--size-target-min);
+  }
 }
 
 .glossary {

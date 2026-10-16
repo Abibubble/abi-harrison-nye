@@ -3,7 +3,7 @@ import { ROUTES } from './support/routes';
 import { type Page, expect, test } from './support/test';
 
 const FOCUSABLE =
-  'a[href], button:not([disabled]), input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])';
+  'a[href], button:not([disabled]), input:not([type="hidden"]), select, textarea, summary, [tabindex]:not([tabindex="-1"])';
 
 async function markFocusable(page: Page): Promise<string[]> {
   return page.evaluate((selector) => {

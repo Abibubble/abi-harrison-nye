@@ -47,12 +47,12 @@ function talk(slug: string, video?: Talk['video']): Talk {
 
 const UNCAPTIONED = talk('uncaptioned', {
   href: 'https://www.youtube.com/watch?v=a',
-  captions: false,
+  captions: 'none',
   describedAloud: true,
 });
 const UNDESCRIBED = talk('undescribed', {
   href: 'https://www.youtube.com/watch?v=b',
-  captions: true,
+  captions: 'accurate',
   describedAloud: false,
 });
 const NO_VIDEO = talk('no-video');
@@ -139,7 +139,7 @@ describe('Accessibility page', () => {
       fake.talks = [UNCAPTIONED, UNDESCRIBED, NO_VIDEO];
       renderWithRouter(<Accessibility />);
 
-      const issue = knownIssue('Some talk videos don’t have captions');
+      const issue = knownIssue('Some talk videos don’t have accurate captions');
       expect(issue).toHaveTextContent('1.2.2 Captions (Prerecorded), Level A');
       expect(issue).toHaveTextContent('Who it affects');
       expect(issue).toHaveTextContent('How to get around it');
@@ -177,7 +177,7 @@ describe('Accessibility page', () => {
       renderWithRouter(<Accessibility />);
 
       expect(
-        screen.queryByRole('heading', { name: 'Some talk videos don’t have captions' }),
+        screen.queryByRole('heading', { name: 'Some talk videos don’t have accurate captions' }),
       ).not.toBeInTheDocument();
     });
 

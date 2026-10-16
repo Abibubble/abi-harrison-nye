@@ -14,7 +14,9 @@ interface TalkItemProps {
 
 function mediaSummary(talk: Talk): string {
   if (!talk.video) return 'Transcript';
-  return talk.video.captions ? 'Video with captions, and transcript' : 'Video and transcript';
+  return talk.video.captions === 'accurate'
+    ? 'Video with captions, and transcript'
+    : 'Video and transcript';
 }
 
 export function TalkItem({ talk, headingLevel }: TalkItemProps) {

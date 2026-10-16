@@ -46,9 +46,7 @@ describe('Home page', () => {
   it('has a section about life outside work', () => {
     renderWithRouter(<Home />);
 
-    expect(screen.getByRole('region', { name: 'Outside work' })).toHaveTextContent(
-      'brass musician',
-    );
+    expect(screen.getByRole('region', { name: 'Outside work' })).toHaveTextContent('brass bands');
   });
 
   it('has a descriptive page title and description', () => {

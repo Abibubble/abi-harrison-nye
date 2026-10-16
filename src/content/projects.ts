@@ -9,5 +9,14 @@ export interface Project {
   codeHref?: string;
 }
 
-/** Newest first. No projects have been added yet, so the page shows a holding message */
-export const PROJECTS: Project[] = [];
+/** Newest first. Until there are some, the page shows a holding message */
+export const PROJECTS: Project[] = [
+  {
+    name: 'Coaster Ranker',
+    summary:
+      'A site for ranking roller coasters and dark rides. It shows two rides at a time, you choose the one you like more, and it builds your full ranking from your choices.',
+    tech: ['React', 'TypeScript', 'React Router', 'styled-components', 'Storybook'],
+    href: 'https://abibubble.github.io/coaster-ranker/',
+    codeHref: 'https://github.com/Abibubble/coaster-ranker',
+  },
+];

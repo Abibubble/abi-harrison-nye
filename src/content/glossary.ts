@@ -61,6 +61,11 @@ export const GLOSSARY: GlossaryTerm[] = [
       'A team with different skills in it, such as engineers, designers and product managers.',
   },
   {
+    term: 'Dark ride',
+    definition:
+      'An indoor ride that carries people through scenes, often in the dark, with lighting, sound and effects.',
+  },
+  {
     term: 'Design system',
     definition:
       'A shared set of components, styles and rules, so every part of a website looks and works the same way.',
@@ -131,7 +136,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: 'Transcript',
     definition:
-      'A written version of everything said in a talk, including a description of anything shown on screen.',
+      'A written version of everything said in a talk. On this site, it also describes the slides, where I still have them.',
   },
   {
     term: 'You build it, you run it',

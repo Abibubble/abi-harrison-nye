@@ -34,7 +34,7 @@ const meta = {
       summary: 'An example to show how a talk’s page looks; real talks are added in talks.ts',
       video: {
         href: 'https://www.youtube.com/watch?v=example',
-        captions: false,
+        captions: 'none',
         describedAloud: false,
       },
       slidesHref: 'https://example.com/slides',
@@ -54,7 +54,7 @@ export const WithCaptions: Story = {
       ...meta.args.talk,
       video: {
         href: 'https://www.youtube.com/watch?v=example',
-        captions: true,
+        captions: 'accurate',
         describedAloud: true,
       },
     },

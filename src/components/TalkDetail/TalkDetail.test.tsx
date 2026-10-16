@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
 import type { Talk } from '../../content/talks';
@@ -33,5 +34,37 @@ describe('TalkDetail', () => {
     expect(screen.queryByRole('heading', { name: 'Slides' })).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Watch the talk' })).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Transcript' })).toBeInTheDocument();
+  });
+
+  it('links to a slides file, saying its type and size, and that the transcript describes them', () => {
+    renderWithRouter(
+      <TalkDetail
+        talk={{ ...TALK, slidesFile: { path: 'talks/example-slides.pdf', size: '5.8MB' } }}
+        transcriptHtml="<p>Hello</p>"
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Slides for “Example talk” (PDF, 5.8MB)' }),
+    ).toHaveAttribute('href', '/talks/example-slides.pdf');
+    expect(screen.getByText(/the transcript describes each one/)).toBeInTheDocument();
+  });
+
+  it('puts the longer description in a section people can open', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(
+      <TalkDetail talk={TALK} transcriptHtml="<p>Hello</p>" aboutHtml="<p>All about it</p>" />,
+    );
+    const more = screen.getByText('More about this talk');
+
+    expect(screen.getByText('All about it')).not.toBeVisible();
+    await user.click(more);
+    expect(screen.getByText('All about it')).toBeVisible();
+  });
+
+  it('leaves out the longer description when there isn’t one', () => {
+    renderWithRouter(<TalkDetail talk={TALK} transcriptHtml="<p>Hello</p>" />);
+
+    expect(screen.queryByText('More about this talk')).not.toBeInTheDocument();
   });
 });

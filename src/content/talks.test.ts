@@ -21,7 +21,7 @@ const EXAMPLE_TALKS: Talk[] = [
     summary: 'A talk with captions.',
     video: {
       href: 'https://www.youtube.com/watch?v=example1',
-      captions: true,
+      captions: 'accurate',
       describedAloud: true,
     },
   },
@@ -34,7 +34,7 @@ const EXAMPLE_TALKS: Talk[] = [
     summary: 'A talk without captions yet.',
     video: {
       href: 'https://www.youtube.com/watch?v=example2',
-      captions: false,
+      captions: 'none',
       describedAloud: false,
     },
   },
@@ -70,7 +70,9 @@ describe('talksWithoutCaptions', () => {
   });
 
   it('looks at the real talks by default', () => {
-    expect(talksWithoutCaptions()).toEqual(TALKS.filter((talk) => talk.video?.captions === false));
+    expect(talksWithoutCaptions()).toEqual(
+      TALKS.filter((talk) => talk.video && talk.video.captions !== 'accurate'),
+    );
   });
 });
 

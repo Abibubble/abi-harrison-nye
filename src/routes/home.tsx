@@ -1,7 +1,6 @@
 import { Abbr, AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
 import { PageHeading } from '../components/PageHeading';
-import { ProfilePhoto } from '../components/ProfilePhoto';
 import { RecognitionList } from '../components/RecognitionList';
 import { SignpostList } from '../components/SignpostList';
 import { Stack } from '../components/Stack';
@@ -30,7 +29,6 @@ export default function Home() {
   return (
     <Stack gap={7}>
       <div className={styles.intro}>
-        <ProfilePhoto photo={PROFILE.photo} />
         <Stack gap={4}>
           <Stack gap={2}>
             <PageHeading>{SITE_NAME}</PageHeading>

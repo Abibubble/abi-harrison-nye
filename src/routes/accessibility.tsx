@@ -163,8 +163,8 @@ export default function Accessibility() {
             <Abbr name="CV" /> pages start with a short summary in plain words.
           </li>
           <li>
-            Every talk has a full transcript, which describes the slides and anything else shown on
-            screen.
+            Every talk has a full, checked transcript. Where I still have the slides, it describes
+            them too.
           </li>
           <li>
             The contact form lets you check your message before you send it, and keeps everything
@@ -179,11 +179,11 @@ export default function Accessibility() {
             <p>These are the parts of the site I know don’t meet Level AAA yet.</p>
             {withoutCaptions.length > 0 && (
               <KnownIssue
-                title="Some talk videos don’t have captions"
+                title="Some talk videos don’t have accurate captions"
                 criteria={['1.2.2 Captions (Prerecorded), Level A']}
                 affects="People who are deaf or hard of hearing, and anyone watching without sound."
-                workaround="Each talk’s page has a full transcript of everything that’s said."
-                plan="I’m adding captions to each of these videos."
+                workaround="Each talk’s page has a full transcript of everything that’s said, which I’ve checked."
+                plan="These videos only have YouTube’s automatic captions, or none. I add accurate captions to videos I upload myself, but I can’t change them on other people’s channels."
                 talks={withoutCaptions}
               />
             )}
@@ -195,8 +195,8 @@ export default function Accessibility() {
                   '1.2.7 Extended Audio Description (Prerecorded), Level AAA',
                 ]}
                 affects="People who are blind or have low vision."
-                workaround="Each talk’s transcript describes the slides and anything else shown on screen."
-                plan="I describe everything on screen aloud in new talks. Older videos won’t change, but their transcripts cover it."
+                workaround="Where I still have the slides, the talk’s transcript describes them."
+                plan="I describe everything important on screen aloud in new talks. Older videos won’t change."
                 talks={needingDescription}
               />
             )}
@@ -205,7 +205,7 @@ export default function Accessibility() {
               criteria={['1.2.6 Sign Language (Prerecorded), Level AAA']}
               affects="People whose first language is a sign language, such as British Sign Language."
               workaround="Each talk’s page has a full transcript, and captions where the video has them."
-              plan="I don’t plan to add British Sign Language interpretation. It costs more than I can pay for a personal site. Instead, every talk has a full transcript, and I’m adding captions to every video. If you need a talk in British Sign Language, contact me and I’ll see what I can do."
+              plan="I don’t plan to add British Sign Language interpretation. It costs more than I can pay for a personal site. Instead, every talk has a full transcript, and I add captions to the videos I upload myself. If you need a talk in British Sign Language, contact me and I’ll see what I can do."
               talks={withVideos}
             />
           </>

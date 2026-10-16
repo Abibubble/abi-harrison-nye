@@ -3,19 +3,15 @@ export interface ProfileLink {
   href: string;
 }
 
-export interface ProfilePhoto {
-  src: string;
-  alt: string;
-}
-
 export const PROFILE = {
   headline: 'Software engineer and accessibility specialist',
   location: 'Hertfordshire, UK',
-  photo: undefined as ProfilePhoto | undefined,
   interests: [
-    'I’ve been a brass musician for over 20 years, and play in a brass band and a ska punk band.',
+    'I’ve played brass for over 20 years, and used to play in several brass bands and a ska band.',
     'I love learning languages, from French and Dutch to Go and CoffeeScript.',
-    'I’m interested in environmental technology, electric vehicles and renewable energy, and I’m a big fan of theme parks and roller coasters.',
+    'I’m interested in environmental technology, electric vehicles and renewable energy.',
+    'I’m a big fan of theme parks, roller coasters and single-seater motor racing, and I love escape rooms.',
+    'I have two rescue cats, called Crouton and Katsu.',
   ],
 };
 

@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import type { Talk } from '../../content/talks';
+import type { Talk, TalkVideo } from '../../content/talks';
 import { expectNoAxeViolations } from '../../test/axe';
 import { renderWithRouter } from '../../test/render';
 import { TalkItem } from './TalkItem';
@@ -13,7 +13,11 @@ const TALK: Talk = {
   location: 'London',
   date: '2026-06',
   summary: 'A talk used to test this component',
-  video: { href: 'https://www.youtube.com/watch?v=example', captions: true, describedAloud: true },
+  video: {
+    href: 'https://www.youtube.com/watch?v=example',
+    captions: 'accurate',
+    describedAloud: true,
+  },
 };
 
 describe('TalkItem', () => {
@@ -36,13 +40,17 @@ describe('TalkItem', () => {
     expect(screen.getByText('A talk used to test this component')).toBeInTheDocument();
   });
 
-  it.each([
+  it.each<[TalkVideo | undefined, string]>([
     [
-      { href: 'https://www.youtube.com/watch?v=a', captions: true, describedAloud: true },
+      { href: 'https://www.youtube.com/watch?v=a', captions: 'accurate', describedAloud: true },
       'Video with captions, and transcript',
     ],
     [
-      { href: 'https://www.youtube.com/watch?v=a', captions: false, describedAloud: false },
+      { href: 'https://www.youtube.com/watch?v=a', captions: 'automatic', describedAloud: true },
+      'Video and transcript',
+    ],
+    [
+      { href: 'https://www.youtube.com/watch?v=a', captions: 'none', describedAloud: false },
       'Video and transcript',
     ],
     [undefined, 'Transcript'],

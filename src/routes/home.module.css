@@ -1,12 +1,6 @@
+/* The introduction keeps to a comfortable line length */
 .intro {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacer-32);
-  align-items: flex-start;
-
-  > :last-child {
-    flex: 1 1 calc(var(--spacer-96) * 4);
-  }
+  max-width: var(--size-measure);
 }
 
 .headline {

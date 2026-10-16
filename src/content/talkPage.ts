@@ -6,6 +6,8 @@ import { TRANSCRIPTS, renderTranscript } from './transcripts';
 export interface TalkPageData {
   talk: Talk;
   transcriptHtml: string;
+  /** The longer description, as HTML, if the talk has one */
+  aboutHtml?: string;
 }
 
 export function loadTalkPage(
@@ -21,5 +23,9 @@ export function loadTalkPage(
     throw data(null, { status: 404 });
   }
 
-  return { talk, transcriptHtml: renderTranscript(markdown) };
+  return {
+    talk,
+    transcriptHtml: renderTranscript(markdown),
+    ...(talk.about && { aboutHtml: renderTranscript(talk.about) }),
+  };
 }

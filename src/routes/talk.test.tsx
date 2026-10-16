@@ -18,7 +18,7 @@ const PAGE: TalkPageData = {
     summary: 'A talk used to test this page.',
     video: {
       href: 'https://www.youtube.com/watch?v=example',
-      captions: false,
+      captions: 'none',
       describedAloud: false,
     },
     slidesHref: 'https://example.com/slides',
