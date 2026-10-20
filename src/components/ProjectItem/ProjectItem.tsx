@@ -23,6 +23,13 @@ export function ProjectItem({ project, headingLevel }: ProjectItemProps) {
         {project.tech.length > 0 && (
           <TagList tags={project.tech} label={`Technologies used for ${project.name}`} />
         )}
+        {project.warning && (
+          <p>
+            <strong>
+              Please note: <AbbrText>{project.warning}</AbbrText>
+            </strong>
+          </p>
+        )}
         {(project.href ?? project.codeHref) && (
           <Cluster gap={4}>
             {project.href && <Link href={project.href}>See {project.name}</Link>}

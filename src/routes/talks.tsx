@@ -1,3 +1,5 @@
+import { useLoaderData } from 'react-router';
+
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { TalkItem } from '../components/TalkItem';
@@ -39,6 +41,13 @@ export function TalksPage({ talks }: { talks: readonly Talk[] }) {
   );
 }
 
+/** Runs when the site is built, so talks that aren't ready never reach visitors */
+export function loader() {
+  return { talks: TALKS };
+}
+
 export default function Talks() {
-  return <TalksPage talks={TALKS} />;
+  const { talks } = useLoaderData<typeof loader>();
+
+  return <TalksPage talks={talks} />;
 }

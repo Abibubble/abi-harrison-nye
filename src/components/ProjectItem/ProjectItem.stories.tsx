@@ -25,3 +25,15 @@ export const Default: Story = {};
 export const WithoutLinks: Story = {
   args: { project: { name: 'Example project', summary: 'No live site or public code', tech: [] } },
 };
+
+export const WithWarning: Story = {
+  args: {
+    project: {
+      name: 'Example project',
+      summary: 'A page built to be broken, for teaching',
+      tech: ['HTML'],
+      href: 'https://example.com',
+      warning: 'This page is inaccessible on purpose, for teaching.',
+    },
+  },
+};

@@ -69,9 +69,12 @@ editing data, not components. TypeScript flags any missing fields.
   earlier career.
 - **`projects.ts`**: side projects with name, summary, tech used, and links to the live site and the
   code.
-- **`talks.ts`**: talk title, event, date, location, summary, slides link, video and transcript. See
-  [Video](#video) for how video and captions are modelled.
-- **`talks/*.md`**: one Markdown transcript per talk. A talk can't go live without one.
+- **`talks.json`**: every talk, ready or not, with its title, event, date, location, summary, slides
+  and video, plus what I have for it, whether anyone needs to agree, and what's still to do. Only talks
+  marked ready go on the site. `talks.ts` has the types and reads the file. See [Video](#video) for how
+  video and captions are modelled.
+- **`talks/*.md`**: one Markdown transcript per talk. A talk can't go live without a checked one.
+- **`talks/about/*.md`**: an optional longer description for a talk.
 - **`articles.ts`**: title, date, publication, summary and URL. Maintained by hand.
 - **`recognition.ts`**: awards and commendations, with name, awarding body, year and result.
 - **`profile.ts`**: name, headline, profile summary, skills grouped by category, education and
@@ -89,7 +92,7 @@ The CV source files stay outside the repo. Their content is transcribed into the
 | Key skills                              | `profile.ts`     | CV                                                              |
 | Experience at giffgaff                  | `work.ts`        | Work, CV                                                        |
 | Earlier career                          | `work.ts`        | CV in full, plus a short "Before tech" summary on the Work page |
-| Speaking                                | `talks.ts`       | Talks, CV                                                       |
+| Speaking                                | `talks.json`     | Talks, CV                                                       |
 | Recognition                             | `recognition.ts` | Home, CV                                                        |
 | Education and training                  | `profile.ts`     | CV                                                              |
 | Interests                               | `profile.ts`     | Home, CV                                                        |
@@ -451,8 +454,17 @@ captions. Captions on conference channels depend on the organiser.
 
 ### How talks are built
 
-- **Talk details** live in `src/content/talks.ts`. Each talk's transcript is a Markdown file in
+- **Talk details** live in `src/content/talks.json`. Each talk's transcript is a Markdown file in
   `src/content/talks/`, named after its slug, with a README there explaining how to write one.
+- **Talk data is only read when the site is built**, by the loaders of the Talks, CV, Accessibility and
+  talk pages, and by the route config. So talks that aren't ready, and the tracking for each talk, never
+  reach visitors. An end-to-end test searches the built site to check.
+- **Tests keep `talks.json` honest.** A talk can only be marked ready with a checked transcript, no
+  "[check: ...]" notes left in it, and no permission still needed. What each talk "has" must match its
+  files and links.
+- **Each transcript has its own page**, at `/talks/{slug}/transcript`, so the talk page stays short.
+  The transcript's sections become second level headings there, with a contents list at the top,
+  in columns on wide screens when it's long. The talk page links to it.
 - **Transcripts are turned into HTML when the site is built**, in the talk page's loader. Neither the
   Markdown nor the Markdown library (`marked`) reaches visitors' browsers. A check during the build
   confirmed the browser bundle contains neither.

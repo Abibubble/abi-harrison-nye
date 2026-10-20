@@ -117,6 +117,10 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition: 'When flashing or flickering light can cause discomfort or seizures.',
   },
   {
+    term: 'Pigpen cipher',
+    definition: 'A simple code that swaps each letter for a symbol, made from parts of a grid.',
+  },
+  {
     term: 'Refactoring',
     definition: 'Improving how code is written without changing what it does.',
   },

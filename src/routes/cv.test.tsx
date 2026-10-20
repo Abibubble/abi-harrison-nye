@@ -6,13 +6,13 @@ import { PROFILE } from '../content/profile';
 import { VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
-import Cv, { meta } from './cv';
+import { CvPage, loader, meta } from './cv';
 
 const section = (name: string) => screen.getByRole('region', { name });
 
 describe('CV page', () => {
   it('has the page heading, and my name, headline and location', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(screen.getByRole('heading', { level: 1, name: 'CV' })).toBeInTheDocument();
     expect(screen.getByText('Abi Harrison-Nye')).toBeInTheDocument();
@@ -22,14 +22,14 @@ describe('CV page', () => {
   });
 
   it('never shows a phone number or email address', () => {
-    const { container } = renderWithRouter(<Cv />);
+    const { container } = renderWithRouter(<CvPage {...loader()} />);
 
     expect(container.textContent).not.toMatch(/\d{5} ?\d{3} ?\d{3}/);
     expect(container.textContent).not.toMatch(/@/);
   });
 
   it('links to my profiles and the contact form instead', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(screen.getByRole('link', { name: 'GitHub (external site)' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'send me a message' })).toHaveAttribute(
@@ -39,13 +39,13 @@ describe('CV page', () => {
   });
 
   it('can be printed or saved as a PDF', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(screen.getByRole('button', { name: 'Print or save as PDF' })).toBeInTheDocument();
   });
 
   it('has its sections in the same order as the CV', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(
       screen.getAllByRole('heading', { level: 2 }).map((heading) => heading.textContent),
@@ -62,13 +62,13 @@ describe('CV page', () => {
   });
 
   it('says what I do as a volunteer once, not for each site', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(within(section('Volunteering')).getAllByText(VOLUNTEERING_ROLE)).toHaveLength(1);
   });
 
   it('keeps the interests short, so the compact CV fits on two pages', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     const interests = within(section('Interests'));
     expect(interests.getByText(CV_INTERESTS)).toBeInTheDocument();
@@ -78,19 +78,19 @@ describe('CV page', () => {
   });
 
   it('writes HAND out in full in the profile, where it first appears', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(section('Profile')).toHaveTextContent('Home of Accessibility and NeuroDiversity (HAND)');
   });
 
   it('lists every skill group', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(within(section('Key skills')).getAllByRole('term')).toHaveLength(SKILLS.length);
   });
 
   it('puts tech roles under experience and earlier roles in their own section', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     for (const company of WORK) {
       const sectionName = company.earlierCareer ? 'Earlier career' : 'Experience';
@@ -101,7 +101,7 @@ describe('CV page', () => {
   });
 
   it('lists the LDX3 talk under speaking', () => {
-    renderWithRouter(<Cv />);
+    renderWithRouter(<CvPage {...loader()} />);
 
     expect(section('Speaking and recognition')).toHaveTextContent(
       'Moving accessibility from debt to done at giffgaff',
@@ -121,7 +121,7 @@ describe('CV page', () => {
   });
 
   it('has no detectable accessibility issues', async () => {
-    const { container } = renderWithRouter(<Cv />);
+    const { container } = renderWithRouter(<CvPage {...loader()} />);
 
     await expectNoAxeViolations(container, { disableRules: ['region'] });
   });

@@ -26,6 +26,19 @@ describe('PageContents', () => {
     expect(links.map((link) => link.getAttribute('href'))).toEqual(['#first', '#second']);
   });
 
+  it('shows long lists in columns on wide screens, and short ones as a single list', () => {
+    const many = Array.from({ length: 9 }, (_, index) => ({
+      id: `section-${String(index)}`,
+      title: `Section ${String(index)}`,
+    }));
+    const { unmount } = render(<PageContents sections={many} />);
+    const columns = screen.getByRole('list').className;
+    unmount();
+    render(<PageContents sections={SECTIONS} />);
+
+    expect(columns).not.toBe(screen.getByRole('list').className);
+  });
+
   it('has no detectable accessibility issues', async () => {
     const { container } = render(<PageContents sections={SECTIONS} />);
 

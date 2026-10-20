@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useLoaderData } from 'react-router';
 
 import { Abbr } from '../components/Abbr';
 import { DISPLAY_SETTINGS_ID, DisplaySettings } from '../components/DisplaySettings';
@@ -12,12 +13,7 @@ import { ABBREVIATIONS, type Abbreviation } from '../content/abbreviations';
 import { GLOSSARY } from '../content/glossary';
 import { pageTitle } from '../content/site';
 import { ACCESSIBILITY_REVIEWED, MANUAL_TESTING } from '../content/statements';
-import {
-  type Talk,
-  talksNeedingAudioDescription,
-  talksWithVideos,
-  talksWithoutCaptions,
-} from '../content/talks';
+import { type KnownIssueTalks, type Talk, knownIssueTalks } from '../content/talks';
 import styles from './accessibility.module.css';
 import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/accessibility';
@@ -95,10 +91,11 @@ function KnownIssue({ title, criteria, affects, workaround, plan, talks }: Known
 
 const ABBREVIATION_NAMES = Object.keys(ABBREVIATIONS) as Abbreviation[];
 
-export default function Accessibility() {
-  const withoutCaptions = talksWithoutCaptions();
-  const needingDescription = talksNeedingAudioDescription();
-  const withVideos = talksWithVideos();
+export function AccessibilityPage({
+  withoutCaptions,
+  needingDescription,
+  withVideos,
+}: KnownIssueTalks) {
   const hasKnownIssues = withVideos.length > 0;
 
   return (
@@ -294,4 +291,13 @@ export default function Accessibility() {
       </PageContentsSection>
     </Stack>
   );
+}
+
+/** Runs when the site is built, so talks that aren't ready never reach visitors */
+export function loader() {
+  return knownIssueTalks();
+}
+
+export default function Accessibility() {
+  return <AccessibilityPage {...useLoaderData<typeof loader>()} />;
 }

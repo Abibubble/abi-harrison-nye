@@ -1,0 +1,267 @@
+[
+  {
+    "slug": "moving-accessibility-from-debt-to-done",
+    "ready": true,
+    "title": "Moving accessibility from debt to done at giffgaff",
+    "event": "LeadDev LDX3",
+    "location": "London",
+    "date": "2026-06-02",
+    "summary": "How accessibility became part of everyday engineering, improving inclusion and business impact without slowing delivery.",
+    "video": {
+      "href": "https://www.youtube.com/watch?v=2t4JqgbbU9Q",
+      "captions": "automatic",
+      "describedAloud": true
+    },
+    "slidesFile": {
+      "path": "talks/moving-accessibility-from-debt-to-done-slides.pdf",
+      "size": "5.8MB"
+    },
+    "has": {
+      "slides": "file",
+      "script": false,
+      "transcript": "checked",
+      "recording": "youtube"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "ocd-not-just-even-numbers-and-organisation",
+    "ready": false,
+    "title": "OCD: not just even numbers and organisation",
+    "event": "giffgaff OCD Awareness Week",
+    "location": "Online",
+    "date": "2025-10-13",
+    "summary": "What obsessive-compulsive disorder (OCD) really is, beyond the stereotypes, how it’s diagnosed and treated, and why the way we talk about it matters.",
+    "has": {
+      "slides": "have",
+      "script": true,
+      "transcript": "none",
+      "recording": "unknown"
+    },
+    "permission": "needed",
+    "todo": [
+      "Whether it was recorded",
+      "Check it was online",
+      "Check the title and summary",
+      "Claude writes the transcript from the script and slides, without the Bupa section",
+      "giffgaff is happy for it to be public"
+    ]
+  },
+  {
+    "slug": "masking",
+    "ready": false,
+    "title": "Masking",
+    "event": "giffgaff neurodiversity monthly chat",
+    "location": "Online",
+    "date": "2025-07-31",
+    "summary": "A safe space discussion about masking: what it is, how it affects neurodivergent people, and how to help everyone feel safe to unmask.",
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "none",
+      "recording": "not recorded"
+    },
+    "permission": "needed",
+    "todo": [
+      "Check the summary",
+      "Bim’s OK, if the site names them",
+      "Needs an “Other talks” list on the Talks page, as it can’t have its own page without a transcript"
+    ]
+  },
+  {
+    "slug": "accessibility-conversation-with-kai-wong-part-2",
+    "ready": false,
+    "title": "Accessibility conversation with Kai Wong, part 2",
+    "event": "giffgaff Disability Pride Month",
+    "location": "Online",
+    "date": "2025-06-16",
+    "summary": "Part 2 of my conversation with Kai Wong, about active allyship and building an accessibility culture at work.",
+    "video": {
+      "href": "https://youtu.be/anRqDPCz2tE",
+      "captions": "none",
+      "describedAloud": true
+    },
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "raw",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the summary",
+      "Claude writes up the transcript",
+      "Kai’s OK for it to be public",
+      "Check nothing important is shown on screen without being said"
+    ]
+  },
+  {
+    "slug": "accessibility-conversation-with-kai-wong-part-1",
+    "ready": false,
+    "title": "Accessibility conversation with Kai Wong, part 1",
+    "event": "giffgaff Disability Pride Month",
+    "location": "Online",
+    "date": "2025-06-16",
+    "summary": "Part 1 of my conversation with Kai Wong, Principal of Digital Accessibility at Teladoc Health, about how they got into accessibility and what it means at work.",
+    "video": {
+      "href": "https://youtu.be/Gy56YclbeZ4",
+      "captions": "none",
+      "describedAloud": true
+    },
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "raw",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the summary",
+      "Claude writes up the transcript",
+      "Check nothing important is shown on screen without being said",
+      "Kai’s OK for it to be public"
+    ]
+  },
+  {
+    "slug": "autism-and-gender",
+    "ready": false,
+    "title": "Autism and gender",
+    "event": "giffgaff Autistic Pride Day",
+    "location": "Online",
+    "date": "2025-06-16",
+    "summary": "A discussion with two colleagues for Autistic Pride Day, about autism and how it connects with gender.",
+    "video": {
+      "href": "https://youtu.be/dFj5HgDqEPI",
+      "captions": "none",
+      "describedAloud": true
+    },
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "raw",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the summary",
+      "Claude writes up the transcript",
+      "Kat and Maria’s OK for it to be public",
+      "Check nothing important is shown on screen without being said"
+    ]
+  },
+  {
+    "slug": "accessibility-culture-day-welcome",
+    "ready": false,
+    "title": "Accessibility Culture Day welcome",
+    "event": "giffgaff Accessibility Culture Day",
+    "location": "",
+    "date": "2025-05-22",
+    "summary": "The opening talk for giffgaff’s Accessibility Culture Day: the types of disability, who benefits from accessibility, the Purple Pound, and the plan for the day.",
+    "video": {
+      "href": "https://youtu.be/lrHRw93BNMc",
+      "captions": "none",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "have",
+      "script": true,
+      "transcript": "raw",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Where it was, such as the office and online",
+      "Check the summary",
+      "Claude writes up the transcript, using only your part of the call",
+      "Cut or blur slides 2, 3 and 5 in the video",
+      "The OK of the colleague who opens the call",
+      "giffgaff is happy for it to be public"
+    ]
+  },
+  {
+    "slug": "accessibility-and-meta-tags",
+    "ready": true,
+    "title": "Accessibility and Meta Tags",
+    "event": "Code Institute",
+    "location": "Online",
+    "date": "2021-12-09",
+    "summary": "The meta tags every website needs, from descriptions to social media previews, and the basics of building an accessible website, from semantic HTML and alt text to colour contrast.",
+    "video": {
+      "href": "https://www.youtube.com/watch?v=t-4qqmikIqk",
+      "captions": "automatic",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "checked",
+      "recording": "youtube"
+    },
+    "permission": "not needed",
+    "todo": ["Optionally, the full event name"]
+  },
+  {
+    "slug": "a11y-series-buttons",
+    "ready": false,
+    "title": "A11y Series: Buttons",
+    "event": "giffgaff",
+    "location": "Online",
+    "date": "2021-07-16",
+    "summary": "How to build buttons that work for everyone, from button text and labels to tap target sizes and focus styles, and why disabled buttons cause problems.",
+    "video": {
+      "href": "https://youtu.be/g1wCcH4NIZI",
+      "captions": "none",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "have",
+      "script": false,
+      "transcript": "draft",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the title and summary",
+      "Check the transcript, including the parts marked “[check: ...]”",
+      "giffgaff is happy for it to be public",
+      "Colleagues’ webcams show down the side of the video, and two colleagues can be heard in the questions. Get their OK, or crop and cut",
+      "The form demo shows part of your email address"
+    ]
+  },
+  {
+    "slug": "accessibility-knowledge-sharing",
+    "ready": false,
+    "title": "Accessibility knowledge sharing",
+    "event": "giffgaff knowledge sharing",
+    "location": "Online",
+    "date": "",
+    "summary": "Why accessibility matters at giffgaff, and the basics every team can use, from semantics and alt text to colour contrast and reading age, with demos using a screen reader and a keyboard only.",
+    "video": {
+      "href": "https://youtu.be/_jIk1tJwYJs",
+      "captions": "none",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "have",
+      "script": false,
+      "transcript": "draft",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "The date, and who it was for",
+      "Check the title and summary",
+      "Check the transcript, including the parts marked “[check: ...]”",
+      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "giffgaff is happy for it to be public",
+      "The OK of the colleagues heard asking questions, or cut the questions",
+      "Cut the part of the app demo that shows your account"
+    ]
+  }
+]

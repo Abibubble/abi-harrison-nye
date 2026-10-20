@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import type { Talk } from '../content/talks';
+import { TALKS, type Talk } from '../content/talks';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
-import Talks, { TalksPage, meta } from './talks';
+import { TalksPage, loader, meta } from './talks';
 
 const EXAMPLE_TALKS: Talk[] = [
   {
@@ -18,8 +18,12 @@ const EXAMPLE_TALKS: Talk[] = [
 ];
 
 describe('Talks page', () => {
+  it('gets only the talks that are ready, when the site is built', () => {
+    expect(loader()).toEqual({ talks: TALKS });
+  });
+
   it('has the page heading', () => {
-    renderWithRouter(<Talks />);
+    renderWithRouter(<TalksPage {...loader()} />);
 
     expect(screen.getByRole('heading', { level: 1, name: 'Talks' })).toBeInTheDocument();
   });

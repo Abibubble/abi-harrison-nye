@@ -13,7 +13,7 @@ describe('TalkVideo', () => {
       <TalkVideo
         title="Example talk"
         video={{ href, captions: 'accurate', describedAloud: true }}
-        transcriptId="transcript"
+        transcriptHref="/talks/example-talk/transcript"
       />,
     );
 
@@ -27,7 +27,7 @@ describe('TalkVideo', () => {
       <TalkVideo
         title="Example talk"
         video={{ href, captions: 'accurate', describedAloud: true }}
-        transcriptId="transcript"
+        transcriptHref="/talks/example-talk/transcript"
       />,
     );
 
@@ -39,7 +39,7 @@ describe('TalkVideo', () => {
       <TalkVideo
         title="Example talk"
         video={{ href, captions: 'automatic', describedAloud: true }}
-        transcriptId="transcript"
+        transcriptHref="/talks/example-talk/transcript"
       />,
     );
 
@@ -48,7 +48,7 @@ describe('TalkVideo', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'full transcript' })).toHaveAttribute(
       'href',
-      '/#transcript',
+      '/talks/example-talk/transcript',
     );
   });
 
@@ -57,14 +57,14 @@ describe('TalkVideo', () => {
       <TalkVideo
         title="Example talk"
         video={{ href, captions: 'none', describedAloud: false }}
-        transcriptId="transcript"
+        transcriptHref="/talks/example-talk/transcript"
       />,
     );
 
     expect(screen.getByText(/Captions aren’t available for this video yet/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Read the full transcript' })).toHaveAttribute(
       'href',
-      '/#transcript',
+      '/talks/example-talk/transcript',
     );
   });
 
@@ -73,7 +73,7 @@ describe('TalkVideo', () => {
       <TalkVideo
         title="Example talk"
         video={{ href, captions: 'none', describedAloud: false }}
-        transcriptId="transcript"
+        transcriptHref="/talks/example-talk/transcript"
       />,
     );
 

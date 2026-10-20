@@ -1,0 +1,12 @@
+.meta {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-muted);
+}
+
+/* A link on its own, rather than in a sentence, needs a full size target (WCAG 2.5.5) */
+.standalone a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+}

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useLoaderData } from 'react-router';
 
 import { QualificationList, SkillsList, SpeakingList } from '../components/CvLists';
 import { AbbrText } from '../components/Abbr';
@@ -21,7 +22,7 @@ import {
 import { PROFILE, PROFILE_LINKS } from '../content/profile';
 import { RECOGNITION } from '../content/recognition';
 import { SITE_NAME, pageTitle } from '../content/site';
-import { TALKS } from '../content/talks';
+import { TALKS, type Talk } from '../content/talks';
 import { VOLUNTEERING, VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/cv';
@@ -46,7 +47,7 @@ function CvSection({ id, title, children }: { id: string; title: string; childre
   );
 }
 
-export default function Cv() {
+export function CvPage({ talks }: { talks: readonly Talk[] }) {
   return (
     <Stack gap={6}>
       <Stack gap={4}>
@@ -93,7 +94,7 @@ export default function Cv() {
       <CvSection id="speaking-and-recognition" title="Speaking and recognition">
         <Stack gap={3}>
           <Heading level={3}>Speaking</Heading>
-          <SpeakingList talks={TALKS} withoutPages={SPEAKING_WITHOUT_PAGES} />
+          <SpeakingList talks={talks} withoutPages={SPEAKING_WITHOUT_PAGES} />
         </Stack>
         <Stack gap={3}>
           <Heading level={3}>Recognition</Heading>
@@ -127,4 +128,15 @@ export default function Cv() {
       </CvSection>
     </Stack>
   );
+}
+
+/** Runs when the site is built, so talks that aren't ready never reach visitors */
+export function loader() {
+  return { talks: TALKS };
+}
+
+export default function Cv() {
+  const { talks } = useLoaderData<typeof loader>();
+
+  return <CvPage talks={talks} />;
 }

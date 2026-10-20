@@ -1,3 +1,4 @@
+import { transcriptPath } from '../../src/content/talkPath';
 import { TALKS } from '../../src/content/talks';
 import type { DisplaySettings } from '../../src/settings/displaySettings';
 
@@ -16,7 +17,10 @@ export const SITE_PAGES = [
 
 export const ROUTES: readonly { name: string; path: string }[] = [
   ...SITE_PAGES,
-  ...TALKS.map((talk) => ({ name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` })),
+  ...TALKS.flatMap((talk) => [
+    { name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` },
+    { name: `Transcript: ${talk.title}`, path: transcriptPath(talk.slug) },
+  ]),
 ];
 
 export const THEMES = [

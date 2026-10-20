@@ -1,10 +1,14 @@
 import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
+import { transcriptPath } from './content/talkPath';
 import { TALKS } from './content/talks';
 
-const talkPages = TALKS.map((talk) =>
+const talkPages = TALKS.flatMap((talk) => [
   route(`talks/${talk.slug}`, 'routes/talk.tsx', { id: `talk-${talk.slug}` }),
-);
+  route(transcriptPath(talk.slug).slice(1), 'routes/talk-transcript.tsx', {
+    id: `transcript-${talk.slug}`,
+  }),
+]);
 
 export default [
   index('routes/home.tsx'),

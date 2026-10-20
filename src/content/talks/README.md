@@ -1,8 +1,13 @@
 # Talk transcripts
 
-Each talk in `src/content/talks.ts` needs a transcript here, named after its slug. A talk with the
-slug `debt-to-done` has its transcript in `debt-to-done.md`, and its page at `/talks/debt-to-done`.
-The tests fail if a talk has no transcript, or a transcript has no talk.
+Every talk is listed in `src/content/talks.json`, with what I have for it and what's still to do.
+Only talks marked `"ready": true` go on the site. A talk with the slug `debt-to-done` has its
+transcript in `debt-to-done.md`, and its page at `/talks/debt-to-done`.
+
+The tests fail if a ready talk has no checked transcript, if a transcript has no talk, or if what a
+talk "has" in `talks.json` doesn't match its files.
+
+A longer description, shown in a "More about this talk" section, goes in `about/{slug}.md`.
 
 ## Writing a transcript
 
@@ -18,7 +23,7 @@ The tests fail if a talk has no transcript, or a transcript has no talk.
 
 ## Video details
 
-Each video in `talks.ts` says whether it has `captions`, and whether it's `describedAloud`, meaning
+Each video in `talks.json` says whether it has `captions`, and whether it's `describedAloud`, meaning
 everything shown on screen is also said in the talk. Videos without either are listed as known
 issues on the Accessibility page automatically, so be accurate. Every video is also listed as not
 having sign language interpretation.
@@ -32,3 +37,8 @@ On screen: the title slide, "Moving accessibility from debt to done", with the g
 
 Hello, I'm Abi. Today I'm going to talk about accessibility debt.
 ```
+
+## Drafts
+
+A transcript that still needs checking is marked `"transcript": "draft"` in `talks.json`. Mark the
+places to check with `[check: ...]`. The tests stop a talk being marked ready while any are left.

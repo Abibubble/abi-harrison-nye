@@ -1,3 +1,7 @@
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+
+import { TALK_RECORDS } from '../src/content/talks';
 import { ROUTES } from './support/routes';
 import { type Page, expect, test, waitLikeAPerson } from './support/test';
 
@@ -61,5 +65,41 @@ test.describe('Content Security Policy', () => {
 
     expect(await page.evaluate(() => 'injected' in window)).toBe(false);
     expect(await violations()).toEqual(['script-src-elem: inline']);
+  });
+});
+
+/** The first long line of a talk's transcript, if it has one, to check the transcript isn't public */
+function readTranscriptLine(slug: string): string | undefined {
+  try {
+    return readFileSync(`src/content/talks/${slug}.md`, 'utf8')
+      .split('\n')
+      .find((line) => line.length > 60 && !line.startsWith('#'));
+  } catch {
+    return undefined;
+  }
+}
+
+test.describe('Talks that aren’t ready', () => {
+  test.skip(
+    ({ browserName }) => browserName !== 'chromium',
+    'This checks files, so once is enough',
+  );
+
+  test('are nowhere in the built site, and neither is what I’m tracking for each talk', () => {
+    const files = readdirSync('build/client', { recursive: true, withFileTypes: true })
+      .filter((file) => file.isFile() && /\.(html|js|css|data|json|xml|txt)$/.test(file.name))
+      .map((file) => join(file.parentPath, file.name));
+    const site = files.map((file) => readFileSync(file, 'utf8')).join('\n');
+
+    expect(files.length).toBeGreaterThan(10);
+    for (const talk of TALK_RECORDS) {
+      const transcript = readTranscriptLine(talk.slug);
+      const hidden = talk.ready
+        ? talk.todo
+        : [talk.slug, talk.title, talk.summary, ...talk.todo, ...(transcript ? [transcript] : [])];
+      for (const text of hidden) {
+        expect(site.includes(text), `${talk.slug}: “${text}”`).toBe(false);
+      }
+    }
   });
 });

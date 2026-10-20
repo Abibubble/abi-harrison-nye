@@ -16,20 +16,23 @@ const TALK: Talk = {
 };
 
 describe('TalkDetail', () => {
+  it('links to the transcript on its own page, rather than showing it all', () => {
+    renderWithRouter(<TalkDetail talk={TALK} />);
+
+    expect(
+      screen.getByRole('link', { name: 'Read the transcript of “Example talk”' }),
+    ).toHaveAttribute('href', '/talks/example-talk/transcript');
+  });
+
   it('calls the section “Slides” when there are slides but no video', () => {
-    renderWithRouter(
-      <TalkDetail
-        talk={{ ...TALK, slidesHref: 'https://example.com/slides' }}
-        transcriptHtml="<p>Hello</p>"
-      />,
-    );
+    renderWithRouter(<TalkDetail talk={{ ...TALK, slidesHref: 'https://example.com/slides' }} />);
 
     expect(screen.getByRole('heading', { level: 2, name: 'Slides' })).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /on YouTube/ })).not.toBeInTheDocument();
   });
 
   it('leaves out the video and slides section when there are neither', () => {
-    renderWithRouter(<TalkDetail talk={TALK} transcriptHtml="<p>Hello</p>" />);
+    renderWithRouter(<TalkDetail talk={TALK} />);
 
     expect(screen.queryByRole('heading', { name: 'Slides' })).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Watch the talk' })).not.toBeInTheDocument();
@@ -40,7 +43,6 @@ describe('TalkDetail', () => {
     renderWithRouter(
       <TalkDetail
         talk={{ ...TALK, slidesFile: { path: 'talks/example-slides.pdf', size: '5.8MB' } }}
-        transcriptHtml="<p>Hello</p>"
       />,
     );
 
@@ -52,9 +54,7 @@ describe('TalkDetail', () => {
 
   it('puts the longer description in a section people can open', async () => {
     const user = userEvent.setup();
-    renderWithRouter(
-      <TalkDetail talk={TALK} transcriptHtml="<p>Hello</p>" aboutHtml="<p>All about it</p>" />,
-    );
+    renderWithRouter(<TalkDetail talk={TALK} aboutHtml="<p>All about it</p>" />);
     const more = screen.getByText('More about this talk');
 
     expect(screen.getByText('All about it')).not.toBeVisible();
@@ -63,7 +63,7 @@ describe('TalkDetail', () => {
   });
 
   it('leaves out the longer description when there isn’t one', () => {
-    renderWithRouter(<TalkDetail talk={TALK} transcriptHtml="<p>Hello</p>" />);
+    renderWithRouter(<TalkDetail talk={TALK} />);
 
     expect(screen.queryByText('More about this talk')).not.toBeInTheDocument();
   });

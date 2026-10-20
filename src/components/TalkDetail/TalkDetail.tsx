@@ -1,3 +1,4 @@
+import { transcriptPath } from '../../content/talkPath';
 import type { Talk } from '../../content/talks';
 import { AbbrText } from '../Abbr';
 import { Heading } from '../Heading';
@@ -9,17 +10,14 @@ import { Time } from '../Time';
 import { Transcript } from '../Transcript';
 import styles from './TalkDetail.module.css';
 
-const TRANSCRIPT_ID = 'transcript';
-
 interface TalkDetailProps {
   talk: Talk;
-  transcriptHtml: string;
   aboutHtml?: string | undefined;
 }
 
 const { BASE_URL } = import.meta.env;
 
-export function TalkDetail({ talk, transcriptHtml, aboutHtml }: TalkDetailProps) {
+export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
   return (
     <Stack gap={6}>
       <Stack gap={4}>
@@ -46,7 +44,11 @@ export function TalkDetail({ talk, transcriptHtml, aboutHtml }: TalkDetailProps)
             {talk.video ? 'Watch the talk' : 'Slides'}
           </Heading>
           {talk.video && (
-            <TalkVideo title={talk.title} video={talk.video} transcriptId={TRANSCRIPT_ID} />
+            <TalkVideo
+              title={talk.title}
+              video={talk.video}
+              transcriptHref={transcriptPath(talk.slug)}
+            />
           )}
           {talk.slidesHref && (
             <p>
@@ -65,11 +67,14 @@ export function TalkDetail({ talk, transcriptHtml, aboutHtml }: TalkDetailProps)
         </Stack>
       )}
 
-      <Stack as="section" gap={4} aria-labelledby={TRANSCRIPT_ID}>
-        <Heading level={2} id={TRANSCRIPT_ID} tabIndex={-1}>
+      <Stack as="section" gap={3} aria-labelledby="transcript">
+        <Heading level={2} id="transcript">
           Transcript
         </Heading>
-        <Transcript html={transcriptHtml} />
+        <p>The transcript has everything that was said, on its own page.</p>
+        <p className={styles.standalone}>
+          <Link to={transcriptPath(talk.slug)}>Read the transcript of “{talk.title}”</Link>
+        </p>
       </Stack>
 
       <p className={styles.standalone}>

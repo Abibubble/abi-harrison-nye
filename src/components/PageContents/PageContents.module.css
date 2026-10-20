@@ -24,3 +24,16 @@
     min-height: var(--size-target-min);
   }
 }
+
+/* Long lists read down each column, then across, so the order matches the page */
+.columns {
+  @media (width >= 48rem) {
+    display: block;
+    column-width: 16rem;
+    column-gap: var(--spacer-48);
+
+    li {
+      break-inside: avoid;
+    }
+  }
+}

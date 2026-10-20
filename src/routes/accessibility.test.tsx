@@ -4,24 +4,13 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { ABBREVIATIONS } from '../content/abbreviations';
 import { GLOSSARY } from '../content/glossary';
 import type * as Statements from '../content/statements';
-import type * as Talks from '../content/talks';
-import type { Talk } from '../content/talks';
+import { type Talk, knownIssueTalks } from '../content/talks';
 import { displaySettingsStore } from '../settings/displaySettings';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
-import Accessibility, { meta } from './accessibility';
+import { AccessibilityPage, loader, meta } from './accessibility';
 
 const fake = vi.hoisted(() => ({ talks: [] as Talk[], manualTesting: [] as string[] }));
-
-vi.mock('../content/talks', async (importOriginal) => {
-  const original = await importOriginal<typeof Talks>();
-  return {
-    ...original,
-    talksWithoutCaptions: () => original.talksWithoutCaptions(fake.talks),
-    talksNeedingAudioDescription: () => original.talksNeedingAudioDescription(fake.talks),
-    talksWithVideos: () => original.talksWithVideos(fake.talks),
-  };
-});
 
 vi.mock('../content/statements', async (importOriginal) => {
   const original = await importOriginal<typeof Statements>();
@@ -32,6 +21,11 @@ vi.mock('../content/statements', async (importOriginal) => {
     },
   };
 });
+
+/** The page, with the talks in fake.talks as its known issues */
+function Accessibility() {
+  return <AccessibilityPage {...knownIssueTalks(fake.talks)} />;
+}
 
 function talk(slug: string, video?: Talk['video']): Talk {
   return {
@@ -70,6 +64,10 @@ afterEach(() => {
 });
 
 describe('Accessibility page', () => {
+  it('works out the known issues from the talks that are ready, when the site is built', () => {
+    expect(loader()).toEqual(knownIssueTalks());
+  });
+
   it('has the page heading and the display settings', () => {
     renderWithRouter(<Accessibility />);
 

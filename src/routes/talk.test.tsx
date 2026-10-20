@@ -1,9 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 import { describe, expect, it } from 'vitest';
 
 import type { TalkPageData } from '../content/talkPage';
-import { renderTranscript } from '../content/transcripts';
 import { expectNoAxeViolations } from '../test/axe';
 import { pageMeta } from '../seo/pageMeta';
 import Talk, { loader, meta, slugFrom } from './talk';
@@ -23,7 +22,6 @@ const PAGE: TalkPageData = {
     },
     slidesHref: 'https://example.com/slides',
   },
-  transcriptHtml: renderTranscript('### Introduction\n\nOn screen: the title slide.'),
 };
 
 function renderTalk() {
@@ -55,13 +53,13 @@ describe('Talk page', () => {
     expect(screen.getByText(/Captions aren’t available/)).toBeInTheDocument();
   });
 
-  it('has the transcript under its own heading, which links can move focus to', async () => {
+  it('links to the transcript, on its own page', async () => {
     renderTalk();
-    const heading = await screen.findByRole('heading', { level: 2, name: 'Transcript' });
+    const section = await screen.findByRole('region', { name: 'Transcript' });
 
-    expect(heading).toHaveAttribute('tabindex', '-1');
-    expect(screen.getByRole('region', { name: 'Transcript' })).toHaveTextContent(
-      'On screen: the title slide.',
+    expect(within(section).getByRole('link')).toHaveAttribute(
+      'href',
+      '/talks/example-talk/transcript',
     );
   });
 

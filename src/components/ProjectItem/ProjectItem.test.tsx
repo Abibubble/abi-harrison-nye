@@ -15,6 +15,29 @@ const PROJECT: Project = {
 };
 
 describe('ProjectItem', () => {
+  it('shows a warning in bold, before the links, when the project has one', () => {
+    renderWithRouter(
+      <ProjectItem
+        project={{ ...PROJECT, warning: 'This is broken on purpose.' }}
+        headingLevel={2}
+      />,
+    );
+    const warning = screen.getByText(/This is broken on purpose\./);
+
+    expect(warning.closest('strong')).toHaveTextContent('Please note: This is broken on purpose.');
+    expect(
+      warning.compareDocumentPosition(
+        screen.getByRole('link', { name: 'See Example project (external site)' }),
+      ),
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it('shows no warning when the project has none', () => {
+    renderWithRouter(<ProjectItem project={PROJECT} headingLevel={2} />);
+
+    expect(screen.queryByText(/Please note/)).not.toBeInTheDocument();
+  });
+
   it('shows the project’s name as a heading, with its summary', () => {
     renderWithRouter(<ProjectItem project={PROJECT} headingLevel={2} />);
 

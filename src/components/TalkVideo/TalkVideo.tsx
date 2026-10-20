@@ -6,10 +6,11 @@ import styles from './TalkVideo.module.css';
 interface TalkVideoProps {
   title: string;
   video: Video;
-  transcriptId: string;
+  /** The talk's transcript page */
+  transcriptHref: string;
 }
 
-export function TalkVideo({ title, video, transcriptId }: TalkVideoProps) {
+export function TalkVideo({ title, video, transcriptHref }: TalkVideoProps) {
   return (
     <Stack gap={2}>
       <p className={styles.standalone}>
@@ -19,13 +20,13 @@ export function TalkVideo({ title, video, transcriptId }: TalkVideoProps) {
       {video.captions === 'automatic' && (
         <p>
           The video only has automatic captions, which may have mistakes. The{' '}
-          <Link to={`#${transcriptId}`}>full transcript</Link> has been checked.
+          <Link to={transcriptHref}>full transcript</Link> has been checked.
         </p>
       )}
       {video.captions === 'none' && (
         <p>
           Captions aren’t available for this video yet.{' '}
-          <Link to={`#${transcriptId}`}>Read the full transcript</Link> instead.
+          <Link to={transcriptHref}>Read the full transcript</Link> instead.
         </p>
       )}
     </Stack>
