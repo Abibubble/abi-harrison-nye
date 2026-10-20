@@ -36,16 +36,19 @@
     "has": {
       "slides": "have",
       "script": true,
-      "transcript": "none",
+      "transcript": "draft",
       "recording": "unknown"
     },
     "permission": "needed",
     "todo": [
       "Whether it was recorded",
+      "Check the transcript, including the parts marked “[check: ...]”",
       "Check it was online",
       "Check the title and summary",
-      "Claude writes the transcript from the script and slides, without the Bupa section",
-      "giffgaff is happy for it to be public"
+      "giffgaff is happy for it to be public",
+      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing",
+      "Slide 9’s description names an actor in the film. Decide whether to keep it",
+      "Add the web addresses for the links on slides 14 and 16, if you have them"
     ]
   },
   {
@@ -70,13 +73,44 @@
     ]
   },
   {
+    "slug": "we-do-the-hard-work-accessibility",
+    "ready": false,
+    "title": "We do the hard work: accessibility",
+    "event": "giffgaff Future Capabilities monthly meeting",
+    "location": "",
+    "date": "2025-06-19",
+    "summary": "How we rebuilt giffgaff’s phones range page with accessibility from day one, what changed for screen reader users, and why it took no extra time.",
+    "video": {
+      "href": "https://youtu.be/5f0aXQQferk",
+      "captions": "none",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "none",
+      "script": false,
+      "transcript": "draft",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Upload the captions files from your Desktop to both videos on YouTube, then set captions to accurate",
+      "Where it was, such as the office and online",
+      "Check the title and summary",
+      "Check the transcript",
+      "You gave this talk again at the Future Capabilities Demo on 10 July 2025 (https://youtu.be/Ir8Jo95jRgc). Its transcript and captions are on your Desktop. Decide whether to mention it on the page",
+      "giffgaff is happy for it to be public, as every slide is marked “Internal”",
+      "Nigel’s OK, as you name him",
+      "The OK of the colleagues heard answering, or cut those parts"
+    ]
+  },
+  {
     "slug": "accessibility-conversation-with-kai-wong-part-2",
     "ready": false,
     "title": "Accessibility conversation with Kai Wong, part 2",
     "event": "giffgaff Disability Pride Month",
     "location": "Online",
     "date": "2025-06-16",
-    "summary": "Part 2 of my conversation with Kai Wong, about active allyship and building an accessibility culture at work.",
+    "summary": "Part 2 of my conversation with Kai Wong, about active allyship, making fair decisions, accessibility networks, avoiding burnout, and resources for learning.",
     "video": {
       "href": "https://youtu.be/anRqDPCz2tE",
       "captions": "none",
@@ -85,16 +119,20 @@
     "has": {
       "slides": "none",
       "script": false,
-      "transcript": "raw",
+      "transcript": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
       "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
-      "Check the summary",
-      "Claude writes up the transcript",
+      "Check the transcript, including the parts marked “[check: ...]”",
       "Kai’s OK for it to be public",
-      "Check nothing important is shown on screen without being said"
+      "Check nothing important is shown on screen without being said",
+      "Check the summary",
+      "Colleagues are named: Ian, Alice and Kate. Get their OK, or leave the names out",
+      "You say that, as far as you know, nobody at giffgaff has a visual impairment. Check you’re happy for that to be public",
+      "Kai says their book is available to pre-order, which is now out of date",
+      "You say links are “in the description”. Add them to the talk page, or say where they are"
     ]
   },
   {
@@ -104,7 +142,7 @@
     "event": "giffgaff Disability Pride Month",
     "location": "Online",
     "date": "2025-06-16",
-    "summary": "Part 1 of my conversation with Kai Wong, Principal of Digital Accessibility at Teladoc Health, about how they got into accessibility and what it means at work.",
+    "summary": "Part 1 of my conversation with Kai Wong, about how they got into accessibility, why it matters, impostor syndrome, and pushing back against inaccessibility.",
     "video": {
       "href": "https://youtu.be/Gy56YclbeZ4",
       "captions": "none",
@@ -113,16 +151,18 @@
     "has": {
       "slides": "none",
       "script": false,
-      "transcript": "raw",
+      "transcript": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
       "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
-      "Check the summary",
-      "Claude writes up the transcript",
+      "Check the transcript, including the parts marked “[check: ...]”",
       "Check nothing important is shown on screen without being said",
-      "Kai’s OK for it to be public"
+      "Kai’s OK for it to be public",
+      "Check the summary",
+      "Kai talks about being queer, having ADHD and being bullied growing up. Check they’re happy for that to be public, not just at giffgaff",
+      "Colleagues are named: Eve, Ian and James. Get their OK, or leave the names out"
     ]
   },
   {
@@ -132,7 +172,7 @@
     "event": "giffgaff Autistic Pride Day",
     "location": "Online",
     "date": "2025-06-16",
-    "summary": "A discussion with two colleagues for Autistic Pride Day, about autism and how it connects with gender.",
+    "summary": "A discussion with two colleagues for Autistic Pride Day, about how autism can show up differently in women, getting diagnosed as an adult, and what makes work less exhausting.",
     "video": {
       "href": "https://youtu.be/dFj5HgDqEPI",
       "captions": "none",
@@ -141,16 +181,21 @@
     "has": {
       "slides": "none",
       "script": false,
-      "transcript": "raw",
+      "transcript": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
       "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
-      "Check the summary",
-      "Claude writes up the transcript",
+      "Check the transcript, including the parts marked “[check: ...]”",
       "Kat and Maria’s OK for it to be public",
-      "Check nothing important is shown on screen without being said"
+      "Check nothing important is shown on screen without being said",
+      "Check the summary",
+      "Maria shares a lot of personal history, including her diagnoses and a very hard time before them. Check she’s happy for all of it to be public, not just at giffgaff",
+      "Kat talks about her son and her niece, who are children. Check she’s happy for that to be public",
+      "You talk about your husband being autistic. Check you’re both happy for that to be public",
+      "It describes giffgaff’s Bupa referral process and internal events and Slack channels. Check giffgaff is happy",
+      "It mentions an impostor syndrome session with a named colleague, which is now out of date"
     ]
   },
   {
@@ -169,18 +214,20 @@
     "has": {
       "slides": "have",
       "script": true,
-      "transcript": "raw",
+      "transcript": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
       "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the transcript, including the parts marked “[check: ...]”",
       "Where it was, such as the office and online",
       "Check the summary",
-      "Claude writes up the transcript, using only your part of the call",
       "Cut or blur slides 2, 3 and 5 in the video",
       "The OK of the colleague who opens the call",
-      "giffgaff is happy for it to be public"
+      "giffgaff is happy for it to be public",
+      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”",
+      "It names internal meeting rooms (the Park, the Fish Bowl and Wellington Street). Check you’re happy for that to be public"
     ]
   },
   {
