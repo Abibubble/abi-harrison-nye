@@ -31,7 +31,7 @@ export function TalkTranscript({ talk, transcriptHtml, sections }: TalkTranscrip
         <Stack gap={2}>
           <PageHeading>Transcript: {talk.title}</PageHeading>
           <p className={styles.meta}>
-            {talk.event}, {talk.location}, <Time date={talk.date} />
+            {talk.event}, <Time date={talk.date} />
           </p>
         </Stack>
         {backToTalk}

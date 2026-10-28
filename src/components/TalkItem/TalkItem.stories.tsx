@@ -11,7 +11,6 @@ const meta = {
       slug: 'example-talk',
       title: 'An example talk',
       event: 'Example conference',
-      location: 'London',
       date: '2026-06',
       summary: 'An example to show how a talk looks in the list',
       video: {

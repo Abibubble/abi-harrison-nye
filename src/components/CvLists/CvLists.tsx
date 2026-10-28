@@ -65,8 +65,7 @@ export function SpeakingList({ talks, withoutPages }: SpeakingListProps) {
               “<AbbrText>{item.title}</AbbrText>”
             </>
           )}
-          , <AbbrText>{item.event}</AbbrText>, <AbbrText>{item.location}</AbbrText>,{' '}
-          <Time date={item.date} />
+          , <AbbrText>{item.event}</AbbrText>, <Time date={item.date} />
         </li>
       ))}
     </Stack>

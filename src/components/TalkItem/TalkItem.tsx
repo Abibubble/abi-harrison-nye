@@ -10,6 +10,8 @@ import styles from './TalkItem.module.css';
 interface TalkItemProps {
   talk: Talk;
   headingLevel: HeadingLevel;
+  /** False for talks that weren't recorded, which are listed without a page of their own */
+  hasPage?: boolean;
 }
 
 function mediaSummary(talk: Talk): string {
@@ -19,20 +21,20 @@ function mediaSummary(talk: Talk): string {
     : 'Video and transcript';
 }
 
-export function TalkItem({ talk, headingLevel }: TalkItemProps) {
+export function TalkItem({ talk, headingLevel, hasPage = true }: TalkItemProps) {
   return (
     <Card as="article">
       <Stack gap={2}>
         <Heading level={headingLevel} className={styles.title}>
-          <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
+          {hasPage ? <Link to={`/talks/${talk.slug}`}>{talk.title}</Link> : talk.title}
         </Heading>
         <p className={styles.meta}>
-          {talk.event}, {talk.location}, <Time date={talk.date} />
+          {talk.event}, <Time date={talk.date} />
         </p>
         <p>
           <AbbrText>{talk.summary}</AbbrText>
         </p>
-        <p className={styles.meta}>{mediaSummary(talk)}</p>
+        {hasPage && <p className={styles.meta}>{mediaSummary(talk)}</p>}
       </Stack>
     </Card>
   );

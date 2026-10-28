@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { QUALIFICATIONS, SKILLS, SPEAKING_WITHOUT_PAGES } from '../../content/cv';
+import { QUALIFICATIONS, SKILLS } from '../../content/cv';
 import { TALKS } from '../../content/talks';
 import { QualificationList, SkillsList, SpeakingList } from './CvLists';
 
@@ -20,5 +20,5 @@ export const Qualifications: Story = {
 };
 
 export const Speaking: Story = {
-  render: () => <SpeakingList talks={TALKS} withoutPages={SPEAKING_WITHOUT_PAGES} />,
+  render: () => <SpeakingList talks={TALKS} withoutPages={[]} />,
 };

@@ -18,7 +18,6 @@ export interface Qualification {
 export interface SpeakingEngagement {
   title: string;
   event: string;
-  location: string;
   /** YYYY-MM-DD or YYYY-MM */
   date: string;
 }
@@ -120,9 +119,3 @@ export const CV_INTERESTS =
 
 export const SHORT_COURSES =
   'freeCodeCamp Responsive Web Design, and Mimo courses in HTML, CSS and JavaScript, Python, SQL, React, Git, and APIs.';
-
-/**
- * Talks that don't have their own page yet, because their transcript isn't ready. The CV lists them
- * as plain text. Once a talk is added to talks.ts, remove it from here and the CV links to its page
- */
-export const SPEAKING_WITHOUT_PAGES: SpeakingEngagement[] = [];

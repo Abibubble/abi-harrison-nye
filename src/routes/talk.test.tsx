@@ -12,7 +12,6 @@ const PAGE: TalkPageData = {
     slug: 'example-talk',
     title: 'Example talk',
     event: 'Example conference',
-    location: 'London',
     date: '2026-06-12',
     summary: 'A talk used to test this page.',
     video: {
@@ -37,7 +36,7 @@ describe('Talk page', () => {
       await screen.findByRole('heading', { level: 1, name: 'Example talk' }),
     ).toBeInTheDocument();
     expect(screen.getByText(/Example conference/)).toHaveTextContent(
-      'Example conference, London, 12 June 2026',
+      'Example conference, 12 June 2026',
     );
   });
 

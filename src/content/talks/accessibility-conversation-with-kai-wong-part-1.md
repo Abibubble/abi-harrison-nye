@@ -1,6 +1,6 @@
 ### Introduction
 
-On screen: [check: the video wasn’t available when this was written. Describe anything shown besides Abi and Kai talking.]
+On screen: a title slide, then Abi and Kai talking on camera. There are no other slides or graphics.
 
 Hello, everyone. So I’m here with the wonderful Kai Wong. We’ve just got a bit of a chat today about accessibility, in the overall sense of the word [check: the source says “world”, I think “word” was meant].
 

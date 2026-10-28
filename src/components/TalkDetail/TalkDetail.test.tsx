@@ -10,12 +10,39 @@ const TALK: Talk = {
   slug: 'example-talk',
   title: 'Example talk',
   event: 'Example meetup',
-  location: 'Online',
   date: '2025-03',
   summary: 'A talk used to test this component',
 };
 
 describe('TalkDetail', () => {
+  it('mentions other times the talk was given, linking to each recording', () => {
+    renderWithRouter(
+      <TalkDetail
+        talk={{
+          ...TALK,
+          video: { href: 'https://youtu.be/first', captions: 'accurate', describedAloud: true },
+          alsoGiven: [
+            {
+              description: 'a shorter version',
+              event: 'Example demo day',
+              date: '2025-07-10',
+              href: 'https://youtu.be/second',
+            },
+          ],
+        }}
+      />,
+    );
+
+    expect(screen.getByText(/I also gave a shorter version/)).toHaveTextContent(
+      'I also gave a shorter version of this talk at Example demo day, on 10 July 2025.',
+    );
+    expect(
+      screen.getByRole('link', {
+        name: 'Watch a shorter version of “Example talk” on YouTube (external site)',
+      }),
+    ).toHaveAttribute('href', 'https://youtu.be/second');
+  });
+
   it('links to the transcript on its own page, rather than showing it all', () => {
     renderWithRouter(<TalkDetail talk={TALK} />);
 

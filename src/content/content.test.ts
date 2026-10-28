@@ -3,19 +3,12 @@ import { describe, expect, it } from 'vitest';
 import { formatDate } from '../components/Time';
 import { ABBREVIATIONS } from './abbreviations';
 import { ARTICLES } from './articles';
-import {
-  CV_INTERESTS,
-  CV_PROFILE,
-  QUALIFICATIONS,
-  SHORT_COURSES,
-  SKILLS,
-  SPEAKING_WITHOUT_PAGES,
-} from './cv';
+import { CV_INTERESTS, CV_PROFILE, QUALIFICATIONS, SHORT_COURSES, SKILLS } from './cv';
 import { GLOSSARY } from './glossary';
 import { PLAIN_SUMMARY, PROFILE, PROFILE_LINKS } from './profile';
 import { PROJECTS } from './projects';
 import { RECOGNITION } from './recognition';
-import { TALKS } from './talks';
+import { OTHER_TALKS, TALKS } from './talks';
 import { BEFORE_TECH_SUMMARY, VOLUNTEERING, VOLUNTEERING_ROLE, WORK } from './work';
 
 const ROLES = WORK.flatMap((company) => company.roles);
@@ -40,12 +33,12 @@ const ALL_TEXT = [
   ...RECOGNITION.flatMap((item) => [item.award, item.result, item.awards]),
   ...PROJECTS.flatMap((project) => [project.name, project.summary]),
   ...ARTICLES.flatMap((article) => [article.title, article.publication, article.summary]),
-  ...TALKS.flatMap((talk) => [talk.title, talk.event, talk.location, talk.summary]),
+  ...TALKS.flatMap((talk) => [talk.title, talk.event, talk.summary]),
   ...CV_PROFILE,
   ...SKILLS.flatMap((group) => [group.category, ...group.skills]),
   ...QUALIFICATIONS.flatMap((item) => [item.title, item.provider, item.detail ?? '']),
   SHORT_COURSES,
-  ...SPEAKING_WITHOUT_PAGES.flatMap((talk) => [talk.title, talk.event, talk.location]),
+  ...OTHER_TALKS.flatMap((talk) => [talk.title, talk.event, talk.summary]),
   ...VOLUNTEERING.flatMap((site) => [site.name, site.description]),
   VOLUNTEERING_ROLE,
   CV_INTERESTS,
@@ -59,7 +52,11 @@ const ALL_LINKS = [
   ...VOLUNTEERING.map((site) => site.href),
   ...PROJECTS.flatMap((project) => [project.href, project.codeHref]),
   ...ARTICLES.map((article) => article.href),
-  ...TALKS.flatMap((talk) => [talk.video?.href, talk.slidesHref]),
+  ...TALKS.flatMap((talk) => [
+    talk.video?.href,
+    talk.slidesHref,
+    ...(talk.alsoGiven ?? []).map((other) => other.href),
+  ]),
 ].filter((href): href is string => href !== undefined);
 
 describe('site content', () => {
@@ -68,7 +65,7 @@ describe('site content', () => {
       ...ROLES.flatMap((role) => [role.from, role.to]),
       ...ARTICLES.map((article) => article.date),
       ...QUALIFICATIONS.flatMap((item) => [item.from, item.to]),
-      ...SPEAKING_WITHOUT_PAGES.map((talk) => talk.date),
+      ...OTHER_TALKS.map((talk) => talk.date),
     ].filter((date): date is string => date !== undefined);
 
     for (const date of dates) {
@@ -140,12 +137,9 @@ describe('site content', () => {
     }
   });
 
-  it('never lists a talk on the CV as both with and without its own page', () => {
-    for (const talk of SPEAKING_WITHOUT_PAGES) {
-      expect(
-        TALKS.map((withPage) => withPage.title),
-        `${talk.title} now has a page, so remove it from SPEAKING_WITHOUT_PAGES`,
-      ).not.toContain(talk.title);
+  it('never lists a talk as both with and without its own page', () => {
+    for (const talk of OTHER_TALKS) {
+      expect(TALKS.map((withPage) => withPage.slug)).not.toContain(talk.slug);
     }
   });
 });

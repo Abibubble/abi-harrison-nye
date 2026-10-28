@@ -58,25 +58,18 @@ describe('SpeakingList', () => {
       slug: 'with-page',
       title: 'Talk with a page',
       event: 'Example conference',
-      location: 'London',
       date: '2025-03',
       summary: 'A talk',
     },
   ];
-  const withoutPages = [
-    { title: 'Talk without a page', event: 'Example meetup', location: 'Online', date: '2026-06' },
-  ];
+  const withoutPages = [{ title: 'Talk without a page', event: 'Example meetup', date: '2026-06' }];
 
   it('lists every talk newest first', () => {
     renderWithRouter(<SpeakingList talks={talks} withoutPages={withoutPages} />);
     const items = screen.getAllByRole('listitem');
 
-    expect(nth(items, 0)).toHaveTextContent(
-      '“Talk without a page”, Example meetup, Online, June 2026',
-    );
-    expect(nth(items, 1)).toHaveTextContent(
-      'Talk with a page, Example conference, London, March 2025',
-    );
+    expect(nth(items, 0)).toHaveTextContent('“Talk without a page”, Example meetup, June 2026');
+    expect(nth(items, 1)).toHaveTextContent('Talk with a page, Example conference, March 2025');
   });
 
   it('links only the talks that have their own page', () => {

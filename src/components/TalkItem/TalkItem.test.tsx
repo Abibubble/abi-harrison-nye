@@ -10,7 +10,6 @@ const TALK: Talk = {
   slug: 'example-talk',
   title: 'Example talk',
   event: 'Example conference',
-  location: 'London',
   date: '2026-06',
   summary: 'A talk used to test this component',
   video: {
@@ -35,7 +34,7 @@ describe('TalkItem', () => {
     renderWithRouter(<TalkItem talk={TALK} headingLevel={2} />);
 
     expect(screen.getByText(/Example conference/)).toHaveTextContent(
-      'Example conference, London, June 2026',
+      'Example conference, June 2026',
     );
     expect(screen.getByText('A talk used to test this component')).toBeInTheDocument();
   });
@@ -58,6 +57,14 @@ describe('TalkItem', () => {
     renderWithRouter(<TalkItem talk={{ ...TALK, video }} headingLevel={2} />);
 
     expect(screen.getByText(summary, { exact: true })).toBeInTheDocument();
+  });
+
+  it('shows a talk without a page as a plain heading, without saying what’s available', () => {
+    renderWithRouter(<TalkItem talk={TALK} headingLevel={3} hasPage={false} />);
+
+    expect(screen.getByRole('heading', { level: 3, name: 'Example talk' })).toBeInTheDocument();
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.queryByText(/transcript/i)).not.toBeInTheDocument();
   });
 
   it('has no detectable accessibility issues', async () => {

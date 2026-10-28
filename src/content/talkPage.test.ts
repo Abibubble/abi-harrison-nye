@@ -8,7 +8,6 @@ const TALKS: Talk[] = [
     slug: 'example-talk',
     title: 'Example talk',
     event: 'Example conference',
-    location: 'London',
     date: '2026-06',
     summary: 'A talk used to test loading.',
   },

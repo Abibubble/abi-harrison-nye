@@ -24,7 +24,7 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
         <Stack gap={2}>
           <PageHeading>{talk.title}</PageHeading>
           <p className={styles.meta}>
-            {talk.event}, {talk.location}, <Time date={talk.date} />
+            {talk.event}, <Time date={talk.date} />
           </p>
         </Stack>
         <p>
@@ -64,6 +64,15 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
               . The slides aren’t fully accessible, but the transcript describes each one.
             </p>
           )}
+          {talk.alsoGiven?.map((other) => (
+            <p key={other.href}>
+              I also gave {other.description} of this talk at <AbbrText>{other.event}</AbbrText>, on{' '}
+              <Time date={other.date} />.{' '}
+              <Link href={other.href}>
+                Watch {other.description} of “{talk.title}” on YouTube
+              </Link>
+            </p>
+          ))}
         </Stack>
       )}
 

@@ -5,6 +5,7 @@ import {
   type Talk,
   type TalkRecord,
   TALKS,
+  OTHER_TALKS,
   TALK_RECORDS,
   findTalk,
   publicTalk,
@@ -26,7 +27,6 @@ const EXAMPLE_TALKS: Talk[] = [
     slug: 'captioned-talk',
     title: 'Captioned talk',
     event: 'Example conference',
-    location: 'London',
     date: '2026-06',
     summary: 'A talk with captions.',
     video: {
@@ -39,7 +39,6 @@ const EXAMPLE_TALKS: Talk[] = [
     slug: 'uncaptioned-talk',
     title: 'Uncaptioned talk',
     event: 'Example meetup',
-    location: 'Online',
     date: '2025-11-20',
     summary: 'A talk without captions yet.',
     video: {
@@ -52,7 +51,6 @@ const EXAMPLE_TALKS: Talk[] = [
     slug: 'talk-without-video',
     title: 'Talk without a video',
     event: 'Example meetup',
-    location: 'Manchester',
     date: '2025-03',
     summary: 'A talk that wasn’t recorded.',
   },
@@ -125,6 +123,26 @@ describe('renderTranscript', () => {
   it('turns Markdown into HTML', () => {
     expect(renderTranscript('### Introduction\n\nHello, I’m **Abi**.')).toBe(
       '<h3>Introduction</h3>\n<p>Hello, I’m <strong>Abi</strong>.</p>\n',
+    );
+  });
+});
+
+describe('links in transcripts and descriptions', () => {
+  it('marks links to other sites, like the Link component does', () => {
+    const html = renderTranscript('[A book](https://example.com/book)');
+
+    expect(html).toContain('<a href="https://example.com/book">A book <svg');
+    expect(html).toContain('aria-hidden="true"');
+    expect(html).toContain('<span class="screenReaderOnly">(external site)</span></a>');
+  });
+
+  it('leaves links within the site plain', () => {
+    expect(renderTranscript('[Talks](/talks)')).toBe('<p><a href="/talks">Talks</a></p>\n');
+  });
+
+  it('marks links in a transcript on its own page too', () => {
+    expect(renderTranscriptPage('[A book](https://example.com/book)').html).toContain(
+      '(external site)',
     );
   });
 });
@@ -204,8 +222,8 @@ describe('the real talks', () => {
 
   it('link to videos on YouTube', () => {
     for (const talk of TALKS) {
-      if (talk.video) {
-        expect(talk.video.href, talk.slug).toMatch(/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//);
+      for (const href of [talk.video?.href, ...(talk.alsoGiven ?? []).map((other) => other.href)]) {
+        if (href) expect(href, talk.slug).toMatch(/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//);
       }
     }
   });
@@ -215,8 +233,10 @@ describe('talks.json', () => {
   const ready = TALK_RECORDS.filter((talk) => talk.ready);
 
   it('only puts ready talks on the site, without what I’m tracking', () => {
-    expect(TALKS.map((talk) => talk.slug).sort()).toEqual(ready.map((talk) => talk.slug).sort());
-    for (const talk of TALKS) {
+    expect([...TALKS, ...OTHER_TALKS].map((talk) => talk.slug).sort()).toEqual(
+      ready.map((talk) => talk.slug).sort(),
+    );
+    for (const talk of [...TALKS, ...OTHER_TALKS]) {
       expect(Object.keys(talk)).not.toEqual(
         expect.arrayContaining([expect.stringMatching(/^(ready|has|permission|todo)$/)]),
       );
@@ -228,7 +248,6 @@ describe('talks.json', () => {
       slug: 'example',
       title: 'Example',
       event: 'Example meetup',
-      location: 'Online',
       date: '2025-01',
       summary: 'An example.',
     };
@@ -270,10 +289,16 @@ describe('talks.json', () => {
   it('only marks a talk ready once it has everything it needs', () => {
     for (const talk of ready) {
       const { slug } = talk;
-      expect(talk.has.transcript, `${slug}: transcript`).toBe('checked');
+      if (talk.has.transcript === 'none') {
+        // Listed under “Other talks”, which is only for talks that weren’t recorded
+        expect(talk.has.recording, `${slug}: recording`).toBe('not recorded');
+        expect(talk.video, `${slug}: video`).toBeUndefined();
+      } else {
+        expect(talk.has.transcript, `${slug}: transcript`).toBe('checked');
+      }
       expect(talk.permission, `${slug}: permission`).not.toBe('needed');
       expect(TRANSCRIPTS[slug], `${slug}: transcript`).not.toContain('[check:');
-      for (const field of ['title', 'event', 'location', 'date', 'summary'] as const) {
+      for (const field of ['title', 'event', 'date', 'summary'] as const) {
         expect(talk[field], `${slug}: ${field}`).not.toBe('');
       }
     }

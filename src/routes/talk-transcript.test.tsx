@@ -9,7 +9,6 @@ const PAGE: TranscriptPageData = {
     slug: 'example-talk',
     title: 'Example talk',
     event: 'Example conference',
-    location: 'London',
     date: '2026-06-12',
     summary: 'A talk used to test this page.',
   },

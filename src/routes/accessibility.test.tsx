@@ -32,7 +32,6 @@ function talk(slug: string, video?: Talk['video']): Talk {
     slug,
     title: `Talk ${slug}`,
     event: 'Event',
-    location: 'Online',
     date: '2026-01',
     summary: 'A talk.',
     video,

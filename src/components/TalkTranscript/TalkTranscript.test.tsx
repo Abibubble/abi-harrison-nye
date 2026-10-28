@@ -11,7 +11,6 @@ const TALK: Talk = {
   slug: 'example-talk',
   title: 'Example talk',
   event: 'Example meetup',
-  location: 'Online',
   date: '2025-03-14',
   summary: 'A talk used to test this component',
 };
@@ -33,9 +32,7 @@ describe('TalkTranscript', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: 'Transcript: Example talk' }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Example meetup/)).toHaveTextContent(
-      'Example meetup, Online, 14 March 2025',
-    );
+    expect(screen.getByText(/Example meetup/)).toHaveTextContent('Example meetup, 14 March 2025');
   });
 
   it('lists the sections, linking to each one’s heading', () => {

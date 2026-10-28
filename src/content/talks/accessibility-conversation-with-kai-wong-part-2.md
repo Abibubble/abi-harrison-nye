@@ -1,6 +1,6 @@
 ### Introduction
 
-On screen: [check: the video wasn’t available when this was written. Describe anything shown besides Abi and Kai talking.]
+On screen: a title slide, then Abi and Kai talking on camera. There are no other slides or graphics.
 
 So, following along with that Diversity, Equity and Inclusion (DE&I) thread, I would like to ask, how do you think we can build active allyship within the accessibility space within giffgaff?
 

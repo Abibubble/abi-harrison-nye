@@ -4,7 +4,6 @@
     "ready": true,
     "title": "Moving accessibility from debt to done at giffgaff",
     "event": "LeadDev LDX3",
-    "location": "London",
     "date": "2026-06-02",
     "summary": "How accessibility became part of everyday engineering, improving inclusion and business impact without slowing delivery.",
     "video": {
@@ -30,24 +29,20 @@
     "ready": false,
     "title": "OCD: not just even numbers and organisation",
     "event": "giffgaff OCD Awareness Week",
-    "location": "Online",
     "date": "2025-10-13",
     "summary": "What obsessive-compulsive disorder (OCD) really is, beyond the stereotypes, how it’s diagnosed and treated, and why the way we talk about it matters.",
     "has": {
       "slides": "have",
       "script": true,
       "transcript": "draft",
-      "recording": "unknown"
+      "recording": "not recorded"
     },
     "permission": "needed",
     "todo": [
-      "Whether it was recorded",
       "Check the transcript, including the parts marked “[check: ...]”",
-      "Check it was online",
       "Check the title and summary",
       "giffgaff is happy for it to be public",
       "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing",
-      "Slide 9’s description names an actor in the film. Decide whether to keep it",
       "Add the web addresses for the links on slides 14 and 16, if you have them"
     ]
   },
@@ -56,7 +51,6 @@
     "ready": false,
     "title": "Masking",
     "event": "giffgaff neurodiversity monthly chat",
-    "location": "Online",
     "date": "2025-07-31",
     "summary": "A safe space discussion about masking: what it is, how it affects neurodivergent people, and how to help everyone feel safe to unmask.",
     "has": {
@@ -66,18 +60,13 @@
       "recording": "not recorded"
     },
     "permission": "needed",
-    "todo": [
-      "Check the summary",
-      "Bim’s OK, if the site names them",
-      "Needs an “Other talks” list on the Talks page, as it can’t have its own page without a transcript"
-    ]
+    "todo": ["Check the summary", "Bim’s OK, if the site names them"]
   },
   {
     "slug": "we-do-the-hard-work-accessibility",
     "ready": false,
     "title": "We do the hard work: accessibility",
     "event": "giffgaff Future Capabilities monthly meeting",
-    "location": "",
     "date": "2025-06-19",
     "summary": "How we rebuilt giffgaff’s phones range page with accessibility from day one, what changed for screen reader users, and why it took no extra time.",
     "video": {
@@ -85,6 +74,14 @@
       "captions": "none",
       "describedAloud": false
     },
+    "alsoGiven": [
+      {
+        "description": "a shorter version",
+        "event": "giffgaff Future Capabilities Demo",
+        "date": "2025-07-10",
+        "href": "https://youtu.be/Ir8Jo95jRgc"
+      }
+    ],
     "has": {
       "slides": "none",
       "script": false,
@@ -93,14 +90,13 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions files from your Desktop to both videos on YouTube, then set captions to accurate",
-      "Where it was, such as the office and online",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript",
-      "You gave this talk again at the Future Capabilities Demo on 10 July 2025 (https://youtu.be/Ir8Jo95jRgc). Its transcript and captions are on your Desktop. Decide whether to mention it on the page",
       "giffgaff is happy for it to be public, as every slide is marked “Internal”",
       "Nigel’s OK, as you name him",
-      "The OK of the colleagues heard answering, or cut those parts"
+      "The OK of the colleagues heard answering, or cut those parts",
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
     ]
   },
   {
@@ -108,7 +104,6 @@
     "ready": false,
     "title": "Accessibility conversation with Kai Wong, part 2",
     "event": "giffgaff Disability Pride Month",
-    "location": "Online",
     "date": "2025-06-16",
     "summary": "Part 2 of my conversation with Kai Wong, about active allyship, making fair decisions, accessibility networks, avoiding burnout, and resources for learning.",
     "video": {
@@ -124,15 +119,11 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Kai’s OK for it to be public",
-      "Check nothing important is shown on screen without being said",
       "Check the summary",
-      "Colleagues are named: Ian, Alice and Kate. Get their OK, or leave the names out",
-      "You say that, as far as you know, nobody at giffgaff has a visual impairment. Check you’re happy for that to be public",
-      "Kai says their book is available to pre-order, which is now out of date",
-      "You say links are “in the description”. Add them to the talk page, or say where they are"
+      "Colleagues are named: Ian, Alice and Kate. Get their OK, or leave the names out"
     ]
   },
   {
@@ -140,7 +131,6 @@
     "ready": false,
     "title": "Accessibility conversation with Kai Wong, part 1",
     "event": "giffgaff Disability Pride Month",
-    "location": "Online",
     "date": "2025-06-16",
     "summary": "Part 1 of my conversation with Kai Wong, about how they got into accessibility, why it matters, impostor syndrome, and pushing back against inaccessibility.",
     "video": {
@@ -156,12 +146,10 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
-      "Check nothing important is shown on screen without being said",
       "Kai’s OK for it to be public",
       "Check the summary",
-      "Kai talks about being queer, having ADHD and being bullied growing up. Check they’re happy for that to be public, not just at giffgaff",
       "Colleagues are named: Eve, Ian and James. Get their OK, or leave the names out"
     ]
   },
@@ -170,7 +158,6 @@
     "ready": false,
     "title": "Autism and gender",
     "event": "giffgaff Autistic Pride Day",
-    "location": "Online",
     "date": "2025-06-16",
     "summary": "A discussion with two colleagues for Autistic Pride Day, about how autism can show up differently in women, getting diagnosed as an adult, and what makes work less exhausting.",
     "video": {
@@ -186,7 +173,7 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Kat and Maria’s OK for it to be public",
       "Check nothing important is shown on screen without being said",
@@ -203,7 +190,6 @@
     "ready": false,
     "title": "Accessibility Culture Day welcome",
     "event": "giffgaff Accessibility Culture Day",
-    "location": "",
     "date": "2025-05-22",
     "summary": "The opening talk for giffgaff’s Accessibility Culture Day: the types of disability, who benefits from accessibility, the Purple Pound, and the plan for the day.",
     "video": {
@@ -219,15 +205,41 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
-      "Where it was, such as the office and online",
+      "Cut ITB’s parts from the video, which also removes slides 2, 3 and 5",
+      "After cutting the video, the captions won’t line up. Send Claude the cut video to remake them",
       "Check the summary",
-      "Cut or blur slides 2, 3 and 5 in the video",
-      "The OK of the colleague who opens the call",
       "giffgaff is happy for it to be public",
-      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”",
-      "It names internal meeting rooms (the Park, the Fish Bowl and Wellington Street). Check you’re happy for that to be public"
+      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”"
+    ]
+  },
+  {
+    "slug": "accessibility-knowledge-sharing",
+    "ready": false,
+    "title": "Accessibility knowledge sharing",
+    "event": "giffgaff Leanness team",
+    "date": "2024-07-23",
+    "summary": "Why accessibility matters at giffgaff, and the basics every team can use, from semantics and alt text to colour contrast and reading age, with demos using a screen reader and a keyboard only.",
+    "video": {
+      "href": "https://youtu.be/_jIk1tJwYJs",
+      "captions": "none",
+      "describedAloud": false
+    },
+    "has": {
+      "slides": "have",
+      "script": false,
+      "transcript": "draft",
+      "recording": "youtube"
+    },
+    "permission": "needed",
+    "todo": [
+      "Check the captions on YouTube, then mark them as accurate here",
+      "Check the title and summary",
+      "Check the transcript, including the parts marked “[check: ...]”",
+      "giffgaff is happy for it to be public",
+      "The OK of the colleagues heard asking questions, or cut the questions",
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
     ]
   },
   {
@@ -235,7 +247,6 @@
     "ready": true,
     "title": "Accessibility and Meta Tags",
     "event": "Code Institute",
-    "location": "Online",
     "date": "2021-12-09",
     "summary": "The meta tags every website needs, from descriptions to social media previews, and the basics of building an accessible website, from semantic HTML and alt text to colour contrast.",
     "video": {
@@ -257,11 +268,10 @@
     "ready": false,
     "title": "A11y Series: Buttons",
     "event": "giffgaff",
-    "location": "Online",
     "date": "2021-07-16",
     "summary": "How to build buttons that work for everyone, from button text and labels to tap target sizes and focus styles, and why disabled buttons cause problems.",
     "video": {
-      "href": "https://youtu.be/g1wCcH4NIZI",
+      "href": "https://youtu.be/FHCQrLDPq84",
       "captions": "none",
       "describedAloud": false
     },
@@ -273,42 +283,12 @@
     },
     "permission": "needed",
     "todo": [
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
+      "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
       "giffgaff is happy for it to be public",
-      "Colleagues’ webcams show down the side of the video, and two colleagues can be heard in the questions. Get their OK, or crop and cut",
-      "The form demo shows part of your email address"
-    ]
-  },
-  {
-    "slug": "accessibility-knowledge-sharing",
-    "ready": false,
-    "title": "Accessibility knowledge sharing",
-    "event": "giffgaff knowledge sharing",
-    "location": "Online",
-    "date": "",
-    "summary": "Why accessibility matters at giffgaff, and the basics every team can use, from semantics and alt text to colour contrast and reading age, with demos using a screen reader and a keyboard only.",
-    "video": {
-      "href": "https://youtu.be/_jIk1tJwYJs",
-      "captions": "none",
-      "describedAloud": false
-    },
-    "has": {
-      "slides": "have",
-      "script": false,
-      "transcript": "draft",
-      "recording": "youtube"
-    },
-    "permission": "needed",
-    "todo": [
-      "The date, and who it was for",
-      "Check the title and summary",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Upload the captions file from your Desktop to YouTube, then set captions to accurate",
-      "giffgaff is happy for it to be public",
-      "The OK of the colleagues heard asking questions, or cut the questions",
-      "Cut the part of the app demo that shows your account"
+      "Two colleagues can be heard in the questions: get their OK, or cut them",
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
     ]
   }
 ]

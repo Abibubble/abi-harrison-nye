@@ -20,7 +20,6 @@ export interface Talk {
   slug: string;
   title: string;
   event: string;
-  location: string;
   /** YYYY-MM-DD, or YYYY-MM if the day isn't known */
   date: string;
   summary: string;
@@ -29,6 +28,18 @@ export interface Talk {
   slidesHref?: string;
   /** The slides as a file in public/, such as talks/example-slides.pdf, with its size, such as 5.6MB */
   slidesFile?: { path: string; size: string };
+  /** Other times I gave this talk, with their own recordings */
+  alsoGiven?: AlsoGiven[];
+}
+
+export interface AlsoGiven {
+  /** How it differed, completing “I also gave …”, such as “a shorter version” */
+  description: string;
+  event: string;
+  /** YYYY-MM-DD, or YYYY-MM if the day isn't known */
+  date: string;
+  /** The recording on YouTube */
+  href: string;
 }
 
 /** What I have for a talk, to keep track of what's still missing */
@@ -69,18 +80,18 @@ export const TALK_RECORDS = RECORDS as TalkRecord[];
  * new added for tracking stays private
  */
 export function publicTalk(record: TalkRecord): Talk {
-  const { slug, title, event, location, date, summary, video, slidesHref, slidesFile } = record;
+  const { slug, title, event, date, summary, video, slidesHref, slidesFile, alsoGiven } = record;
 
   return {
     slug,
     title,
     event,
-    location,
     date,
     summary,
     ...(video && { video }),
     ...(slidesHref && { slidesHref }),
     ...(slidesFile && { slidesFile }),
+    ...(alsoGiven && { alsoGiven }),
   };
 }
 
@@ -88,7 +99,19 @@ export function publicTalk(record: TalkRecord): Talk {
  * The talks on the site: the ready ones, newest first. Transcripts describe anything shown on screen,
  * such as slides and demos, as well as what's said, where the slides still exist (WCAG 1.2.8)
  */
-export const TALKS: Talk[] = TALK_RECORDS.filter((record) => record.ready)
+export const TALKS: Talk[] = TALK_RECORDS.filter(
+  (record) => record.ready && record.has.transcript === 'checked',
+)
+  .map(publicTalk)
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+/**
+ * Ready talks that weren't recorded and have no transcript, newest first. Every talk page needs a
+ * full transcript, so these are listed under “Other talks” instead, with no page of their own
+ */
+export const OTHER_TALKS: Talk[] = TALK_RECORDS.filter(
+  (record) => record.ready && record.has.transcript === 'none',
+)
   .map(publicTalk)
   .sort((a, b) => b.date.localeCompare(a.date));
 

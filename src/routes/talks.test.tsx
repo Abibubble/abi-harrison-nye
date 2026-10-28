@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { TALKS, type Talk } from '../content/talks';
+import { OTHER_TALKS, TALKS, type Talk } from '../content/talks';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
 import { TalksPage, loader, meta } from './talks';
@@ -11,15 +11,44 @@ const EXAMPLE_TALKS: Talk[] = [
     slug: 'example-talk',
     title: 'Example talk',
     event: 'Example conference',
-    location: 'London',
     date: '2026-06',
     summary: 'The first one.',
   },
 ];
 
 describe('Talks page', () => {
+  it('lists talks without pages under “Other talks”, with no links', () => {
+    renderWithRouter(
+      <TalksPage
+        talks={EXAMPLE_TALKS}
+        otherTalks={[
+          {
+            slug: 'unrecorded',
+            title: 'Unrecorded talk',
+            event: 'Example chat',
+            date: '2025-07-31',
+            summary: 'A talk that wasn’t recorded.',
+          },
+        ]}
+      />,
+    );
+    const section = screen.getByRole('region', { name: 'Other talks' });
+
+    expect(within(section).getByRole('heading', { level: 3 })).toHaveTextContent('Unrecorded talk');
+    expect(within(section).queryByRole('link')).not.toBeInTheDocument();
+    expect(section).toHaveTextContent(
+      'These weren’t recorded, so they don’t have their own pages.',
+    );
+  });
+
+  it('leaves out “Other talks” when there are none', () => {
+    renderWithRouter(<TalksPage talks={EXAMPLE_TALKS} />);
+
+    expect(screen.queryByRole('heading', { name: 'Other talks' })).not.toBeInTheDocument();
+  });
+
   it('gets only the talks that are ready, when the site is built', () => {
-    expect(loader()).toEqual({ talks: TALKS });
+    expect(loader()).toEqual({ talks: TALKS, otherTalks: OTHER_TALKS });
   });
 
   it('has the page heading', () => {

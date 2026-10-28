@@ -1,4 +1,4 @@
-import { Marked, marked } from 'marked';
+import { Marked, type RendererObject } from 'marked';
 
 /**
  * Talk transcripts, written in Markdown in src/content/talks/{slug}.md. Only the talk page's loader
@@ -34,12 +34,32 @@ export const TRANSCRIPTS = bySlug(FILES);
 /** Every longer description, keyed by its talk's slug */
 export const ABOUT = bySlug(ABOUT_FILES);
 
+/** The arrow icon external links use, matching the Link component */
+const EXTERNAL_ICON =
+  '<svg class="externalIcon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h7v7M13 3 4 12" /></svg>';
+
+/**
+ * Links to other sites get the same arrow and hidden “(external site)” text as the Link component,
+ * so they're announced and look the same wherever they are
+ */
+const linkRenderer: RendererObject = {
+  link({ href, tokens }) {
+    const inner = this.parser.parseInline(tokens);
+    const safeHref = href.replaceAll('"', '&quot;');
+    if (!/^https?:\/\//.test(href)) return `<a href="${safeHref}">${inner}</a>`;
+
+    return `<a href="${safeHref}">${inner} ${EXTERNAL_ICON}<span class="screenReaderOnly">(external site)</span></a>`;
+  },
+};
+
+const markdown = new Marked({ gfm: true, renderer: linkRenderer });
+
 /**
  * Turns a transcript into HTML. Transcripts sit under the talk page's "Transcript" heading, so they
  * use third level headings (###) and below, which a test checks
  */
-export function renderTranscript(markdown: string): string {
-  return marked.parse(markdown, { async: false, gfm: true });
+export function renderTranscript(source: string): string {
+  return markdown.parse(source, { async: false });
 }
 
 /** A section of a transcript, for the contents list at the top of its page */
@@ -73,6 +93,7 @@ export function renderTranscriptPage(markdown: string): TranscriptPageContent {
   const parser = new Marked({
     gfm: true,
     renderer: {
+      ...linkRenderer,
       heading({ tokens, depth, text }) {
         const level = Math.max(depth - 1, 2);
         const inner = this.parser.parseInline(tokens);

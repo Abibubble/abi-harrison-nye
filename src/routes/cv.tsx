@@ -11,18 +11,11 @@ import { PrintOptions } from '../components/PrintOptions';
 import { RecognitionList } from '../components/RecognitionList';
 import { Stack } from '../components/Stack';
 import { SiteList, WorkHistory } from '../components/WorkHistory';
-import {
-  CV_INTERESTS,
-  CV_PROFILE,
-  QUALIFICATIONS,
-  SHORT_COURSES,
-  SKILLS,
-  SPEAKING_WITHOUT_PAGES,
-} from '../content/cv';
+import { CV_INTERESTS, CV_PROFILE, QUALIFICATIONS, SHORT_COURSES, SKILLS } from '../content/cv';
 import { PROFILE, PROFILE_LINKS } from '../content/profile';
 import { RECOGNITION } from '../content/recognition';
 import { SITE_NAME, pageTitle } from '../content/site';
-import { TALKS, type Talk } from '../content/talks';
+import { OTHER_TALKS, TALKS, type Talk } from '../content/talks';
 import { VOLUNTEERING, VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/cv';
@@ -47,7 +40,13 @@ function CvSection({ id, title, children }: { id: string; title: string; childre
   );
 }
 
-export function CvPage({ talks }: { talks: readonly Talk[] }) {
+export function CvPage({
+  talks,
+  otherTalks,
+}: {
+  talks: readonly Talk[];
+  otherTalks: readonly Talk[];
+}) {
   return (
     <Stack gap={6}>
       <Stack gap={4}>
@@ -94,7 +93,7 @@ export function CvPage({ talks }: { talks: readonly Talk[] }) {
       <CvSection id="speaking-and-recognition" title="Speaking and recognition">
         <Stack gap={3}>
           <Heading level={3}>Speaking</Heading>
-          <SpeakingList talks={talks} withoutPages={SPEAKING_WITHOUT_PAGES} />
+          <SpeakingList talks={talks} withoutPages={otherTalks} />
         </Stack>
         <Stack gap={3}>
           <Heading level={3}>Recognition</Heading>
@@ -132,11 +131,9 @@ export function CvPage({ talks }: { talks: readonly Talk[] }) {
 
 /** Runs when the site is built, so talks that aren't ready never reach visitors */
 export function loader() {
-  return { talks: TALKS };
+  return { talks: TALKS, otherTalks: OTHER_TALKS };
 }
 
 export default function Cv() {
-  const { talks } = useLoaderData<typeof loader>();
-
-  return <CvPage talks={talks} />;
+  return <CvPage {...useLoaderData<typeof loader>()} />;
 }

@@ -33,7 +33,6 @@ const meta = {
       slug: 'example-talk',
       title: 'An example talk',
       event: 'Example conference',
-      location: 'London',
       date: '2026-06-12',
       summary: 'An example to show how a transcript’s page looks',
     },
