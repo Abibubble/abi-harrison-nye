@@ -1,3 +1,5 @@
+import { readdirSync } from 'node:fs';
+
 import { describe, expect, it } from 'vitest';
 
 import { formatDate } from '../components/Time';
@@ -286,6 +288,13 @@ describe('talks.json', () => {
     }
   });
 
+  it('only has slide files in public/ for ready talks, as everything there goes live', () => {
+    const files = readdirSync('public/talks').map((file) => `talks/${file}`);
+    const readySlides = ready.flatMap(({ slidesFile }) => (slidesFile ? [slidesFile.path] : []));
+
+    expect(files.toSorted()).toEqual(readySlides.toSorted());
+  });
+
   it('only marks a talk ready once it has everything it needs', () => {
     for (const talk of ready) {
       const { slug } = talk;
@@ -297,7 +306,7 @@ describe('talks.json', () => {
         expect(talk.has.transcript, `${slug}: transcript`).toBe('checked');
       }
       expect(talk.permission, `${slug}: permission`).not.toBe('needed');
-      expect(TRANSCRIPTS[slug], `${slug}: transcript`).not.toContain('[check:');
+      expect(TRANSCRIPTS[slug] ?? '', `${slug}: transcript`).not.toContain('[check:');
       for (const field of ['title', 'event', 'date', 'summary'] as const) {
         expect(talk[field], `${slug}: ${field}`).not.toBe('');
       }

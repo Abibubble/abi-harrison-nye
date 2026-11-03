@@ -13,7 +13,7 @@
     },
     "slidesFile": {
       "path": "talks/moving-accessibility-from-debt-to-done-slides.pdf",
-      "size": "5.8MB"
+      "size": "1.3MB"
     },
     "has": {
       "slides": "file",
@@ -39,16 +39,16 @@
     },
     "permission": "needed",
     "todo": [
+      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Check the title and summary",
       "giffgaff is happy for it to be public",
-      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing",
-      "Add the web addresses for the links on slides 14 and 16, if you have them"
+      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing"
     ]
   },
   {
     "slug": "masking",
-    "ready": false,
+    "ready": true,
     "title": "Masking",
     "event": "giffgaff neurodiversity monthly chat",
     "date": "2025-07-31",
@@ -59,8 +59,8 @@
       "transcript": "none",
       "recording": "not recorded"
     },
-    "permission": "needed",
-    "todo": ["Check the summary", "Bim’s OK, if the site names them"]
+    "permission": "not needed",
+    "todo": []
   },
   {
     "slug": "we-do-the-hard-work-accessibility",
@@ -154,38 +154,6 @@
     ]
   },
   {
-    "slug": "autism-and-gender",
-    "ready": false,
-    "title": "Autism and gender",
-    "event": "giffgaff Autistic Pride Day",
-    "date": "2025-06-16",
-    "summary": "A discussion with two colleagues for Autistic Pride Day, about how autism can show up differently in women, getting diagnosed as an adult, and what makes work less exhausting.",
-    "video": {
-      "href": "https://youtu.be/dFj5HgDqEPI",
-      "captions": "none",
-      "describedAloud": true
-    },
-    "has": {
-      "slides": "none",
-      "script": false,
-      "transcript": "draft",
-      "recording": "youtube"
-    },
-    "permission": "needed",
-    "todo": [
-      "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Kat and Maria’s OK for it to be public",
-      "Check nothing important is shown on screen without being said",
-      "Check the summary",
-      "Maria shares a lot of personal history, including her diagnoses and a very hard time before them. Check she’s happy for all of it to be public, not just at giffgaff",
-      "Kat talks about her son and her niece, who are children. Check she’s happy for that to be public",
-      "You talk about your husband being autistic. Check you’re both happy for that to be public",
-      "It describes giffgaff’s Bupa referral process and internal events and Slack channels. Check giffgaff is happy",
-      "It mentions an impostor syndrome session with a named colleague, which is now out of date"
-    ]
-  },
-  {
     "slug": "accessibility-culture-day-welcome",
     "ready": false,
     "title": "Accessibility Culture Day welcome",
@@ -205,13 +173,14 @@
     },
     "permission": "needed",
     "todo": [
+      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Cut ITB’s parts from the video, which also removes slides 2, 3 and 5",
       "After cutting the video, the captions won’t line up. Send Claude the cut video to remake them",
       "Check the summary",
       "giffgaff is happy for it to be public",
-      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”"
+      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”, including the LinkedIn link on slide 14 of the PDF"
     ]
   },
   {
@@ -234,6 +203,8 @@
     },
     "permission": "needed",
     "todo": [
+      "Add the slides PDF (sent 3 November 2026) to the repo",
+      "Slide 11 still links to a demo video on giffgaff’s Google Drive. Decide whether to remove the link before publishing",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
@@ -283,6 +254,7 @@
     },
     "permission": "needed",
     "todo": [
+      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",

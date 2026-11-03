@@ -192,12 +192,13 @@ unintentionally hurt the people who are fighting this battle every day.
 On screen: a content warning. It reads: “WARNING: The linked video is intense and dramatic from start
 to finish, and depicts someone in OCD crisis. It may be triggering, or difficult to watch. If you
 decide to watch it, please ensure that you allow yourself time after to decompress. Remember that you
-can pause, or stop watching, at any time.” It then says that if you need to talk about it afterwards,
-we are here to support you, and names colleagues to message for support. Below it is the text
-“Example video”.
+can pause, or stop watching, at any time. If you need to talk about it afterwards, we are here to
+support you, so please don’t hesitate to send a private message.” Below it is the text “Example
+video”.
 
-On screen: an embedded short film, “O.C.D.”, written by Conor Patrick Walsh and directed by Luca
-Pizzoleo.
+On screen: an embedded short film,
+[“O.C.D.”, on YouTube](https://www.youtube.com/watch?v=SAfdRMeZkWQ), written by Conor Patrick Walsh
+and directed by Luca Pizzoleo.
 
 On screen: “A lot just happened, let’s summarise it…”, with a list:
 
@@ -237,7 +238,9 @@ if you believe that you, or a dependant, may suffer with the condition:”
 
 - Speak to your general practitioner (GP). Not all GPs are equipped for this type of diagnosis or
   treatment and may refer or ask you to refer yourself (see below).
-- Refer yourself to your local National Health Service (NHS) Talking Therapy. These services will
+- Refer yourself to your local
+  [National Health Service (NHS) Talking Therapy](https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/).
+  These services will
   often not be able to diagnose officially, but can confirm symptoms and arrange support.
 - Seek private diagnosis from a licensed psychiatrist. A psychiatrist will be able to officially
   diagnose the condition.
@@ -259,7 +262,8 @@ revised version (OCI-R). It reads:
 - This is a set of 42 (or 18 for the OCI-R) questions which are scored on a scale of 0 to 4.
 - The results usually give an overall score (likelihood of having OCD and the severity) as well as a
   breakdown per category (to help identify themes).
-- If you’d like to take an online OCI-R test, you can find one here.
+- If you’d like to take an online OCI-R test, you can find one here. The words “find one here” link
+  to the online OCI-R test, which is in the list of links at the end.
 
 On screen: “Support and management”. It reads: “OCD cannot be cured, but can be managed for the
 duration of a person’s life. The most common management techniques:”
@@ -275,14 +279,11 @@ duration of a person’s life. The most common management techniques:”
 
 On screen: “Contacts and useful links”, with a list of links:
 
-[check: add the web addresses for these links?]
-
-- NHS (OCD)
-- OCD-UK (charity)
-- OCD Action (charity)
-- Online OCI-R test (18 questions)
-- Interview with Tuppence Middleton (This Morning)
-- Script from OCD Week call
+- [NHS (OCD)](https://www.nhs.uk/mental-health/conditions/obsessive-compulsive-disorder-ocd/overview/)
+- [OCD-UK (charity)](https://www.ocduk.org/)
+- [OCD Action (charity)](https://ocdaction.org.uk/)
+- [Online OCI-R test (18 questions)](https://psychology-tools.com/test/obsessive-compulsive-inventory-revised)
+- [Interview with Tuppence Middleton (This Morning)](https://www.youtube.com/watch?v=muNFUR3P05g)
 
 Then “Recommended books”:
 

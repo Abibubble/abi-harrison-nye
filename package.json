@@ -27,12 +27,14 @@
     "test:coverage": "vitest run --project unit --coverage",
     "test:storybook": "vitest run --project storybook --passWithNoTests",
     "test:e2e": "playwright test",
+    "test:e2e:chromium": "playwright test --project chromium",
     "test:lighthouse": "lhci autorun",
     "test:pages": "playwright test --config playwright.pages.config.ts",
     "storybook": "storybook dev --port 6006 --no-open",
     "build-storybook": "storybook build --quiet",
     "brand-images": "node scripts/brand-images.ts",
-    "commit:check": "pnpm format:check && pnpm lint:css && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:storybook && pnpm build-storybook && pnpm build && pnpm test:e2e && pnpm test:lighthouse"
+    "commit:check": "pnpm format:check && pnpm lint:css && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:storybook && pnpm build-storybook && pnpm build && pnpm test:e2e:chromium",
+    "commit:check:full": "pnpm format:check && pnpm lint:css && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:storybook && pnpm build-storybook && pnpm build && pnpm test:e2e && pnpm test:lighthouse"
   },
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-mono": "^5.3.0",

@@ -168,6 +168,8 @@ blob-report/
 *.doc
 *.docx
 *.pdf
+# Except slides for talks on the site. The tests check each one belongs to a ready talk.
+!public/talks/*.pdf
 
 # Personal list of future work that's blocked or waiting on something
 /TODO.md
