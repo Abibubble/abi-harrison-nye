@@ -1,13 +1,32 @@
-import { readFile, readdir, rename, rm, rmdir, writeFile } from 'node:fs/promises';
+import { readFile, readdir, rename, rm, rmdir, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import type { Config } from '@react-router/dev/config';
 
 import { BASE_PATH, SITE_URL } from './build-constants.ts';
+import { unreadySlidesFolders } from './src/content/talks.ts';
 import { withContentSecurityPolicy } from './src/security/contentSecurityPolicy.ts';
 import { pagePaths, robotsTxt, sitemapXml } from './src/seo/sitemap.ts';
 
 const NOT_FOUND_PATH = '/404';
+
+async function isFolder(path: string): Promise<boolean> {
+  return (await stat(path).catch(() => undefined))?.isDirectory() ?? false;
+}
+
+/** Moves everything in one folder into another, merging any folders both have, such as talks/ */
+async function moveInto(from: string, to: string): Promise<void> {
+  for (const entry of await readdir(from)) {
+    const source = join(from, entry);
+    const target = join(to, entry);
+    if ((await isFolder(source)) && (await isFolder(target))) {
+      await moveInto(source, target);
+      await rmdir(source);
+    } else {
+      await rename(source, target);
+    }
+  }
+}
 
 export default {
   appDirectory: 'src',
@@ -20,12 +39,14 @@ export default {
 
     const [baseFolder, ...rest] = BASE_PATH.split('/').filter(Boolean);
     if (baseFolder) {
-      const pages = join(client, baseFolder, ...rest);
-      for (const entry of await readdir(pages)) {
-        await rename(join(pages, entry), join(client, entry));
-      }
+      await moveInto(join(client, baseFolder, ...rest), client);
       await rm(join(client, baseFolder), { recursive: true });
     }
+
+    // Everything in public/ is copied into the build, so slides only go live once their talk is ready
+    await Promise.all(
+      unreadySlidesFolders().map((path) => rm(join(client, path), { recursive: true })),
+    );
 
     await rename(join(client, NOT_FOUND_PATH, 'index.html'), join(client, '404.html'));
     await rmdir(join(client, NOT_FOUND_PATH));

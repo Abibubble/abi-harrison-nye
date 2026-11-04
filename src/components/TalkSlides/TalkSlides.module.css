@@ -1,0 +1,26 @@
+.meta {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-muted);
+}
+
+/* A link on its own, rather than in a sentence, needs a full size target (WCAG 2.5.5) */
+.standalone a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+}
+
+/* A line between slides, so it's clear where one ends and the next starts */
+.slide {
+  padding-block-start: var(--spacer-24);
+  border-block-start: var(--border-width) solid var(--color-border-decorative);
+}
+
+/* As wide as the page allows, so the slide's own text is as large as it can be. The border marks
+   the edge of slides with a light background in the light themes */
+.picture {
+  width: 100%;
+  height: auto;
+  border: var(--border-width) solid var(--color-border-decorative);
+}

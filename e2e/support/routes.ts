@@ -1,4 +1,4 @@
-import { transcriptPath } from '../../src/content/talkPath';
+import { slidesPath, transcriptPath } from '../../src/content/talkPath';
 import { TALKS } from '../../src/content/talks';
 import type { DisplaySettings } from '../../src/settings/displaySettings';
 
@@ -20,6 +20,7 @@ export const ROUTES: readonly { name: string; path: string }[] = [
   ...TALKS.flatMap((talk) => [
     { name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` },
     { name: `Transcript: ${talk.title}`, path: transcriptPath(talk.slug) },
+    ...(talk.slidesPage ? [{ name: `Slides: ${talk.title}`, path: slidesPath(talk.slug) }] : []),
   ]),
 ];
 

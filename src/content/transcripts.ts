@@ -28,11 +28,24 @@ export function bySlug(files: Record<string, string>): Record<string, string> {
   );
 }
 
+/**
+ * The description of each slide, for talks' Slides pages, in src/content/talks/slides/{slug}.md,
+ * also only used by loaders
+ */
+const SLIDE_FILES = import.meta.glob<string>('./talks/slides/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
 /** Every transcript, keyed by its talk's slug */
 export const TRANSCRIPTS = bySlug(FILES);
 
 /** Every longer description, keyed by its talk's slug */
 export const ABOUT = bySlug(ABOUT_FILES);
+
+/** Every talk's slide descriptions, keyed by its talk's slug */
+export const SLIDE_TEXT = bySlug(SLIDE_FILES);
 
 /** The arrow icon external links use, matching the Link component */
 const EXTERNAL_ICON =
@@ -60,6 +73,30 @@ const markdown = new Marked({ gfm: true, renderer: linkRenderer });
  */
 export function renderTranscript(source: string): string {
   return markdown.parse(source, { async: false });
+}
+
+export interface Slide {
+  /** The slide's number in the deck, from 1 */
+  number: number;
+  /** What the slide says and shows, as HTML */
+  html: string;
+}
+
+/**
+ * Turns a talk's slide descriptions into one entry per slide. Each slide starts with a heading,
+ * “### Slide 1”, which isn't kept, as the Slides page adds its own
+ */
+export function renderSlides(source: string): Slide[] {
+  const [, ...parts] = source.split(/^### Slide (\d+)[ \t]*$/m);
+  const slides: Slide[] = [];
+
+  for (let index = 0; index < parts.length; index += 2) {
+    slides.push({
+      number: Number(parts[index]),
+      html: renderTranscript((parts[index + 1] ?? '').trim()),
+    });
+  }
+  return slides;
 }
 
 /** A section of a transcript, for the contents list at the top of its page */

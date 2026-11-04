@@ -3,8 +3,11 @@ import { data } from 'react-router';
 import { type Talk, TALKS, findTalk } from './talks';
 import {
   ABOUT,
+  SLIDE_TEXT,
+  type Slide,
   TRANSCRIPTS,
   type TranscriptSection,
+  renderSlides,
   renderTranscript,
   renderTranscriptPage,
 } from './transcripts';
@@ -19,6 +22,11 @@ export interface TranscriptPageData {
   talk: Talk;
   transcriptHtml: string;
   sections: TranscriptSection[];
+}
+
+export interface SlidesPageData {
+  talk: Talk;
+  slides: Slide[];
 }
 
 function notFound(): never {
@@ -63,4 +71,17 @@ export function loadTranscriptPage(
   const { html, sections } = renderTranscriptPage(markdown);
 
   return { talk, transcriptHtml: html, sections };
+}
+
+/** A talk's slides, or a 404 for a talk without a Slides page */
+export function loadSlidesPage(
+  slug: string,
+  talks: readonly Talk[] = TALKS,
+  slideText: Record<string, string> = SLIDE_TEXT,
+): SlidesPageData {
+  const talk = findTalk(slug, talks);
+  const markdown = slideText[slug];
+
+  if (!talk?.slidesPage || markdown === undefined) notFound();
+  return { talk, slides: renderSlides(markdown) };
 }

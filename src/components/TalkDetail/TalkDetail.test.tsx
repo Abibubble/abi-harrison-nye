@@ -69,14 +69,36 @@ describe('TalkDetail', () => {
   it('links to a slides file, saying its type and size, and that the transcript describes them', () => {
     renderWithRouter(
       <TalkDetail
-        talk={{ ...TALK, slidesFile: { path: 'talks/example-slides.pdf', size: '5.8MB' } }}
+        talk={{ ...TALK, slidesFile: { path: 'talks/example-talk/slides.pdf', size: '5.8MB' } }}
       />,
     );
 
     expect(
       screen.getByRole('link', { name: 'Slides for “Example talk” (PDF, 5.8MB)' }),
-    ).toHaveAttribute('href', '/talks/example-slides.pdf');
+    ).toHaveAttribute('href', '/talks/example-talk/slides.pdf');
     expect(screen.getByText(/the transcript describes each one/)).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /See the slides/ })).not.toBeInTheDocument();
+  });
+
+  it('links to the Slides page when there is one, as well as the PDF', () => {
+    renderWithRouter(
+      <TalkDetail
+        talk={{
+          ...TALK,
+          slidesFile: { path: 'talks/example-talk/slides.pdf', size: '5.8MB' },
+          slidesPage: true,
+        }}
+      />,
+    );
+
+    expect(screen.getByRole('link', { name: 'See the slides for “Example talk”' })).toHaveAttribute(
+      'href',
+      '/talks/example-talk/slides',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Slides for “Example talk” (PDF, 5.8MB)' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/the slides page has everything it does/)).toBeInTheDocument();
   });
 
   it('puts the longer description in a section people can open', async () => {

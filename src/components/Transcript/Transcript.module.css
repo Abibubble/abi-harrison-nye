@@ -31,6 +31,28 @@
     border-radius: var(--radius-small);
   }
 
+  /* Tables fill the width, with lines between rows. Long words can break, so a table never makes the
+     page scroll sideways, even with the largest text at 320px (WCAG 1.4.10) */
+  :global(table) {
+    width: 100%;
+    max-width: var(--size-measure);
+    border-collapse: collapse;
+  }
+
+  :global(th),
+  :global(td) {
+    padding: var(--spacer-8);
+    text-align: start;
+    overflow-wrap: anywhere;
+    vertical-align: top;
+    border-block-end: var(--border-width) solid var(--color-border-decorative);
+  }
+
+  :global(th:first-child),
+  :global(td:first-child) {
+    padding-inline-start: 0;
+  }
+
   :global(blockquote) {
     padding-inline-start: var(--spacer-24);
     border-inline-start: var(--spacer-4) solid var(--color-border-decorative);

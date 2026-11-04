@@ -1,6 +1,7 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { slidePicturePath } from '../src/content/talkPath';
 import { TALK_RECORDS } from '../src/content/talks';
 import { ROUTES } from './support/routes';
 import { type Page, expect, test, waitLikeAPerson } from './support/test';
@@ -68,15 +69,24 @@ test.describe('Content Security Policy', () => {
   });
 });
 
-/** The first long line of a talk's transcript, if it has one, to check the transcript isn't public */
-function readTranscriptLine(slug: string): string | undefined {
+function readIfThere(path: string): string {
   try {
-    return readFileSync(`src/content/talks/${slug}.md`, 'utf8')
-      .split('\n')
-      .find((line) => line.length > 60 && !line.startsWith('#'));
+    return readFileSync(path, 'utf8');
   } catch {
-    return undefined;
+    return '';
   }
+}
+
+/** The files a talk's text is written in: its transcript, slide descriptions and longer description */
+function talkTextFiles(slug: string): string[] {
+  return ['', 'slides/', 'about/'].map((folder) => `src/content/talks/${folder}${slug}.md`);
+}
+
+/** The first long line of a file, if it exists, to check it isn't public */
+function readFirstLine(path: string): string | undefined {
+  return readIfThere(path)
+    .split('\n')
+    .find((line) => line.length > 60 && !line.startsWith('#'));
 }
 
 test.describe('Talks that aren’t ready', () => {
@@ -91,15 +101,34 @@ test.describe('Talks that aren’t ready', () => {
       .map((file) => join(file.parentPath, file.name));
     const site = files.map((file) => readFileSync(file, 'utf8')).join('\n');
 
+    // A ready talk can mention one that isn't, such as a slide listing other talks in a series
+    const readyText = TALK_RECORDS.filter((talk) => talk.ready)
+      .flatMap((talk) => talkTextFiles(talk.slug).map(readIfThere))
+      .join('\n');
+
     expect(files.length).toBeGreaterThan(10);
     for (const talk of TALK_RECORDS) {
-      const transcript = readTranscriptLine(talk.slug);
+      const lines = talkTextFiles(talk.slug)
+        .map(readFirstLine)
+        .filter((line) => line !== undefined);
       const hidden = talk.ready
         ? talk.todo
-        : [talk.slug, talk.title, talk.summary, ...talk.todo, ...(transcript ? [transcript] : [])];
+        : [talk.slug, talk.title, talk.summary, ...talk.todo, ...lines].filter(
+            (text) => !readyText.includes(text),
+          );
       for (const text of hidden) {
         expect(site.includes(text), `${talk.slug}: “${text}”`).toBe(false);
       }
+    }
+  });
+
+  test('don’t have their slides or slide pictures in the built site, but ready talks do', () => {
+    const slides = TALK_RECORDS.filter((talk) => talk.slidesFile);
+
+    expect(slides.some((talk) => !talk.ready)).toBe(true);
+    for (const { slug, ready, slidesFile } of slides) {
+      expect(existsSync(join('build/client', slidesFile?.path ?? '')), slug).toBe(ready);
+      expect(existsSync(join('build/client', slidePicturePath(slug, 1))), slug).toBe(ready);
     }
   });
 });

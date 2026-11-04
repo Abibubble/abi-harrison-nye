@@ -13,6 +13,26 @@ export interface Recognition {
 /** Newest first */
 export const RECOGNITION: Recognition[] = [
   {
+    award: 'Diversity and Belonging Team of the Year',
+    result: 'Winner',
+    recipient: 'giffgaff’s Affinity Groups, including HAND',
+    awards: 'Great British Workplace Wellbeing Awards',
+    year: 2026,
+  },
+  {
+    award: 'Most Up To Good giffgaffer',
+    result: 'Winner',
+    awards: 'Grit & Glory Awards',
+    year: 2026,
+  },
+  {
+    award: 'Most Positive Team',
+    result: 'Winner',
+    recipient: 'the Future Capabilities Team',
+    awards: 'Grit & Glory Awards',
+    year: 2026,
+  },
+  {
     award: 'Network Inspirational Role Model',
     result: 'Highly Commended',
     awards: 'Employee Network Awards',

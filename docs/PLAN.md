@@ -34,19 +34,21 @@ listed under [Open decisions](#open-decisions).
 
 ## Pages
 
-| Route            | Page          | Linked from       | Purpose                                                         |
-| ---------------- | ------------- | ----------------- | --------------------------------------------------------------- |
-| `/`              | Home          | Main nav          | Short intro, what I care about, links into each section         |
-| `/work`          | Work          | Main nav          | Companies, the roles within each, and sites I worked on         |
-| `/projects`      | Projects      | Main nav          | Personal projects                                               |
-| `/talks`         | Talks         | Main nav          | Talks I've given, with videos and transcripts                   |
-| `/talks/:slug`   | Talk          | Talks page        | One talk: details, video, slides and full transcript            |
-| `/articles`      | Articles      | Main nav          | Blog posts I've written, linking out to where they're published |
-| `/cv`            | CV            | Main nav          | HTML version of my CV, designed to print well                   |
-| `/contact`       | Contact       | Main nav          | EmailJS contact form                                            |
-| `/accessibility` | Accessibility | Footer and header | Accessibility statement and display settings                    |
-| `/privacy`       | Privacy       | Footer            | Privacy notice                                                  |
-| `*`              | Not found     | None              | Helpful 404 page with links back into the site                  |
+| Route                     | Page          | Linked from       | Purpose                                                         |
+| ------------------------- | ------------- | ----------------- | --------------------------------------------------------------- |
+| `/`                       | Home          | Main nav          | Short intro, what I care about, links into each section         |
+| `/work`                   | Work          | Main nav          | Companies, the roles within each, and sites I worked on         |
+| `/projects`               | Projects      | Main nav          | Personal projects                                               |
+| `/talks`                  | Talks         | Main nav          | Talks I've given, with videos and transcripts                   |
+| `/talks/:slug`            | Talk          | Talks page        | One talk: details, video, slides and full transcript            |
+| `/talks/:slug/transcript` | Transcript    | Talk page         | The talk's full transcript, with a contents list                |
+| `/talks/:slug/slides`     | Slides        | Talk page         | A picture of each slide, with its text and a description        |
+| `/articles`               | Articles      | Main nav          | Blog posts I've written, linking out to where they're published |
+| `/cv`                     | CV            | Main nav          | HTML version of my CV, designed to print well                   |
+| `/contact`                | Contact       | Main nav          | EmailJS contact form                                            |
+| `/accessibility`          | Accessibility | Footer and header | Accessibility statement and display settings                    |
+| `/privacy`                | Privacy       | Footer            | Privacy notice                                                  |
+| `*`                       | Not found     | None              | Helpful 404 page with links back into the site                  |
 
 Each page's heading and title match its nav link exactly, so the same thing always has the same name.
 Names are kept short to keep the nav tidy. The main nav has seven items. On wide screens it's a simple list. On narrow screens it collapses
@@ -69,11 +71,17 @@ editing data, not components. TypeScript flags any missing fields.
   earlier career.
 - **`projects.ts`**: side projects with name, summary, tech used, and links to the live site and the
   code.
-- **`talks.json`**: every talk, ready or not, with its title, event, date, location, summary, slides
-  and video, plus what I have for it, whether anyone needs to agree, and what's still to do. Only talks
-  marked ready go on the site. `talks.ts` has the types and reads the file. See [Video](#video) for how
-  video and captions are modelled.
+- **`talks.json`**: every talk, ready or not, with its title, event, date, summary, slides and video,
+  plus what I have for it, whether anyone needs to agree, and what's still to do. Only talks marked
+  ready go on the site. `talks.ts` has the types and reads the file. See [Video](#video) for how video
+  and captions are modelled.
+- **`public/talks/{slug}/`**: a folder for every talk with slides, holding `slides.pdf` and a picture
+  of each slide in 2 sizes, `slide-01.webp` (1600 by 900) and `slide-01-small.webp` (800 by 450). The
+  build leaves out the folders of talks that aren't ready, so they go live with their talk.
 - **`talks/*.md`**: one Markdown transcript per talk. A talk can't go live without a checked one.
+- **`talks/slides/*.md`**: the text and a description of every slide, for the talk's Slides page,
+  which only appears once its `slideText` is checked in `talks.json`. Slide PDFs aren't fully
+  accessible, so this page gives the same content as real text.
 - **`talks/about/*.md`**: an optional longer description for a talk.
 - **`articles.ts`**: title, date, publication, summary and URL. Maintained by hand.
 - **`recognition.ts`**: awards and commendations, with name, awarding body, year and result.
@@ -383,7 +391,7 @@ is simply shown.
 | 1.3.6 Identify purpose               | Landmarks on every page, `autocomplete` on form fields                                                                                                                                      |
 | 1.4.6 Contrast (enhanced)            | 7:1 for text, 4.5:1 for large text                                                                                                                                                          |
 | 1.4.8 Visual presentation            | Max 80 characters per line, 1.5 line height, paragraph spacing at least 1.5 times line height, no justified text, user selectable colours, text resizable to 200% without horizontal scroll |
-| 1.4.9 Images of text                 | None. All text is real text                                                                                                                                                                 |
+| 1.4.9 Images of text                 | All text is real text. The one exception is the slide pictures on Slides pages, where showing how each slide looked is the point. Each is followed by all its text as real text             |
 | 2.2.3 to 2.2.6 Timing                | No time limits, timeouts or interruptions anywhere, including the form                                                                                                                      |
 | 2.3.2 Three flashes                  | Nothing flashes                                                                                                                                                                             |
 | 2.3.3 Animation from interactions    | No motion by default. Subtle transitions only with `prefers-reduced-motion: no-preference` and the Motion setting not set to Reduce                                                         |

@@ -12,17 +12,21 @@
       "describedAloud": true
     },
     "slidesFile": {
-      "path": "talks/moving-accessibility-from-debt-to-done-slides.pdf",
+      "path": "talks/moving-accessibility-from-debt-to-done/slides.pdf",
       "size": "1.3MB"
     },
     "has": {
       "slides": "file",
       "script": false,
       "transcript": "checked",
+      "slideText": "draft",
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": []
+    "todo": [
+      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
+      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
+    ]
   },
   {
     "slug": "ocd-not-just-even-numbers-and-organisation",
@@ -31,19 +35,25 @@
     "event": "giffgaff OCD Awareness Week",
     "date": "2025-10-13",
     "summary": "What obsessive-compulsive disorder (OCD) really is, beyond the stereotypes, how it’s diagnosed and treated, and why the way we talk about it matters.",
+    "slidesFile": {
+      "path": "talks/ocd-not-just-even-numbers-and-organisation/slides.pdf",
+      "size": "306KB"
+    },
     "has": {
-      "slides": "have",
+      "slides": "file",
       "script": true,
       "transcript": "draft",
+      "slideText": "draft",
       "recording": "not recorded"
     },
     "permission": "needed",
     "todo": [
-      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Check the title and summary",
       "giffgaff is happy for it to be public",
-      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing"
+      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing",
+      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
+      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
     ]
   },
   {
@@ -57,6 +67,7 @@
       "slides": "none",
       "script": false,
       "transcript": "none",
+      "slideText": "none",
       "recording": "not recorded"
     },
     "permission": "not needed",
@@ -86,6 +97,7 @@
       "slides": "none",
       "script": false,
       "transcript": "draft",
+      "slideText": "none",
       "recording": "youtube"
     },
     "permission": "needed",
@@ -115,6 +127,7 @@
       "slides": "none",
       "script": false,
       "transcript": "draft",
+      "slideText": "none",
       "recording": "youtube"
     },
     "permission": "needed",
@@ -142,6 +155,7 @@
       "slides": "none",
       "script": false,
       "transcript": "draft",
+      "slideText": "none",
       "recording": "youtube"
     },
     "permission": "needed",
@@ -165,22 +179,28 @@
       "captions": "none",
       "describedAloud": false
     },
+    "slidesFile": {
+      "path": "talks/accessibility-culture-day-welcome/slides.pdf",
+      "size": "321KB"
+    },
     "has": {
-      "slides": "have",
+      "slides": "file",
       "script": true,
       "transcript": "draft",
+      "slideText": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
-      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Cut ITB’s parts from the video, which also removes slides 2, 3 and 5",
       "After cutting the video, the captions won’t line up. Send Claude the cut video to remake them",
       "Check the summary",
       "giffgaff is happy for it to be public",
-      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”, including the LinkedIn link on slide 14 of the PDF"
+      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”, including the LinkedIn link on slide 14 of the PDF",
+      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
+      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
     ]
   },
   {
@@ -195,22 +215,28 @@
       "captions": "none",
       "describedAloud": false
     },
+    "slidesFile": {
+      "path": "talks/accessibility-knowledge-sharing/slides.pdf",
+      "size": "217KB"
+    },
     "has": {
-      "slides": "have",
+      "slides": "file",
       "script": false,
       "transcript": "draft",
+      "slideText": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
-      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Slide 11 still links to a demo video on giffgaff’s Google Drive. Decide whether to remove the link before publishing",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
       "giffgaff is happy for it to be public",
       "The OK of the colleagues heard asking questions, or cut the questions",
-      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it",
+      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
+      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
     ]
   },
   {
@@ -229,6 +255,7 @@
       "slides": "none",
       "script": false,
       "transcript": "checked",
+      "slideText": "none",
       "recording": "youtube"
     },
     "permission": "not needed",
@@ -246,21 +273,27 @@
       "captions": "none",
       "describedAloud": false
     },
+    "slidesFile": {
+      "path": "talks/a11y-series-buttons/slides.pdf",
+      "size": "491KB"
+    },
     "has": {
-      "slides": "have",
+      "slides": "file",
       "script": false,
       "transcript": "draft",
+      "slideText": "draft",
       "recording": "youtube"
     },
     "permission": "needed",
     "todo": [
-      "Add the slides PDF (sent 3 November 2026) to the repo",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
       "giffgaff is happy for it to be public",
       "Two colleagues can be heard in the questions: get their OK, or cut them",
-      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it",
+      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
+      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
     ]
   }
 ]

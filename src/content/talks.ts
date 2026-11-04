@@ -26,8 +26,16 @@ export interface Talk {
   video?: TalkVideo;
   /** The slides on another site */
   slidesHref?: string;
-  /** The slides as a file in public/, such as talks/example-slides.pdf, with its size, such as 5.6MB */
+  /**
+   * The slides as a file in public/, always talks/{slug}/slides.pdf, with its size, such as 5.6MB.
+   * The build leaves out the talk's folder, with its slide pictures, until the talk is ready
+   */
   slidesFile?: { path: string; size: string };
+  /**
+   * Whether the talk has a Slides page, with a picture and description of each slide, as the PDF
+   * isn't fully accessible. Only once the descriptions are checked
+   */
+  slidesPage?: boolean;
   /** Other times I gave this talk, with their own recordings */
   alsoGiven?: AlsoGiven[];
 }
@@ -53,6 +61,11 @@ export interface TalkHas {
    * the site yet, or none
    */
   transcript: 'checked' | 'draft' | 'raw' | 'none';
+  /**
+   * The description of each slide for the Slides page, in src/content/talks/slides/{slug}.md:
+   * checked and ready, a draft to check, or none
+   */
+  slideText: 'checked' | 'draft' | 'none';
   recording: 'youtube' | 'uploading' | 'not recorded' | 'unknown';
 }
 
@@ -91,6 +104,7 @@ export function publicTalk(record: TalkRecord): Talk {
     ...(video && { video }),
     ...(slidesHref && { slidesHref }),
     ...(slidesFile && { slidesFile }),
+    ...(record.has.slideText === 'checked' && { slidesPage: true }),
     ...(alsoGiven && { alsoGiven }),
   };
 }
@@ -114,6 +128,21 @@ export const OTHER_TALKS: Talk[] = TALK_RECORDS.filter(
 )
   .map(publicTalk)
   .sort((a, b) => b.date.localeCompare(a.date));
+
+/** A talk's folder in public/, with its slides PDF and a picture of each slide */
+export function slidesFolder(slug: string): string {
+  return `talks/${slug}`;
+}
+
+/**
+ * The slides folders in public/ for talks that aren't ready. Everything in public/ is copied into
+ * the built site, so the build removes these
+ */
+export function unreadySlidesFolders(records: readonly TalkRecord[] = TALK_RECORDS): string[] {
+  return records.flatMap(({ slug, ready, slidesFile }) =>
+    !ready && slidesFile ? [slidesFolder(slug)] : [],
+  );
+}
 
 export function findTalk(slug: string, talks: readonly Talk[] = TALKS): Talk | undefined {
   return talks.find((talk) => talk.slug === slug);

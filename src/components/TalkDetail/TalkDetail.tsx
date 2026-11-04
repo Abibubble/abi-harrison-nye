@@ -1,4 +1,4 @@
-import { transcriptPath } from '../../content/talkPath';
+import { slidesPath, transcriptPath } from '../../content/talkPath';
 import type { Talk } from '../../content/talks';
 import { AbbrText } from '../Abbr';
 import { Heading } from '../Heading';
@@ -55,13 +55,21 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
               <Link href={talk.slidesHref}>Slides for “{talk.title}”</Link>
             </p>
           )}
+          {talk.slidesPage && (
+            <p className={styles.standalone}>
+              <Link to={slidesPath(talk.slug)}>See the slides for “{talk.title}”</Link>
+            </p>
+          )}
           {talk.slidesFile && (
             <p>
               {/* A file rather than a page, so a plain link, which the browser downloads or opens */}
               <a href={`${BASE_URL}${talk.slidesFile.path}`}>
                 Slides for “{talk.title}” (PDF, {talk.slidesFile.size})
               </a>
-              . The slides aren’t fully accessible, but the transcript describes each one.
+              .{' '}
+              {talk.slidesPage
+                ? 'The PDF isn’t fully accessible, but the slides page has everything it does, with a description of each slide.'
+                : 'The slides aren’t fully accessible, but the transcript describes each one.'}
             </p>
           )}
           {talk.alsoGiven?.map((other) => (

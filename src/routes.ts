@@ -1,6 +1,6 @@
 import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
-import { transcriptPath } from './content/talkPath';
+import { slidesPath, transcriptPath } from './content/talkPath';
 import { TALKS } from './content/talks';
 
 const talkPages = TALKS.flatMap((talk) => [
@@ -8,6 +8,13 @@ const talkPages = TALKS.flatMap((talk) => [
   route(transcriptPath(talk.slug).slice(1), 'routes/talk-transcript.tsx', {
     id: `transcript-${talk.slug}`,
   }),
+  ...(talk.slidesPage
+    ? [
+        route(slidesPath(talk.slug).slice(1), 'routes/talk-slides.tsx', {
+          id: `slides-${talk.slug}`,
+        }),
+      ]
+    : []),
 ]);
 
 export default [

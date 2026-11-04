@@ -3,6 +3,7 @@ import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 import { formatDate } from '../components/Time';
+import { slidePicturePath } from './talkPath';
 import {
   type Talk,
   type TalkRecord,
@@ -14,12 +15,15 @@ import {
   talksNeedingAudioDescription,
   talksWithVideos,
   talksWithoutCaptions,
+  unreadySlidesFolders,
 } from './talks';
 import {
   ABOUT,
+  SLIDE_TEXT,
   TRANSCRIPTS,
   bySlug,
   headingId,
+  renderSlides,
   renderTranscript,
   renderTranscriptPage,
 } from './transcripts';
@@ -256,18 +260,58 @@ describe('talks.json', () => {
     const record: TalkRecord = {
       ...talk,
       ready: false,
-      has: { slides: 'none', script: false, transcript: 'none', recording: 'youtube' },
+      has: {
+        slides: 'none',
+        script: false,
+        transcript: 'none',
+        slideText: 'draft',
+        recording: 'youtube',
+      },
       permission: 'needed',
       todo: ['Something to do'],
     };
 
     expect(publicTalk(record)).toEqual(talk);
+    expect(publicTalk({ ...record, has: { ...record.has, slideText: 'checked' } })).toEqual({
+      ...talk,
+      slidesPage: true,
+    });
+  });
+
+  it('lists the slides folders of talks that aren’t ready, for the build to remove', () => {
+    const record = (slug: string, ready: boolean, slides: boolean): TalkRecord => ({
+      slug,
+      ready,
+      title: slug,
+      event: 'Example meetup',
+      date: '2025-01',
+      summary: 'An example.',
+      ...(slides && { slidesFile: { path: `talks/${slug}/slides.pdf`, size: '1MB' } }),
+      has: {
+        slides: slides ? 'file' : 'none',
+        script: false,
+        transcript: 'none',
+        slideText: 'none',
+        recording: 'unknown',
+      },
+      permission: 'not needed',
+      todo: [],
+    });
+
+    expect(
+      unreadySlidesFolders([
+        record('ready', true, true),
+        record('unready', false, true),
+        record('no-slides', false, false),
+      ]),
+    ).toEqual(['talks/unready']);
   });
 
   it('uses only the listed values for what each talk has', () => {
     for (const { slug, has, permission } of TALK_RECORDS) {
       expect(['file', 'link', 'have', 'searching', 'none'], slug).toContain(has.slides);
       expect(['checked', 'draft', 'raw', 'none'], slug).toContain(has.transcript);
+      expect(['checked', 'draft', 'none'], slug).toContain(has.slideText);
       expect(['youtube', 'uploading', 'not recorded', 'unknown'], slug).toContain(has.recording);
       expect(['not needed', 'needed', 'agreed'], slug).toContain(permission);
     }
@@ -288,11 +332,67 @@ describe('talks.json', () => {
     }
   });
 
-  it('only has slide files in public/ for ready talks, as everything there goes live', () => {
-    const files = readdirSync('public/talks').map((file) => `talks/${file}`);
-    const readySlides = ready.flatMap(({ slidesFile }) => (slidesFile ? [slidesFile.path] : []));
+  it('has a folder in public/talks/ for every talk with a slides file, and nothing else', () => {
+    const withSlides = TALK_RECORDS.filter((talk) => talk.slidesFile);
 
-    expect(files.toSorted()).toEqual(readySlides.toSorted());
+    // Anything no talk lists would go live, as the build only removes unready talks’ folders
+    expect(readdirSync('public/talks').toSorted()).toEqual(
+      withSlides.map((talk) => talk.slug).toSorted(),
+    );
+    for (const { slug, slidesFile } of withSlides) {
+      expect(slidesFile?.path, slug).toBe(`talks/${slug}/slides.pdf`);
+    }
+  });
+
+  it('has a description file for every talk whose slide text is written, and no others', () => {
+    for (const { slug, has } of TALK_RECORDS) {
+      expect(slug in SLIDE_TEXT, `${slug}: slide text is "${has.slideText}"`).toBe(
+        has.slideText !== 'none',
+      );
+      // The pictures for the Slides page are made from the PDF
+      if (has.slideText !== 'none') expect(has.slides, slug).toBe('file');
+    }
+  });
+
+  it('has the PDF, and a picture in both sizes for each described slide, in each talk’s folder', () => {
+    for (const { slug, slidesFile } of TALK_RECORDS) {
+      if (!slidesFile) continue;
+      const count = renderSlides(SLIDE_TEXT[slug] ?? '').length;
+      const pictures = Array.from({ length: count }, (_, index) => [
+        slidePicturePath(slug, index + 1),
+        slidePicturePath(slug, index + 1, true),
+      ]).flat();
+
+      expect(
+        readdirSync(`public/talks/${slug}`)
+          .map((file) => `talks/${slug}/${file}`)
+          .toSorted(),
+        slug,
+      ).toEqual([slidesFile.path, ...pictures].toSorted());
+    }
+  });
+
+  it('numbers slides from 1 with no gaps, with no other headings or text before the first', () => {
+    for (const [slug, markdown] of Object.entries(SLIDE_TEXT)) {
+      const slides = renderSlides(markdown);
+
+      expect(markdown, slug).toMatch(/^### Slide 1\n/);
+      for (const heading of markdown.match(/^#+ .*$/gm) ?? []) {
+        expect(heading, slug).toMatch(/^### Slide \d+$/);
+      }
+      expect(
+        slides.map((slide) => slide.number),
+        slug,
+      ).toEqual(slides.map((_, index) => index + 1));
+      for (const slide of slides)
+        expect(slide.html, `${slug} slide ${String(slide.number)}`).not.toBe('');
+    }
+  });
+
+  it('only marks slide text checked once nothing in it is left to check', () => {
+    for (const { slug, has } of TALK_RECORDS) {
+      if (has.slideText === 'checked') expect(SLIDE_TEXT[slug], slug).not.toContain('[check:');
+    }
   });
 
   it('only marks a talk ready once it has everything it needs', () => {
