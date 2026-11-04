@@ -534,8 +534,11 @@ captions. Captions on conference channels depend on the organiser.
   - **Clear** (the default): 11pt text with 1.5 line spacing, on four A4 pages.
   - **Compact**: 9.5pt text with 1.2 line spacing, lines up to 80 characters, smaller gaps, 1cm
     margins, skills on one line per category, and roles allowed to break across pages. It fits on two
-    A4 pages with nothing left out, with about 7% to spare. It leaves out the site header, which only
-    repeats the name already at the top of the CV, and it overrides the text spacing setting.
+    A4 pages. It leaves out the site header, which only repeats the name already at the top of the
+    CV, and it overrides the text spacing setting. To keep it to two pages as more talks go live, it
+    also leaves out talks, sites I've worked on and interests, and gives earlier career roles only
+    their company, title and dates. The "Speaking and recognition" heading prints as "Recognition".
+    The clear layout and the page on screen keep everything.
   - The choice applies as soon as it's made, as `data-print-layout="compact"` on `<html>`, so it also
     works when printing from the browser's menu.
   - An end to end test prints both layouts to PDF in Chromium and fails if compact needs more than two

@@ -8,7 +8,7 @@ import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter } from '../test/render';
 import { CvPage, loader, meta } from './cv';
 
-const section = (name: string) => screen.getByRole('region', { name });
+const section = (name: string | RegExp) => screen.getByRole('region', { name });
 
 describe('CV page', () => {
   it('has the page heading, and my name, headline and location', () => {
@@ -47,9 +47,14 @@ describe('CV page', () => {
   it('has its sections in the same order as the CV', () => {
     renderWithRouter(<CvPage {...loader()} />);
 
-    expect(
-      screen.getAllByRole('heading', { level: 2 }).map((heading) => heading.textContent),
-    ).toEqual([
+    // Leaves out text only printed in the compact layout. Tests don't load the CSS that hides it
+    const visibleText = (heading: HTMLElement) => {
+      const copy = heading.cloneNode(true) as HTMLElement;
+      for (const hidden of copy.querySelectorAll('[data-print-compact="only"]')) hidden.remove();
+      return copy.textContent;
+    };
+
+    expect(screen.getAllByRole('heading', { level: 2 }).map(visibleText)).toEqual([
       'Profile',
       'Key skills',
       'Experience',
@@ -103,7 +108,8 @@ describe('CV page', () => {
   it('lists the LDX3 talk under speaking', () => {
     renderWithRouter(<CvPage {...loader()} />);
 
-    expect(section('Speaking and recognition')).toHaveTextContent(
+    // Its name also has the compact layout's heading, as tests don't load the CSS that hides it
+    expect(section(/^Speaking and recognition/)).toHaveTextContent(
       'Moving accessibility from debt to done at giffgaff',
     );
   });

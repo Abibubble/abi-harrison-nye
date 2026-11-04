@@ -20,7 +20,7 @@ The word “Customers”, crossed out with a thick white line, with “Members�
 
 ### Slide 5
 
-The words “Messy monolith”. The letters of “Messy” are jumbled, each at a different height. “monolith” is in very large, bold text along the bottom of the slide, filling its whole width, with the last letter running off the right edge.
+The words “Messy monolith”. The letters of “Messy” are jumbled, each at a different height. “monolith” is in very large, bold text along the bottom of the slide, filling its whole width.
 
 ### Slide 6
 
@@ -38,7 +38,7 @@ A collage of screenshots from the audit of our phone purchase journey, with the 
   - “Image elements do not have [alt] attributes”
   - “[user-scalable="no"] is used in the &lt;meta name="viewport"&gt; element or the [maximum-scale] attribute is less than 5.”
   - “Document does not have a main landmark.”
-  - “[aria-hidden="true"] elements contain focusable descendents”
+  - “[aria-hidden="true"] elements contain focusable descendants”
   - “Heading elements are not in a sequentially-descending order”
 - A count of issues by severity: “Low 0”, “Moderate 2”, “Critical 3” and “Security 1”. “Moderate” and “Critical” are circled.
 - A screen reader caption reading “heading level 3 £10, level 2 per month, level 2, 2 items”.
@@ -69,7 +69,7 @@ An illustration of two shops side by side. The first has a shopping trolley sign
 
 ### Slide 12
 
-Two illustrations: a sticking plaster, and a whack-a-mole game, with a mallet about to hit a mole wearing a red helmet as it comes out of its hole.
+Two illustrations: a plaster, and a whack-a-mole game, with a mallet about to hit a mole wearing a red helmet as it comes out of its hole.
 
 ### Slide 13
 
@@ -249,7 +249,7 @@ An accessibility test summary from Pa11y: “Accessibility test summary. Total t
 A pull request (PR) checklist, with every box ticked. The first question is about uniform resource locators (URLs), meaning web addresses:
 
 - “Have you added any new page URLs to the Pa11y config?”
-- “Is your code accessible (see the A11y PRC for details)?” [check: what “PRC” stands for, so it can be written out]
+- “Is your code accessible (see the A11y PRC for details)?” PRC stands for production readiness checklist.
 - “Have you tested it on all supported browsers?”
 - “Have you tested it using a screen reader?”
 - “Have you tested it using only the keyboard?”
@@ -274,7 +274,7 @@ Two hands holding a globe, drawn as a simple outline icon.
 
 ### Slide 28
 
-On the left, a diagram of giffgaff’s diversity, equity and inclusion groups, with “DE&I CORE” [check: whether “CORE” is short for something] in the middle, surrounded by the names of the groups, including the Home of Accessibility and NeuroDiversity (HAND): “Evolve”, “Sustain”, “HAND”, “Social”, “Queerly Beloved”, “Gender Dynamics”, “Thrive” and “REaCH”.
+On the left, a diagram of giffgaff’s diversity, equity and inclusion groups, with “DE&I CORE” in the middle, surrounded by the names of the groups, including the Home of Accessibility and NeuroDiversity (HAND): “Evolve”, “Sustain”, “HAND”, “Social”, “Queerly Beloved”, “Gender Dynamics”, “Thrive” and “REaCH”. REaCH stands for Race, Ethnicity, and Cultural Heritage.
 
 Below it, the HAND logo: a house outline above an open hand, with “HAND” and the giffgaff logo, in a white circle. Under the logo it reads “Home of Accessibility and NeuroDiversity”.
 
@@ -287,7 +287,7 @@ Four photos from the accessibility takeover:
 - A group of ten people posing in front of a video wall, which shows more people joining on a video call.
 - People sitting around a meeting room table with laptops, with people on a video call on a screen at the end of the room.
 - People sitting in groups around tables in the office, working on laptops.
-- A close-up of a laptop showing giffgaff’s website, with a button to order a free subscriber identity module (SIM). The button reads “Order your free SIM”. A Mac accessibility settings window for pointer control is open over the page. [check: what the settings window on the laptop shows]
+- A close-up of a laptop showing giffgaff’s website, with a button to order a free SIM card. The button reads “Order your free SIM”. The Mac accessibility settings window for Alternative Pointer Actions is open over the page.
 
 ### Slide 30
 

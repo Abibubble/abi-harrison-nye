@@ -22,6 +22,15 @@
     padding-inline-start: var(--spacer-24);
   }
 
+  /* A list item that's only a link, such as in a list of useful links, stands on its own, so it
+     needs a full size target (WCAG 2.5.5) */
+  :global(li.linkOnly) > a {
+    display: inline-flex;
+    gap: var(--spacer-4);
+    align-items: center;
+    min-height: var(--size-target-min);
+  }
+
   :global(pre) {
     max-width: var(--size-measure);
     padding: var(--spacer-16);

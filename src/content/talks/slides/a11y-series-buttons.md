@@ -9,7 +9,7 @@ icons. Below the title, on the phone’s screen, is a grey button reading “Oh 
 The heading “How easy are buttons?”, in large blue text on a black background. Like all the slides
 that follow, it has 3 short white lines above the heading, like a little burst.
 
-Below the heading are two giffgaff buttons for a subscriber identity module (SIM) card: a yellow one
+Below the heading are two giffgaff buttons for a SIM card: a yellow one
 reading “Order your free SIM” and a white one reading “Activate your SIM”. Under them, the text:
 
 “If you have no accessibility needs, a standard button is pretty easy. Just a simple read and a
@@ -246,10 +246,10 @@ simply ignore accessibility”, in white capital letters.
 ### Slide 17
 
 The heading “References”, with a list of 20 links. On the slide, each one is shown as its full web
-address. [check: the link names here come from the web addresses, not the pages’ real titles]
+address.
 
 - [Axess Lab: Disabled buttons suck](https://axesslab.com/disabled-buttons-suck/)
-- [A video on YouTube](https://www.youtube.com/watch?v=V1yoOLhx_qA) [check: the video’s title]
+- [YouTube: “Assistive Tech: Switch Device”](https://www.youtube.com/watch?v=V1yoOLhx_qA)
 - [MDN Web Docs: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 - [web.dev: prefers-reduced-motion](https://web.dev/prefers-reduced-motion/)
 - [CSS-Tricks: ::after and ::before](https://css-tricks.com/almanac/selectors/a/after-and-before/)
@@ -262,7 +262,7 @@ address. [check: the link names here come from the web addresses, not the pages�
 - [World Wide Web Consortium (W3C): the aria-label section of the ARIA specification](https://www.w3.org/TR/wai-aria/#aria-label)
 - [A11y-101: Button vs link](https://a11y-101.com/design/button-vs-link)
 - [Digital A11Y: Links vs buttons, a perennial problem](https://www.digitala11y.com/links-vs-buttons-a-perennial-problem/)
-- [Another video on YouTube](https://www.youtube.com/watch?v=_GfelgpDLwI) [check: the video’s title]
+- [YouTube: “It’s the markup that matters: on Accessibility Tree and the Accessibility Object Model”](https://www.youtube.com/watch?v=_GfelgpDLwI)
 - [a11y.io: Moving buttons demo](https://storage.googleapis.com/a11y-io/moving-buttons/html/index.html)
 - [UX Collective: Is it OK to grey out disabled buttons?](https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae)
 - [Deque: Accessible ARIA buttons](https://www.deque.com/blog/accessible-aria-buttons/)

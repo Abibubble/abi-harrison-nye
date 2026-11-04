@@ -6,7 +6,13 @@
  *   data-print-url="hide"       A link whose URL shouldn't be printed after it
  *   data-print-compact="hide"   Not printed in the compact layout, for example the site header,
  *                               which only repeats the name already at the top of the CV
+ *   data-print-compact="only"   Text only printed in the compact layout, in place of text it hides,
+ *                               for example a shorter heading
  */
+[data-print-compact='only'] {
+  display: none;
+}
+
 @media print {
   body {
     background: none;
@@ -15,6 +21,10 @@
   [data-print='hide'],
   :root[data-print-layout='compact'] [data-print-compact='hide'] {
     display: none !important;
+  }
+
+  :root[data-print-layout='compact'] [data-print-compact='only'] {
+    display: inline;
   }
 
   [data-print='keep-together'],

@@ -327,8 +327,7 @@ I also supported a team in our annual hackathon who were rebuilding an inaccessi
 That led to probably the most powerful moment in our accessibility journey. I’ve asked for approval,
 so I can tell this story.
 
-We asked our Chief Technology Officer (CTO), Steve, to order a free subscriber identity module (SIM)
-card from our website. Our core product. The rule was no mouse, keyboard only.
+We asked our Chief Technology Officer (CTO), Steve, to order a free SIM card from our website. Our core product. The rule was no mouse, keyboard only.
 
 He got halfway there, hit a keyboard trap, and he was stuck. He couldn’t go forwards, and he couldn’t
 go back. All he could do was refresh the page, and that didn’t change the fact that he couldn’t order

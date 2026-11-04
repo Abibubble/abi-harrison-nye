@@ -98,7 +98,8 @@ export const QUALIFICATIONS: Qualification[] = [
     provider: 'Code Institute',
     from: '2020',
     to: '2021',
-    detail: 'Merit. Accredited by Edinburgh Napier University.',
+    detail:
+      'Merit. Accredited by Edinburgh Napier University. Channel Lead for 3 months, mentoring students.',
   },
   { title: 'BA Music', provider: 'Brunel University', from: '2011', to: '2016' },
   {

@@ -68,11 +68,22 @@ const linkRenderer: RendererObject = {
 const markdown = new Marked({ gfm: true, renderer: linkRenderer });
 
 /**
+ * Marks list items that are only a link, such as a list of useful links. The link stands on its own
+ * rather than in a sentence, so it needs a full size target (WCAG 2.5.5)
+ */
+export function markLinkOnlyItems(html: string): string {
+  return html.replace(
+    /<li>(<a [^>]*>(?:(?!<\/?a[ >]).)*<\/a>)<\/li>/g,
+    '<li class="linkOnly">$1</li>',
+  );
+}
+
+/**
  * Turns a transcript into HTML. Transcripts sit under the talk page's "Transcript" heading, so they
  * use third level headings (###) and below, which a test checks
  */
 export function renderTranscript(source: string): string {
-  return markdown.parse(source, { async: false });
+  return markLinkOnlyItems(markdown.parse(source, { async: false }));
 }
 
 export interface Slide {
@@ -146,5 +157,5 @@ export function renderTranscriptPage(markdown: string): TranscriptPageContent {
     },
   });
 
-  return { html: parser.parse(markdown, { async: false }), sections };
+  return { html: markLinkOnlyItems(parser.parse(markdown, { async: false })), sections };
 }

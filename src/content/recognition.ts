@@ -20,19 +20,6 @@ export const RECOGNITION: Recognition[] = [
     year: 2026,
   },
   {
-    award: 'Most Up To Good giffgaffer',
-    result: 'Winner',
-    awards: 'Grit & Glory Awards',
-    year: 2026,
-  },
-  {
-    award: 'Most Positive Team',
-    result: 'Winner',
-    recipient: 'the Future Capabilities Team',
-    awards: 'Grit & Glory Awards',
-    year: 2026,
-  },
-  {
     award: 'Network Inspirational Role Model',
     result: 'Highly Commended',
     awards: 'Employee Network Awards',
@@ -40,7 +27,7 @@ export const RECOGNITION: Recognition[] = [
   },
   {
     award: 'Outstanding Ability Network',
-    result: 'Highly Commended, second in the UK',
+    result: 'Highly Commended',
     recipient: 'HAND',
     awards: 'Employee Network Awards',
     year: 2026,
@@ -51,5 +38,18 @@ export const RECOGNITION: Recognition[] = [
     recipient: 'HAND',
     awards: 'Inclusive Awards',
     year: 2026,
+  },
+  {
+    award: 'Most Up To Good giffgaffer',
+    result: 'Winner',
+    awards: 'Grit & Glory Awards',
+    year: 2025,
+  },
+  {
+    award: 'Most Positive Team',
+    result: 'Winner',
+    recipient: 'the Future Capabilities Team',
+    awards: 'Grit & Glory Awards',
+    year: 2025,
   },
 ];

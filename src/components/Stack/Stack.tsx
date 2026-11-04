@@ -10,6 +10,8 @@ interface StackProps {
   as?: 'div' | 'section' | 'article' | 'ul' | 'ol';
   className?: string | undefined;
   'aria-labelledby'?: string | undefined;
+  /** See src/styles/print.css */
+  'data-print-compact'?: 'hide' | undefined;
 }
 
 export function Stack({
@@ -18,6 +20,7 @@ export function Stack({
   as: Element = 'div',
   className,
   'aria-labelledby': labelledBy,
+  'data-print-compact': printCompact,
 }: StackProps) {
   const isList = Element === 'ul' || Element === 'ol';
 
@@ -27,6 +30,7 @@ export function Stack({
       role={isList ? 'list' : undefined}
       aria-labelledby={labelledBy}
       className={cx(styles.stack, gapClass(gap), className)}
+      data-print-compact={printCompact}
     >
       {children}
     </Element>

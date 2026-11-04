@@ -11,7 +11,9 @@ OCD.
 
 ### What people think OCD is
 
-On screen: a slide with just the heading “What is OCD?” [check: where this slide was shown]
+On screen: a slide with just the heading “What is OCD?”
+
+Now, when you hear “OCD”, what comes to mind?
 
 On screen: “What people often think it is…”, with a list:
 
@@ -23,8 +25,7 @@ On screen: “What people often think it is…”, with a list:
 Below it: “These can be compulsions that arise from having OCD; however, these are not the root issue
 or the extent of how the condition affects people.”
 
-Now, when you hear “OCD”, what comes to mind? Maybe someone who likes things really clean, or who’s
-super organised? You might hear people say things like, “That messy shelf won’t do my OCD any good”.
+Maybe someone who likes things really clean, or who’s super organised? You might hear people say things like, “That messy shelf won’t do my OCD any good”.
 While those ideas are common, they don’t really capture what it’s like to live with OCD. It’s so much
 more than just hand-washing and checking light switches.
 
@@ -46,7 +47,7 @@ people in a loop of obsessions and compulsions.
 ### The OCD cycle
 
 On screen: “The OCD Cycle”, with a diagram. The cycle loops through obsession, anxiety, compulsion
-and temporary relief, before starting again. [check: where this slide was shown]
+and temporary relief, before starting again.
 
 The loop starts with an obsession. This is an unwanted, intrusive thought, image, or urge that pops
 into your head and causes a ton of anxiety.
@@ -187,8 +188,6 @@ unintentionally hurt the people who are fighting this battle every day.
 
 ### Example video
 
-[check: where these slides were shown, and whether the film was played during the talk]
-
 On screen: a content warning. It reads: “WARNING: The linked video is intense and dramatic from start
 to finish, and depicts someone in OCD crisis. It may be triggering, or difficult to watch. If you
 decide to watch it, please ensure that you allow yourself time after to decompress. Remember that you
@@ -196,9 +195,10 @@ can pause, or stop watching, at any time. If you need to talk about it afterward
 support you, so please don’t hesitate to send a private message.” Below it is the text “Example
 video”.
 
-On screen: an embedded short film,
+On screen: a link to the short film
 [“O.C.D.”, on YouTube](https://www.youtube.com/watch?v=SAfdRMeZkWQ), written by Conor Patrick Walsh
-and directed by Luca Pizzoleo.
+and directed by Luca Pizzoleo. The film wasn’t played during the talk. It was there for people to
+watch in their own time.
 
 On screen: “A lot just happened, let’s summarise it…”, with a list:
 
@@ -217,8 +217,6 @@ On screen: “A lot just happened, let’s summarise it…”, with a list:
   photograph (which doesn’t exist), want to kill him.
 
 ### Getting help
-
-[check: where these slides were shown]
 
 On screen: a slide with just the heading “Getting help”.
 
@@ -270,12 +268,10 @@ duration of a person’s life. The most common management techniques:”
 
 - **Cognitive Behavioural Therapy (CBT):** Low-intensity therapy designed to help target obsessions
   or triggers and teach individuals the techniques to manage these on a daily basis.
-- **Exposure and Response Prevention (ERP) therapy:** A more intense therapy that aims to treat
-  obsessions by exposing the individual to them, and building comfort or relief over time.
-- **Medication:** Often a last resort, SSRIs (also used for depression) are the most common
-  medication provided to help manage OCD, usually as a short-term measure.
-
-[check: slide calls medication a last resort, script says therapy plus medication often works best]
+- **Exposure and Response Prevention (ERP) therapy:** A more intense type of CBT therapy that aims
+  to treat obsessions by exposing the individual to them, and building comfort or relief over time.
+- **Medication:** SSRIs (also used for depression) are the most common medication provided to help
+  manage OCD, usually as a short-term measure.
 
 On screen: “Contacts and useful links”, with a list of links:
 

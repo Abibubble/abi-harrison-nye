@@ -112,9 +112,6 @@ underneath:
 - “light-orange”, in black text: “#F39722 rgb(243, 151, 34)”
 - “lavender”, in black text: “#C380BB rgb(195, 128, 187)”
 
-[check: the colour codes on slide 7 are very small and blurry. Check them against the original
-palette, especially the lavender hex code]
-
 ### Slide 8
 
 The heading “Link text” on a pink background.
@@ -159,8 +156,7 @@ The heading “Pseudo-classes” on a yellow background.
 Under “Information”:
 
 - “These help to convey information”
-- “Using a hover pseudo-class shows what a user has hovered thor mouse over” [check: the slide says
-  “thor”, which is probably a typo for “their”. Fix the slide, or keep the quote as it is]
+- “Using a hover pseudo-class shows what a user has hovered their mouse over”
 - “For keyboard-only users, they can’t benefit from hover states. Instead, focus can be used with the
   same styling as hover to convey the same information: this is where your cursor is”
 - “This is not just relevant for the web, as the app can be used on a tablet, with a keyboard and
@@ -171,12 +167,8 @@ Under “Information”:
 The heading “Demo” on a pink background, with the text “Using a screen reader on the app (android:
 TalkBack)”.
 
-On the right is a screen recording of an Android phone, which played during the talk. The picture
-shows its first frame: the phone’s list of apps, with a search box at the top reading “Search for
-apps on this device” outlined in green, and a grid of app icons, including the giffgaff app. The
-recording is linked from the slide as a video file called “SR-app.mp4”. [check: slide 11 links to a
-demo video on giffgaff’s Google Drive. Remove the link from the slide, or replace it with a public
-one]
+The rest of the slide is empty. The demo itself was shown on screen during the talk, so you can see
+it in the video of the talk.
 
 ### Slide 12
 

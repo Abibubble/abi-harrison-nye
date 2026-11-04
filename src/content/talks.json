@@ -19,42 +19,32 @@
       "slides": "file",
       "script": false,
       "transcript": "checked",
-      "slideText": "draft",
+      "slideText": "checked",
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": [
-      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
-      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
-    ]
+    "todo": []
   },
   {
     "slug": "ocd-not-just-even-numbers-and-organisation",
-    "ready": false,
-    "title": "OCD: not just even numbers and organisation",
+    "ready": true,
+    "title": "OCD: Not just even numbers and organisation",
     "event": "giffgaff OCD Awareness Week",
     "date": "2025-10-13",
     "summary": "What obsessive-compulsive disorder (OCD) really is, beyond the stereotypes, how it’s diagnosed and treated, and why the way we talk about it matters.",
     "slidesFile": {
       "path": "talks/ocd-not-just-even-numbers-and-organisation/slides.pdf",
-      "size": "306KB"
+      "size": "307KB"
     },
     "has": {
       "slides": "file",
       "script": true,
-      "transcript": "draft",
-      "slideText": "draft",
+      "transcript": "checked",
+      "slideText": "checked",
       "recording": "not recorded"
     },
-    "permission": "needed",
-    "todo": [
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Check the title and summary",
-      "giffgaff is happy for it to be public",
-      "Slide 15 calls medication “a last resort” and lists CBT and ERP separately, but the script says ERP is a type of CBT. Check the slides’ medical details before publishing",
-      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
-      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
-    ]
+    "permission": "not needed",
+    "todo": []
   },
   {
     "slug": "masking",
@@ -100,14 +90,10 @@
       "slideText": "none",
       "recording": "youtube"
     },
-    "permission": "needed",
+    "permission": "not needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the title and summary",
       "Check the transcript",
-      "giffgaff is happy for it to be public, as every slide is marked “Internal”",
-      "Nigel’s OK, as you name him",
-      "The OK of the colleagues heard answering, or cut those parts",
       "If you change the transcript, Claude can remake the captions to match, as they were made from it"
     ]
   },
@@ -190,17 +176,14 @@
       "slideText": "draft",
       "recording": "youtube"
     },
-    "permission": "needed",
+    "permission": "not needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the transcript, including the parts marked “[check: ...]”",
       "Cut ITB’s parts from the video, which also removes slides 2, 3 and 5",
       "After cutting the video, the captions won’t line up. Send Claude the cut video to remake them",
       "Check the summary",
-      "giffgaff is happy for it to be public",
-      "You quote “ITB” and hand back to them. Decide whether to name them or say “my colleague”, including the LinkedIn link on slide 14 of the PDF",
-      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
-      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
+      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
     ]
   },
   {
@@ -217,7 +200,7 @@
     },
     "slidesFile": {
       "path": "talks/accessibility-knowledge-sharing/slides.pdf",
-      "size": "217KB"
+      "size": "127KB"
     },
     "has": {
       "slides": "file",
@@ -226,24 +209,20 @@
       "slideText": "draft",
       "recording": "youtube"
     },
-    "permission": "needed",
+    "permission": "not needed",
     "todo": [
-      "Slide 11 still links to a demo video on giffgaff’s Google Drive. Decide whether to remove the link before publishing",
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
-      "giffgaff is happy for it to be public",
-      "The OK of the colleagues heard asking questions, or cut the questions",
       "If you change the transcript, Claude can remake the captions to match, as they were made from it",
-      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
-      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
+      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
     ]
   },
   {
     "slug": "accessibility-and-meta-tags",
     "ready": true,
     "title": "Accessibility and Meta Tags",
-    "event": "Code Institute",
+    "event": "Code Institute webinar",
     "date": "2021-12-09",
     "summary": "The meta tags every website needs, from descriptions to social media previews, and the basics of building an accessible website, from semantic HTML and alt text to colour contrast.",
     "video": {
@@ -259,7 +238,7 @@
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": ["Optionally, the full event name"]
+    "todo": []
   },
   {
     "slug": "a11y-series-buttons",
@@ -275,7 +254,7 @@
     },
     "slidesFile": {
       "path": "talks/a11y-series-buttons/slides.pdf",
-      "size": "491KB"
+      "size": "492KB"
     },
     "has": {
       "slides": "file",
@@ -284,16 +263,13 @@
       "slideText": "draft",
       "recording": "youtube"
     },
-    "permission": "needed",
+    "permission": "not needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
       "Check the title and summary",
       "Check the transcript, including the parts marked “[check: ...]”",
-      "giffgaff is happy for it to be public",
-      "Two colleagues can be heard in the questions: get their OK, or cut them",
       "If you change the transcript, Claude can remake the captions to match, as they were made from it",
-      "Set the slides PDF’s document title in PowerPoint (File, then Properties, then Title), then export it again",
-      "Check the description of each slide, in src/content/talks/slides/, including the parts marked “[check: ...]”, then mark the slide text as checked"
+      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
     ]
   }
 ]

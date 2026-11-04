@@ -444,7 +444,7 @@ With more switches, they can get more functionality, but switches are incredibly
 around £100 or more for just one button.
 
 So let’s dive into an example. Imagine you’re a switch user filling in an online form to buy a
-subscriber identity module (SIM) card. The submit button is disabled until you enter your details. You
+SIM card. The submit button is disabled until you enter your details. You
 enter your full name and your email address, and you go to press submit. But oh no, you’ve missed the
 @ from your email address. The form notices that you haven’t filled it in correctly, and it doesn’t
 enable the button.

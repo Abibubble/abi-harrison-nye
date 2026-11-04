@@ -84,10 +84,8 @@ This slide is the video itself: the thumbnail of the short film
 is about this film.
 
 The thumbnail is the film’s poster. On the left, on a black background, the title “O.C.D.” is in
-large red capital letters. Above it are three gold award laurels. One reads “Nashville Film Festival
-2024” and another reads “Filmquest”. Under the title is a line of white handwritten words, and some
-small credit text. [check: the third laurel, the handwritten line and the credits are too blurry to
-read in the slide picture]
+large red capital letters. Above it are three gold award laurels. Under the title is a line of white
+handwritten words, and some small credit text.
 
 On the right, a man with grey hair and a grey beard, in a dark jacket, holds a blue packet of snacks
 in a shop. He looks to one side, worried. Behind him are drinks fridges and “Bud” signs.
@@ -123,8 +121,7 @@ can be triggered by specific events or infections:”
 - “Signs can be spotted in children as young as 6”
   - “Children may not be able to understand that their behaviour or rituals are a result of OCD”
   - “It’s important for parents and teachers to help spot these signs and seek help”
-- “It oftens develops slightly later in females” [check: the slide says “oftens”; keep it as on the
-  slide, or correct it to “often”?]
+- “It often develops slightly later in females”
 - “OCD can also begin or worsen during pregnancy or postpartum”
 - “Usually symptoms would not develop after the age of 35, but can in rare cases”
 
@@ -140,9 +137,8 @@ condition:”
     yourself (see below)”
 - “Refer yourself to your local
   [NHS Talking Therapy](https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/)”
-  - “These services will often not be able to diagnose official, but can confirm symptoms and arrange
-    support” [check: the slide says “diagnose official”; keep it as on the slide, or correct it to
-    “diagnose officially”?]
+  - “These services will often not be able to diagnose officially, but can confirm symptoms and
+    arrange support”
 - “Seek private diagnosis from a licensed Psychiatrist”
   - “A psychiatrist will be able to officially diagnose the condition”
 
@@ -167,8 +163,7 @@ Obsessive Compulsive Inventory, Revised (OCI-R). The heading is “OCI & OCI-R T
 most common OCD-specific test seen in the UK is the Obsessive Compulsive Inventory (OCI) or OCI-R
 (shorter version)”.
 
-- “This is set of 42 (or 18 for the OCI-R) questions which are scored on a scale of 0-4” [check: the
-  slide says “This is set of”; keep it as on the slide, or correct it to “This is a set of”?]
+- “This is a set of 42 (or 18 for the OCI-R) questions which are scored on a scale of 0-4”
 - “The results usually give an overall score (likelihood of having OCD and the severity) as well as a
   breakdown per category (to help identify themes)”
 
@@ -186,15 +181,11 @@ person’s life, the most common management techniques:”
   - “Low-intensity therapy designed to help target obsessions / triggers and teach individuals the
     techniques to manage these on a daily basis”
 - “Exposure and Response Prevention (ERP) therapy”
-  - “A more intense therapy that aims to treat obsessions by exposing the individual to them, and
-    building comfort / relief over time”
+  - “A more intense type of CBT therapy that aims to treat obsessions by exposing the individual to
+    them, and building comfort / relief over time”
 - “Medication”
-  - “Often a last resort, SSRIs (also used for depression) are the most common medication provided to
-    help manage OCD, usually as a short-term measure”
-
-[check: I’m checking the medical details on this slide. It calls medication “a last resort”, but my
-script says therapy plus medication often works best. It also lists CBT and ERP separately, but ERP
-is a type of CBT]
+  - “SSRIs (also used for depression) are the most common medication provided to help manage OCD,
+    usually as a short-term measure”
 
 ### Slide 16
 

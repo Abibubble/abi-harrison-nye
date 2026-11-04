@@ -107,7 +107,7 @@ On the right: “Discrimination is where you are treated unfairly and are put at
 
 ### Slide 9
 
-It reads “Let’s not play Accessibility Whack-A-Mole”, in large bold text in the bottom left. On the right is a picture of a ginger and white cat playing whack-a-mole. The cat looks down at a cardboard box with holes in the top, with one paw on a hole, while two fingers poke up out of other holes like moles [check: are the things poking out of the holes fingers?]. The picture has “CAT-GIFs.COM” in the bottom right corner.
+It reads “Let’s not play Accessibility Whack-A-Mole”, in large bold text in the bottom left. On the right is a picture of a ginger and white cat playing whack-a-mole. The cat looks down at a cardboard box with holes in the top, with one paw on a hole, while two fingers poke up out of other holes like moles. The picture has “CAT-GIFs.COM” in the bottom right corner.
 
 ### Slide 10
 
@@ -162,4 +162,4 @@ The heading “Important quotes…” is in large bold text in the middle of the
 - Top left: “The only disability is when people cannot see human potential”, by Debra Ruh ([Debra Ruh’s biography](https://www.ruhglobal.com/debra-ruh-bio/))
 - Top right: “Call people in before calling them out”, by Kai Wong ([Kai Wong on LinkedIn](https://www.linkedin.com/in/kwong4a11y/))
 - Bottom left: “Accessibility is not a problem to be solved. It is a culture to be built”, by Sheri Byrne-Haber ([Sheri Byrne-Haber’s biography](https://www.sheribyrnehaber.com/sheri-byrne-haber-bio/))
-- Bottom right: “If you’re coming from a place of authenticity, no one’s going to be angry at you for asking questions”, by ITB ([ITB on LinkedIn](https://www.linkedin.com/in/ian-tomney-bell-51133745/)) [check: name ITB, or say “my colleague”, as on the transcript]
+- Bottom right: “If you’re coming from a place of authenticity, no one’s going to be angry at you for asking questions”, by ITB, which is Ian Tomney-Bell ([Ian Tomney-Bell on LinkedIn](https://www.linkedin.com/in/ian-tomney-bell-51133745/))

@@ -29,9 +29,22 @@ export function meta(): Route.MetaDescriptors {
   });
 }
 
-function CvSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+interface CvSectionProps {
+  id: string;
+  title: ReactNode;
+  children: ReactNode;
+  /** Leaves the section out of the compact print layout, so it fits on two pages */
+  hideWhenCompact?: boolean;
+}
+
+function CvSection({ id, title, children, hideWhenCompact = false }: CvSectionProps) {
   return (
-    <Stack as="section" gap={4} aria-labelledby={id}>
+    <Stack
+      as="section"
+      gap={4}
+      aria-labelledby={id}
+      data-print-compact={hideWhenCompact ? 'hide' : undefined}
+    >
       <Heading level={2} id={id}>
         {title}
       </Heading>
@@ -90,8 +103,17 @@ export function CvPage({
         />
       </CvSection>
 
-      <CvSection id="speaking-and-recognition" title="Speaking and recognition">
-        <Stack gap={3}>
+      <CvSection
+        id="speaking-and-recognition"
+        title={
+          // The compact layout leaves out talks, so only prints “Recognition”
+          <>
+            <span data-print-compact="hide">Speaking and recognition</span>
+            <span data-print-compact="only">Recognition</span>
+          </>
+        }
+      >
+        <Stack gap={3} data-print-compact="hide">
           <Heading level={3}>Speaking</Heading>
           <SpeakingList talks={talks} withoutPages={otherTalks} />
         </Stack>
@@ -109,7 +131,11 @@ export function CvPage({
       </CvSection>
 
       <CvSection id="earlier-career" title="Earlier career">
-        <WorkHistory companies={WORK.filter((company) => company.earlierCareer)} headingLevel={3} />
+        <WorkHistory
+          companies={WORK.filter((company) => company.earlierCareer)}
+          headingLevel={3}
+          briefWhenCompact
+        />
       </CvSection>
 
       <CvSection id="education" title="Education and training">
@@ -120,7 +146,7 @@ export function CvPage({
         </p>
       </CvSection>
 
-      <CvSection id="interests" title="Interests">
+      <CvSection id="interests" title="Interests" hideWhenCompact>
         <p>
           <AbbrText>{CV_INTERESTS}</AbbrText>
         </p>

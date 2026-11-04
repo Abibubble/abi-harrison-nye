@@ -19,6 +19,7 @@ export const ABBREVIATIONS = {
   HAND: 'Home of Accessibility and NeuroDiversity',
   HTML: 'HyperText Markup Language',
   MFE: 'micro frontend',
+  OCD: 'obsessive-compulsive disorder',
   PDF: 'Portable Document Format',
   PR: 'pull request',
   QR: 'Quick Response',
@@ -38,4 +39,14 @@ export type Abbreviation = keyof typeof ABBREVIATIONS;
  * Abbreviations most people know, which are never written out in the text, as that would make it
  * harder to read. They're still marked up with their full form, and listed on the Accessibility page
  */
-export const ALWAYS_SHORT: readonly Abbreviation[] = ['AI', 'BA', 'CSS', 'CV', 'HTML', 'PDF', 'UK'];
+export const ALWAYS_SHORT: readonly Abbreviation[] = [
+  'AI',
+  'BA',
+  'CSS',
+  'CV',
+  'HTML',
+  'OCD',
+  'PDF',
+  'SIM',
+  'UK',
+];

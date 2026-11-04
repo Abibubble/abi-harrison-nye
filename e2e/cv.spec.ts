@@ -61,6 +61,35 @@ test.describe('CV', () => {
     });
   });
 
+  test('leaves out talks, sites, interests and earlier career details in the compact layout only', async ({
+    page,
+  }) => {
+    await page.goto('/cv');
+    await page.emulateMedia({ media: 'print' });
+    const speaking = page.getByRole('heading', { name: 'Speaking', exact: true });
+    const sites = page.getByRole('heading', { name: 'Sites I’ve worked on' });
+    const interests = page.getByRole('heading', { name: 'Interests' });
+    const earlierHighlight = page.getByText('Taught 57 pupils', { exact: false });
+    const earlierRole = page.getByRole('heading', { name: 'Approved Driving Instructor' });
+
+    for (const part of [speaking, sites, interests, earlierHighlight, earlierRole]) {
+      await expect(part).toBeVisible();
+    }
+    await expect(
+      page.getByRole('heading', { level: 2, name: 'Speaking and recognition' }),
+    ).toBeVisible();
+
+    await page.emulateMedia({ media: 'screen' });
+    await page.getByRole('radio', { name: 'Compact' }).check();
+    await page.emulateMedia({ media: 'print' });
+
+    for (const part of [speaking, sites, interests, earlierHighlight]) {
+      await expect(part).toBeHidden();
+    }
+    await expect(earlierRole).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Recognition' })).toBeVisible();
+  });
+
   test('leaves out the repeated site header in the compact layout only', async ({ page }) => {
     await page.goto('/cv');
     await page.emulateMedia({ media: 'print' });

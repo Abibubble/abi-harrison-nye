@@ -151,6 +151,17 @@ describe('links in transcripts and descriptions', () => {
       '(external site)',
     );
   });
+
+  it('marks list items that are only a link, so the link gets a full size target', () => {
+    const html = renderTranscript(
+      '- [A book](https://example.com/book)\n- [Talks](/talks)\n- [A film](https://example.com/film), with a note',
+    );
+
+    expect(html).toContain('<li class="linkOnly"><a href="https://example.com/book">');
+    expect(html).toContain('<li class="linkOnly"><a href="/talks">Talks</a></li>');
+    expect(html).toContain('<li><a href="https://example.com/film">');
+    expect(renderTranscriptPage('- [Talks](/talks)').html).toContain('<li class="linkOnly">');
+  });
 });
 
 describe('renderTranscriptPage', () => {

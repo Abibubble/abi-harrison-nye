@@ -229,7 +229,7 @@ Cool.
 
 On screen: “Important quotes…”, with four quotes. “Call people in before calling them out”, by Kai
 Wong. “If you’re coming from a place of authenticity, no one’s going to be angry at you for asking
-questions”, by ITB. “The only disability is when people cannot see human potential”, by Debra Ruh.
+questions”, by ITB, which is Ian Tomney-Bell. “The only disability is when people cannot see human potential”, by Debra Ruh.
 “Accessibility is not a problem to be solved. It is a culture to be built”, by Sheri Byrne-Haber.
 
 Finally, I’m going to leave you with some important quotes. Remember, today is a day of learning,
@@ -246,6 +246,4 @@ place of authenticity, no one is going to be angry at you for asking questions.�
 So I want you all to come into today with the mindset of: if you’re not sure, ask the question. Even
 if it feels awkward, ask the question.
 
-OK, amazing, I’ve got all the way through, and we are done. I’m going to pass back over to ITB
-[check: captions say “ITV”; the quotes slide says “ITB”, probably the host. Name them, or say “my
-colleague”?]. Thanks all.
+OK, amazing, I’ve got all the way through, and we are done. I’m going to pass back over to ITB. Thanks all.
