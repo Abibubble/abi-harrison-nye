@@ -19,6 +19,31 @@ export const SITE_PAGES = [
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;
 
+/**
+ * Tests tagged with this only run in Chromium (see playwright.config.ts). The resources in a
+ * toolkit folder's folders, such as each single highlight, all share one design, so Firefox and
+ * WebKit test the sample below, which keeps the run short as the toolkit grows. lighthouserc.cjs
+ * uses the same sample
+ */
+export const CHROMIUM_ONLY = '@chromium-only';
+
+const TOOLKIT_SAMPLE = [
+  // The biggest page, and a typical one with code in it
+  'highlights/accessibility/accessibility-highlights',
+  'highlights/accessibility/aria',
+];
+
+function isSampledOut(kind: 'folder' | 'item', slugs: readonly string[]): boolean {
+  return kind === 'item' && slugs.length > 2 && !TOOLKIT_SAMPLE.includes(slugs.join('/'));
+}
+
+// A renamed sample would quietly test nothing in Firefox and WebKit, so this stops the tests instead
+for (const sample of TOOLKIT_SAMPLE) {
+  if (!toolkitEntries(TOOLKIT).some(({ slugs }) => slugs.join('/') === sample)) {
+    throw new Error(`The toolkit sample ${sample} isn't on the site. Update TOOLKIT_SAMPLE.`);
+  }
+}
+
 export const ROUTES: readonly { name: string; path: string }[] = [
   ...SITE_PAGES,
   ...TALKS.flatMap((talk) => [
@@ -43,8 +68,8 @@ export const ROUTES: readonly { name: string; path: string }[] = [
     ...(talk.slidesPage ? [{ name: `Slides: ${talk.title}`, path: slidesPath(talk.slug) }] : []),
   ]),
   // Named by address, as two folders can each have a resource with the same title
-  ...toolkitEntries(TOOLKIT).map(({ slugs }) => ({
-    name: `Toolkit: ${slugs.join('/')}`,
+  ...toolkitEntries(TOOLKIT).map(({ kind, slugs }) => ({
+    name: `Toolkit: ${slugs.join('/')}${isSampledOut(kind, slugs) ? ` ${CHROMIUM_ONLY}` : ''}`,
     path: toolkitPath(slugs),
   })),
 ];

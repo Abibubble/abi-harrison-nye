@@ -45,9 +45,14 @@ jobs:
       - run: pnpm test:storybook
       - run: pnpm build-storybook
 
+  # Split into 2 jobs that run side by side, each running half the tests, so the run is quicker
   e2e:
-    name: End to end tests
+    name: End to end tests (${{ matrix.shard }} of 2)
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -57,11 +62,11 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps
-      - run: pnpm test:e2e
+      - run: pnpm test:e2e --shard=${{ matrix.shard }}/2
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.shard }}
           path: playwright-report/
           retention-days: 14
 
