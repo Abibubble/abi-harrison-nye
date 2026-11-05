@@ -26,10 +26,7 @@ describe('PlainSummary', () => {
   it('links to the glossary for the technical words (WCAG 3.1.3)', () => {
     renderWithRouter(<PlainSummary />);
 
-    expect(screen.getByRole('link', { name: 'glossary' })).toHaveAttribute(
-      'href',
-      '/accessibility#glossary',
-    );
+    expect(screen.getByRole('link', { name: 'glossary' })).toHaveAttribute('href', '/glossary');
   });
 
   it('isn’t printed', () => {

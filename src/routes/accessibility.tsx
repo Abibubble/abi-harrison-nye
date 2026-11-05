@@ -8,9 +8,7 @@ import { PageContents, PageContentsSection, type PageSection } from '../componen
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { Time } from '../components/Time';
-import { ABBREVIATIONS, type Abbreviation } from '../content/abbreviations';
-import { GLOSSARY } from '../content/glossary';
-import { DISPLAY_SETTINGS_PATH } from '../content/navigation';
+import { DISPLAY_SETTINGS_PATH, GLOSSARY_PATH } from '../content/navigation';
 import { pageTitle } from '../content/site';
 import { ACCESSIBILITY_REVIEWED, MANUAL_TESTING } from '../content/statements';
 import { type KnownIssueTalks, type Talk, knownIssueTalks } from '../content/talks';
@@ -35,8 +33,6 @@ const SECTIONS = {
   otherSites: { id: 'other-sites', title: 'Content on other sites' },
   testing: { id: 'testing', title: 'How I test this site' },
   reportAProblem: { id: 'report-a-problem', title: 'Report a problem' },
-  glossary: { id: 'glossary', title: 'Glossary' },
-  abbreviations: { id: 'abbreviations', title: 'Abbreviations' },
 } satisfies Record<string, PageSection>;
 
 interface KnownIssueProps {
@@ -88,8 +84,6 @@ function KnownIssue({ title, criteria, affects, workaround, plan, talks }: Known
     </Stack>
   );
 }
-
-const ABBREVIATION_NAMES = Object.keys(ABBREVIATIONS) as Abbreviation[];
 
 export function AccessibilityPage({
   withoutCaptions,
@@ -160,12 +154,11 @@ export function AccessibilityPage({
           <li>
             Abbreviations in the text of each page are written out in full the first time they’re
             used, apart from a few most people know, such as <Abbr name="UK" />. Every abbreviation
-            is <a href={`#${SECTIONS.abbreviations.id}`}>listed on this page</a>.
+            is listed in the <Link to={`${GLOSSARY_PATH}#abbreviations`}>glossary</Link>.
           </li>
           <li>
-            Technical words are explained in the{' '}
-            <a href={`#${SECTIONS.glossary.id}`}>glossary on this page</a>, and the Work and{' '}
-            <Abbr name="CV" /> pages start with a short summary in plain words.
+            Technical words are explained in the <Link to={GLOSSARY_PATH}>glossary</Link>, and the
+            Work and <Abbr name="CV" /> pages start with a short summary in plain words.
           </li>
           <li>
             Every talk has a full, checked transcript. Where I still have the slides, it describes
@@ -272,30 +265,6 @@ export function AccessibilityPage({
           share it, it also helps to know what you were using, such as your browser or screen
           reader.
         </p>
-      </PageContentsSection>
-
-      <PageContentsSection section={SECTIONS.glossary}>
-        <p>These are technical words used on this site, explained in plain words.</p>
-        <dl className={styles.definitions}>
-          {GLOSSARY.map(({ term, definition }) => (
-            <div key={term}>
-              <dt>{term}</dt>
-              <dd>{definition}</dd>
-            </div>
-          ))}
-        </dl>
-      </PageContentsSection>
-
-      <PageContentsSection section={SECTIONS.abbreviations}>
-        <p>These are the abbreviations used on this site, and what they stand for.</p>
-        <dl className={styles.glossary}>
-          {ABBREVIATION_NAMES.map((name) => (
-            <div key={name}>
-              <dt>{name}</dt>
-              <dd>{ABBREVIATIONS[name]}</dd>
-            </div>
-          ))}
-        </dl>
       </PageContentsSection>
     </Stack>
   );

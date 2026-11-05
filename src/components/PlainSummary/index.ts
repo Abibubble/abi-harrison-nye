@@ -1,1 +1,1 @@
-export { GLOSSARY_PATH, PlainSummary } from './PlainSummary';
+export { PlainSummary } from './PlainSummary';

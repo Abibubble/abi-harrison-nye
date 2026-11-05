@@ -1,8 +1,7 @@
+import { GLOSSARY_PATH } from '../../content/navigation';
 import { PLAIN_SUMMARY } from '../../content/profile';
 import { Link } from '../Link';
 import styles from './PlainSummary.module.css';
-
-export const GLOSSARY_PATH = '/accessibility#glossary';
 
 export function PlainSummary() {
   return (

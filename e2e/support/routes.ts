@@ -12,6 +12,7 @@ export const SITE_PAGES = [
   { name: 'Contact', path: '/contact' },
   { name: 'Accessibility', path: '/accessibility' },
   { name: 'Display settings', path: '/display-settings' },
+  { name: 'Glossary', path: '/glossary' },
   { name: 'Privacy', path: '/privacy' },
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;

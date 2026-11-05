@@ -44,7 +44,7 @@ interface AbbrTooltipProps {
  * An abbreviation that shows its full form when hovered, focused or tapped (WCAG 1.4.13). The full
  * form stays while the pointer moves onto it, and Escape closes it. Without JavaScript, it's a plain
  * abbreviation, whose title the browser shows as a tooltip. Either way, the full form is also written
- * out the first time it's used, and in the list on the Accessibility page
+ * out the first time it's used, and in the list on the Glossary page
  */
 export function AbbrTooltip({ fullForm, children }: AbbrTooltipProps) {
   const running = useJavaScriptRunning();

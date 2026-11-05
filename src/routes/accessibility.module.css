@@ -21,14 +21,12 @@
   margin: 0;
 }
 
-.details dt,
-.glossary dt {
+.details dt {
   font-weight: var(--font-weight-emphasis);
   letter-spacing: var(--letter-spacing-emphasis);
 }
 
-.details dd,
-.glossary dd {
+.details dd {
   margin: 0;
 }
 
@@ -41,44 +39,4 @@
     align-items: center;
     min-height: var(--size-target-min);
   }
-}
-
-.glossary {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: var(--spacer-8) var(--spacer-24);
-  max-width: var(--size-measure);
-  margin: 0;
-}
-
-.glossary > div {
-  display: contents;
-}
-
-@media (width < 30em) {
-  .glossary {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .glossary dd {
-    margin-block-end: var(--spacer-16);
-  }
-}
-
-.definitions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacer-16);
-  max-width: var(--size-measure);
-  margin: 0;
-}
-
-.definitions dt {
-  font-weight: var(--font-weight-emphasis);
-  letter-spacing: var(--letter-spacing-emphasis);
-}
-
-.definitions dd {
-  margin: 0;
 }

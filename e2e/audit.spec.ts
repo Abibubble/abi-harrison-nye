@@ -132,9 +132,7 @@ async function abbreviationsNotWrittenOut(page: Page): Promise<string[]> {
       if (pageNames.includes(heading.textContent.trim())) heading.remove();
     }
 
-    for (const id of ['abbreviations', 'glossary']) {
-      main.querySelector(`[aria-labelledby="${id}"]`)?.remove();
-    }
+    main.querySelector('[aria-labelledby="abbreviations"]')?.remove();
 
     const text = [...main.querySelectorAll('p, li, dt, dd, h2, h3, h4, h5, h6, td, th')]
       .filter((block) => !block.querySelector('p, li, dt, dd'))
