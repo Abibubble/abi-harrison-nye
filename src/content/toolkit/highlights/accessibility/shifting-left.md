@@ -4,7 +4,7 @@ Imagine baking a cake, pulling it out of the oven, and realising you forgot the 
 
 In technology, the timeline goes from left to right (Plan ➔ Design ➔ Build ➔ Production). Shifting left means moving accessibility checks to the very beginning of the project (the left side), instead of waiting until the end to test it. Finding an accessibility bug during the design phase is incredibly cheap and fast to fix. Finding it right before the website goes live is expensive and frustrating!
 
-Shifting left is a team habit. It's 100% supported, simply by teams talking to each other and asking questions early. No special software is required to shift left.
+Shifting left is a team habit, built by teams talking to each other and asking questions early. No special software is needed.
 
 ### How to support it
 

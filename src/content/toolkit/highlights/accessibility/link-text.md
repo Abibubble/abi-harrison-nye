@@ -2,7 +2,7 @@
 
 Many screen reader users navigate websites by pulling up a list of only the links on a page. If your links just say 'Click here' or 'Read more', their list will just read out, 'Click here, Click here, Read more'. That doesn't help them find what they are looking for. Good link text makes sense all by itself, even if you hide the rest of the page.
 
-100% supported! You don't need any special code to do this. It's all about writing clear, helpful words. Everyone benefits from clear writing, not just screen reader users.
+Good link text doesn't need any special code. It's all about writing clear, helpful words, and everyone benefits from that, not just screen reader users.
 
 ### How to support it
 

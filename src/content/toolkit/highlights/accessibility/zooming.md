@@ -2,7 +2,7 @@
 
 Some people need to make the text and images on a website bigger to see them clearly. Pages must support this. When a user zooms in, the content should automatically rearrange itself to fit the screen. This is often called 'reflow'. A good page will reflow so that users never have to scroll from side to side to read a single sentence. This is very important for creating a positive experience for people with low vision.
 
-Fully supported by all modern browsers. It is the responsibility of developers and designers to build layouts that support it.
+All modern browsers support zooming. It's up to developers and designers to build layouts that still work when people zoom in.
 
 ### How to support it
 

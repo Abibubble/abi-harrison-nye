@@ -1050,7 +1050,7 @@ You can use code to force a plain box (`<div>`) to act like a `<button>`, but it
 
 Many screen reader users navigate websites by pulling up a list of only the links on a page. If your links just say 'Click here' or 'Read more', their list will just read out, 'Click here, Click here, Read more'. That doesn't help them find what they are looking for. Good link text makes sense all by itself, even if you hide the rest of the page.
 
-100% supported! You don't need any special code to do this. It's all about writing clear, helpful words. Everyone benefits from clear writing, not just screen reader users.
+Good link text doesn't need any special code. It's all about writing clear, helpful words, and everyone benefits from that, not just screen reader users.
 
 #### How to support it
 
@@ -1378,7 +1378,7 @@ Imagine baking a cake, pulling it out of the oven, and realising you forgot the 
 
 In technology, the timeline goes from left to right (Plan ➔ Design ➔ Build ➔ Production). Shifting left means moving accessibility checks to the very beginning of the project (the left side), instead of waiting until the end to test it. Finding an accessibility bug during the design phase is incredibly cheap and fast to fix. Finding it right before the website goes live is expensive and frustrating!
 
-Shifting left is a team habit. It's 100% supported, simply by teams talking to each other and asking questions early. No special software is required to shift left.
+Shifting left is a team habit, built by teams talking to each other and asking questions early. No special software is needed.
 
 #### How to support it
 
@@ -1507,7 +1507,7 @@ Small tap targets can cause rage clicks, where the user has to try to click on a
 - Users with large fingers, or who are operating the device with only a part of their finger or knuckle
 - Users who have low vision may better see the target
 
-Fully supported, you just need to ensure that your tap targets are large enough and with enough of a gap between them.
+You don't need any special code for this. Just make sure your tap targets are large enough, with enough of a gap between them.
 
 #### How to support it
 
@@ -1678,7 +1678,7 @@ You don't have to get rid of fun swipes and pinches completely. Those complex ge
 
 Some people need to make the text and images on a website bigger to see them clearly. Pages must support this. When a user zooms in, the content should automatically rearrange itself to fit the screen. This is often called 'reflow'. A good page will reflow so that users never have to scroll from side to side to read a single sentence. This is very important for creating a positive experience for people with low vision.
 
-Fully supported by all modern browsers. It is the responsibility of developers and designers to build layouts that support it.
+All modern browsers support zooming. It's up to developers and designers to build layouts that still work when people zoom in.
 
 #### How to support it
 

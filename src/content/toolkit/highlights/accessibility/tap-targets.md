@@ -12,7 +12,7 @@ Small tap targets can cause rage clicks, where the user has to try to click on a
 - Users with large fingers, or who are operating the device with only a part of their finger or knuckle
 - Users who have low vision may better see the target
 
-Fully supported, you just need to ensure that your tap targets are large enough and with enough of a gap between them.
+You don't need any special code for this. Just make sure your tap targets are large enough, with enough of a gap between them.
 
 ### How to support it
 

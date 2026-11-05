@@ -46,15 +46,15 @@
               "description": "Every accessibility highlight in one file, each with what it’s for, how to support it and useful links, plus a glossary of terms.",
               "updated": "2026-11-05",
               "slides": true,
-              "text": "draft",
-              "todo": ["Fix the slides to match the Word file, then check them"]
+              "text": "checked",
+              "todo": []
             },
             {
               "slug": "accessibility-debt",
               "title": "Accessibility Debt",
               "description": "Accessibility debt is like technical debt, but for accessibility.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -63,7 +63,7 @@
               "title": "Accessibility Overlays",
               "description": "Accessibility overlays are automated tools that claim to find and fix accessibility issues on websites.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -72,7 +72,7 @@
               "title": "Accessibility Testing",
               "description": "Accessibility Testing is the process of checking a digital product to ensure it can be used by people with disabilities.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -81,7 +81,7 @@
               "title": "Accessible Authentication",
               "description": "When people can't use a login page, the harm can be serious.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -90,7 +90,7 @@
               "title": "Accessible Links",
               "description": "Link text should say where a link goes, so it makes sense on its own, including for people using assistive technology.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -99,7 +99,7 @@
               "title": "Accessible PDFs",
               "description": "We use PDF (Portable Document Format) to present all kinds of documents like guidelines, contractual agreements, data-heavy reports and even site maps.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -108,7 +108,7 @@
               "title": "Alt Text",
               "description": "Some people cannot see the images we display.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -117,7 +117,7 @@
               "title": "Accessible Rich Internet Applications (ARIA)",
               "description": "ARIA stands for 'Accessible Rich Internet Applications'.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -126,7 +126,7 @@
               "title": "ASCII Art",
               "description": "ASCII art is the practice of arranging punctuation and symbols to create a picture, like the ‘shrug’ ¯\\_(ツ)_/¯ or drawings of animals.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -135,7 +135,7 @@
               "title": "Assistive Technology (Beyond Screen Readers)",
               "description": "Assistive Technology (AT) is any tool that helps people with disabilities use a computer.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -144,7 +144,7 @@
               "title": "Basic Accessibility Testing",
               "description": "Testing makes sure that what gets built actually works for everyone.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -153,7 +153,7 @@
               "title": "Breadcrumbs & Wayfinding",
               "description": "Breadcrumbs are a secondary navigation system that shows a user's current location within a site's hierarchy.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -162,7 +162,7 @@
               "title": "Buttons",
               "description": "Buttons let people take an action, such as submitting a form, saving information or opening a menu.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -171,7 +171,7 @@
               "title": "Captions & Transcripts",
               "description": "Captions are timed text that appears with a video to show spoken words, music, and sounds, helping viewers who are deaf or hard of hearing.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -180,7 +180,7 @@
               "title": "Carousels & Sliders",
               "description": "A carousel is a sliding banner that automatically cycles through images or messages on a webpage, like a digital billboard.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -189,7 +189,7 @@
               "title": "Colour-blind Series: Anomalous Trichromacy",
               "description": "Anomalous trichromacy is when all three types of colour sensing cells are present, but one doesn’t work as strongly as it should.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -198,7 +198,7 @@
               "title": "Colour-blind Series: Deuteranopia",
               "description": "Deuteranopia is a form of colour blindness that affects the ability to see green.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -207,7 +207,7 @@
               "title": "Colour-blind Series: Protanopia",
               "description": "Protanopia is a form of colour blindness that affects the ability to see red.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -216,7 +216,7 @@
               "title": "Colour-blind Series: The Rarer Types",
               "description": "Earlier entries in this series covered Protanopia, Deuteranopia, and Tritanopia.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -225,7 +225,7 @@
               "title": "Colour-blind Series: Tritanopia",
               "description": "Tritanopia is a form of colour blindness that affects the ability to see blue.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -234,7 +234,7 @@
               "title": "Colour Blindness",
               "description": "Colour blindness (or Colour Vision Deficiency) is about more than just seeing in black and white.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -243,7 +243,7 @@
               "title": "Colour Contrast",
               "description": "Websites, social media images, and out-of-home advertising should have a good colour contrast between text and background colour.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -252,7 +252,7 @@
               "title": "Consistency",
               "description": "Navigation, buttons and labels that look and work the same on every page help people find their way around.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -261,7 +261,7 @@
               "title": "Dark Mode",
               "description": "Dark mode is a colour option that flips the user’s view from the typical dark text on a light background to light text on a dark background.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -270,7 +270,7 @@
               "title": "Device Orientation",
               "description": "Websites and apps should work whichever way a screen is turned, as some people can’t turn their device.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -279,7 +279,7 @@
               "title": "Error Messages & Validation",
               "description": "Form errors are a major barrier for all users, but they can completely block users with disabilities.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -288,7 +288,7 @@
               "title": "Flashing & Photosensitivity",
               "description": "High-energy videos with strobing effects or rapid transitions can be physically dangerous.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -297,7 +297,7 @@
               "title": "Focus States",
               "description": "Focus states occur when an interactive element receives focus.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -306,7 +306,7 @@
               "title": "Focus Traps",
               "description": "A focus trap keeps keyboard focus inside one part of the page while it’s open, such as a modal, but always lets the user leave.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -315,7 +315,7 @@
               "title": "Fonts",
               "description": "Fonts are used everywhere, whether that's in a Word document, in a design, in a slide deck, or on a website.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -324,7 +324,7 @@
               "title": "Forms",
               "description": "An accessible form is an online form that everyone can fill in, including people with vision, movement, or cognitive disabilities.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -333,7 +333,7 @@
               "title": "Good Alt Text",
               "description": "While basic alt text just labels an image, good alt text explains its purpose.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -342,7 +342,7 @@
               "title": "Head Pointer",
               "description": "Head pointer allows users with limited hand function to control a computer cursor using head movements and, in some cases, facial expressions.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -351,7 +351,7 @@
               "title": "Headings",
               "description": "Most people are familiar with headings, whether that's a title in a document or a title sheet on a slide deck.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -360,7 +360,7 @@
               "title": "Hover states",
               "description": "Hover states are what happen when a mouse pointer moves over an interactive element.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -369,7 +369,7 @@
               "title": "Inclusive Language",
               "description": "Inclusive language means using words that respect everyone.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -378,7 +378,7 @@
               "title": "Keyboard Only",
               "description": "Keyboard only is a method for navigating the web using just a keyboard (not using the mouse at all).",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -387,7 +387,7 @@
               "title": "Landmarks & Roles",
               "description": "Imagine trying to navigate a city with no street signs, where every building looks exactly the same.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -396,7 +396,7 @@
               "title": "Link Text",
               "description": "Many screen reader users navigate websites by pulling up a list of only the links on a page.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -405,7 +405,7 @@
               "title": "Meetings",
               "description": "Meetings are part of most workdays, and there are many ways to make them fully accessible and inclusive.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -414,7 +414,7 @@
               "title": "Modals",
               "description": "Modals are manually triggered pop-ups that provide extra information.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -423,7 +423,7 @@
               "title": "Neurodiversity & Inclusive Design",
               "description": "Neurodiversity describes the natural variations in how human brains function, process information, learn, and interact.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -432,7 +432,7 @@
               "title": "Personas",
               "description": "Personas are made-up people with real accessibility needs, which you can role-play as while testing your work.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -441,7 +441,7 @@
               "title": "Prefers-reduced-motion",
               "description": "Some people struggle with motion on websites.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -450,7 +450,7 @@
               "title": "Presentations",
               "description": "Most people will have to give a presentation at some point.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -459,7 +459,7 @@
               "title": "QR Codes",
               "description": "A QR (Quick Response) code is a type of two-dimensional barcode.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -468,7 +468,7 @@
               "title": "Screen reader only styling",
               "description": "Screen reader only styling ensures that everyone who uses a website can access the important information it contains.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -477,7 +477,7 @@
               "title": "Screen Readers",
               "description": "Screen readers are pieces of software that announce content audibly.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -486,7 +486,7 @@
               "title": "Shifting Left",
               "description": "Imagine baking a cake, pulling it out of the oven, and realising you forgot the sugar.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -495,7 +495,7 @@
               "title": "Social Media: Alt Text",
               "description": "On social media, images often hold the core message or punchline.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -504,7 +504,7 @@
               "title": "Social Media: Custom Fonts",
               "description": "People often use generator websites to make their text look unique (e.g.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -513,7 +513,7 @@
               "title": "Social Media: Emojis",
               "description": "Emojis add personality and tone to messages, but for a screen reader user, they are read aloud as literal text descriptions.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -522,7 +522,7 @@
               "title": "Social Media: Hashtags",
               "description": "Imagine trying to read a sentence where all the spaces have been removed.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -531,7 +531,7 @@
               "title": "Tap Targets",
               "description": "Buttons and links should be big enough, with enough space around them, to press without hitting something else by mistake.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -540,7 +540,7 @@
               "title": "Temporary & Situational Disabilities",
               "description": "People often link accessibility with permanent disabilities.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -549,7 +549,7 @@
               "title": "Text Alternatives for Complex Images",
               "description": "Standard 'alt text' is great for simple photos, but it often fails for complex data like charts, graphs, flowcharts, or infographics.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -558,7 +558,7 @@
               "title": "Time Limits",
               "description": "Time limits refer to when a page sets a time limit on doing a certain action.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -567,7 +567,7 @@
               "title": "Tooltips & Popovers",
               "description": "Tooltips and popovers give users extra info on demand (like for an icon button).",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -576,7 +576,7 @@
               "title": "Touch Gestures",
               "description": "Imagine trying to open a heavy door, but the rule is you can only use your pinky fingers.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             },
@@ -585,7 +585,7 @@
               "title": "Zooming",
               "description": "Some people need to make the text and images on a website bigger to see them clearly.",
               "updated": "2026-11-05",
-              "slides": false,
+              "slides": true,
               "text": "checked",
               "todo": []
             }
