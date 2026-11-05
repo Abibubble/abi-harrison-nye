@@ -38,8 +38,26 @@ const SLIDE_FILES = import.meta.glob<string>('./talks/slides/*.md', {
   eager: true,
 });
 
+/**
+ * Transcripts of other times I gave a talk, in src/content/talks/also/{talk's slug}-{date}.md, also
+ * only used by loaders
+ */
+const ALSO_FILES = import.meta.glob<string>('./talks/also/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
 /** Every transcript, keyed by its talk's slug */
 export const TRANSCRIPTS = bySlug(FILES);
+
+/** Every transcript of another time I gave a talk, keyed by alsoGivenKey */
+export const ALSO_TRANSCRIPTS = bySlug(ALSO_FILES);
+
+/** The key for another time I gave a talk, from the talk's slug and that date: debt-to-done-2025-07 */
+export function alsoGivenKey(slug: string, date: string): string {
+  return `${slug}-${date}`;
+}
 
 /** Every longer description, keyed by its talk's slug */
 export const ABOUT = bySlug(ABOUT_FILES);

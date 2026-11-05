@@ -9,9 +9,8 @@ Thank you, thank you. Thank you very much. Gosh, round of applause, didn’t exp
 Hello. For anyone who doesn’t know me, I’m Abi. Day to day, I’m a software engineer. However, I’m
 here in front of you today as Accessibility and Neurodiversity Affinity Group lead.
 
-So, just to give you all a little introduction to myself (that was dramatic) [check: unclear what
-“that was dramatic” refers to], my pronouns are she/her, and a physical description for anyone who
-needs it is that I am an average-height woman with shoulder-length brown hair. I’m wearing a purple
+So, just to give you all a little introduction to myself (that was dramatic), my pronouns are she/her, and a physical description for anyone who
+needs it is that I am an average-height woman with shoulder-length brown hair, and I’m wearing a purple
 T-shirt today that says “accessibility” all over it, and I also wear glasses.
 
 So, let’s see if the clicker works for me. Oh, it did. Amazing.
@@ -23,7 +22,7 @@ vision deficiency, quadriplegia, deafness and motor skills impairments. Illustra
 with permanent disabilities: someone with one arm, someone who is blind, someone who is deaf,
 someone who is non-verbal, and someone with Attention Deficit Hyperactivity Disorder (ADHD).
 
-So, I’d like us to investigate some different kinds of disabilities, and get you guys to learn a
+So, I’d like us just to investigate some different kinds of disabilities, and, yeah, get you guys to learn a
 little bit more about those, because some are often overlooked.
 
 So first we have permanent disabilities. These are conditions that stay with somebody throughout
@@ -64,7 +63,7 @@ you’re all blurry. You’re all very brightly coloured blobs.
 Without them, I would not be able to drive. I wouldn’t be able to work the way that I do. I wouldn’t
 be able to read books, which is one of the main things that I love. These glasses allow me to
 interact with the world the way that anyone else does. And yet, we don’t really consider needing
-glasses to be a form of disability.
+glasses to be a form of a disability.
 
 ### Everyday things
 
@@ -81,16 +80,16 @@ want to make certain points.
 
 So, those of you in the office who drove here today and parked downstairs? Good, decent number of
 hands. How many of you use the lift? Pretty much all of them. Lifts were introduced for people who
-couldn’t use the stairs, and yet we use them just to come up from the car park.
+couldn’t use the stairs, and yet we use it just to come up from the car park.
 
-Bendy straws (this is a favourite of mine) were originally invented because the inventor’s daughter
+Bendy straws (this is a favourite of mine) was invented originally because the inventor’s daughter
 was too short to drink her milkshake from a straight straw. So he invented a bendy straw. And from
 that, they’re now used in hospitals and pretty widely across the globe.
 
 We have potato peelers. This was invented because the inventor’s wife kept cutting her fingers when
 she was trying to peel potatoes with a knife. And now they’re in pretty much every kitchen.
 
-Computer keyboards is the last one that I’m really going to touch on. Originally invented as
+Computer keyboards is the last one that I’m really going to touch into. Originally invented as
 typewriters. This was an invention because the inventor’s blind friend couldn’t see to write with a
 pen and paper. So the inventor created a typewriter. That typewriter has now evolved and become the
 computer keyboards that we use today.
@@ -108,7 +107,7 @@ from an online purchase; in 2020, this was worth an estimated £274 billion per 
 telecommunications and broadband industries, it’s worth an estimated £49 million per month; and this
 value increases each year with inflation.
 
-Right, let’s look at the financial side of accessibility. I know, I know, I’m sorry. We’ll go
+Right, let’s look at the financial side of accessibility. I know, I know, I’m sorry. We’ll, we’ll go
 through it.
 
 So, the Purple Pound refers to the spending power of a disabled household. A disabled household is
@@ -119,10 +118,10 @@ important to remember, this is officially diagnosed disabilities. It doesn’t i
 colour blindness.
 
 Now, of those people, 75% of them have walked away from an online purchase because of bad
-accessibility on a website, or poor customer service when dealing with accessibility issues.
+accessibility on a website, or poor customer service when dealing with accessible issues.
 
 In 2020, when the latest Purple Pound study was done, this was worth an estimated £274 billion per
-year. That’s roughly a market the size of China. It’s a lot of money we’re talking about.
+year. That’s roughly a market the size of China. It’s, it’s a lot of money we’re talking about.
 
 In telecoms and broadband, it’s worth an estimated £49 million a month. I won’t make you do the
 maths: that is £588 million per year in our industry. This value increases every single year with
@@ -138,10 +137,10 @@ Below it: “Discrimination is where you are treated unfairly and are put at a d
 compared with people without these characteristics. Under the Equality Act, service providers and
 employers have to make reasonable adjustments to help people with these characteristics.”
 
-On to the legal side of things: the Equality Act of 2010. This protects people with disabilities
+Onto the legal side of things in the Equality Act 2010. This protects people with disabilities
 against being unfairly treated or discriminated against.
 
-We, as a service provider providing mobile service to our members, and as employers, have to make
+We, as a service provider providing mobile service to our members, and as employers, we have to make
 reasonable adjustments to help people with the characteristics that are protected under the Equality
 Act of 2010.
 
@@ -167,7 +166,7 @@ of her speeches. She is an accessibility advocate, deaf since birth, and she’s
 She’s a professional consultant, and she also presents at quite a few conferences around the world.
 
 One of the things that she always talks about is how accessibility is progress over perfection.
-That’s to say, we’re aiming for step by step. We’re not saying, “Right, tomorrow we have to be
+That’s to say, we’re aiming for step by step. We’re not saying that, “Right, tomorrow we have to be
 perfect, we have to be fully accessible,” because that’s not realistic.
 
 Instead, if each of you tomorrow takes one step, one tiny little baby step, that’s the progress we
@@ -182,9 +181,10 @@ interactive workshops.
 OK, so what’s on today? Next, we have lunch. I know everybody is very excited for lunch. After that,
 we have the interactive workshops.
 
+On screen: the screen goes black, until “Back to it”.
+
 I don’t know what I have pressed. I pressed a button. I’m so sorry, bear with. How did I press that?
-OK. Back to it. [check: the captions don’t show what was on screen after the wrong button was
-pressed]
+OK. Back to it.
 
 ### Workshops
 

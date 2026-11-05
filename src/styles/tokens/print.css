@@ -62,14 +62,15 @@
 
     /* WCAG 1.4.8 allows lines of up to 80 characters. Compact uses all of that */
     --size-measure: 80ch;
+
+    /* Uses the compact page below. On the whole document, not just the body, as browser extensions
+       often add their own element outside the body, and anything not on the compact page starts a
+       new, blank page */
+    page: compact;
   }
 
   @page {
     margin: 1.5cm;
-  }
-
-  :root[data-print-layout='compact'] body {
-    page: compact;
   }
 
   @page compact {

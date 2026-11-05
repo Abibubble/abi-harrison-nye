@@ -6,9 +6,11 @@ Hello, everyone. Can you all hear me?
 
 **Audience:** Yes.
 
-Okay, amazing. So, the important thing to remember here is, if we’re creating the future, it’s really important that that future is up to good, and fully inclusive. That’s why we’ve done the hard work to improve accessibility in our new experiences for members.
+Okay, amazing. So, the important thing to remember here is, if we’re creating the future, it’s really important that that future is up to good, and fully inclusive. That’s why we’ve done the hard work to improve accessibility within our new experiences for members.
 
-Approximately 1 in 4 people in the United Kingdom (UK) have a disability, and approximately 1 in 7 people are neurodivergent. That’s a lot of people. And good accessibility doesn’t just help them, it helps everyone. One of my favourite phrases is “accessible UX is good UX”, where UX means user experience.
+Approximately 1 in 4 people in the United Kingdom (UK) have a disability, and approximately 1 in 7 people are neurodivergent. Yeah, that’s a lot of people. And good accessibility doesn’t just help them, it helps everyone. One of my favourite phrases is “accessible UX is good UX”.
+
+UX means user experience.
 
 ### The challenge
 
@@ -18,13 +20,13 @@ If we can head over to the next slide, I have a challenge for you all.
 
 In the next couple of screens, we’re going to hear the screen reader version of our current experience, the original range page. Then a bit later on, we’ll go through our new range page.
 
-My challenge for you is, using only the screen reader experience of our current range page, find out which colours the iPhone 16 is available in. In my slide, I’ve visually hidden the colours, for the purpose of this challenge.
+My challenge for you is, using only the screen reader experience of our current range page, I’d like you to discover which colours the iPhone 16 is available in. In my slide, I’ve visually hidden the colours, for the purpose of this challenge.
 
 ### The current range page
 
 On screen: “Today”. Two phone screenshots of the current mobile phones page, labelled “Looks like”, and an audio player labelled “Sounds like”. The page shows the heading “Mobile phones”, three benefits with icons, a “hold the phone… save £400” banner, tabs for New and Refurbished, filters, and the iPhone 16 with a “lowest ever price” label. The colour options are covered up.
 
-We’ve got some screenshots here of our current range page. We’re going to listen to the screen reader experience of it, and when it’s finished, I’d like you to shout out if you know what colours are available. If somebody could click the audio button for me.
+So we’ve got some screenshots here of our current range page. We’re going to listen to the screen reader experience of the current range page, and when it’s finished, I’d like you to shout out if you know what colours are available. If somebody could click the audio button for me.
 
 **Screen reader:** Mobile phones, heading level 2. Pair your shiny new phone with a good contract or flexible pay monthly deal. Image. All our phones are unlocked. Image. Free next business day delivery star. Image. Spread the cost with interest-free payments. Visited link. Hold the phone, save £400 on the Google Pixel 9 Pro. Link. Comma. Promotions, list, 2 items. Visited link. New. Link. Refurbished. Hide out of stock, unticked tick box, hide out of stock. Image. 42 phones. Filter by. Image. Sort by. Image. All phones, ticked tick box, all phones. Image. Apple, unticked tick box, Apple. Visited link. Heading level 2. iPhone 16. iPhone 16. iPhone 16. Phone plus data from £28.87 a month, plus £20 up front, for 36 months. Now in stock. Details.
 
@@ -32,7 +34,7 @@ Okay. I know that was a little bit quick, and I already saw some little giggles 
 
 **Colleague:** I think it’s a no, Abi.
 
-No, absolute silence. So that’s a really good example of what our screen reader users are currently missing out on. Did anyone notice any other issues? Ooh, we’ve got a mic.
+No, absolute silence. So that shows us a really good example of what our screen reader users are currently missing out on. Did anyone notice any other issues? Ooh, we’ve got a mic.
 
 **Colleague:** Hello. It was out of order. It was read out in a different order from how it appears on screen.
 
@@ -56,11 +58,11 @@ On screen: “What did we do?”, with 12 boxes: semantic HTML; alt text; access
 
 So what did we do to fix it? If we can go to the next slide, please. Awesome. Here’s some of the wonderful stuff we did.
 
-We started with some really lovely semantic HTML. With all the basics, HTML gives us some wonderful accessibility from the start. We put in proper alt text for all images. We made sure our tap targets were big enough, and spaced apart. We made sure all our links are fully descriptive, so none of that “read more” or “click here” stuff. We made sure our focus and hover states are all super clear. Anything that wasn’t easy for screen reader users, we added some screen reader only text to make it clearer.
+So, we started with some really lovely semantic HTML. With all the basics, HTML gives us some wonderful accessibility from the start. We put in proper alt text for all images. We made sure our tap targets were big enough, and spaced apart. We made sure all our links are fully descriptive, so none of that “read more” or “click here” stuff. We made sure our focus and hover states are all super clear. Anything that wasn’t easy for screen reader users, we put in some screen reader only text to make it clearer.
 
-We started with lovely accessible components from fe-toolkit, with accessibility already baked in. We focused on the star a little bit, and used aria-describedby to explain to screen reader users what it actually refers to. We added some good roles too, to help our screen reader users, so telling them that buttons are actually buttons.
+We started with lovely accessible components from fe-toolkit, with accessibility already baked in. We focused on the star a little bit, and used aria-describedby to explain to screen reader users what it actually refers to. We added some good roles in, also to help our screen reader users, so telling them that buttons are actually buttons.
 
-Then, when we built everything, we tested. We ran Pa11y tests, which is an automated accessibility checker. We did snapshot testing in every single test file, so every component and every page was tested. We then followed up with some manual testing, with screen reader and keyboard only as a big focus, as well as cognition.
+Then, when we built everything, we tested. So, we did Pa11y tests, which is an automated accessibility checker. We did snapshot testing on every single test file, so every component and every page was tested. We then followed up with some manual testing, with screen reader and keyboard only as a big focus, as well as cognition too.
 
 ### The new range page
 
@@ -68,7 +70,7 @@ On screen: “Impact, even on a page spun up in days”. Two phone screenshots o
 
 If we can go to the next slide, we’ll take a look at our range page. This is the brand new one. It’s important to note that the pay monthly and refurbished phones are a future piece of work, so we only have pay in full prices for new phones at the moment. There’s also a little bit of an order difference, because I had to record it on a desktop computer, so apologies for that. So, let’s listen.
 
-**Screen reader:** Mobile phones. Unlocked padlock, image. All our phones are unlocked. Free delivery, image. Free next working day delivery, star. If you’re outside mainland UK, deliveries could take up to 4 working days. Orders made Friday to Sunday arrive by Tuesday. Group. Star. New. Hide out of stock, unticked tick box, hide out of stock. 39 phones. Filter by. Sort by. Ticked, all. Image. All. Apple, unticked tick box, Apple. Heading level 2. iPhone 16. Image. List, available colours, 5 items. Black. Ultramarine. White. Pink. Teal. Phone from £749. Image. Out of stock. View details, button.
+**Screen reader:** Heading level one, Mobile phones. Unlocked padlock, image. All our phones are unlocked. Free delivery, image. Free next working day delivery, star. If you’re outside mainland UK, deliveries could take up to 4 working days. Orders made Friday to Sunday arrive by Tuesday. Group. Star. New. Hide out of stock, unticked tick box, hide out of stock. 39 phones. Filter by. Sort by. Ticked, all. Image. All. Apple, unticked tick box, Apple. Heading level 2. iPhone 16. Image. List, available colours, 5 items. Black. Ultramarine. White. Pink. Teal. Phone from £749. Image. Out of stock. View details, button.
 
 Okay, did anyone catch what colours are available?
 

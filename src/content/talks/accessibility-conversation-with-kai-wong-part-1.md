@@ -2,7 +2,7 @@
 
 On screen: a title slide, then Abi and Kai talking on camera. There are no other slides or graphics.
 
-Hello, everyone. So I’m here with the wonderful Kai Wong. We’ve just got a bit of a chat today about accessibility, in the overall sense of the word [check: the source says “world”, I think “word” was meant].
+Hello, everyone. So I’m here with the wonderful Kai Wong. We’ve just got a bit of a chat today about accessibility, in the overall sense of the word.
 
 So, to start with, a bit of an introduction. For anyone who hasn’t met me yet, my name’s Abi. In my day to day, I’m a software engineer. But today, I’m here for you in the role of Accessibility and Neurodiversity Affinity Lead.
 

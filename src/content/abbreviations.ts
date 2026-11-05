@@ -40,6 +40,7 @@ export type Abbreviation = keyof typeof ABBREVIATIONS;
  * harder to read. They're still marked up with their full form, and listed on the Accessibility page
  */
 export const ALWAYS_SHORT: readonly Abbreviation[] = [
+  'ADHD',
   'AI',
   'BA',
   'CSS',

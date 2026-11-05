@@ -24,7 +24,11 @@ const { BASE_URL } = import.meta.env;
 export function TalkSlides({ talk, slides }: TalkSlidesProps) {
   const backToTalk = (
     <p className={styles.standalone}>
-      <Link to={`/talks/${talk.slug}`}>Back to “{talk.title}”</Link>
+      {talk.notRecorded ? (
+        <Link to="/talks#other-talks">Back to other talks</Link>
+      ) : (
+        <Link to={`/talks/${talk.slug}`}>Back to “{talk.title}”</Link>
+      )}
     </p>
   );
 

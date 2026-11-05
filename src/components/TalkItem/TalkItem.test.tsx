@@ -59,6 +59,24 @@ describe('TalkItem', () => {
     expect(screen.getByText(summary, { exact: true })).toBeInTheDocument();
   });
 
+  it('links to the transcript from my script and the slides, for a talk without a page', () => {
+    renderWithRouter(
+      <TalkItem
+        talk={{ ...TALK, notRecorded: true, transcriptFromScript: true, slidesPage: true }}
+        headingLevel={3}
+        hasPage={false}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Read the transcript of “Example talk”, from my script' }),
+    ).toHaveAttribute('href', '/talks/example-talk/transcript');
+    expect(screen.getByRole('link', { name: 'See the slides for “Example talk”' })).toHaveAttribute(
+      'href',
+      '/talks/example-talk/slides',
+    );
+  });
+
   it('shows a talk without a page as a plain heading, without saying what’s available', () => {
     renderWithRouter(<TalkItem talk={TALK} headingLevel={3} hasPage={false} />);
 

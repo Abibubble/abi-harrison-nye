@@ -1,3 +1,4 @@
+import { slidesPath, transcriptPath } from '../../content/talkPath';
 import type { Talk } from '../../content/talks';
 import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
@@ -35,6 +36,22 @@ export function TalkItem({ talk, headingLevel, hasPage = true }: TalkItemProps) 
           <AbbrText>{talk.summary}</AbbrText>
         </p>
         {hasPage && <p className={styles.meta}>{mediaSummary(talk)}</p>}
+        {!hasPage && (talk.transcriptFromScript ?? talk.slidesPage) && (
+          <ul className={styles.links}>
+            {talk.transcriptFromScript && (
+              <li>
+                <Link to={transcriptPath(talk.slug)}>
+                  Read the transcript of “{talk.title}”, from my script
+                </Link>
+              </li>
+            )}
+            {talk.slidesPage && (
+              <li>
+                <Link to={slidesPath(talk.slug)}>See the slides for “{talk.title}”</Link>
+              </li>
+            )}
+          </ul>
+        )}
       </Stack>
     </Card>
   );

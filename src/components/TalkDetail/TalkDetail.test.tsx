@@ -41,6 +41,33 @@ describe('TalkDetail', () => {
         name: 'Watch a shorter version of “Example talk” on YouTube (external site)',
       }),
     ).toHaveAttribute('href', 'https://youtu.be/second');
+    expect(screen.queryByRole('link', { name: /transcript of a shorter version/ })).toBeNull();
+  });
+
+  it('links to the transcript of another time the talk was given, when it has one', () => {
+    renderWithRouter(
+      <TalkDetail
+        talk={{
+          ...TALK,
+          video: { href: 'https://youtu.be/first', captions: 'accurate', describedAloud: true },
+          alsoGiven: [
+            {
+              description: 'a shorter version',
+              event: 'Example demo day',
+              date: '2025-07-10',
+              href: 'https://youtu.be/second',
+              slug: 'shorter-version',
+            },
+          ],
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', {
+        name: 'Read the transcript of a shorter version of “Example talk”',
+      }),
+    ).toHaveAttribute('href', '/talks/example-talk/shorter-version/transcript');
   });
 
   it('links to the transcript on its own page, rather than showing it all', () => {
@@ -49,6 +76,14 @@ describe('TalkDetail', () => {
     expect(
       screen.getByRole('link', { name: 'Read the transcript of “Example talk”' }),
     ).toHaveAttribute('href', '/talks/example-talk/transcript');
+  });
+
+  it('says the transcript has everything that was said, for a recorded talk', () => {
+    renderWithRouter(<TalkDetail talk={TALK} />);
+
+    expect(
+      screen.getByText('The transcript has everything that was said, on its own page.'),
+    ).toBeInTheDocument();
   });
 
   it('calls the section “Slides” when there are slides but no video', () => {

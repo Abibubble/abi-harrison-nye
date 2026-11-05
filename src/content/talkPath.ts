@@ -6,6 +6,14 @@ export function transcriptPath(slug: string): string {
   return `/talks/${slug}/transcript`;
 }
 
+/**
+ * The address of the transcript of another time I gave a talk, such as
+ * /talks/debt-to-done/shorter-version/transcript
+ */
+export function alsoGivenTranscriptPath(slug: string, alsoGivenSlug: string): string {
+  return `/talks/${slug}/${alsoGivenSlug}/transcript`;
+}
+
 /** The address of a talk's Slides page, with a picture and description of each slide */
 export function slidesPath(slug: string): string {
   return `/talks/${slug}/slides`;

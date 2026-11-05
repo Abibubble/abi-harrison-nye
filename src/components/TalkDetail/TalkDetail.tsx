@@ -1,4 +1,6 @@
-import { slidesPath, transcriptPath } from '../../content/talkPath';
+import { Fragment } from 'react';
+
+import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from '../../content/talkPath';
 import type { Talk } from '../../content/talks';
 import { AbbrText } from '../Abbr';
 import { Heading } from '../Heading';
@@ -73,13 +75,22 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
             </p>
           )}
           {talk.alsoGiven?.map((other) => (
-            <p key={other.href}>
-              I also gave {other.description} of this talk at <AbbrText>{other.event}</AbbrText>, on{' '}
-              <Time date={other.date} />.{' '}
-              <Link href={other.href}>
-                Watch {other.description} of “{talk.title}” on YouTube
-              </Link>
-            </p>
+            <Fragment key={other.href}>
+              <p>
+                I also gave {other.description} of this talk at <AbbrText>{other.event}</AbbrText>,
+                on <Time date={other.date} />.{' '}
+                <Link href={other.href}>
+                  Watch {other.description} of “{talk.title}” on YouTube
+                </Link>
+              </p>
+              {other.slug && (
+                <p className={styles.standalone}>
+                  <Link to={alsoGivenTranscriptPath(talk.slug, other.slug)}>
+                    Read the transcript of {other.description} of “{talk.title}”
+                  </Link>
+                </p>
+              )}
+            </Fragment>
           ))}
         </Stack>
       )}

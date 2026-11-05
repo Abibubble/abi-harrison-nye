@@ -35,6 +35,54 @@ describe('TalkTranscript', () => {
     expect(screen.getByText(/Example meetup/)).toHaveTextContent('Example meetup, 14 March 2025');
   });
 
+  it('names another time the talk was given in the heading, with that event and date', () => {
+    renderWithRouter(
+      <TalkTranscript
+        talk={TALK}
+        alsoGiven={{
+          description: 'a shorter version',
+          event: 'Example demo day',
+          date: '2025-07-10',
+          href: 'https://youtu.be/example',
+        }}
+        transcriptHtml={TWO_SECTIONS.html}
+        sections={TWO_SECTIONS.sections}
+      />,
+    );
+
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Transcript: Example talk (a shorter version)',
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Example demo day/)).toHaveTextContent(
+      'Example demo day, 10 July 2025',
+    );
+    expect(screen.getAllByRole('link', { name: 'Back to “Example talk”' })[0]).toHaveAttribute(
+      'href',
+      '/talks/example-talk',
+    );
+  });
+
+  it('says a talk that wasn’t recorded has my script as its transcript, linking back to other talks', () => {
+    renderWithRouter(
+      <TalkTranscript
+        talk={{ ...TALK, notRecorded: true, transcriptFromScript: true }}
+        transcriptHtml={TWO_SECTIONS.html}
+        sections={TWO_SECTIONS.sections}
+      />,
+    );
+
+    expect(screen.getByText(/no recording of this talk/)).toHaveTextContent(
+      'There’s no recording of this talk to share, so this transcript is my script. What I said on the day may be a little different.',
+    );
+    expect(screen.getAllByRole('link', { name: 'Back to other talks' })[0]).toHaveAttribute(
+      'href',
+      '/talks#other-talks',
+    );
+  });
+
   it('lists the sections, linking to each one’s heading', () => {
     renderTranscript();
     const contents = screen.getByRole('navigation', { name: 'On this page' });

@@ -19,8 +19,10 @@ import {
 } from './talks';
 import {
   ABOUT,
+  ALSO_TRANSCRIPTS,
   SLIDE_TEXT,
   TRANSCRIPTS,
+  alsoGivenKey,
   bySlug,
   headingId,
   renderSlides,
@@ -283,10 +285,56 @@ describe('talks.json', () => {
     };
 
     expect(publicTalk(record)).toEqual(talk);
+    expect(publicTalk({ ...record, has: { ...record.has, recording: 'not recorded' } })).toEqual({
+      ...talk,
+      notRecorded: true,
+    });
+    expect(publicTalk({ ...record, has: { ...record.has, recording: 'not shared' } })).toEqual({
+      ...talk,
+      notRecorded: true,
+    });
+    expect(
+      publicTalk({
+        ...record,
+        has: { ...record.has, recording: 'not recorded', script: true, transcript: 'checked' },
+      }),
+    ).toEqual({ ...talk, notRecorded: true, transcriptFromScript: true });
     expect(publicTalk({ ...record, has: { ...record.has, slideText: 'checked' } })).toEqual({
       ...talk,
       slidesPage: true,
     });
+  });
+
+  it('only gives another time a talk was given a transcript page once its transcript is checked', () => {
+    const alsoGiven = {
+      description: 'a shorter version',
+      event: 'Example demo day',
+      date: '2025-07-10',
+      href: 'https://youtu.be/example',
+    };
+    const record = (transcript: 'checked' | 'draft'): TalkRecord => ({
+      slug: 'example',
+      title: 'Example',
+      event: 'Example meetup',
+      date: '2025-01',
+      summary: 'An example.',
+      alsoGiven: [{ ...alsoGiven, slug: 'shorter-version', transcript }],
+      ready: true,
+      has: {
+        slides: 'none',
+        script: false,
+        transcript: 'checked',
+        slideText: 'none',
+        recording: 'not recorded',
+      },
+      permission: 'not needed',
+      todo: [],
+    });
+
+    expect(publicTalk(record('draft')).alsoGiven).toEqual([alsoGiven]);
+    expect(publicTalk(record('checked')).alsoGiven).toEqual([
+      { ...alsoGiven, slug: 'shorter-version' },
+    ]);
   });
 
   it('lists the slides folders of talks that aren’t ready, for the build to remove', () => {
@@ -323,7 +371,9 @@ describe('talks.json', () => {
       expect(['file', 'link', 'have', 'searching', 'none'], slug).toContain(has.slides);
       expect(['checked', 'draft', 'raw', 'none'], slug).toContain(has.transcript);
       expect(['checked', 'draft', 'none'], slug).toContain(has.slideText);
-      expect(['youtube', 'uploading', 'not recorded', 'unknown'], slug).toContain(has.recording);
+      expect(['youtube', 'uploading', 'not recorded', 'not shared', 'unknown'], slug).toContain(
+        has.recording,
+      );
       expect(['not needed', 'needed', 'agreed'], slug).toContain(permission);
     }
   });
@@ -332,6 +382,35 @@ describe('talks.json', () => {
     for (const { slug, has } of TALK_RECORDS) {
       const written = has.transcript === 'checked' || has.transcript === 'draft';
       expect(slug in TRANSCRIPTS, `${slug}: transcript is "${has.transcript}"`).toBe(written);
+    }
+  });
+
+  it('has a transcript file for every other time a talk was given with one, and no others', () => {
+    const keys = TALK_RECORDS.flatMap(({ slug, alsoGiven = [] }) =>
+      alsoGiven.map((other) => {
+        // The transcript page's address comes from its slug
+        expect(other.slug !== undefined, `${slug} ${other.date}: slug`).toBe(
+          other.transcript !== undefined,
+        );
+        if (other.slug)
+          expect(other.slug, `${slug} ${other.date}`).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+        return other.transcript ? alsoGivenKey(slug, other.date) : undefined;
+      }),
+    ).filter((key) => key !== undefined);
+
+    expect(Object.keys(ALSO_TRANSCRIPTS).toSorted()).toEqual(keys.toSorted());
+    for (const [key, markdown] of Object.entries(ALSO_TRANSCRIPTS)) {
+      expect(markdown, key).toMatch(/^### /);
+    }
+  });
+
+  it('only marks the transcript of another time a talk was given checked once nothing is left to check', () => {
+    for (const { slug, alsoGiven = [] } of TALK_RECORDS) {
+      for (const other of alsoGiven) {
+        if (other.transcript === 'checked') {
+          expect(ALSO_TRANSCRIPTS[alsoGivenKey(slug, other.date)], slug).not.toContain('[check:');
+        }
+      }
     }
   });
 
@@ -409,15 +488,19 @@ describe('talks.json', () => {
   it('only marks a talk ready once it has everything it needs', () => {
     for (const talk of ready) {
       const { slug } = talk;
-      if (talk.has.transcript === 'none') {
-        // Listed under “Other talks”, which is only for talks that weren’t recorded
-        expect(talk.has.recording, `${slug}: recording`).toBe('not recorded');
+      if (talk.has.recording === 'not recorded' || talk.has.recording === 'not shared') {
+        // Listed under “Other talks”, with a link to its transcript only once it's checked
         expect(talk.video, `${slug}: video`).toBeUndefined();
+        expect(talk.has.transcript, `${slug}: transcript`).not.toBe('raw');
+        // Without a recording, the only source for a transcript is my script
+        if (talk.has.transcript !== 'none') expect(talk.has.script, `${slug}: script`).toBe(true);
       } else {
         expect(talk.has.transcript, `${slug}: transcript`).toBe('checked');
       }
       expect(talk.permission, `${slug}: permission`).not.toBe('needed');
-      expect(TRANSCRIPTS[slug] ?? '', `${slug}: transcript`).not.toContain('[check:');
+      if (talk.has.transcript === 'checked') {
+        expect(TRANSCRIPTS[slug] ?? '', `${slug}: transcript`).not.toContain('[check:');
+      }
       for (const field of ['title', 'event', 'date', 'summary'] as const) {
         expect(talk[field], `${slug}: ${field}`).not.toBe('');
       }

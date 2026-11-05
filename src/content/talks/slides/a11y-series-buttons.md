@@ -50,7 +50,7 @@ Internet Applications (ARIA) attributes.
 - “Aria-labelledby”
 - “Aria-label & icons”
 - “Tap target size”, followed by a dash and “48px x 48px”
-- “<button> vs. <a>”
+- “&lt;button&gt; vs. &lt;a&gt;”
 - “:focus and :hover”
 - “:before and :after”
 
@@ -128,7 +128,7 @@ first square, “48px” for its height, and “8px” for the gap between the s
 
 ### Slide 9
 
-The heading “<button> vs. <a>”. In the list, “<button> vs. <a>” is bold.
+The heading “&lt;button&gt; vs. &lt;a&gt;”. In the list, “&lt;button&gt; vs. &lt;a&gt;” is bold.
 
 On the right are 3 examples from the giffgaff site:
 

@@ -9,6 +9,29 @@ talk "has" in `talks.json` doesn't match its files.
 
 A longer description, shown in a "More about this talk" section, goes in `about/{slug}.md`.
 
+## Talks with no recording to share
+
+A talk with `"recording": "not recorded"`, or `"not shared"` when it was recorded but the recording
+can't be shared, is listed under "Other talks", with no talk page of its
+own. If I have my script, it can still have a transcript made from it:
+
+- Put it in `{slug}.md` as usual, and set `"script": true` and `"transcript": "draft"`.
+- Once it's checked, change it to `"transcript": "checked"`. Its "Other talks" entry then links to
+  the transcript page, which says it's my script, not what I said on the day.
+- If it has slides, its Slides page works the same way as for any other talk.
+
+## Other times I gave a talk
+
+Each talk's `alsoGiven` in `talks.json` lists other times I gave it, with their own recordings. One
+can have its own transcript too:
+
+- Put it in `also/{slug}-{date}.md`, such as `also/debt-to-done-2025-07-10.md`, written the same way
+  as any other transcript.
+- In its `alsoGiven` entry, add a `slug` for its page's address, such as `"shorter-version"` for
+  `/talks/debt-to-done/shorter-version/transcript`, and `"transcript": "draft"`.
+- Once it's checked, change it to `"transcript": "checked"`. Only then does its page appear, with a
+  link to it on the talk page.
+
 ## Writing a transcript
 
 - Start headings at `###`. The talk page already has the talk's title and a "Transcript" heading

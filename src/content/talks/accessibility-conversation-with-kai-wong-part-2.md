@@ -24,7 +24,7 @@ Exactly, 100%. I’d also like to point out here that being an active ally can a
 
 So if you’ve found something that you’re fixing, or you’ve found something you want to fix, or you’re not sure what team to go to, same again. Drop me a message, post on the accessibility Slack channel. We’ll get you in the right place. We’ll get you support if you need it, or encouragement, or talk to whoever we need to. Let’s get this stuff on the mend.
 
-**Kai:** Absolutely, yeah. Tech debt, fixing that legacy code, it is a complex and complicated order [check: possibly “ordeal”], but it is so important, and every little change adds up. You might think, “Oh, it’s just one line of code, and this is something really old, maybe nobody uses it.” But then what happens if somebody reuses that code somewhere else, or somebody goes and checks how it was done in the past, and then they learn from that? So every little change, even one line of code, is so important. It makes a difference.
+**Kai:** Absolutely, yeah. Tech debt, fixing that legacy code, it is a complex and complicated ordeal, but it is so important, and every little change adds up. You might think, “Oh, it’s just one line of code, and this is something really old, maybe nobody uses it.” But then what happens if somebody reuses that code somewhere else, or somebody goes and checks how it was done in the past, and then they learn from that? So every little change, even one line of code, is so important. It makes a difference.
 
 That’s such a good point about people going back and looking at old code, because, yeah, our legacy code is quite complex at times. So people like me, going into our legacy code, I look at the old stuff. So yeah, it’s always worth fixing it.
 
@@ -124,7 +124,7 @@ Yeah, this is a fantastic time to actually let you know that giffgaff’s core v
 
 I think it’s a very important thing for us as a company, but also for us as employees, that we know the company is up to good. We’ve got an amazing volunteering scheme where you get 5 days a year to just go out and volunteer, and you get amazing stuff done. And yeah, I think accessibility very much ties into that concept of, we’re all here to be up to good.
 
-**Kai:** Love that. That’s great. That gets me riled up. Yes, be up to good, please. The world needs a lot of good in it, so there is so much opportunity to be up to good. I just love that phrase. I would actually like that on a t-shirt. Maybe you’ll have t-shirts. I don’t want one from you [check: meaning unclear, possibly “I’m not asking for one”], but I love that phrase so much. It really does resonate.
+**Kai:** Love that. That’s great. That gets me riled up. Yes, be up to good, please. The world needs a lot of good in it, so there is so much opportunity to be up to good. I just love that phrase. I would actually like that on a t-shirt. Maybe you’ll have t-shirts. I don’t want one from you, but I love that phrase so much. It really does resonate.
 
 And I think a great way to be up to good is by pushing accessibility forward, and making sure that you’re the person who’s really saying, “Hey, let’s do this, let’s make it better, let’s push things forward. Let’s not accept lower than what we should. Let’s really push, and challenge, and redefine what the status quo is.”
 
@@ -140,7 +140,7 @@ And I’ve just confirmed here, I just looked it up quickly. The name of the boo
 
 Another really good resource is going out to any accessibility meetup that you might have that’s local. I met a lot of friends and people who share the same passion at my local accessibility meetup group here in Washington, District of Columbia (DC). If anyone ever visits Washington DC, ping me on LinkedIn. I would be happy to invite you to our meetup, or meet up.
 
-And then lastly, I’m excited to share that several of us are getting ready to publish a book called “Inclusive Design for Accessibility”. The main authors are Denis Boudreau and Dale Cruse [check: spelling of names, the transcript says “Dennis Boudreau and Dale Cruz”], and there are several contributing authors. I am the contributing author of Chapter 11, on accessibility testing tools and evaluation techniques.
+And then lastly, I’m excited to share that several of us are getting ready to publish a book called “Inclusive Design for Accessibility”. The main authors are Denis Boudreau and Dale Cruse, and there are several contributing authors. I am the contributing author of Chapter 11, on accessibility testing tools and evaluation techniques.
 
 Fantastic. So you said that’s coming out soon?
 

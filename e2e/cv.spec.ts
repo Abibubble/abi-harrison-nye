@@ -59,6 +59,20 @@ test.describe('CV', () => {
       expect(compact, 'the compact CV no longer fits on two pages').toBeLessThanOrEqual(2);
       expect(clear).toBeGreaterThan(compact);
     });
+
+    test('keeps the compact layout on two pages when a browser extension adds to the page', async ({
+      page,
+    }) => {
+      await page.goto('/cv');
+      await page.evaluate(() => document.fonts.ready);
+      await page.getByRole('radio', { name: 'Compact' }).check();
+      // Extensions often add an element outside the body, which used to start a blank third page
+      await page.evaluate(() => {
+        document.documentElement.append(document.createElement('div'));
+      });
+
+      expect(await printedPages(page)).toBeLessThanOrEqual(2);
+    });
   });
 
   test('leaves out talks, sites, interests and earlier career details in the compact layout only', async ({

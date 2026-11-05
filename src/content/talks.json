@@ -1,5 +1,73 @@
 [
   {
+    "slug": "adjustments-and-reasonable-accommodations",
+    "ready": true,
+    "title": "Adjustments and reasonable accommodations",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-10-22",
+    "summary": "Adjustments at work, and support outside it, such as Access to Work, Personal Independence Payment and disability cards, with Eleni from our People Team answering questions.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "ai",
+    "ready": true,
+    "title": "AI",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-09-22",
+    "summary": "Where AI helps neurodivergent people, where it falls short, and what to question when it’s called an accessibility tool, with a demo of Naz’s AI productivity game.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "special-interests",
+    "ready": true,
+    "title": "Special interests",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-07-16",
+    "summary": "What special interests are, why they matter so much to neurodivergent people, how they’re often dismissed, and how to respond well to them.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "early-versus-late-diagnosis",
+    "ready": true,
+    "title": "Early versus late diagnosis",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-06-18",
+    "summary": "The differences between being diagnosed as neurodivergent early or later in life, in the support people get and how they see themselves.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
     "slug": "moving-accessibility-from-debt-to-done",
     "ready": true,
     "title": "Moving accessibility from debt to done at giffgaff",
@@ -26,6 +94,142 @@
     "todo": []
   },
   {
+    "slug": "tourettes-syndrome",
+    "ready": true,
+    "title": "Tourette’s syndrome",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-05-19",
+    "summary": "For Tourette’s Awareness Month: what Tourette’s syndrome is beyond the stereotypes, what tics and the urges behind them feel like, and how to support people who tic.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "interoception-and-proprioception",
+    "ready": true,
+    "title": "Interoception and proprioception",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-04-21",
+    "summary": "Interoception and proprioception, the hidden senses for what’s happening inside your body and where it is, how they work differently for neurodivergent people, and how to support them.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "shared-success",
+    "ready": true,
+    "title": "Shared success",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-03-18",
+    "summary": "A celebration of neurodivergent strengths, such as hyper-focus, creative thinking, attention to detail and directness, and why neurodivergent role models matter.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "sharing-your-neurotype",
+    "ready": true,
+    "title": "Sharing your neurotype",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2026-02-26",
+    "summary": "The pros and cons of sharing that you’re neurodivergent at work, how to have that conversation, and how to respond when a colleague shares with you.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "lets-talk-about-anxiety",
+    "ready": true,
+    "title": "Let’s Talk About Anxiety",
+    "event": "giffgaff Affinity Groups call",
+    "date": "2026-01-22",
+    "summary": "What anxiety is and how it shows up, including for neurodivergent people, with lived experience and where to get support. I ran it with George, who gave half of the talk.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "travel",
+    "ready": true,
+    "title": "Travel",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2025-12-04",
+    "summary": "Why travel takes so much energy for neurodivergent people, and ideas to make it easier before and during a journey, from Street View to the Sunflower Lanyard.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "events",
+    "ready": true,
+    "title": "Events",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2025-11-17",
+    "summary": "Ideas for a stress-free time before, during and after events, covering presents, shopping, crowds, and lists and organisation.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "adhd",
+    "ready": true,
+    "title": "ADHD",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2025-10-16",
+    "summary": "What ADHD is, its 3 types, how it affects daily life, and the myths about it, with Melissa sharing her experience of having ADHD.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
     "slug": "ocd-not-just-even-numbers-and-organisation",
     "ready": true,
     "title": "OCD: Not just even numbers and organisation",
@@ -47,16 +251,84 @@
     "todo": []
   },
   {
+    "slug": "body-doubling",
+    "ready": true,
+    "title": "Body doubling",
+    "event": "giffgaff body doubling sessions",
+    "date": "2025-10",
+    "summary": "A monthly session where we each get something done that we’ve been putting off, together. It started with extra sessions for ADHD Awareness Month in October 2025.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "families",
+    "ready": true,
+    "title": "Families",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2025-09-08",
+    "summary": "What life is like in a family with neurodivergent members: communication, routines, the strengths these families share, and what helps or harms family relationships.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "sensory-processing-and-stimming",
+    "ready": true,
+    "title": "Sensory processing and stimming",
+    "event": "giffgaff neurodiversity monthly chat",
+    "date": "2025-08-19",
+    "summary": "What sensory processing disorder and stimming are, how they affect neurodivergent people, the support that helps, and how stimming differs from OCD.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
     "slug": "masking",
     "ready": true,
     "title": "Masking",
     "event": "giffgaff neurodiversity monthly chat",
     "date": "2025-07-31",
-    "summary": "A safe space discussion about masking: what it is, how it affects neurodivergent people, and how to help everyone feel safe to unmask.",
+    "summary": "What masking is, how it affects neurodivergent people, and how to help everyone feel safe to unmask.",
     "has": {
       "slides": "none",
-      "script": false,
-      "transcript": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not recorded"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
+    "slug": "imposter-syndrome-and-neurodiversity",
+    "ready": true,
+    "title": "Imposter syndrome and neurodiversity",
+    "event": "giffgaff Affinity Groups call",
+    "date": "2025-07-03",
+    "summary": "How imposter syndrome and neurodivergence feed each other, from masking and uneven skills to doubting a diagnosis. I ran it with James.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
       "slideText": "none",
       "recording": "not recorded"
     },
@@ -65,14 +337,14 @@
   },
   {
     "slug": "we-do-the-hard-work-accessibility",
-    "ready": false,
+    "ready": true,
     "title": "We do the hard work: accessibility",
     "event": "giffgaff Future Capabilities monthly meeting",
     "date": "2025-06-19",
     "summary": "How we rebuilt giffgaff’s phones range page with accessibility from day one, what changed for screen reader users, and why it took no extra time.",
     "video": {
       "href": "https://youtu.be/5f0aXQQferk",
-      "captions": "none",
+      "captions": "accurate",
       "describedAloud": false
     },
     "alsoGiven": [
@@ -80,22 +352,20 @@
         "description": "a shorter version",
         "event": "giffgaff Future Capabilities Demo",
         "date": "2025-07-10",
-        "href": "https://youtu.be/Ir8Jo95jRgc"
+        "href": "https://youtu.be/Ir8Jo95jRgc",
+        "slug": "shorter-version",
+        "transcript": "checked"
       }
     ],
     "has": {
       "slides": "none",
       "script": false,
-      "transcript": "draft",
+      "transcript": "checked",
       "slideText": "none",
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": [
-      "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript",
-      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
-    ]
+    "todo": []
   },
   {
     "slug": "accessibility-conversation-with-kai-wong-part-2",
@@ -119,10 +389,8 @@
     "permission": "needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Kai’s OK for it to be public",
-      "Check the summary",
-      "Colleagues are named: Ian, Alice and Kate. Get their OK, or leave the names out"
+      "Check the transcript",
+      "Kai’s OK for it to be public"
     ]
   },
   {
@@ -147,22 +415,37 @@
     "permission": "needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Kai’s OK for it to be public",
-      "Check the summary",
-      "Colleagues are named: Eve, Ian and James. Get their OK, or leave the names out"
+      "Check the transcript. Listen to the video for its 3 parts marked “[check: ...]”: the name of Kai’s group at Teladoc Health, any words missing before “I found my group of people”, and the unclear words after “people who’ve been working for a long time”",
+      "Kai’s OK for it to be public"
     ]
   },
   {
+    "slug": "autism-and-gender",
+    "ready": true,
+    "title": "Autism and gender",
+    "event": "giffgaff Autistic Pride Day",
+    "date": "2025-06-16",
+    "summary": "For Autistic Pride Day: what autism is, why it’s diagnosed less often in women and girls, and how it can show up differently.",
+    "has": {
+      "slides": "none",
+      "script": true,
+      "transcript": "checked",
+      "slideText": "none",
+      "recording": "not shared"
+    },
+    "permission": "not needed",
+    "todo": []
+  },
+  {
     "slug": "accessibility-culture-day-welcome",
-    "ready": false,
+    "ready": true,
     "title": "Accessibility Culture Day welcome",
     "event": "giffgaff Accessibility Culture Day",
     "date": "2025-05-22",
     "summary": "The opening talk for giffgaff’s Accessibility Culture Day: the types of disability, who benefits from accessibility, the Purple Pound, and the plan for the day.",
     "video": {
       "href": "https://youtu.be/lrHRw93BNMc",
-      "captions": "none",
+      "captions": "accurate",
       "describedAloud": false
     },
     "slidesFile": {
@@ -172,19 +455,12 @@
     "has": {
       "slides": "file",
       "script": true,
-      "transcript": "draft",
-      "slideText": "draft",
+      "transcript": "checked",
+      "slideText": "checked",
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": [
-      "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "Cut ITB’s parts from the video, which also removes slides 2, 3 and 5",
-      "After cutting the video, the captions won’t line up. Send Claude the cut video to remake them",
-      "Check the summary",
-      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
-    ]
+    "todo": []
   },
   {
     "slug": "accessibility-knowledge-sharing",
@@ -206,16 +482,14 @@
       "slides": "file",
       "script": false,
       "transcript": "draft",
-      "slideText": "draft",
+      "slideText": "checked",
       "recording": "youtube"
     },
     "permission": "not needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the title and summary",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "If you change the transcript, Claude can remake the captions to match, as they were made from it",
-      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
+      "Check the transcript",
+      "If you change the transcript, Claude can remake the captions to match, as they were made from it"
     ]
   },
   {
@@ -242,14 +516,14 @@
   },
   {
     "slug": "a11y-series-buttons",
-    "ready": false,
+    "ready": true,
     "title": "A11y Series: Buttons",
-    "event": "giffgaff",
+    "event": "giffgaff A11y Series",
     "date": "2021-07-16",
     "summary": "How to build buttons that work for everyone, from button text and labels to tap target sizes and focus styles, and why disabled buttons cause problems.",
     "video": {
       "href": "https://youtu.be/FHCQrLDPq84",
-      "captions": "none",
+      "captions": "accurate",
       "describedAloud": false
     },
     "slidesFile": {
@@ -259,17 +533,11 @@
     "has": {
       "slides": "file",
       "script": false,
-      "transcript": "draft",
-      "slideText": "draft",
+      "transcript": "checked",
+      "slideText": "checked",
       "recording": "youtube"
     },
     "permission": "not needed",
-    "todo": [
-      "Check the captions on YouTube, then mark them as accurate here",
-      "Check the title and summary",
-      "Check the transcript, including the parts marked “[check: ...]”",
-      "If you change the transcript, Claude can remake the captions to match, as they were made from it",
-      "Read the description of each slide, in src/content/talks/slides/, then mark the slide text as checked"
-    ]
+    "todo": []
   }
 ]

@@ -36,6 +36,13 @@ export interface Talk {
    * isn't fully accessible. Only once the descriptions are checked
    */
   slidesPage?: boolean;
+  /**
+   * There's no recording to share, so the talk is listed under “Other talks”, with no talk page of
+   * its own. Any transcript is my script, not what I said on the day
+   */
+  notRecorded?: boolean;
+  /** For a talk that wasn't recorded, a checked transcript made from my script, on its own page */
+  transcriptFromScript?: boolean;
   /** Other times I gave this talk, with their own recordings */
   alsoGiven?: AlsoGiven[];
 }
@@ -48,6 +55,19 @@ export interface AlsoGiven {
   date: string;
   /** The recording on YouTube */
   href: string;
+  /**
+   * Its transcript page's address: /talks/{talk's slug}/{slug}/transcript. Only there once the
+   * transcript is checked
+   */
+  slug?: string;
+}
+
+/**
+ * Another time I gave a talk, in talks.json. Its transcript, if it has one, is in
+ * src/content/talks/also/{talk's slug}-{date}.md
+ */
+export interface AlsoGivenRecord extends AlsoGiven {
+  transcript?: 'checked' | 'draft';
 }
 
 /** What I have for a talk, to keep track of what's still missing */
@@ -66,14 +86,24 @@ export interface TalkHas {
    * checked and ready, a draft to check, or none
    */
   slideText: 'checked' | 'draft' | 'none';
-  recording: 'youtube' | 'uploading' | 'not recorded' | 'unknown';
+  /**
+   * On YouTube, being uploaded, not recorded, recorded but not shared (for example, as it has other
+   * people's personal stories), or not known yet
+   */
+  recording: 'youtube' | 'uploading' | 'not recorded' | 'not shared' | 'unknown';
+}
+
+/** Talks with no recording to share are listed under “Other talks”, with no page of their own */
+function hasNoRecording({ has }: TalkRecord): boolean {
+  return has.recording === 'not recorded' || has.recording === 'not shared';
 }
 
 /**
  * A talk in talks.json: its details, plus what I have for it and what's still to do. Only talks
  * marked ready appear on the site, and tests check a talk has everything it needs before it can be
  */
-export interface TalkRecord extends Talk {
+export interface TalkRecord extends Omit<Talk, 'alsoGiven'> {
+  alsoGiven?: AlsoGivenRecord[];
   ready: boolean;
   has: TalkHas;
   /** Whether anyone else in the talk, or giffgaff, needs to agree before it's public */
@@ -105,29 +135,58 @@ export function publicTalk(record: TalkRecord): Talk {
     ...(slidesHref && { slidesHref }),
     ...(slidesFile && { slidesFile }),
     ...(record.has.slideText === 'checked' && { slidesPage: true }),
-    ...(alsoGiven && { alsoGiven }),
+    ...(hasNoRecording(record) && { notRecorded: true }),
+    ...(hasNoRecording(record) &&
+      record.has.transcript === 'checked' && { transcriptFromScript: true }),
+    ...(alsoGiven && { alsoGiven: alsoGiven.map(publicAlsoGiven) }),
+  };
+}
+
+/** Another time I gave a talk, with its transcript page only once the transcript is checked */
+function publicAlsoGiven(record: AlsoGivenRecord): AlsoGiven {
+  const { description, event, date, href, slug, transcript } = record;
+
+  return {
+    description,
+    event,
+    date,
+    href,
+    ...(slug && transcript === 'checked' ? { slug } : {}),
   };
 }
 
 /**
- * The talks on the site: the ready ones, newest first. Transcripts describe anything shown on screen,
- * such as slides and demos, as well as what's said, where the slides still exist (WCAG 1.2.8)
+ * The recorded talks on the site, each with its own page: the ready ones, newest first. Transcripts
+ * describe anything shown on screen, such as slides and demos, as well as what's said, where the
+ * slides still exist (WCAG 1.2.8)
  */
 export const TALKS: Talk[] = TALK_RECORDS.filter(
-  (record) => record.ready && record.has.transcript === 'checked',
+  (record) => record.ready && record.has.transcript === 'checked' && !hasNoRecording(record),
 )
   .map(publicTalk)
   .sort((a, b) => b.date.localeCompare(a.date));
 
 /**
- * Ready talks that weren't recorded and have no transcript, newest first. Every talk page needs a
- * full transcript, so these are listed under “Other talks” instead, with no page of their own
+ * Ready talks that weren't recorded, newest first. They're listed under “Other talks”, with no page
+ * of their own, as there's no recording to make a full transcript from. Some have a transcript made
+ * from my script, or a Slides page, which have their own pages
  */
 export const OTHER_TALKS: Talk[] = TALK_RECORDS.filter(
-  (record) => record.ready && record.has.transcript === 'none',
+  (record) => record.ready && hasNoRecording(record),
 )
   .map(publicTalk)
   .sort((a, b) => b.date.localeCompare(a.date));
+
+/** Every talk with a transcript page: all the recorded ones, and others with a checked script */
+export const TALKS_WITH_TRANSCRIPTS: Talk[] = [
+  ...TALKS,
+  ...OTHER_TALKS.filter((talk) => talk.transcriptFromScript),
+];
+
+/** Every talk with a Slides page, recorded or not */
+export const TALKS_WITH_SLIDES: Talk[] = [...TALKS, ...OTHER_TALKS].filter(
+  (talk) => talk.slidesPage,
+);
 
 /** A talk's folder in public/, with its slides PDF and a picture of each slide */
 export function slidesFolder(slug: string): string {

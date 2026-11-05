@@ -26,6 +26,32 @@ describe('Talk transcript page', () => {
     expect(transcriptSlugFrom(url)).toBe('debt-to-done');
   });
 
+  it('finds the talk’s slug and the other time it was given in that one’s address', () => {
+    expect(
+      transcriptSlugFrom('http://localhost/talks/debt-to-done/shorter-version/transcript'),
+    ).toBe('debt-to-done/shorter-version');
+  });
+
+  it('has a page title, description and address of its own for another time the talk was given', () => {
+    const alsoGiven = {
+      description: 'a shorter version',
+      event: 'Example demo day',
+      date: '2025-07-10',
+      href: 'https://youtu.be/example',
+      slug: 'shorter-version',
+    };
+    const args = { loaderData: { ...PAGE, alsoGiven } } as Parameters<typeof meta>[0];
+
+    expect(meta(args)).toEqual(
+      pageMeta({
+        title: 'Transcript: Example talk (a shorter version), Abi Harrison-Nye',
+        description:
+          'The full transcript of a shorter version of my talk “Example talk”, at Example demo day.',
+        path: '/talks/example-talk/shorter-version/transcript',
+      }),
+    );
+  });
+
   it('has its own page title and description, at its own address', () => {
     const args = { loaderData: PAGE } as Parameters<typeof meta>[0];
 
@@ -42,6 +68,20 @@ describe('Talk transcript page', () => {
     const args = { loaderData: undefined } as Parameters<typeof meta>[0];
 
     expect(meta(args)).toEqual([]);
+  });
+
+  it('gives a 404 for another time a talk was given that has no transcript page', () => {
+    const args = {
+      request: new Request('http://localhost/talks/not-a-real-talk/shorter-version/transcript'),
+    } as Parameters<typeof loader>[0];
+    let thrown: unknown;
+    try {
+      loader(args);
+    } catch (error) {
+      thrown = error;
+    }
+
+    expect((thrown as { init?: { status?: number } }).init?.status).toBe(404);
   });
 
   it('gives a 404 for a talk that isn’t on the site', () => {

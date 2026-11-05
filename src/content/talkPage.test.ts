@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { loadSlidesPage, loadTalkPage, loadTranscriptPage } from './talkPage';
+import {
+  loadAlsoGivenTranscriptPage,
+  loadSlidesPage,
+  loadTalkPage,
+  loadTranscriptPage,
+} from './talkPage';
 import type { Talk } from './talks';
 
 const TALKS: Talk[] = [
@@ -60,6 +65,57 @@ describe('loadTranscriptPage', () => {
   it('gives a 404 for a talk that doesn’t exist, or has no transcript', () => {
     expect(thrownStatus(() => loadTranscriptPage('missing', TALKS, {}))).toBe(404);
     expect(thrownStatus(() => loadTranscriptPage('example-talk', TALKS, {}))).toBe(404);
+  });
+});
+
+describe('loadAlsoGivenTranscriptPage', () => {
+  const alsoGiven = {
+    description: 'a shorter version',
+    event: 'Example demo day',
+    date: '2025-07-10',
+    href: 'https://youtu.be/example',
+  };
+  const withAlsoGiven: Talk[] = TALKS.map((talk) => ({
+    ...talk,
+    alsoGiven: [{ ...alsoGiven, slug: 'shorter-version' }],
+  }));
+  const transcripts = { 'example-talk-2025-07-10': '### Introduction\n\nHi.' };
+
+  it('gives the talk, the other time it was given, and that transcript as HTML', () => {
+    const page = loadAlsoGivenTranscriptPage(
+      'example-talk',
+      'shorter-version',
+      withAlsoGiven,
+      transcripts,
+    );
+
+    expect(page.talk.title).toBe('Example talk');
+    expect(page.alsoGiven?.event).toBe('Example demo day');
+    expect(page.transcriptHtml).toBe('<h2 id="introduction">Introduction</h2>\n<p>Hi.</p>\n');
+  });
+
+  it('gives a 404 when the other time has no transcript page, or no transcript', () => {
+    const withoutPage: Talk[] = TALKS.map((talk) => ({ ...talk, alsoGiven: [alsoGiven] }));
+
+    expect(
+      thrownStatus(() =>
+        loadAlsoGivenTranscriptPage('example-talk', 'shorter-version', withoutPage, transcripts),
+      ),
+    ).toBe(404);
+    expect(
+      thrownStatus(() =>
+        loadAlsoGivenTranscriptPage('example-talk', 'shorter-version', withAlsoGiven, {}),
+      ),
+    ).toBe(404);
+    expect(
+      thrownStatus(() =>
+        loadAlsoGivenTranscriptPage('missing', 'shorter-version', withAlsoGiven, transcripts),
+      ),
+    ).toBe(404);
+  });
+
+  it('uses the real talks and transcripts by default', () => {
+    expect(thrownStatus(() => loadAlsoGivenTranscriptPage('not-a-real-talk', 'none'))).toBe(404);
   });
 });
 

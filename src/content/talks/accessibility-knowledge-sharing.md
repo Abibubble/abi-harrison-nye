@@ -24,7 +24,6 @@ In slightly more selfish terms, it does save us time, as developers and suchlike
 
 It also helps in our B Corp journey. There are points within the B Corp accreditation that are
 directly related to how accessible our website is, how accessible our app is, things like that.
-[check: the recording says “giffgaff accreditation”]
 
 And the final thing is the monetary value. It helps us tap into the Purple Pound.
 
@@ -65,7 +64,7 @@ this very reason.
 Maybe you’ve got slow internet. Not everybody is as lucky as us, to live in places where the internet
 is as strong as it is, so that’s always something to bear in mind.
 
-I’ll be completely honest, I stole this one from my own life. Maybe your cat has decided to have a nap
+I stole this one from Eve, I’ll be completely honest. Maybe your cat has decided to have a nap
 on your keyboard. Mine is very slowly being trained that keyboards are not for napping on, but it’s
 slow progress.
 
@@ -89,13 +88,15 @@ work. These are the basics.
 Using correct semantics really adds so much information to your page, which can then be used by
 screen readers, web scrapers, everybody like that.
 
-For instance, if you use a section element or an article element instead of a div, it gives so much
-more meaning to your code. [check: a few words about app development weren’t clear here]
+For instance, if you use a section element or an article element instead of using a div, or in app
+development, a View, it gives so much more meaning to your code.
 
 A web scraper, like Google, can then read our site better. It can go through and say, okay, this
 heading relates to this chunk of text. So if somebody’s searching for this heading, it knows that the
 text below it is linked, and it will show up better in search engines. That improves our search
-engine optimisation (SEO), and gives us a happy Helen. [check: “Helen”]
+engine optimisation (SEO), and gives us a happy Helen.
+
+Helen is in charge of SEO at giffgaff.
 
 It also saves us work in the long run. We’re using the extra features that are built into each
 element, instead of having to shoehorn them in and try to build them ourselves. We can just use
@@ -250,18 +251,23 @@ for the web and the app.
 ### Demo: a screen reader on the giffgaff app
 
 On screen: “Demo. Using a screen reader on the app (Android, TalkBack)”, then a screen recording of
-the giffgaff app on an Android phone. [check: describe what the recording shows]
+the giffgaff app on an Android phone.
 
 Excuse the non-live demo here. I couldn’t work out how to get my phone to show up, and I couldn’t
 work out how to get the screen reader software onto the simulator. So this is a very quick example of
 using a screen reader on our giffgaff app. This was done on an Android device, so it’s using the
 TalkBack screen reader. Fingers crossed you can all hear the audio.
 
-The recording plays. TalkBack reads out the login screen, including “Unlock giffgaff”, “Tap to cancel
-authentication” and “Password”, then “Authenticated”. It then reads the plan card: “My plan”, “More
-info”, “Close modal”, “Your current plan, unlimited”, “Unlimited UK data”, “Fair usage policy
-applies”, and “Your plan comes with unlimited standard calls and texts in the UK and while EU
-roaming”, then how much data is left. [check: the speech recognition caught only parts of this]
+The recording plays. What TalkBack says matters more than what’s on screen. The screen is black
+until TalkBack says “Authenticated”, then it shows me moving through the giffgaff app.
+
+TalkBack says: “Double”, “giffgaff”, “in”, “giffgaff”, “Unlock giffgaff”, “Tap to cancel
+authentication”, “Button”, “Out of grid”, “Double tap to activate”, “Unlock giff”, “Button”,
+“Double”, “Password”, “Authenticated”, “Tap to cancel auth”, “Data card”, “My plan”, “Data card”, “My
+plan”, “First plan item”, “More info”, “Close modal”, “Your current plan”, “Your current plan,
+unlimited”, “Your current plan, unlimited”, “Unlimited UK data”, “Fair usage policy applies”, “Your
+plan comes with unlimited standard calls and texts in the UK and while”, “EU roaming”, “5 point 00
+gigabytes left”, “Use up to 5 gigabytes”, “Notification”, “Finish recording”.
 
 Okay, so just to quickly talk through what happened there. Once I’d opened the giffgaff app, it took
 me to the login screen, which is the screen that’s blanked out. That’s very good security-wise. It’s
@@ -287,8 +293,20 @@ suddenly I find out that I can’t see it, as such.
 
 ### Demo: the giffgaff website with a keyboard only
 
-On screen: “Demo. Using keyboard only on the web (no mouse)”, then the giffgaff website in a browser.
-[check: describe what’s on screen during the demo]
+On screen: “Demo. Using keyboard only on the web (no mouse)”, then the giffgaff home page in a
+browser. As I press tab, the focus moves through the page:
+
+- A “Skip to main content” link appears on the first tab.
+- The giffgaff logo.
+- The “Join us” link, shown as black text on a white background.
+- The navigation, with drop-down menus opening and closing as I explain how tab, shift and tab, and
+  enter work.
+- The button in the masthead, then the terms link.
+- The “SIM only” and “Phones” tabs.
+- The “Order your free SIM” and “Activate your SIM” buttons. The boings around one button cover the
+  other button, which is too close.
+- The iPhone 14 banner, then an empty box.
+- Then there’s no visible focus at all, until it reaches a phone card.
 
 Okay, final demo, if it lets me click. There we are. I’m going to show you the website using a
 keyboard only, so not using my mouse at all. This is probably where things will go wrong, because
@@ -317,7 +335,7 @@ Next we get to our main banner. Masthead, that’s the word. If I press tab now,
 with a nice little focus style on it, looking very nice. I tab again and get to the terms, also very
 nice. Another tab, and we’ve got this little card, which is super cute.
 
-Then if I tab into the button, we get the boings, which again show me where I am. [check: “boings”]
+Then if I tab into the button, we get the boings, which again show me where I am.
 This is an example of tap targets that are too close together, because if I press tab once more,
 you’ll see the top left boing is covering the first button a bit. Those could do with a bit more space
 between them.
@@ -354,7 +372,7 @@ accessibility.
 
 **Colleague:** Have we ever been able to measure how many people are affected by it currently?
 
-I have a few ideas of how to do it, but there’s a lot more investigation that needs to be done. For
+Not currently. I have a few ideas of how to do it, but there’s a lot more investigation that needs to be done. For
 instance, I know that Google Tag Manager and Google Analytics don’t offer those kinds of analytics.
 That’s because there’s a chance a company might look at them and say, “None of our members use screen
 readers, so we’re not going to bother developing for screen reader users.” So there isn’t a lot of

@@ -1,5 +1,5 @@
-import { slidesPath, transcriptPath } from '../../src/content/talkPath';
-import { TALKS } from '../../src/content/talks';
+import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from '../../src/content/talkPath';
+import { OTHER_TALKS, TALKS } from '../../src/content/talks';
 import type { DisplaySettings } from '../../src/settings/displaySettings';
 
 export const SITE_PAGES = [
@@ -20,6 +20,22 @@ export const ROUTES: readonly { name: string; path: string }[] = [
   ...TALKS.flatMap((talk) => [
     { name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` },
     { name: `Transcript: ${talk.title}`, path: transcriptPath(talk.slug) },
+    ...(talk.alsoGiven ?? []).flatMap((other) =>
+      other.slug
+        ? [
+            {
+              name: `Transcript: ${talk.title} (${other.description})`,
+              path: alsoGivenTranscriptPath(talk.slug, other.slug),
+            },
+          ]
+        : [],
+    ),
+    ...(talk.slidesPage ? [{ name: `Slides: ${talk.title}`, path: slidesPath(talk.slug) }] : []),
+  ]),
+  ...OTHER_TALKS.flatMap((talk) => [
+    ...(talk.transcriptFromScript
+      ? [{ name: `Transcript: ${talk.title}`, path: transcriptPath(talk.slug) }]
+      : []),
     ...(talk.slidesPage ? [{ name: `Slides: ${talk.title}`, path: slidesPath(talk.slug) }] : []),
   ]),
 ];
