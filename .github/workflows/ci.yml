@@ -35,10 +35,11 @@ jobs:
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
-    # The version must match @playwright/test in package.json
+    # The version must match @playwright/test in package.json. --ipc=host gives Chrome the machine's
+    # shared memory, as the container's own is too small and Chrome crashes without it
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
-      options: --user 1001
+      options: --user 1001 --ipc=host
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -56,10 +57,11 @@ jobs:
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
-    # The version must match @playwright/test in package.json
+    # The version must match @playwright/test in package.json. --ipc=host gives Chrome the machine's
+    # shared memory, as the container's own is too small and Chrome crashes without it
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
-      options: --user 1001
+      options: --user 1001 --ipc=host
     strategy:
       fail-fast: false
       matrix:
@@ -85,10 +87,11 @@ jobs:
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
-    # The version must match @playwright/test in package.json
+    # The version must match @playwright/test in package.json. --ipc=host gives Chrome the machine's
+    # shared memory, as the container's own is too small and Chrome crashes without it
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
-      options: --user 1001
+      options: --user 1001 --ipc=host
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -111,10 +114,11 @@ jobs:
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
-    # The version must match @playwright/test in package.json
+    # The version must match @playwright/test in package.json. --ipc=host gives Chrome the machine's
+    # shared memory, as the container's own is too small and Chrome crashes without it
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
-      options: --user 1001
+      options: --user 1001 --ipc=host
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6

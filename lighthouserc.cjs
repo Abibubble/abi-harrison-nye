@@ -86,7 +86,8 @@ module.exports = {
       chromePath: process.env.CHROME_PATH ?? chromium.executablePath(),
       // Ubuntu 24.04, which CI runs on, blocks Chrome's sandbox, so Chrome won't start with it.
       // Playwright runs Chromium without it there too. It only ever loads this site.
-      settings: { chromeFlags: process.env.CI ? '--no-sandbox' : '' },
+      // In CI's container, Chrome also avoids the small shared memory area, which can crash it
+      settings: { chromeFlags: process.env.CI ? '--no-sandbox --disable-dev-shm-usage' : '' },
     },
     assert: {
       assertMatrix: [
