@@ -5,6 +5,7 @@ import { QualificationList, SkillsList, SpeakingList } from '../components/CvLis
 import { AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
+import { FullName } from '../components/FullName';
 import { PageHeading } from '../components/PageHeading';
 import { PlainSummary } from '../components/PlainSummary';
 import { PrintOptions } from '../components/PrintOptions';
@@ -65,7 +66,9 @@ export function CvPage({
       <Stack gap={4}>
         <PageHeading>CV</PageHeading>
         <div className={styles.contact}>
-          <p className={styles.name}>{SITE_NAME}</p>
+          <p className={styles.name}>
+            <FullName />
+          </p>
           <p>
             {PROFILE.headline}, <AbbrText>{PROFILE.location}</AbbrText>
           </p>

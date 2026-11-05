@@ -1,10 +1,10 @@
 ### What is it for?
 
-Neurodiversity describes the natural variations in how human brains function, process information, learn, and interact. This includes conditions like autism, ADHD, dyslexia, and dyspraxia. In law and in accessibility, neurodivergence counts as a disability. But not all neurodivergent people see themselves as disabled.
+Neurodiversity describes the natural variations in how human brains function, process information, learn, and interact. This includes conditions like autism, ADHD, dyslexia, and dyspraxia. Under UK law (the Equality Act 2010), neurodivergence can count as a disability if it has a substantial, long-term effect on someone's day-to-day activities. But not all neurodivergent people see themselves as disabled.
 
 Designing for neurodiversity is a way of making websites and apps that are clear, predictable, and easy to use for people with different ways of thinking. Bad design can create problems for thinking and processing, such as:
 
-- Cognitive overload can be overwhelming, caused by busy layouts, auto-playing videos, and flashing animations
+- Busy layouts, auto-playing videos, and flashing animations can cause cognitive overload, where there's too much information to take in at once
 - Using jargon, complex words, or vague phrases means that some people simply can't understand what you're trying to say
 - Menus, buttons, or layouts that change from page to page mean that people don't know what to expect, and it takes more cognitive work to understand
 - Long blocks of text make it hard to find information

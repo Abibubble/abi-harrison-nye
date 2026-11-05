@@ -70,8 +70,11 @@ export function TalkSlides({ talk, slides }: TalkSlidesProps) {
             width={SLIDE_PICTURE.width}
             height={SLIDE_PICTURE.height}
             alt=""
+            // The first slide is usually the biggest thing on screen as the page opens, so it loads
+            // first and shows straight away. The rest load as they're scrolled near
             loading={slide.number === 1 ? 'eager' : 'lazy'}
-            decoding="async"
+            fetchPriority={slide.number === 1 ? 'high' : 'auto'}
+            decoding={slide.number === 1 ? 'sync' : 'async'}
           />
           <Transcript html={slide.html} />
         </Stack>

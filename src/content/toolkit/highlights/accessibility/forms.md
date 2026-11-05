@@ -10,7 +10,7 @@ Inaccessible forms create significant barriers that can prevent people from comp
 - Small tap targets: Small radio buttons or checkboxes are difficult to select for users with motor impairments
 - Overly complex layouts or time limits can create cognitive barriers, making the form confusing or stressful to complete
 
-Fully supported. All modern web browsers and assistive technologies (like screen readers) fully support the standard HTML elements (`<label>`, `<input>`, `<fieldset>`, `<legend>`, etc.) and ARIA attributes needed to create accessible forms.
+All modern web browsers and assistive technologies (like screen readers) fully support the standard HTML elements (`<label>`, `<input>`, `<fieldset>`, `<legend>`, etc.) and Accessible Rich Internet Applications (ARIA) attributes needed to create accessible forms.
 
 ### How to support it
 
@@ -21,13 +21,13 @@ To ensure your form is accessible, you should build it with semantic HTML and cl
 - Group related fields
   - Use a `<fieldset>` to group related items (like a set of radio buttons for a "Yes/No" question, or the fields for a shipping address) and a `<legend>` to describe the group
 - Provide clear error validation
-  - When a user submits an error, the message should be in text, identify the specific field, clearly describe the problem, and suggest a correction
+  - When a form has errors after the user submits it, the message should be in text, identify the specific field, clearly describe the problem, and suggest a correction
 - Ensure full keyboard accessibility
-  - A user must be able to navigate to every form field, link, and button using only the 'Tab' key, in a logical sequence.
+  - A user must be able to navigate to every form field, link, and button using only the keyboard (for example 'Tab', 'Shift + Tab', the arrow keys and 'Space'), in a logical sequence.
 - Use high-contrast colours for text, borders, and controls, and ensure all clickable elements have a large enough target size.
 
 ### Useful links
 
-- [W3C WAI: Forms Tutorial](https://www.w3.org/WAI/tutorials/forms/)
+- [World Wide Web Consortium (W3C) WAI: Forms Tutorial](https://www.w3.org/WAI/tutorials/forms/)
 - [WebAIM: Creating Accessible Forms](https://webaim.org/techniques/forms/)
 - [MDN: Web Forms](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)

@@ -8,7 +8,7 @@ Modals are incredibly useful for (but not limited to):
 
 - People with cognitive impairments
 - People with ADHD
-- People with Autism
+- People with autism
 - Screen reader users
 
 [Almost fully supported (Can I use: dialog element)](https://caniuse.com/dialog) - Internet Explorer, Opera Mini and KaiOS don't support it, though those aren't widely used.

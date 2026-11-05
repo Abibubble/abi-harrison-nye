@@ -15,34 +15,50 @@ Each resource in a folder's `items` has:
 
 - `slug`, `title` and `description`, ending in a full stop
 - `updated`, the date it was last updated, as YYYY-MM-DD
-- `files`, each with a `path` and `size`. Files go in `public/inclusion-toolkit/files/`, such as
-  `inclusion-toolkit/files/highlights/accessibility/dark-mode.pdf`. They can be PDF, Word (`.docx`)
-  or PowerPoint (`.pptx`). The PDF's View link opens it in a new tab. The size is as your computer
-  shows it, with 1000 bytes to a kilobyte, such as `307KB` or `1.2MB`.
 - `slides`: `true` if it has a slides version
 - `text`: `"draft"` while its text needs checking, then `"checked"`
 - `todo`: what's still to do for it
 
+## Files
+
+Each resource's files go in `public/inclusion-toolkit/files/`, named after its address. So the
+resource at `/inclusion-toolkit/highlights/accessibility/dark-mode` has:
+
+- `highlights/accessibility/dark-mode.pdf`
+- `highlights/accessibility/dark-mode.docx`
+- `highlights/accessibility/dark-mode.pptx`, only if it has `"slides": true`
+
+They aren't listed in `toolkit.json`. The site finds them by their names, and works out their sizes
+when it's built. The PDF's View link opens it in a new tab.
+
 ## When a resource goes live
 
-A resource only goes on the site once it has everything, so nobody is left out:
-
-- its text, marked `"checked"`
-- a Word file and a PDF
-- a PowerPoint file too, if it has `"slides": true`
-
-Until then, the build removes its files, so they never go live.
+A resource only goes on the site once its text is marked `"checked"`. It must then have every file
+above, or the tests and the build fail, so it can never go live without them and nobody is left
+out. Until then, the build removes its files, so they never go live.
 
 ## Making the files
 
-The originals are in `toolkit-sources/`, which isn't committed. From the repo root, using the Node
-version from `.nvmrc`:
+The Word files are the ones to edit. Everything else is made from them. They're in
+`toolkit-sources/branded/`, which isn't committed:
 
-1. `python3 -I toolkit-sources/rebrand.py` makes my own-branded Word and PowerPoint files.
+- the 3 small resources, such as `accessible-meeting-checklist.docx`
+- `highlights/accessibility/accessibility-highlights.docx`, the full highlights. The single
+  highlights are cut from it, so edit this one rather than them
+- `highlights/accessibility/accessibility-highlights.pptx`, the slides, edited by hand separately
+
+After editing, from the repo root, using the Node version from `.nvmrc`:
+
+1. `python3 -I toolkit-sources/rebrand.py` tidies the Word files (the footer, links, fonts and file
+   details) and cuts the full highlights into one Word file for each highlight.
 2. `python3 -I toolkit-sources/export.py` makes a tagged PDF from each Word file, drafts the text for
-   any resource that doesn't have it yet, copies the files here, and adds or updates each resource
-   in `toolkit.json`. It never changes text, descriptions or to-dos that are already there.
+   any resource that doesn't have it yet, copies the files here, and adds any new resource to
+   `toolkit.json`. It never changes text, descriptions or to-dos that are already there.
 3. `pnpm exec prettier --write src/content/toolkit src/content/toolkit.json`
+
+Without the scripts, you can still do it by hand: save the Word file, save it as a PDF from Word
+(choosing the option that's best for accessibility), put both in the right folder above, and update
+the page's text in this folder.
 
 ## Text
 

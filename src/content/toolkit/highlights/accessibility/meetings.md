@@ -2,21 +2,21 @@
 
 Meetings are part of most workdays, and there are many ways to make them fully accessible and inclusive. This helps everyone, but it can be especially impactful for:
 
-- Neurodiverse people
+- Neurodivergent people
 - People with anxiety
 - People with learning disabilities
 
 ### How to support it
 
-Start with an inclusive meeting invite, such as this [inclusive meeting invite template](https://abiharrisonnye.dev/inclusion-toolkit/meeting-invite-template). Ask attendees whether they have any accessibility requirements, and let them know which accessibility features are available during the meeting. Give all the details about the meeting up front. This gives people time to prepare, read anything they need to, and understand what is being asked of them. Say whether it's a remote, hybrid, or in person meeting, and whether the meeting will be recorded or not.
+Start with an inclusive meeting invite, such as this [inclusive meeting invite template](https://abiharrisonnye.dev/inclusion-toolkit/meeting-invite-template). Ask attendees whether they have any accessibility requirements, and let them know which accessibility features are available during the meeting. Give all the details about the meeting up front. This gives people time to prepare, read anything they need to, and understand what is being asked of them. Say whether it's a remote, hybrid, or in-person meeting, and whether the meeting will be recorded or not.
 
 Some other things you can consider are:
 
-- Provide an audio description of yourself for anyone who might be visually impaired. This is especially important for any meetings that will be recorded for future use
-- Let everyone know your pronouns (you can also add them into your Zoom name)
-- Shortening your meetings by 5-10 minutes, to avoid anyone having no gaps between meetings
+- Give a short visual description of yourself for anyone who might be visually impaired. This is especially important for any meetings that will be recorded for future use
+- Let everyone know your pronouns (you can also add them to your display name)
+- Shorten your meetings by 5-10 minutes, to avoid anyone having no gaps between meetings
 - Allow for people to move, doodle, fidget or stand during the meeting
-- Let your attendees know that they can turn on closed captions or the meeting transcript (this is often hidden under 'More' in their Zoom bottom bar)
+- Let your attendees know that they can turn on closed captions or the meeting transcript (this is often hidden under 'More' in the meeting controls)
 - Include breaks for meetings longer than an hour
 
 ### Useful links

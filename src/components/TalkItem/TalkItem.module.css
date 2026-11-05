@@ -12,7 +12,8 @@
 }
 
 /* Links to a talk's transcript and slides, for talks without a page. Each stands on its own, so it
-   needs a full size target (WCAG 2.5.5) */
+   needs a full size target (WCAG 2.5.5). A long word, such as "accommodations" in large text,
+   breaks rather than making the page scroll sideways (WCAG 1.4.10) */
 .links {
   padding: 0;
   list-style: none;
@@ -21,5 +22,7 @@
 .links a {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   min-height: var(--size-target-min);
+  overflow-wrap: anywhere;
 }

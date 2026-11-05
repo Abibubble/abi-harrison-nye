@@ -6,7 +6,7 @@ There are three types, each a milder counterpart to the full deficiencies covere
 
 **Protanomaly** is a reduced sensitivity to red, making it harder to distinguish red from green or brown.
 
-**Deuteranomaly** is a reduced sensitivity to green, again causing difficulty with red and green. It is the most common form of colour vision deficiency overall, affecting around 6% of men.
+**Deuteranomaly** is a reduced sensitivity to green, again causing difficulty with red and green. It is the most common form of colour vision deficiency overall, affecting around 5% of men.
 
 **Tritanomaly** is a reduced sensitivity to blue, making blue and green, and yellow and red, harder to tell apart. It is much rarer than the other two.
 
@@ -17,11 +17,11 @@ This is milder than full colour blindness, so people with anomalous trichromacy 
 The key principle is that colour should always be paired with another visual cue.
 
 - Designers can add icons, labels, or patterns next to colour to show meaning. They can also use [colour-blind simulation tools](https://chromewebstore.google.com/detail/web-disability-simulator/olioanlbgbpmdlgjnnampnnlohigkjla) to check designs before they are built.
-- Developers can ensure interactive states like errors and warnings are distinguishable by more than just colour (i.e. by using icons or supporting text).
+- Developers can ensure interactive states like errors and warnings are distinguishable by more than just colour (e.g. by using icons or supporting text).
 - Content writers can make sure any meaning shown through colour is also stated in words.
 
 ### Useful links
 
-- [WCAG 1.4.1: Use of Colour](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+- [Web Content Accessibility Guidelines (WCAG) 1.4.1: Use of Colour](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
 - [Colour Blindness Simulator (Coblis)](https://www.color-blindness.com/coblis-color-blindness-simulator/)
 - [Colour and Accessibility (WebAIM)](https://webaim.org/articles/visual/colorblind)

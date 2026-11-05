@@ -1,10 +1,10 @@
 ### What is it for?
 
-ASCII art is the practice of arranging punctuation and symbols to create a picture, like the 'shrug' ¯\_(ツ)\_/¯ or drawings of animals.
+ASCII art is the practice of arranging punctuation and symbols to create a picture, like the 'shrug' ¯\\\_(ツ)\_/¯ or drawings of animals.
 
 While sighted users see a picture, a screen reader reads the content linearly. It cannot 'see' the image. Instead, the user hears a chaotic string of punctuation names: "Slash, backslash, underscore, vertical bar, colon..." It is noisy and blocks them from getting to your actual content.
 
-Screen readers are designed to read punctuation to help users understand code. Grouping punctuation to make pictures creates a 'wall of noise' that is difficult to skip past.
+Screen readers read many symbols and punctuation marks out by name. Grouping punctuation to make pictures creates a 'wall of noise' that is difficult to skip past.
 
 ### How to support it
 

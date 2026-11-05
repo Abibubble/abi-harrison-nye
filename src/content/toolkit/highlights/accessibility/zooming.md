@@ -11,8 +11,8 @@ You can easily test if your page is zoomable, using the following steps:
 #### On a computer:
 
 1. Hold the Ctrl key (or Cmd on a Mac) and press the + key.
-2. Zoom in until the page is at least twice its normal size (200%).
-3. Check the page. Can you read everything without scrolling left and right? All information and buttons should still be visible and easy to use. Do all navigation menus and search bars work correctly?
+2. Zoom to 200% (twice the normal size) and check everything is readable and usable.
+3. Then zoom to 400%. Can you read everything without scrolling left and right? All information and buttons should still be visible and easy to use. Do all navigation menus and search bars work correctly?
 
 #### On a mobile (known as 'pinch-to-zoom'):
 

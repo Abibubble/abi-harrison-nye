@@ -1,8 +1,8 @@
 import { FOOTER_NAV } from '../../content/navigation';
 import { PROFILE_LINKS } from '../../content/profile';
-import { SITE_NAME } from '../../content/site';
 import { useCurrentYear } from '../../hooks/useCurrentYear';
 import { Container } from '../Container';
+import { FullName } from '../FullName';
 import { Link } from '../Link';
 import styles from './SiteFooter.module.css';
 
@@ -33,7 +33,9 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-          <p className={styles.copyright}>{`© ${year} ${SITE_NAME}`}</p>
+          <p className={styles.copyright}>
+            © {year} <FullName />
+          </p>
         </div>
       </Container>
     </footer>

@@ -17,6 +17,6 @@ To make login pages accessible, developers should follow these steps:
 
 ### Useful links
 
-- [Understanding SC 3.3.8: Accessible Authentication (Minimum) (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html)
+- [Understanding SC 3.3.8: Accessible Authentication (Minimum), from the World Wide Web Consortium (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html)
 - [Accessibility in Cybersecurity: A Practical Guide](https://accessiblesecurity.org/)
 - [The autocomplete attribute and web security (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete)

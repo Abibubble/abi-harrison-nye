@@ -6,8 +6,8 @@ Without testing, you are only guessing if your product works for everyone. This 
 
 - People using screen readers or keyboards are blocked from completing tasks
 - Users with disabilities face a broken or frustrating product
-- Your product may fail to meet legal standards like the WCAG
-- Finding problems after launch is much harder and more expensive to fix
+- Your product may fail to meet legal requirements, many of which refer to the Web Content Accessibility Guidelines (WCAG)
+- Problems found after launch are much harder and more expensive to fix
 
 ### How to support it
 

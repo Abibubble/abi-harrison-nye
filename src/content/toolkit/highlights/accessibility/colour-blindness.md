@@ -18,4 +18,4 @@ To make your work accessible, never rely on colour alone. Always add a text labe
 
 - [Coblis - Color Blindness Simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/)
 - [We are Colorblind](https://wearecolorblind.com/)
-- [W3C - Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+- [World Wide Web Consortium (W3C) - Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)

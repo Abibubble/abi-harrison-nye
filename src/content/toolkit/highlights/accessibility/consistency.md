@@ -4,9 +4,9 @@ Think about your favourite supermarket. You know roughly where everything is, an
 
 Digital products work the same way. When navigation, buttons, and labels behave consistently across every page, users can build a mental map of the product and move around it confidently. When things shift unexpectedly, that mental map falls apart.
 
-This matters most for users with cognitive impairments, including people with memory difficulties, ADHD, anxiety, or conditions like dyslexia. For these users, inconsistency is not just annoying. It can make a product genuinely unusable.
+This matters most for people with cognitive or learning disabilities, memory difficulties, ADHD, anxiety or dyslexia. For these users, inconsistency is not just annoying. It can make a product genuinely unusable.
 
-Consistency is fully supported, and is something to take into account as part of day-to-day work.
+Consistency is something to take into account as part of day-to-day work.
 
 ### How to support it
 

@@ -6,9 +6,9 @@ A temporary disability will go away over time, like a broken arm or an eye infec
 
 A situational disability is when your surroundings create the same barriers as a disability, even though nothing is wrong with your body. Trying to read a phone in bright sunlight makes even a clear, high-contrast screen almost impossible to see. Being in a loud pub makes it nearly impossible to follow any audio content without captions.
 
-Designing for accessibility doesn't just help the 1 in 5 people with a permanent disability. It improves the experience for everyone because at some point in their lives, most people will find themselves in one of these situations.
+Designing for accessibility doesn't just help disabled people, who make up around 1 in 4 people in the UK. It improves the experience for everyone because at some point in their lives, most people will find themselves in one of these situations.
 
-Temporary and situational disabilities are a key part of the Microsoft Inclusive Design framework. It describes permanent, temporary, and situational impairments to movement, vision, hearing, and speech. Many WCAG rules, such as captions, good colour contrast, and touch target sizes, also help people in these situations. This is true even when the rules weren't written with them in mind.
+Temporary and situational disabilities are a key part of the Microsoft Inclusive Design framework. It describes permanent, temporary, and situational impairments to movement, vision, hearing, and speech. Many Web Content Accessibility Guidelines (WCAG) rules, such as captions, good colour contrast, and touch target sizes, also help people in these situations. This is true even when the rules weren't written with them in mind.
 
 ### How to support it
 
@@ -23,4 +23,4 @@ The more teams think this way, the harder it becomes to see accessibility as a n
 ### Useful links
 
 - [Microsoft Inclusive Design: Recognizing Exclusion](https://inclusive.microsoft.design/)
-- [W3C: Diverse Abilities and Barriers](https://www.w3.org/WAI/people-use-web/abilities-barriers/)
+- [World Wide Web Consortium (W3C): Diverse Abilities and Barriers](https://www.w3.org/WAI/people-use-web/abilities-barriers/)

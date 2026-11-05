@@ -8,11 +8,11 @@ While automated tools are awesome, they aren't magic. They only catch about 30% 
 
 You don't need to be an expert to test your site. Try these three quick checks right now.
 
-- Use 'Tab' to move forward, 'Shift + Tab' to go back, and 'Enter' to select. Check that you can reach every button without a mouse.
+- Use 'Tab' to move forward, 'Shift + Tab' to go back, 'Enter' or 'Space' to select, the arrow keys inside menus and radio buttons, and 'Escape' to close pop-ups. Check that you can reach every button without a mouse.
 - Zoom your browser to 200% using 'Ctrl' or 'Cmd' and '+'. Ensure text doesn't overlap or vanish off the screen.
 - Run a free scanner like Lighthouse or [Axe DevTools](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd) in Chrome. It'll quickly flag basic bugs like poor colour contrast.
 
 ### Useful links
 
-- [W3C - Easy Checks (A first review of Web Accessibility)](https://www.w3.org/WAI/test-evaluate/preliminary/)
+- [World Wide Web Consortium (W3C) - Easy Checks (A first review of Web Accessibility)](https://www.w3.org/WAI/test-evaluate/preliminary/)
 - [WebAIM - Testing with a Keyboard](https://webaim.org/techniques/keyboard/)

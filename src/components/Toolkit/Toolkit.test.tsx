@@ -157,11 +157,11 @@ describe('ToolkitPage', () => {
       '/inclusion-toolkit/highlights/dark-mode',
     );
     expect(files.getByText(/Last updated/)).toHaveTextContent('Last updated 1 June 2026');
-    const view = files.getByRole('link', { name: 'View Dark mode as a PDF (opens in a new tab)' });
+    const view = files.getByRole('link', { name: 'View in a new tab: Dark mode, PDF' });
     expect(view).toHaveAttribute('href', '/inclusion-toolkit/files/highlights/dark-mode.pdf');
     expect(view).toHaveAttribute('target', '_blank');
     expect(
-      files.getByRole('link', { name: 'Download Dark mode as a Word document (45KB)' }),
+      files.getByRole('link', { name: 'Download: Dark mode, Word document, 45KB' }),
     ).toHaveAttribute('download');
   });
 
@@ -185,7 +185,7 @@ describe('ToolkitPage', () => {
         .map((link) => link.textContent),
     ).toEqual(['Inclusion Toolkit', 'Highlights']);
     expect(
-      screen.getByRole('link', { name: 'Download Dark mode as a PDF (120KB)' }),
+      screen.getByRole('link', { name: 'Download: Dark mode, PDF, 120KB' }),
     ).toBeInTheDocument();
     const text = within(screen.getByRole('region', { name: 'What’s in it' }));
     expect(text.getByRole('heading', { level: 3, name: 'Contrast' })).toBeInTheDocument();

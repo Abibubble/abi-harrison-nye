@@ -11,11 +11,11 @@ While Head Pointer is great fun to play with, it's especially important for the 
 
 ### How to use it
 
-As Head Pointer is so customisable, a full breakdown isn't possible here. However, the short version is that it can control your cursor by tracking your head and eye movements, using facial expressions to perform certain actions. Try sticking your tongue out to left-click, or if you can wink, that's a fun option to experiment with!
+As Head Pointer is so customisable, a full breakdown isn't possible here. However, the short version is that it can control your cursor by tracking your head movements, and it can use facial expressions to perform certain actions. Try sticking your tongue out to left-click, or if you can wink, that's a fun option to experiment with!
 
 Take a look at the links below, get it set up to your preferences, and see if you can survive an hour working with it!
 
 ### Useful links
 
-- [Move the pointer using Head Pointer on MacOS](https://support.apple.com/en-gb/guide/mac-help/mchlb2d4782b/mac)
-- [An introduction to MacOS Head Pointer](https://thoughtbot.com/blog/an-introduction-to-macos-head-pointer)
+- [Move the pointer using Head Pointer on macOS](https://support.apple.com/en-gb/guide/mac-help/mchlb2d4782b/mac)
+- [An introduction to macOS Head Pointer](https://thoughtbot.com/blog/an-introduction-to-macos-head-pointer)

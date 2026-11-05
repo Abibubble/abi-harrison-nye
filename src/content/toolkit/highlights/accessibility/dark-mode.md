@@ -1,15 +1,15 @@
 ### What is it for?
 
-Dark mode is a colour option that flips the user's view from the typical light text on dark background to dark text on a light background. So instead of blinding white screens, things take on a darker hue. It inverts the colours of websites, apps, operating systems, and devices to tone down the brightness.
+Dark mode is a colour option that flips the user's view from the typical dark text on a light background to light text on a dark background. So instead of blinding white screens, things take on a darker hue. It applies a separate, darker colour scheme to websites, apps, operating systems, and devices to tone down the brightness.
 
-In recent years, the adoption of dark mode has increased, with [more than 80% of users preferring it over light mode across various operating systems, according to a 2024 survey](https://www.blogcadre.com/resources/how-many-people-use-dark-mode/).
+In recent years, the adoption of dark mode has increased, with [many users preferring it over light mode across various operating systems](https://www.blogcadre.com/resources/how-many-people-use-dark-mode/).
 
 However, dark mode isn't the all-encompassing accessibility fix that many people believe it to be. Let's take a look at the pros and cons of incorporating dark mode.
 
 Pros
 
 1. Many people prefer dark mode (but not all)
-2. On OLED and AMOLED screens, it can be more eco-friendly as the black pixels turn off when not in use
+2. On OLED and AMOLED screens, it can be more eco-friendly, as pixels showing pure black are switched off, which saves battery
 3. It can enhance readability and reduce eye strain, especially in low-light conditions
 4. For users with light sensitivity or photophobia, it provides a gentler visual experience, allowing for better focus
 
@@ -22,9 +22,9 @@ Cons
 
 ### How to support it
 
-In code, add a line to use the user's system preferences (using the [prefers-color-scheme media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme)), or add a toggle switch to allow the user to switch between dark and light mode. This is the preferred option, as then the user has full control of their experience. The difficulty is ensuring the correct CSS is in place to handle differing colours.
+In code, add a line to use the user's system preferences (using the [prefers-color-scheme media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme)), or add a toggle switch to allow the user to switch between dark and light mode. Ideally, do both: follow the system setting by default, and offer a toggle. This gives the user full control of their experience. The difficulty is ensuring the correct CSS is in place to handle differing colours.
 
-In emails, it's much more complex, as different email clients will render dark mode differently. Some will use the site’s own styling, whereas others apply a basic colour inversion, and others apply their own dark mode styling.
+In emails, it's much more complex, as different email clients will render dark mode differently. Some will use the email’s own styling, whereas others apply a basic colour inversion, and others apply their own dark mode styling.
 
 ### Useful links
 

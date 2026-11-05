@@ -1,5 +1,6 @@
 import { Abbr, AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
+import { FullName } from '../components/FullName';
 import { PageHeading } from '../components/PageHeading';
 import { RecognitionList } from '../components/RecognitionList';
 import { SignpostList } from '../components/SignpostList';
@@ -31,7 +32,9 @@ export default function Home() {
       <div className={styles.intro}>
         <Stack gap={4}>
           <Stack gap={2}>
-            <PageHeading>{SITE_NAME}</PageHeading>
+            <PageHeading>
+              <FullName />
+            </PageHeading>
             <p className={styles.headline}>{PROFILE.headline}</p>
           </Stack>
           <p>

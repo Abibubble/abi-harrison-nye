@@ -6,7 +6,7 @@ Form errors are a major barrier for all users, but they can completely block use
 - Vague messages like 'Invalid input' or 'Error' tell the user nothing about how to fix it
 - When a form fails to submit, screen reader users are often left at the top of the page, not knowing what or where the error is
 
-This is a core design pattern, not a single tag. Support depends on using standard HTML and ARIA attributes (`aria-describedby`, `aria-invalid`, `aria-live`) correctly. This is a key part of WCAG's 'Understandable' and 'Operable' principles and works in all modern browsers.
+This is a core design pattern, not a single tag. Support depends on using standard HTML and Accessible Rich Internet Applications (ARIA) attributes (`aria-describedby`, `aria-invalid`, `aria-live`) correctly. This is a key part of Web Content Accessibility Guidelines (WCAG)'s 'Perceivable', 'Understandable' and 'Robust' principles and works in all modern browsers.
 
 ### How to support it
 
@@ -20,5 +20,5 @@ Errors need to be clear, visible, and announced.
 
 ### Useful links
 
-- [W3C WAI - Validating Input](https://www.w3.org/WAI/tutorials/forms/validation/)
+- [World Wide Web Consortium (W3C) WAI - Validating Input](https://www.w3.org/WAI/tutorials/forms/validation/)
 - [Level Access - Designer Tips: Creating Accessible Forms](https://www.levelaccess.com/blog/designer-tips-creating-accessible-forms/)

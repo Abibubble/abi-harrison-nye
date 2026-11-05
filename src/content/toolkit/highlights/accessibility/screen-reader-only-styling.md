@@ -2,7 +2,7 @@
 
 Screen reader only styling ensures that everyone who uses a website can access the important information it contains. In most cases, this is achieved with semantics, alt text and aria labels. However, in some cases, something should only be 'seen' by screen readers.
 
-For instance, on many websites pressing the Tab key reveals a 'Skip to main content' button. It allows screen reader users to skip all of the navigation links in the header — saving them time and removing barriers.
+For instance, a blog page might have several 'Read more' links. Sighted users can see which article each link is for, but a screen reader user moving from link to link would only hear 'Read more, Read more, Read more'. You can add extra words to each link, such as 'about accessible meetings', that are hidden visually but still read out by screen readers.
 
 ### How to support it
 
@@ -10,25 +10,18 @@ You can add the following to your CSS, LESS, SASS, or any other CSS-based stylin
 
 `.sr-only {`
 
-`border: 0;`
-
-`clip: rect(0 0 0 0);`
-
-`height: 0.0625rem;`
-
-`margin: -0.0625rem;`
-
-`overflow: hidden;`
-
-`padding: 0;`
-
-`position: absolute;`
-
-`width: 0.0625rem;`
-
-`white-space: nowrap;`
-
-`}`
+```
+   border: 0;
+   clip: rect(0 0 0 0);
+   height: 0.0625rem;
+   margin: -0.0625rem;
+   overflow: hidden;
+   padding: 0;
+   position: absolute;
+   width: 0.0625rem;
+   white-space: nowrap;
+}
+```
 
 
 

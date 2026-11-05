@@ -1,6 +1,6 @@
 import { MARK } from '../../brand/mark';
-import { SITE_NAME } from '../../content/site';
 import { Container } from '../Container';
+import { FullName } from '../FullName';
 import { Link } from '../Link';
 import { ScreenReaderOnly } from '../ScreenReaderOnly';
 import { SiteNav } from '../SiteNav';
@@ -38,7 +38,9 @@ export function SiteHeader() {
         <div className={styles.inner}>
           <Link to="/" className={styles.siteName}>
             <Mark />
-            {SITE_NAME} <ScreenReaderOnly>home page</ScreenReaderOnly>
+            <span>
+              <FullName /> <ScreenReaderOnly>home page</ScreenReaderOnly>
+            </span>
           </Link>
           <SiteNav />
         </div>

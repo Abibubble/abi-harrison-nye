@@ -11,11 +11,11 @@ Fonts are impactful to everyone, but especially for the following people:
 
 This section focuses on what to look for when choosing a font.
 
-Mirroring or flipping is when readers find it difficult to read a character because it looks like another when flipped or rotated. For example, a reader could mistake a lowercase letter `b` for a lowercase `d` or `6` for `9`. Instead of reading the word `bog`, the reader will think the word is `dog`.
+Mirroring is when a reader mixes up two characters, because one looks like the other turned around. For example, someone might read a lowercase `b` as a `d`, or `6` as `9`. This means the word `bog` could be read as `dog`.
 
-A different and more pervasive challenge among people with dyslexia and other reading difficulties is transpositioning (the swapping of letters). For example, the word “loin” may appear as “lion”, or the word “lien” may appear as “line.”
+Transposition is when letters seem to swap places. For people with dyslexia and other reading difficulties, this is often a bigger problem than mirroring. For example, someone might read “loin” as “lion”, or “lien” as “line”.
 
-To reduce mirroring and transpositioning, check character pairs like these to make sure they are distinct enough from each other:
+To help with mirroring and transposition, choose a font where characters like these look clearly different from each other:
 
 - `q` `p`
 - `d` `b`
@@ -28,9 +28,9 @@ To reduce mirroring and transpositioning, check character pairs like these to ma
 - `6` `g` `9`
 - `rn` `m`
 
-When selecting a typeface—especially a [sans serif (Google Fonts glossary)](https://fonts.google.com/knowledge/glossary/sans_serif)—it’s useful to assess the similarities or differences between the uppercase `L`, lowercase `l`, and numeral `1` characters because these letters and numbers all have the same simple structure of a single vertical stem. In addition to structural changes like serifs on the `1` or a tail on the `l`, subtle differences in height or stroke width can also improve legibility.
+When choosing a font, especially a [sans serif (Google Fonts glossary)](https://fonts.google.com/knowledge/glossary/sans_serif), compare the uppercase `I`, lowercase `l` and number `1`. In many fonts, all three are a single straight line, so they're easy to mix up. Look for a font that makes them different, for example a flat base on the `1` or a tail on the `l`. Small differences in height or line thickness also help.
 
-Fonts (such as Urbane and Atkinson Hyperlegible Next) have become popular with individuals who have visual or cognitive disabilities.
+Fonts such as Atkinson Hyperlegible Next have become popular with individuals who have visual or cognitive disabilities.
 
 ### Useful links
 

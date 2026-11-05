@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
@@ -11,16 +11,19 @@ import {
   findInToolkit,
   publicToolkit,
   toolkitEntries,
+  toolkitFilePaths,
+  toolkitItemRecords,
   toolkitPath,
   unpublishedToolkitFiles,
   viewableFile,
 } from './toolkit';
 import { TOOLKIT_TEXT } from './toolkitPage';
 
+/** A top level resource's files, as the site lists them before the build adds their sizes */
 const files = (slug: string, extensions = ['pdf', 'docx']) =>
   extensions.map((extension) => ({
     path: `inclusion-toolkit/files/${slug}.${extension}`,
-    size: '100KB',
+    size: '',
   }));
 
 const item = (slug: string, overrides: Partial<ToolkitItemRecord> = {}): ToolkitItemRecord => ({
@@ -28,7 +31,6 @@ const item = (slug: string, overrides: Partial<ToolkitItemRecord> = {}): Toolkit
   title: slug,
   description: `About ${slug}.`,
   updated: '2026-06-01',
-  files: files(slug),
   slides: false,
   text: 'checked',
   todo: [],
@@ -56,30 +58,15 @@ const EXAMPLE = folder(
       [],
       [folder('accessibility', [item('dark-mode'), item('draft', { text: 'draft' })])],
     ),
-    folder('empty', [item('no-files', { files: [] })]),
+    folder('empty', [item('not-written', { text: 'none' })]),
   ],
 );
 
 /** Every resource record in the real toolkit, with the slugs leading to it */
-function realItems(
-  record: ToolkitFolderRecord = TOOLKIT_RECORD,
-  slugs: string[] = [],
-): { slugs: string[]; item: ToolkitItemRecord }[] {
-  return [
-    ...record.items.map((entry) => ({ slugs: [...slugs, entry.slug], item: entry })),
-    ...record.folders.flatMap((child) => realItems(child, [...slugs, child.slug])),
-  ];
-}
+const realItems = () => toolkitItemRecords();
 
 function realFolders(record: ToolkitFolderRecord = TOOLKIT_RECORD): ToolkitFolderRecord[] {
   return record.folders.flatMap((child) => [child, ...realFolders(child)]);
-}
-
-/** Sizes as computers show them, with 1000 bytes to a kilobyte, such as 307KB or 1.2MB */
-function formatSize(bytes: number): string {
-  return bytes < 1_000_000
-    ? `${String(Math.round(bytes / 1000))}KB`
-    : `${String(Math.round(bytes / 100_000) / 10)}MB`;
 }
 
 describe('publicToolkit', () => {
@@ -98,23 +85,16 @@ describe('publicToolkit', () => {
     expect(toolkit.folders[0]?.folders[0]?.items.map((entry) => entry.slug)).toEqual(['dark-mode']);
   });
 
-  it('only shows resources with a Word file and a PDF, so nobody is left out', () => {
-    const shown = (record: ToolkitItemRecord) =>
-      publicToolkit(folder('', [record])).items.map((entry) => entry.slug);
-
-    expect(shown(item('both'))).toEqual(['both']);
-    expect(shown(item('no-word', { files: files('no-word', ['pdf']) }))).toEqual([]);
-    expect(shown(item('no-pdf', { files: files('no-pdf', ['docx']) }))).toEqual([]);
-  });
-
-  it('only shows resources with slides once they have the PowerPoint file too', () => {
-    const shown = (record: ToolkitItemRecord) =>
-      publicToolkit(folder('', [record])).items.map((entry) => entry.slug);
-
-    expect(shown(item('no-pptx', { slides: true }))).toEqual([]);
-    expect(
-      shown(item('all', { slides: true, files: files('all', ['pdf', 'docx', 'pptx']) })),
-    ).toEqual(['all']);
+  it('names each resource’s files after the slugs leading to it, adding PowerPoint if it has slides', () => {
+    expect(toolkitFilePaths(['highlights', 'dark-mode'], false)).toEqual([
+      'inclusion-toolkit/files/highlights/dark-mode.pdf',
+      'inclusion-toolkit/files/highlights/dark-mode.docx',
+    ]);
+    expect(toolkitFilePaths(['deck'], true)).toEqual([
+      'inclusion-toolkit/files/deck.pdf',
+      'inclusion-toolkit/files/deck.docx',
+      'inclusion-toolkit/files/deck.pptx',
+    ]);
   });
 
   it('leaves out folders with nothing to show', () => {
@@ -179,14 +159,18 @@ describe('toolkit files', () => {
     const pdf = { path: 'a/b.pdf', size: '1KB' };
     const word = { path: 'a/b.docx', size: '1KB' };
 
-    expect(viewableFile(item('a', { files: [word, pdf] }))).toBe(pdf);
-    expect(viewableFile(item('a', { files: [word] }))).toBeUndefined();
+    const resource = { slug: 'a', title: 'a', description: 'A.', updated: '2026-06-01' };
+
+    expect(viewableFile({ ...resource, files: [word, pdf] })).toBe(pdf);
+    expect(viewableFile({ ...resource, files: [word] })).toBeUndefined();
   });
 
   it('lists the files of resources that aren’t ready, for the build to remove', () => {
     expect(unpublishedToolkitFiles(EXAMPLE)).toEqual([
-      'inclusion-toolkit/files/draft.pdf',
-      'inclusion-toolkit/files/draft.docx',
+      'inclusion-toolkit/files/highlights/accessibility/draft.pdf',
+      'inclusion-toolkit/files/highlights/accessibility/draft.docx',
+      'inclusion-toolkit/files/empty/not-written.pdf',
+      'inclusion-toolkit/files/empty/not-written.docx',
     ]);
   });
 });
@@ -215,27 +199,19 @@ describe('toolkit.json', () => {
     }
   });
 
-  it('has every file in public/inclusion-toolkit/files/, as a PDF, Word or PowerPoint file, at its real size', () => {
-    for (const { item: record } of realItems()) {
-      for (const file of record.files) {
-        expect(file.path, record.slug).toMatch(/^inclusion-toolkit\/files\//);
-        expect(fileType(file), file.path).toBeDefined();
-        expect(existsSync(`public/${file.path}`), file.path).toBe(true);
-        expect(file.size, file.path).toBe(formatSize(statSync(`public/${file.path}`).size));
+  it('has every file each ready resource needs, so it can’t go live without them', () => {
+    for (const { slugs, item: record } of realItems()) {
+      if (record.text !== 'checked') continue;
+      for (const path of toolkitFilePaths(slugs, record.slides)) {
+        expect(existsSync(`public/${path}`), path).toBe(true);
       }
     }
   });
 
-  it('says a resource has slides when it lists a PowerPoint file, so it can’t go live without it', () => {
-    for (const { item: record } of realItems()) {
-      if (record.files.some((file) => fileType(file) === 'PowerPoint')) {
-        expect(record.slides, record.slug).toBe(true);
-      }
-    }
-  });
-
-  it('has no files in public/inclusion-toolkit/ that no resource lists, as they’d go live', () => {
-    const listed = realItems().flatMap(({ item: record }) => record.files.map((file) => file.path));
+  it('has no files in public/inclusion-toolkit/ that don’t belong to a resource, as they’d go live', () => {
+    const expected = new Set(
+      realItems().flatMap(({ slugs, item: record }) => toolkitFilePaths(slugs, record.slides)),
+    );
     const folder = 'public/inclusion-toolkit';
     const onDisk = existsSync(folder)
       ? readdirSync(folder, { recursive: true, withFileTypes: true })
@@ -243,7 +219,7 @@ describe('toolkit.json', () => {
           .map((entry) => `${entry.parentPath.replace(/^public\//, '')}/${entry.name}`)
       : [];
 
-    expect(onDisk.toSorted()).toEqual(listed.toSorted());
+    expect(onDisk.filter((path) => !expected.has(path))).toEqual([]);
   });
 
   it('has a text file for every resource whose text is written, and no others', () => {

@@ -9,15 +9,13 @@ On social media, images often hold the core message or punchline. Alt text ensur
 
 ### How to support it
 
-On Slack, upload the image, click ‘Edit file details’ in the top left, and enter your text in the description box.
-
-For presentations, right-click the image and select ‘Alt text’.
-
 On LinkedIn, add the image and click ‘ALT’ at the bottom right.
 
 On Facebook, add the image, click the three dots in the top right, and select ‘Edit alt text’.
 
 On X (Twitter), add the image and click the ‘ALT’ box at the bottom.
+
+In workplace chat tools like Slack, upload the image, click ‘Edit file details’ in the top left, and enter your text in the description box.
 
 ### Useful links
 

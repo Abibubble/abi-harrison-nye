@@ -15,7 +15,7 @@ describe('CV page', () => {
     renderWithRouter(<CvPage {...loader()} />);
 
     expect(screen.getByRole('heading', { level: 1, name: 'CV' })).toBeInTheDocument();
-    expect(screen.getByText('Abi Harrison-Nye')).toBeInTheDocument();
+    expect(screen.getByText('Harrison-Nye').closest('p')?.textContent).toBe('Abi Harrison-Nye');
     expect(screen.getByText(/^Software engineer and accessibility specialist,/)).toHaveTextContent(
       'Software engineer and accessibility specialist, Hertfordshire, UK',
     );

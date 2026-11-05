@@ -2,7 +2,7 @@
 
 ARIA stands for 'Accessible Rich Internet Applications'. ARIA is a set of roles and attributes that enable the web to be more accessible for users with disabilities. ARIA adds to HTML. It lets common web app interactions be passed to assistive technologies when there is no other way to do this.
 
-There are some [rules, set out by W3C, about how ARIA should be used](https://w3c.github.io/using-aria/#rule1). They are as follows:
+There are some [rules, set out by World Wide Web Consortium (W3C), about how ARIA should be used](https://w3c.github.io/using-aria/#rule1). They are as follows:
 
 1. If a native HTML element or attribute already has the meaning and behaviour you need, use it. Don't take a different element and add an ARIA role, state or property to make it accessible.
 2. Do not change native semantics unless you really have to.
@@ -12,9 +12,9 @@ There are some [rules, set out by W3C, about how ARIA should be used](https://w3
 
 **NOTE**: Not using ARIA is always better than using ARIA badly. Bad use of ARIA can completely mess up a website for users of assistive technology. ARIA attributes should only be used as a last resort when semantic elements can't achieve the desired result.
 
-Here is a quote from [MDN Web Docs: ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA):
+The note below is adapted from [MDN Web Docs: ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA):
 
-Note: There is a saying, "No ARIA is better than bad ARIA." [WebAim's survey of over one million home pages](https://webaim.org/projects/million/#aria), they found that Home pages with ARIA present averaged 41% more detected errors than those without ARIA. While ARIA is designed to make web pages more accessible, if used incorrectly, it can do more harm than good.
+Note: There is a saying, "No ARIA is better than bad ARIA." In [WebAIM's survey of over one million home pages](https://webaim.org/projects/million/#aria), they found that home pages with ARIA present had more detected errors on average than those without ARIA. While ARIA is designed to make web pages more accessible, if used incorrectly, it can do more harm than good.
 
 ### How to support it
 
@@ -23,14 +23,14 @@ There are [many different ARIA attributes](https://developer.mozilla.org/en-US/d
 #### aria-label & aria-labelledby
 
 - Adds an accessible label to elements that do not have visible text. For example, a search button with only an icon should include an `aria-label` clarifying it.
-- It should only be used on interactive elements, like `button`s, as it is not supported on non-interactive elements.
+- Use it on interactive elements, like `button`s, and on landmarks, dialogs, tables and elements with role="img". Don't use it on elements that have no role, like a plain div or span, or on text elements like p, because screen readers may ignore it there.
 
 #### aria-hidden
 
 - Hides elements from screen readers without removing them visually.
 - This is ideal for decorative or redundant elements.
 
-[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles) add meaning to content. This lets assistive technologies (such as screen readers) present the content in the way users expect. These should be avoided when there is semantic HTML that can provide the same meaning (i.e. don't use `role=listitem`, and instead use an `<li>`).
+[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles) add meaning to content. This lets assistive technologies (such as screen readers) present the content in the way users expect. These should be avoided when there is semantic HTML that can provide the same meaning (e.g. don't use `role=listitem`, and instead use an `<li>`).
 
 ### Useful links
 

@@ -14,5 +14,5 @@ You don't have to get rid of fun swipes and pinches completely. Those complex ge
 
 ### Useful links
 
-- [W3C - Understanding Pointer Gestures](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)
+- [World Wide Web Consortium (W3C) - Understanding Pointer Gestures](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)
 - [WebAIM - Motor Disabilities](https://webaim.org/articles/motor/)

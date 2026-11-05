@@ -48,7 +48,10 @@
   padding-inline: var(--spacer-16);
   color: var(--color-text);
   text-decoration-line: none;
-  white-space: nowrap;
+
+  /* In the narrow menu, a name like "Inclusion Toolkit" wraps rather than making the page scroll
+     sideways with large text (WCAG 1.4.10). It only stays on one line in the wide layout below */
+  overflow-wrap: anywhere;
 
   &:hover {
     color: var(--color-action-hover);
@@ -105,6 +108,10 @@
 
   .list {
     flex-direction: row;
+  }
+
+  .link {
+    white-space: nowrap;
   }
 
   .link[aria-current='page']::after {

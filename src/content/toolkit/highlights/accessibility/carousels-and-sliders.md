@@ -15,5 +15,5 @@ When a carousel is truly needed, it should never move on its own without the use
 ### Useful links
 
 - [Should I Use a Carousel? (shouldiuseacarousel.com)](http://shouldiuseacarousel.com/)
-- [W3C Carousel Accessibility Tutorial](https://www.w3.org/WAI/tutorials/carousels/)
-- [WCAG 2.2.2: Pause, Stop, Hide](https://www.w3.org/wai/wcag21/understanding/pause-stop-hide.html)
+- [World Wide Web Consortium (W3C) Carousel Accessibility Tutorial](https://www.w3.org/WAI/tutorials/carousels/)
+- [SC 2.2.2: Pause, Stop, Hide (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)

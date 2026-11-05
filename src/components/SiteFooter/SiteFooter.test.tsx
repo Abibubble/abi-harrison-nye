@@ -43,7 +43,9 @@ describe('SiteFooter', () => {
     renderWithRouter(<SiteFooter />);
     vi.useRealTimers();
 
-    expect(screen.getByText('© 2031 Abi Harrison-Nye')).toBeInTheDocument();
+    expect(screen.getByText('Harrison-Nye').closest('p')?.textContent).toBe(
+      '© 2031 Abi Harrison-Nye',
+    );
   });
 
   it('has no detectable accessibility issues', async () => {

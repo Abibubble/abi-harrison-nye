@@ -10,12 +10,16 @@
 
 .item {
   display: inline-flex;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   gap: var(--spacer-8);
   align-items: center;
 
   /* Each link stands on its own, so it needs a full size target (WCAG 2.5.5) */
   a {
     display: inline-flex;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     align-items: center;
     min-height: var(--size-target-min);
   }
@@ -23,6 +27,8 @@
   /* The current page, which isn't a link, lines up with the links beside it */
   > span {
     display: inline-flex;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     align-items: center;
     min-height: var(--size-target-min);
     color: var(--color-text-muted);

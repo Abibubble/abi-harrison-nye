@@ -36,6 +36,11 @@ for (const route of ROUTES) {
       await saveDisplaySettings(page, STRONGEST_SETTINGS);
       await page.setViewportSize({ width: 320, height: 640 });
       await page.goto(route.path);
+      // The system font differs on each computer. Testing with a wide one (Verdana on a Mac,
+      // DejaVu Sans on Linux) catches long words that only overflow where the system font is wide
+      await page.addStyleTag({
+        content: ":root { --font-family-system: verdana, 'DejaVu Sans', sans-serif; }",
+      });
       await page.getByRole('button', { name: 'Menu' }).click();
 
       await expectNoHorizontalScroll(page);

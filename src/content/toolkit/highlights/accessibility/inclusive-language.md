@@ -15,7 +15,7 @@ This is a communication practice, not a technical feature. It is fully supported
 
 To ensure your language is inclusive, you must be conscious, precise, and empathetic in your word choices.
 
-Use person-first language (e.g., 'a person with vision loss') unless a group or individual expresses a preference for identity-first language (e.g., 'an autistic person'). When in doubt, person-first is often a safer starting point.
+Use person-first language (e.g., 'a person with vision loss') unless a group or individual expresses a preference for identity-first language (e.g., 'an autistic person'). When in doubt, person-first is often a safer starting point. The Deaf community generally prefers identity-first language (e.g., 'Deaf people').
 
 Avoid ableist metaphors. Instead of 'that idea is lame', say 'that idea is underdeveloped'. Instead of 'fell on deaf ears', say 'the feedback was ignored'.
 
@@ -27,4 +27,4 @@ Be specific and clear. Avoid jargon and write in plain language. Clearly describ
 
 - [Home Office Design System: Inclusive language](https://design.homeoffice.gov.uk/accessibility/written-content/inclusive-language)
 - [Harder than you think: developing an inclusive language guide](https://contentdesign.london/blog/harder-than-you-think-developing-an-inclusive-language-guide)
-- [The Ultimate Writing Guide to Inclusive Language](https://www.acrolinx.com/blog/the-quick-guide-to-inclusive-language/)
+- [The Quick Guide to Inclusive Language](https://www.acrolinx.com/blog/the-quick-guide-to-inclusive-language/)

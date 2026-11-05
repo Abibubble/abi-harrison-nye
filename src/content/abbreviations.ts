@@ -48,6 +48,7 @@ export const ALWAYS_SHORT: readonly Abbreviation[] = [
   'HTML',
   'OCD',
   'PDF',
+  'QR',
   'SIM',
   'UK',
 ];

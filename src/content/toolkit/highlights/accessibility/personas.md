@@ -1,6 +1,6 @@
 ### What is it for?
 
-Essentially, Personas are fake people. Their lives, issues, and accessibility requirements allow you to role-play as that person while you test for accessibility. This brings a human side to accessibility testing. Personas are fake people, but real people live with the same conditions and needs.
+Essentially, Personas are fake people. Their lives, issues, and accessibility requirements allow you to role-play as that person while you test for accessibility. This brings a human side to accessibility testing. They aren't real, but real people live with the same conditions and needs.
 
 ### How to support it
 

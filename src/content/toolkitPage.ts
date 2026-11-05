@@ -1,3 +1,5 @@
+import { statSync } from 'node:fs';
+
 import { data } from 'react-router';
 
 import {
@@ -11,6 +13,33 @@ import {
   toolkitTextKey,
 } from './toolkit';
 import { renderTranscript } from './transcripts';
+
+/** A size as computers show it, with 1000 bytes to a kilobyte, such as 307KB or 1.2MB */
+export function formatFileSize(bytes: number): string {
+  return bytes < 1_000_000
+    ? `${String(Math.round(bytes / 1000))}KB`
+    : `${String(Math.round(bytes / 100_000) / 10)}MB`;
+}
+
+/**
+ * The size of a file in public/. If a ready resource is missing a file, this stops the build, so
+ * it can't go live without it
+ */
+export function publicFileSize(path: string): string {
+  return formatFileSize(statSync(`public/${path}`).size);
+}
+
+function itemWithSizes(item: ToolkitItem, sizeOf: (path: string) => string): ToolkitItem {
+  return { ...item, files: item.files.map((file) => ({ ...file, size: sizeOf(file.path) })) };
+}
+
+function folderWithSizes(folder: ToolkitFolder, sizeOf: (path: string) => string): ToolkitFolder {
+  return {
+    ...folder,
+    folders: folder.folders.map((child) => folderWithSizes(child, sizeOf)),
+    items: folder.items.map((item) => itemWithSizes(item, sizeOf)),
+  };
+}
 
 /**
  * The text of each resource, in src/content/toolkit/{folders}/{slug}.md. Only loaders use it, and
@@ -62,11 +91,12 @@ export function loadToolkitPage(
   slugs: readonly string[],
   toolkit: ToolkitFolder = TOOLKIT,
   texts: Record<string, string> = TOOLKIT_TEXT,
+  sizeOf: (path: string) => string = publicFileSize,
 ): ToolkitPageData {
   if (slugs.length === 0) {
     return {
       kind: 'home',
-      toolkit,
+      toolkit: folderWithSizes(toolkit, sizeOf),
       search: toolkitEntries(toolkit).map(({ kind, slugs: entrySlugs, title, description }) => ({
         kind,
         title,
@@ -78,9 +108,15 @@ export function loadToolkitPage(
 
   const location = findInToolkit(slugs, toolkit);
   if (!location) notFound();
-  if (location.kind === 'folder') return location;
+  if (location.kind === 'folder') {
+    return { ...location, folder: folderWithSizes(location.folder, sizeOf) };
+  }
 
   const markdown = texts[toolkitTextKey(slugs)];
   if (markdown === undefined) notFound();
-  return { ...location, textHtml: renderTranscript(markdown) };
+  return {
+    ...location,
+    item: itemWithSizes(location.item, sizeOf),
+    textHtml: renderTranscript(markdown),
+  };
 }

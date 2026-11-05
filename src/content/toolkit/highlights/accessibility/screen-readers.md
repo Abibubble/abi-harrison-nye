@@ -20,7 +20,7 @@ When testing, check that:
 - All images are understandable using the alt text, without needing to look at the page
 - The order of the page makes sense
 - Everything on the page is fully functional using a screen reader
-- There is a skip link that lets screen reader users skip the header navigation
+- There is a skip link that lets keyboard users, including screen reader users, skip the header navigation
 
 ### Useful links
 

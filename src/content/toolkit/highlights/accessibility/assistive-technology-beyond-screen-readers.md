@@ -12,7 +12,7 @@ Bad design (like tiny text, layouts that break when zoomed, or buttons that only
 
 Make your designs compatible. It's simpler than you think and mostly means following the basics:
 
-- Prioritise keyboard navigation. This is the #1 rule. If you can use your site with only the Tab and Enter keys, you're supporting switch devices, voice control, and more
+- Prioritise keyboard navigation. This is the #1 rule. If you can use your site with only the keyboard (Tab, Shift + Tab, Enter, Space, the arrow keys and Escape), you're supporting switch devices, voice control, and more
 - Make sure your layout doesn't break or hide text when a user zooms in
 - Use clear, simple labels. 'Submit Form' is much better than just a \> icon for voice control users
 - If you show info on hover, make sure keyboard users can get that same info (e.g. by tabbing to it)

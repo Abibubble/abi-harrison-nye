@@ -1,0 +1,9 @@
+/* The surname moves to the next line as a whole, rather than splitting at its hyphen. It only splits
+   if it's wider than the screen on its own, such as with very large text, so the page never scrolls
+   sideways (WCAG 1.4.10). Inline blocks don't get the link underline from around them, so it's set
+   again here */
+.surname {
+  display: inline-block;
+  max-width: 100%;
+  text-decoration: inherit;
+}

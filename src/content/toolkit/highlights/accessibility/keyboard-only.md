@@ -19,8 +19,9 @@ To test keyboard accessibility:
 1. On page load, don't click anywhere. If you've already clicked, click in the top left corner of the page
 2. Press `Tab` to tab through the page
 3. `Shift` + `Tab` will tab backward
-4. `Enter` should function as a mouse click does
-5. By default, `Space` scrolls a page, if an interactive control that allows `Space` input is not focused
+4. Arrow keys move within radio groups, menus and tabs
+5. `Enter` activates links and buttons
+6. By default, `Space` activates buttons and checkboxes. When nothing that takes Space input is focused, it scrolls the page
 
 Test keyboard accessibility on mobile devices as well, as users with disabilities often use an external keyboard with phones and tablets.
 

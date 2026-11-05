@@ -7,6 +7,7 @@ import {
 import { Card } from '../Card';
 import { type HeadingLevel, Heading } from '../Heading';
 import { Link } from '../Link';
+import { ScreenReaderOnly } from '../ScreenReaderOnly';
 import { Stack } from '../Stack';
 import { Time } from '../Time';
 import styles from './Toolkit.module.css';
@@ -14,29 +15,46 @@ import styles from './Toolkit.module.css';
 const { BASE_URL } = import.meta.env;
 
 /**
- * Links to view a resource's PDF and download each of its files. Each says which resource and what
- * kind of file it is, so it makes sense read on its own (WCAG 2.4.9)
+ * A row for each of a resource's files, saying what kind of file it is and its size, with short
+ * links to view it (PDFs only) and download it. Screen readers also hear which resource and file
+ * each link is for, so it makes sense read on its own (WCAG 2.4.9). That comes after the visible
+ * words, so speech control users can say what they see (WCAG 2.5.3)
  */
 export function ToolkitFileLinks({ item }: { item: ToolkitItem }) {
   const viewable = viewableFile(item);
 
   return (
-    <ul className={styles.links}>
-      {viewable && (
-        <li>
-          {/* A new tab keeps the toolkit open, and the link says so before it's followed */}
-          <a href={`${BASE_URL}${viewable.path}`} target="_blank" rel="noreferrer">
-            View {item.title} as a PDF (opens in a new tab)
-          </a>
-        </li>
-      )}
-      {item.files.map((file) => (
-        <li key={file.path}>
-          <a href={`${BASE_URL}${file.path}`} download>
-            Download {item.title} as a {fileType(file) ?? 'file'} ({file.size})
-          </a>
-        </li>
-      ))}
+    <ul className={styles.files}>
+      {item.files.map((file) => {
+        const type = fileType(file) ?? 'File';
+
+        return (
+          <li key={file.path} className={styles.file}>
+            <span>
+              <span className={styles.label}>{type}</span>{' '}
+              <span className={styles.meta}>({file.size})</span>
+            </span>
+            <span className={styles.fileLinks}>
+              {file === viewable && (
+                <>
+                  {/* A new tab keeps the toolkit open, and the link says so before it's followed */}
+                  <a href={`${BASE_URL}${file.path}`} target="_blank" rel="noreferrer">
+                    View in a new tab
+                    <ScreenReaderOnly>: {item.title}, PDF</ScreenReaderOnly>
+                  </a>
+                  <span>or</span>
+                </>
+              )}
+              <a href={`${BASE_URL}${file.path}`} download>
+                Download
+                <ScreenReaderOnly>
+                  : {item.title}, {type}, {file.size}
+                </ScreenReaderOnly>
+              </a>
+            </span>
+          </li>
+        );
+      })}
     </ul>
   );
 }

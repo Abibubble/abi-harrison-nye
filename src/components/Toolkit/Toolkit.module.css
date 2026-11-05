@@ -9,8 +9,10 @@
     display: flex;
   }
 
+  /* The minimum width lets a card be narrower than its longest word, which then wraps */
   > li > * {
     flex: 1;
+    min-width: 0;
   }
 }
 
@@ -19,29 +21,46 @@
 }
 
 /* The heading link stands on its own, so it needs a full size target (WCAG 2.5.5). The maximum
-   width lets a long word wrap rather than make the link wider than the screen (WCAG 1.4.10) */
+   width lets a long word, such as "Photosensitivity" in large text, wrap rather than make the link
+   wider than the screen (WCAG 1.4.10) */
 .title a {
   display: inline-block;
   max-width: 100%;
+  overflow-wrap: anywhere;
   min-height: var(--size-target-min);
   padding-block: var(--spacer-8);
 }
 
 /* Links that stand on their own, rather than in a sentence, need a full size target (WCAG 2.5.5) */
 .standalone a,
-.links a,
+.fileLinks a,
 .results a {
   display: inline-flex;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   align-items: center;
   min-height: var(--size-target-min);
 }
 
-.links {
+/* A row for each file, with a line between them, so it's clear which links go with which file */
+.files {
   display: flex;
   flex-direction: column;
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.file {
+  padding-block-start: var(--spacer-8);
+  border-block-start: var(--border-width) solid var(--color-border-decorative);
+}
+
+.fileLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--spacer-8);
+  align-items: center;
 }
 
 .search {

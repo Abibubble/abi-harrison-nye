@@ -11,7 +11,7 @@ Write links that tell the user exactly where they are going, what they're doing,
 - Be descriptive
   - An example of non-descriptive link text - 'To see our new report, click here'
   - An example of descriptive link text - 'Read our 2024 Report'
-- Avoid raw URLs. You should never use a long web address as the link text (like `https://www...`). Screen readers will read every single letter, number, and slash out loud, which is very frustrating to listen to
+- Avoid raw uniform resource locators (URLs). You should never use a long web address as the link text (like `https://www...`). Screen readers will read out the whole address, including slashes and symbols, which is very frustrating to listen to
 - Be clear and brief. You want to keep link text short - tell them the destination without writing a whole paragraph
 
 You might think that the sentence right next to the link explains what it does. The catch is that users jumping from link to link do not hear the surrounding text. They only hear the words that you made clickable
@@ -20,4 +20,4 @@ You might think that the sentence right next to the link explains what it does. 
 
 - [Writing Meaningful Link Text](https://www.wcag.com/blog/writing-meaningful-link-text/)
 - [WebAIM: Links and Hypertext](https://webaim.org/techniques/hypertext/link_text)
-- [W3C: Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html)
+- [World Wide Web Consortium (W3C): Link Purpose](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html)

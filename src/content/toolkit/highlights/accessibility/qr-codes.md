@@ -9,7 +9,7 @@ QR codes are used to store information for a device to read instantly. Common us
 - Making a payment
 - Downloading an app
 
-While QR codes can help users with motor or cognitive disabilities by removing the need to type long URLs, they create significant barriers if not implemented carefully. These barriers include:
+While QR codes can help users with motor or cognitive disabilities by removing the need to type long uniform resource locators (URLs), they create significant barriers if not implemented carefully. These barriers include:
 
 - Users who are blind or have low vision cannot easily locate or scan a QR code
 - Poor placement can make codes unreachable for wheelchair users

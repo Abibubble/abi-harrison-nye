@@ -8,11 +8,11 @@ For some people, turning their device is not an option. A person who uses a powe
 
 Websites and apps should work no matter how the screen is turned.
 
-Never use code that forces the screen to stay in just one direction
+Never use code that forces the screen to stay in just one direction.
 
-Build designs that stretch or stack neatly to fit the screen, whether it is tall or wide
+Build designs that stretch or stack neatly to fit the screen, whether it is tall or wide.
 
 ### Useful links
 
-- [W3C - Understanding Orientation](https://www.w3.org/WAI/WCAG21/Understanding/orientation.html)
+- [World Wide Web Consortium (W3C) - Understanding Orientation](https://www.w3.org/WAI/WCAG21/Understanding/orientation.html)
 - [A11y Tip: Device Orientation](https://tab-able.co.uk/a11y-tip-device-orientation/)

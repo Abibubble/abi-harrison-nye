@@ -4,11 +4,11 @@ Some people struggle with motion on websites. This can be due to a number of rea
 
 - ADHD
 - Motion sickness
-- Seizures
-- Mobile device battery life
-- Data usage
+- Vestibular disorders
 
 While it's best not to use any motion that autoplays, sometimes it's unavoidable. So that this doesn't create barriers for users, you can use the prefers-reduced-motion media query to stop the motion from happening for those who choose not to see it.
+
+Reducing motion can have other benefits too, such as saving battery life and data on mobile devices.
 
 Many new operating systems allow you to choose to reduce the motion that you see on websites (at least, on websites where they've used the prefers-reduced-motion media query).
 
@@ -26,38 +26,31 @@ If you're providing moving media to developers, also provide a non-moving varian
 
 If you're a developer, there are two ways you can use it. Either you can reduce the motion if the user has set a preference to reduce motion, like this:
 
-`.moving-element {`
-
-`animation: bounce 500ms;`
-
-`}`
-
-`@media (prefers-reduced-motion: reduce) {`
-
-`.moving-element {`
-
-`animation: none;`
-
-`}`
-
-`}`
+```
+.moving-element {
+    animation: bounce 500ms;
+}
+@media (prefers-reduced-motion: reduce) {
+    .moving-element {
+        animation: none;
+    }
+}
+```
 
 Or you can set the motion to happen if the user hasn't set a preference. Here's an example of using it like this:
 
-`@media (prefers-reduced-motion: no-preference) {`
+```
+@media (prefers-reduced-motion: no-preference) {
+    .moving-element {
+        animation: bounce 500ms;
+    }
+}
+```
 
-`.moving-element {`
-
-`animation: bounce 500ms;`
-
-`}`
-
-`}`
-
-This is the recommended way, as it means that even if a user hasn't turned on the setting (for instance, if they don't know that setting exists), no barriers are added for them. This method also has two added advantages - it's less code, and older browsers that don't support the prefers-reduced-motion media query will ignore this code, which will render your element without motion as standard.
+This is the recommended way, because browsers that don't support the prefers-reduced-motion media query will ignore this code, so your element will have no motion as standard. It's also less code. People who haven't turned on the setting will still see the motion, in the same way as the first method.
 
 ### Useful links
 
-- [WCAG 2.2 Techniques - Using the CSS reduce-motion query to prevent motion](https://www.w3.org/WAI/WCAG22/Techniques/css/C39)
-- [Respecting users motion preferences](https://www.smashingmagazine.com/2021/10/respecting-users-motion-preferences/)
+- [Web Content Accessibility Guidelines (WCAG) 2.2 Techniques - Using the CSS prefers-reduced-motion query to prevent motion](https://www.w3.org/WAI/WCAG22/Techniques/css/C39)
+- [Respecting users' motion preferences](https://www.smashingmagazine.com/2021/10/respecting-users-motion-preferences/)
 - [MDN - prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)

@@ -66,7 +66,14 @@ async function tabOrderProblems(page: Page, browserName: string): Promise<string
 
   for (const [position, label] of expected.entries()) {
     await page.keyboard.press(tab);
-    const focus = await checkFocus(page);
+    let focus = await checkFocus(page);
+    // Focusing can open something, such as an abbreviation's tooltip, while the browser scrolls to
+    // it. WebKit on slower computers can take a moment to finish, so give it up to a second. Anything
+    // really off screen or covered still fails
+    for (let wait = 0; wait < 10 && !(focus.inView && focus.onTop); wait++) {
+      await page.waitForTimeout(100);
+      focus = await checkFocus(page);
+    }
 
     if (focus.index !== String(position)) {
       problems.push(

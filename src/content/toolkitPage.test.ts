@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import type { ToolkitFolder } from './toolkit';
-import { loadToolkitPage } from './toolkitPage';
+import { formatFileSize, loadToolkitPage } from './toolkitPage';
 
 const TOOLKIT: ToolkitFolder = {
   slug: '',
@@ -19,7 +19,7 @@ const TOOLKIT: ToolkitFolder = {
           title: 'Dark mode',
           description: 'About dark mode.',
           updated: '2026-06-01',
-          files: [{ path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '100KB' }],
+          files: [{ path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '' }],
         },
       ],
     },
@@ -28,6 +28,20 @@ const TOOLKIT: ToolkitFolder = {
 };
 
 const TEXTS = { 'highlights/dark-mode': '### Dark mode\n\nLight text on a dark background.' };
+
+/** Every file is 100KB, as the example files aren't real */
+const sizeOf = () => '100KB';
+
+const WITH_SIZES: ToolkitFolder = {
+  ...TOOLKIT,
+  folders: TOOLKIT.folders.map((folder) => ({
+    ...folder,
+    items: folder.items.map((item) => ({
+      ...item,
+      files: item.files.map((file) => ({ ...file, size: '100KB' })),
+    })),
+  })),
+};
 
 function thrownStatus(load: () => unknown): number | undefined {
   try {
@@ -40,9 +54,9 @@ function thrownStatus(load: () => unknown): number | undefined {
 
 describe('loadToolkitPage', () => {
   it('gives the main page, with every folder and resource to search', () => {
-    expect(loadToolkitPage([], TOOLKIT, TEXTS)).toEqual({
+    expect(loadToolkitPage([], TOOLKIT, TEXTS, sizeOf)).toEqual({
       kind: 'home',
-      toolkit: TOOLKIT,
+      toolkit: WITH_SIZES,
       search: [
         {
           kind: 'folder',
@@ -61,7 +75,7 @@ describe('loadToolkitPage', () => {
   });
 
   it('gives a folder, with breadcrumbs', () => {
-    const page = loadToolkitPage(['highlights'], TOOLKIT, TEXTS);
+    const page = loadToolkitPage(['highlights'], TOOLKIT, TEXTS, sizeOf);
 
     expect(page.kind).toBe('folder');
     expect(page.kind === 'folder' && page.trail).toEqual([
@@ -69,8 +83,10 @@ describe('loadToolkitPage', () => {
     ]);
   });
 
-  it('gives a resource, with its text as HTML', () => {
-    const page = loadToolkitPage(['highlights', 'dark-mode'], TOOLKIT, TEXTS);
+  it('gives a resource, with its text as HTML and each file’s size', () => {
+    const page = loadToolkitPage(['highlights', 'dark-mode'], TOOLKIT, TEXTS, sizeOf);
+
+    expect(page.kind === 'item' && page.item.files[0]?.size).toBe('100KB');
 
     expect(page.kind === 'item' && page.textHtml).toBe(
       '<h3>Dark mode</h3>\n<p>Light text on a dark background.</p>\n',
@@ -80,6 +96,12 @@ describe('loadToolkitPage', () => {
   it('gives a 404 for an address that isn’t in the toolkit, or a resource without its text', () => {
     expect(thrownStatus(() => loadToolkitPage(['missing'], TOOLKIT, TEXTS))).toBe(404);
     expect(thrownStatus(() => loadToolkitPage(['highlights', 'dark-mode'], TOOLKIT, {}))).toBe(404);
+  });
+
+  it('shows sizes as computers do, with 1000 bytes to a kilobyte', () => {
+    expect(formatFileSize(307_400)).toBe('307KB');
+    expect(formatFileSize(112_500)).toBe('113KB');
+    expect(formatFileSize(1_234_567)).toBe('1.2MB');
   });
 
   it('uses the real toolkit by default', () => {

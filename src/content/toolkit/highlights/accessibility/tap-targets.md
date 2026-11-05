@@ -2,7 +2,7 @@
 
 You should ensure that interactive elements like buttons or links are large enough and have enough space around them, to make them easy to press without accidentally overlapping onto other elements.
 
-Rage clicks can be a nightmare. This is where the user has to attempt to click on an interactive element more than once. This can remove barriers for a number of users, including (but not limited to):
+Small tap targets can cause rage clicks, where the user has to try to click on an interactive element more than once. Larger tap targets can remove barriers for a number of users, including (but not limited to):
 
 - Users who use a mobile device where a touchscreen is the primary mode of interaction
 - Users with mobility impairments, such as hand tremors
@@ -16,42 +16,36 @@ Fully supported, you just need to ensure that your tap targets are large enough 
 
 ### How to support it
 
-WCAG 2.1 states that all tap targets must be a minimum of 44px x 44px, with a minimum gap of 8px between tap targets. This is so that a user's finger pressing on one tap target does not inadvertently touch another tap target.
+Web Content Accessibility Guidelines (WCAG) 2.2 requires tap targets to be at least 24px x 24px at Level AA (SC 2.5.8 Target Size (Minimum)), unless there's enough space around them. At Level AAA, they must be at least 44px x 44px (SC 2.5.5 Target Size (Enhanced)). This is so that a user's finger pressing on one tap target does not inadvertently touch another tap target.
 
 _Note:_ `px` _means_ `pixels`
 
-A minimum tap target size of 48px x 48px is recommended. This is slightly larger than the minimum required by WCAG. Keep the minimum gap of 8px between tap targets too.
+Google's Material Design recommends a minimum tap target size of 48px x 48px, with a gap of at least 8px between tap targets. This is larger than the minimum required by WCAG.
 
 The 48px x 48px area corresponds to around 9mm, which is about the size of a person's finger pad area.
 
 Any interactive element (unless it's text links within a paragraph) should be designed and built to be a minimum size of 48px x 48px, with a gap of 8px between any tap targets.
 
-`button {`
+```
+button {
+    min-width: 48px;
+    min-height: 48px;
+    margin: 8px;
+}
+```
 
-`width: 48px;`
+While an icon contained by a link may only have a width and height of 24px, you can add padding to the link to bring the tap target size up to 48px.
 
-`height: 48px;`
-
-`margin: 8px;`
-
-`}`
-
-While an icon contained by a link may only have a width and height of 24px, you can use additional padding to bring the tap target size up to 48px.
-
-`a .icon {`
-
-`width: 24px;`
-
-`height: 24px;`
-
-`margin: 8px;`
-
-`padding: 12px;`
-
-`}`
+```
+a {
+    display: inline-block;
+    margin: 8px;
+    padding: 12px;
+}
+```
 
 ### Useful links
 
-- [WCAG 2.1 Target size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
+- [Understanding SC 2.5.8: Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
 - [How to use typography, touch targets, and spacing for better accessibility](https://www.brightec.co.uk/blog/how-to-use-typography-touch-targets-and-spacing-for-better-accessibility#:~:text=Touch%20targets%20and%20spacing%20considerations)
 - [Accessible tap targets cheat sheet](https://www.smashingmagazine.com/2023/04/accessible-tap-target-sizes-rage-taps-clicks/)

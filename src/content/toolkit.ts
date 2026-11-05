@@ -12,7 +12,10 @@ export const TOOLKIT_DESCRIPTION =
 export interface ToolkitFile {
   /** Always under inclusion-toolkit/files/, such as inclusion-toolkit/files/adhd.pdf */
   path: string;
-  /** Such as 1.2MB, using 1000 bytes to a kilobyte, as computers show it */
+  /**
+   * Such as 1.2MB, using 1000 bytes to a kilobyte, as computers show it. Worked out from the file
+   * when the site is built, so it's empty until then
+   */
   size: string;
 }
 
@@ -50,9 +53,9 @@ export interface ToolkitFolder {
 
 /**
  * A resource in toolkit.json, with what I'm tracking. The text of everything in it is in
- * src/content/toolkit/{folders}/{slug}.md
+ * src/content/toolkit/{folders}/{slug}.md, and its files are named the same way (see toolkitFilePaths)
  */
-export interface ToolkitItemRecord extends ToolkitItem {
+export interface ToolkitItemRecord extends Omit<ToolkitItem, 'files'> {
   /** Whether it has a slides version, which then needs its PowerPoint file too */
   slides: boolean;
   /** Checked and ready, a draft to check, or not written yet. Only checked ones are on the site */
@@ -73,36 +76,48 @@ export const TOOLKIT_RECORD: ToolkitFolderRecord = {
   ...(RECORD as Pick<ToolkitFolderRecord, 'folders' | 'items'>),
 };
 
-/** The formats a resource needs before it can go live, as well as its text on the site */
-export function neededFileTypes(item: ToolkitItemRecord): ToolkitFileType[] {
-  return item.slides ? ['Word document', 'PDF', 'PowerPoint'] : ['Word document', 'PDF'];
+/**
+ * Where a resource's files go in public/. Every resource has a PDF and a Word file, and a
+ * PowerPoint file if it has slides, named after the slugs leading to it. So
+ * highlights/accessibility/dark-mode has inclusion-toolkit/files/highlights/accessibility/dark-mode.pdf
+ * and .docx. The PDF comes first, as it's the one to view
+ */
+export function toolkitFilePaths(slugs: readonly string[], slides: boolean): string[] {
+  const extensions = slides ? ['pdf', 'docx', 'pptx'] : ['pdf', 'docx'];
+  return extensions.map((extension) => `inclusion-toolkit/files/${slugs.join('/')}.${extension}`);
 }
 
-/** Ready once its text is checked and it has every format it needs, so nobody is left out */
+/**
+ * Ready once its text is checked. The tests and the build then make sure it has every file it
+ * needs, so nobody is left out
+ */
 function isReady(item: ToolkitItemRecord): boolean {
-  const types = item.files.map(fileType);
-  return item.text === 'checked' && neededFileTypes(item).every((type) => types.includes(type));
+  return item.text === 'checked';
 }
 
 /**
  * Only what the site shows: ready resources, and folders with something in them.
  * It lists what to keep, rather than what to remove, so anything new added for tracking stays private
  */
-export function publicToolkit(record: ToolkitFolderRecord): ToolkitFolder {
+export function publicToolkit(record: ToolkitFolderRecord, slugs: string[] = []): ToolkitFolder {
   const { slug, title, description } = record;
 
   return {
     slug,
     title,
     description,
-    folders: record.folders.map(publicToolkit).filter(hasContent),
-    items: record.items.filter(isReady).map(({ slug, title, description, updated, files }) => ({
-      slug,
-      title,
-      description,
-      updated,
-      files,
-    })),
+    folders: record.folders
+      .map((child) => publicToolkit(child, [...slugs, child.slug]))
+      .filter(hasContent),
+    items: record.items
+      .filter(isReady)
+      .map(({ slug: itemSlug, title, description, updated, slides }) => ({
+        slug: itemSlug,
+        title,
+        description,
+        updated,
+        files: toolkitFilePaths([...slugs, itemSlug], slides).map((path) => ({ path, size: '' })),
+      })),
   };
 }
 
@@ -191,8 +206,15 @@ export function viewableFile(item: ToolkitItem): ToolkitFile | undefined {
   return item.files.find((file) => fileType(file) === 'PDF');
 }
 
-function allItemRecords(folder: ToolkitFolderRecord): ToolkitItemRecord[] {
-  return [...folder.items, ...folder.folders.flatMap(allItemRecords)];
+/** Every resource in toolkit.json, ready or not, with the slugs leading to it */
+export function toolkitItemRecords(
+  record: ToolkitFolderRecord = TOOLKIT_RECORD,
+  slugs: string[] = [],
+): { slugs: string[]; item: ToolkitItemRecord }[] {
+  return [
+    ...record.items.map((item) => ({ slugs: [...slugs, item.slug], item })),
+    ...record.folders.flatMap((child) => toolkitItemRecords(child, [...slugs, child.slug])),
+  ];
 }
 
 /**
@@ -200,7 +222,7 @@ function allItemRecords(folder: ToolkitFolderRecord): ToolkitItemRecord[] {
  * into the built site, so the build removes these
  */
 export function unpublishedToolkitFiles(record: ToolkitFolderRecord = TOOLKIT_RECORD): string[] {
-  return allItemRecords(record)
-    .filter((item) => !isReady(item))
-    .flatMap((item) => item.files.map((file) => file.path));
+  return toolkitItemRecords(record)
+    .filter(({ item }) => !isReady(item))
+    .flatMap(({ slugs, item }) => toolkitFilePaths(slugs, item.slides));
 }

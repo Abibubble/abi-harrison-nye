@@ -6,7 +6,7 @@ Everyone has used links. Those wonderful clickable bits of text that take you to
 
 Have you seen 'click here' links? A visual user will be able to set it in context and understand the place where the link will direct. But a person relying on assistive technology may scan links on the page, and they will be presented with a list of 'click here' links. They won't be able to understand where each link will direct them.
 
-Sometimes people use the URL as is, like this - https://abiharrisonnye.dev/talks/a11y-series-buttons/transcript. Visual users may not mind this too much, just scanning through it. However, a person relying on assistive technology will have to listen to the whole URL being read out to understand where the link will direct them. This can be disorientating as well as annoying.
+Sometimes people use the uniform resource locator (URL) as is, like this - https://abiharrisonnye.dev/talks/a11y-series-buttons/transcript. Visual users may not mind this too much, just scanning through it. However, a person relying on assistive technology will have to listen to the whole URL being read out to understand where the link will direct them. This can be disorientating as well as annoying.
 
 ### How to support it
 
@@ -18,4 +18,4 @@ You should also avoid non-descriptive link text, like here, click here, read mor
 
 - [Yale University - Links](https://usability.yale.edu/digital-accessibility/accessibility-resources/accessibility-articles/accessible-links)
 - [WebAIM - Links and Hypertext](https://webaim.org/techniques/hypertext/)
-- [Reading University - Accessible Links](https://www.reading.ac.uk/digital-accessibility/resources/links)
+- [University of Reading: Accessible Links](https://www.reading.ac.uk/digital-accessibility/resources/links)
