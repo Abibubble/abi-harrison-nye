@@ -3,8 +3,10 @@ import { expect, test } from './support/test';
 test.describe('Footer copyright', () => {
   test('is prerendered with the year the site was built', async ({ request }) => {
     const html = await (await request.get('/')).text();
+    // The surname is wrapped, so it never splits at its hyphen, so this checks the words only
+    const text = html.replace(/<!--.*?-->|<[^>]+>/g, '');
 
-    expect(html).toContain(`© ${new Date().getFullYear()} Abi Harrison-Nye`);
+    expect(text).toContain(`© ${String(new Date().getFullYear())} Abi Harrison-Nye`);
   });
 
   test('updates to the visitor’s current year once the page loads', async ({ page }) => {

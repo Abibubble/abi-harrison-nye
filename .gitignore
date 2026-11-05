@@ -180,6 +180,9 @@ blob-report/
 # Folder settings that macOS Finder adds
 .DS_Store
 
+# The Claude app's preview server setting, which is only for this computer
+/.claude/launch.json
+
 # Personal list of future work that's blocked or waiting on something
 /TODO.md
 

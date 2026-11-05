@@ -6,7 +6,10 @@ test.describe('Home page', () => {
     const html = await response.text();
 
     expect(response.ok()).toBe(true);
-    expect(html).toMatch(/<h1[^>]*>Abi Harrison-Nye<\/h1>/);
+    // The surname is wrapped, so it never splits at its hyphen, so this checks the words only
+    expect(/<h1[^>]*>(.*?)<\/h1>/.exec(html)?.[1]?.replace(/<[^>]+>/g, '')).toBe(
+      'Abi Harrison-Nye',
+    );
   });
 
   test('sets the page language and title', async ({ page }) => {
