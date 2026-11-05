@@ -94,7 +94,7 @@
 }
 
 /* Should match SiteHeader.module.css */
-@container site-header (width >= 72em) {
+@container site-header (width >= 79em) {
   :global(:root[data-js]) .toggle {
     display: none;
   }

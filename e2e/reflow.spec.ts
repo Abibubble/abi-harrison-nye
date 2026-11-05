@@ -2,7 +2,7 @@ import { test } from './support/test';
 
 import { TEXT_SPACING_CSS, expectNoHorizontalScroll } from './support/layout';
 import { ROUTES } from './support/routes';
-import { STRONGEST_SETTINGS, saveDisplaySettings } from './support/settings';
+import { STRONGEST_SETTINGS, WIDE_SYSTEM_FONT, saveDisplaySettings } from './support/settings';
 
 for (const route of ROUTES) {
   test.describe(`${route.name} page`, () => {
@@ -36,11 +36,7 @@ for (const route of ROUTES) {
       await saveDisplaySettings(page, STRONGEST_SETTINGS);
       await page.setViewportSize({ width: 320, height: 640 });
       await page.goto(route.path);
-      // The system font differs on each computer. Testing with a wide one (Verdana on a Mac,
-      // DejaVu Sans on Linux) catches long words that only overflow where the system font is wide
-      await page.addStyleTag({
-        content: ":root { --font-family-system: verdana, 'DejaVu Sans', sans-serif; }",
-      });
+      await page.addStyleTag(WIDE_SYSTEM_FONT);
       await page.getByRole('button', { name: 'Menu' }).click();
 
       await expectNoHorizontalScroll(page);

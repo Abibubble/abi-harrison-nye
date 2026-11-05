@@ -66,6 +66,9 @@ const urls = paths
   .filter((path) => inSample(path) && (!talkKind(path) || talkSample.has(path)))
   .map((path) => `${SITE}${path}`);
 
+// Addresses ending like this need 0.9 for performance, rather than 0.95 (see the assertMatrix below)
+const SLOWER_PAGES = '(/slides|/highlights/accessibility/accessibility-highlights)/$';
+
 const ASSERTIONS = {
   'categories:performance': ['error', { minScore: 0.95 }],
   'categories:accessibility': ['error', { minScore: 1 }],
@@ -88,13 +91,14 @@ module.exports = {
     assert: {
       assertMatrix: [
         {
-          // Talks' Slides pages, which open with a picture of the first slide. Lighthouse counts
-          // everything a slow phone downloads before the picture shows, so these score a little
-          // lower than pages that open with text
-          matchingUrlPattern: '/slides/$',
+          // Pages that score a little lower, as Lighthouse counts everything a slow phone
+          // downloads before the first thing shows:
+          // - talks' Slides pages, which open with a picture of the first slide
+          // - the full Accessibility Highlights, a very long page with every highlight in it
+          matchingUrlPattern: SLOWER_PAGES,
           assertions: { ...ASSERTIONS, 'categories:performance': ['error', { minScore: 0.9 }] },
         },
-        { matchingUrlPattern: '^(?!.*/slides/$)', assertions: ASSERTIONS },
+        { matchingUrlPattern: `^(?!.*${SLOWER_PAGES})`, assertions: ASSERTIONS },
       ],
     },
     upload: {

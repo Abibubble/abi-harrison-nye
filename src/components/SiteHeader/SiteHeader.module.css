@@ -60,7 +60,7 @@
 }
 
 /* Should match SiteNav.module.css */
-@container site-header (width >= 72em) {
+@container site-header (width >= 79em) {
   .inner {
     flex-wrap: nowrap;
   }

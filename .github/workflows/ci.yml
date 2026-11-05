@@ -33,6 +33,12 @@ jobs:
   storybook:
     name: Storybook accessibility tests
     runs-on: ubuntu-24.04
+    # Playwright's ready-made setup, with the browsers and the system libraries they need already
+    # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
+    # The version must match @playwright/test in package.json
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -41,7 +47,6 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:storybook
       - run: pnpm build-storybook
 
@@ -49,6 +54,12 @@ jobs:
   e2e:
     name: End to end tests (${{ matrix.shard }} of 2)
     runs-on: ubuntu-24.04
+    # Playwright's ready-made setup, with the browsers and the system libraries they need already
+    # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
+    # The version must match @playwright/test in package.json
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
@@ -61,7 +72,6 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps
       - run: pnpm test:e2e --shard=${{ matrix.shard }}/2
       - uses: actions/upload-artifact@v7
         if: failure()
@@ -73,6 +83,12 @@ jobs:
   lighthouse:
     name: Lighthouse
     runs-on: ubuntu-24.04
+    # Playwright's ready-made setup, with the browsers and the system libraries they need already
+    # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
+    # The version must match @playwright/test in package.json
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -81,7 +97,6 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build
       - run: pnpm test:lighthouse
       - uses: actions/upload-artifact@v7
@@ -94,6 +109,12 @@ jobs:
   pages:
     name: GitHub Pages build
     runs-on: ubuntu-24.04
+    # Playwright's ready-made setup, with the browsers and the system libraries they need already
+    # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
+    # The version must match @playwright/test in package.json
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -102,7 +123,6 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm build
         env:
           GITHUB_PAGES: 'true'

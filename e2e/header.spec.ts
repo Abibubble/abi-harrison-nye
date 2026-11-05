@@ -1,10 +1,10 @@
 import { type Page, expect, test } from './support/test';
 
 import { expectNoHorizontalScroll } from './support/layout';
-import { saveDisplaySettings } from './support/settings';
+import { WIDE_SYSTEM_FONT, saveDisplaySettings } from './support/settings';
 import type { DisplaySettings } from '../src/settings/displaySettings';
 
-const SWITCH_POINT_EM = 72;
+const SWITCH_POINT_EM = 79;
 
 const menuButton = (page: Page) => page.getByRole('button', { name: 'Menu' });
 const mainNavLinks = (page: Page) =>
@@ -32,6 +32,7 @@ for (const [description, settings] of SETTINGS) {
 
     test('fits every link on one row beside the name once there’s room', async ({ page }) => {
       await page.goto('/projects');
+      await page.addStyleTag(WIDE_SYSTEM_FONT);
       const width = Math.ceil(SWITCH_POINT_EM * (await rootFontSize(page))) + 1;
       await page.setViewportSize({ width, height: 800 });
 
@@ -46,6 +47,7 @@ for (const [description, settings] of SETTINGS) {
 
     test('uses the Menu button just before there’s room', async ({ page }) => {
       await page.goto('/projects');
+      await page.addStyleTag(WIDE_SYSTEM_FONT);
       const width = Math.floor(SWITCH_POINT_EM * (await rootFontSize(page))) - 1;
       await page.setViewportSize({ width, height: 800 });
 
