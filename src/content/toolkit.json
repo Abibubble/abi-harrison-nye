@@ -1,0 +1,1576 @@
+{
+  "folders": [
+    {
+      "slug": "infographics",
+      "title": "Infographics",
+      "description": "Visual resources covering neurodiversity and accessibility topics.",
+      "folders": [
+        {
+          "slug": "neurodiversity",
+          "title": "Neurodiversity Infographics",
+          "description": "Infographics covering neurodivergent conditions.",
+          "folders": [],
+          "items": []
+        },
+        {
+          "slug": "accessibility",
+          "title": "Accessibility Infographics",
+          "description": "Infographics covering disabilities and health conditions.",
+          "folders": [],
+          "items": []
+        }
+      ],
+      "items": []
+    },
+    {
+      "slug": "highlights",
+      "title": "Highlights",
+      "description": "Posts and other resources that highlight topics and events related to neurodiversity and accessibility.",
+      "folders": [
+        {
+          "slug": "neurodiversity",
+          "title": "Neurodiversity",
+          "description": "Highlights covering topics related to neurodiversity.",
+          "folders": [],
+          "items": []
+        },
+        {
+          "slug": "accessibility",
+          "title": "Accessibility",
+          "description": "Highlights covering topics related to accessibility.",
+          "folders": [],
+          "items": [
+            {
+              "slug": "accessibility-highlights",
+              "title": "Accessibility Highlights",
+              "description": "Every accessibility highlight in one file, each with what it’s for, how to support it and useful links, plus a glossary of terms.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-highlights.pdf",
+                  "size": "1.1MB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-highlights.docx",
+                  "size": "285KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-highlights.pptx",
+                  "size": "556KB"
+                }
+              ],
+              "slides": true,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file, PDF and slides"
+              ]
+            },
+            {
+              "slug": "accessibility-debt",
+              "title": "Accessibility Debt",
+              "description": "Accessibility debt is like technical debt, but for accessibility.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-debt.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-debt.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "accessibility-overlays",
+              "title": "Accessibility Overlays",
+              "description": "Accessibility overlays are automated tools that claim to find and fix accessibility issues on websites.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-overlays.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-overlays.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "accessibility-testing",
+              "title": "Accessibility Testing",
+              "description": "Accessibility Testing is the process of checking a digital product to ensure it can be used by people with disabilities.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-testing.pdf",
+                  "size": "38KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessibility-testing.docx",
+                  "size": "113KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "accessible-authentication",
+              "title": "Accessible Authentication",
+              "description": "When people can't use a login page, the harm can be serious.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-authentication.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-authentication.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "accessible-links",
+              "title": "Accessible Links",
+              "description": "Everyone has used links.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-links.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-links.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "accessible-pdfs",
+              "title": "Accessible PDFs",
+              "description": "We use PDF (Portable Document Format) to present all kinds of documents like guidelines, contractual agreements, data-heavy reports and even site maps.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-pdfs.pdf",
+                  "size": "44KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/accessible-pdfs.docx",
+                  "size": "113KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "alt-text",
+              "title": "Alt Text",
+              "description": "Some people cannot see the images we display.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/alt-text.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/alt-text.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "aria",
+              "title": "ARIA",
+              "description": "ARIA stands for 'Accessible Rich Internet Applications'.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/aria.pdf",
+                  "size": "55KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/aria.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "ascii-art",
+              "title": "ASCII Art",
+              "description": "ASCII art is the practice of arranging punctuation and symbols to create a picture, like the 'shrug' ¯_(ツ)_/¯ or drawings of animals.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/ascii-art.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/ascii-art.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "assistive-technology-beyond-screen-readers",
+              "title": "Assistive Technology (Beyond Screen Readers)",
+              "description": "Assistive Technology (AT) is any tool that helps people with disabilities use a computer.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/assistive-technology-beyond-screen-readers.pdf",
+                  "size": "31KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/assistive-technology-beyond-screen-readers.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "basic-accessibility-testing",
+              "title": "Basic Accessibility Testing",
+              "description": "Testing makes sure that what gets built actually works for everyone.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/basic-accessibility-testing.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/basic-accessibility-testing.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "breadcrumbs-and-wayfinding",
+              "title": "Breadcrumbs & Wayfinding",
+              "description": "Breadcrumbs are a secondary navigation system that shows a user's current location within a site's hierarchy.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/breadcrumbs-and-wayfinding.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/breadcrumbs-and-wayfinding.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "buttons",
+              "title": "Buttons",
+              "description": "Buttons let people take an action, such as submitting a form, saving information or opening a menu.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/buttons.pdf",
+                  "size": "39KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/buttons.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "captions-and-transcripts",
+              "title": "Captions & Transcripts",
+              "description": "Captions are timed text that appears with a video to show spoken words, music, and sounds, helping viewers who are deaf or hard of hearing.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/captions-and-transcripts.pdf",
+                  "size": "35KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/captions-and-transcripts.docx",
+                  "size": "113KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "carousels-and-sliders",
+              "title": "Carousels & Sliders",
+              "description": "A carousel is a sliding banner that automatically cycles through images or messages on a webpage, like a digital billboard.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/carousels-and-sliders.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/carousels-and-sliders.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blind-series-anomalous-trichromacy",
+              "title": "Colour-blind Series: Anomalous Trichromacy",
+              "description": "Earlier entries in this series covered full colour blindness, where one type of colour sensing cell is missing.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-anomalous-trichromacy.pdf",
+                  "size": "38KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-anomalous-trichromacy.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blind-series-deuteranopia",
+              "title": "Colour-blind Series: Deuteranopia",
+              "description": "Deuteranopia is a form of colour blindness that affects the ability to see green.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-deuteranopia.pdf",
+                  "size": "32KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-deuteranopia.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blind-series-protanopia",
+              "title": "Colour-blind Series: Protanopia",
+              "description": "Protanopia is a form of colour blindness that affects the ability to see red.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-protanopia.pdf",
+                  "size": "33KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-protanopia.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blind-series-the-rarer-types",
+              "title": "Colour-blind Series: The Rarer Types",
+              "description": "Earlier entries in this series covered Protanopia, Deuteranopia, and Tritanopia.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-the-rarer-types.pdf",
+                  "size": "32KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-the-rarer-types.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blind-series-tritanopia",
+              "title": "Colour-blind Series: Tritanopia",
+              "description": "Tritanopia is a form of colour blindness that affects the ability to see blue.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-tritanopia.pdf",
+                  "size": "31KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blind-series-tritanopia.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-blindness",
+              "title": "Colour Blindness",
+              "description": "Colour blindness (or Colour Vision Deficiency) is about more than just seeing in black and white.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blindness.pdf",
+                  "size": "31KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-blindness.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "colour-contrast",
+              "title": "Colour Contrast",
+              "description": "Websites, social media images, and out-of-home advertising should have a good colour contrast between text and background colour.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-contrast.pdf",
+                  "size": "61KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/colour-contrast.docx",
+                  "size": "146KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "consistency",
+              "title": "Consistency",
+              "description": "Think about your favourite supermarket.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/consistency.pdf",
+                  "size": "32KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/consistency.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "dark-mode",
+              "title": "Dark Mode",
+              "description": "Dark mode is a colour option that flips the user's view from the typical light text on dark background to dark text on a light background.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/dark-mode.pdf",
+                  "size": "39KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/dark-mode.docx",
+                  "size": "113KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "device-orientation",
+              "title": "Device Orientation",
+              "description": "Think about how you hold your phone.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/device-orientation.pdf",
+                  "size": "26KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/device-orientation.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "error-messages-and-validation",
+              "title": "Error Messages & Validation",
+              "description": "Form errors are a major barrier for all users, but they can completely block users with disabilities.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/error-messages-and-validation.pdf",
+                  "size": "39KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/error-messages-and-validation.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "flashing-and-photosensitivity",
+              "title": "Flashing & Photosensitivity",
+              "description": "High-energy videos with strobing effects or rapid transitions can be physically dangerous.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/flashing-and-photosensitivity.pdf",
+                  "size": "29KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/flashing-and-photosensitivity.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "focus-states",
+              "title": "Focus States",
+              "description": "Focus states occur when an interactive element receives focus.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/focus-states.pdf",
+                  "size": "25KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/focus-states.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "focus-traps",
+              "title": "Focus Traps",
+              "description": "Focus traps are when a keyboard user tries to tab away from a page element (or set of elements), but is unable to do so.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/focus-traps.pdf",
+                  "size": "25KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/focus-traps.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "fonts",
+              "title": "Fonts",
+              "description": "Fonts are used everywhere, whether that's in a Word document, in a design, in a slide deck, or on a website.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/fonts.pdf",
+                  "size": "52KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/fonts.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "forms",
+              "title": "Forms",
+              "description": "An accessible form is an online form that everyone can fill in, including people with vision, movement, or cognitive disabilities.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/forms.pdf",
+                  "size": "46KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/forms.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "good-alt-text",
+              "title": "Good Alt Text",
+              "description": "While basic alt text just labels an image, good alt text explains its purpose.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/good-alt-text.pdf",
+                  "size": "32KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/good-alt-text.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "head-pointer",
+              "title": "Head Pointer",
+              "description": "Head pointer allows users with limited hand function to control a computer cursor using head movements and, in some cases, facial expressions.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/head-pointer.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/head-pointer.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "headings",
+              "title": "Headings",
+              "description": "Most people are familiar with headings, whether that's a title in a document or a title sheet on a slide deck.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/headings.pdf",
+                  "size": "41KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/headings.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "hover-states",
+              "title": "Hover states",
+              "description": "Hover states are what happen when a mouse pointer moves over an interactive element.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/hover-states.pdf",
+                  "size": "25KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/hover-states.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "inclusive-language",
+              "title": "Inclusive Language",
+              "description": "Inclusive language means using words that respect everyone.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/inclusive-language.pdf",
+                  "size": "35KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/inclusive-language.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "keyboard-only",
+              "title": "Keyboard Only",
+              "description": "Keyboard only is a method for navigating the web using just a keyboard (not using the mouse at all).",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/keyboard-only.pdf",
+                  "size": "39KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/keyboard-only.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "landmarks-and-roles",
+              "title": "Landmarks & Roles",
+              "description": "Imagine trying to navigate a city with no street signs, where every building looks exactly the same.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/landmarks-and-roles.pdf",
+                  "size": "41KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/landmarks-and-roles.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "link-text",
+              "title": "Link Text",
+              "description": "Many screen reader users navigate websites by pulling up a list of only the links on a page.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/link-text.pdf",
+                  "size": "34KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/link-text.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "meetings",
+              "title": "Meetings",
+              "description": "Meetings are part of most workdays, and there are many ways to make them fully accessible and inclusive.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/meetings.pdf",
+                  "size": "35KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/meetings.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "modals",
+              "title": "Modals",
+              "description": "Modals are manually triggered pop-ups that provide extra information.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/modals.pdf",
+                  "size": "35KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/modals.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "neurodiversity-and-inclusive-design",
+              "title": "Neurodiversity & Inclusive Design",
+              "description": "Neurodiversity describes the natural variations in how human brains function, process information, learn, and interact.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/neurodiversity-and-inclusive-design.pdf",
+                  "size": "38KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/neurodiversity-and-inclusive-design.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "personas",
+              "title": "Personas",
+              "description": "Essentially, Personas are fake people.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/personas.pdf",
+                  "size": "23KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/personas.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "prefers-reduced-motion",
+              "title": "Prefers-reduced-motion",
+              "description": "Some people struggle with motion on websites.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/prefers-reduced-motion.pdf",
+                  "size": "49KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/prefers-reduced-motion.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "presentations",
+              "title": "Presentations",
+              "description": "Most people will have to give a presentation at some point.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/presentations.pdf",
+                  "size": "34KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/presentations.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "qr-codes",
+              "title": "QR Codes",
+              "description": "A QR (Quick Response) code is a type of two-dimensional barcode.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/qr-codes.pdf",
+                  "size": "41KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/qr-codes.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "screen-reader-only-styling",
+              "title": "Screen reader only styling",
+              "description": "Screen reader only styling ensures that everyone who uses a website can access the important information it contains.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/screen-reader-only-styling.pdf",
+                  "size": "38KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/screen-reader-only-styling.docx",
+                  "size": "193KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "screen-readers",
+              "title": "Screen Readers",
+              "description": "Screen readers are pieces of software that announce content audibly.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/screen-readers.pdf",
+                  "size": "32KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/screen-readers.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "shifting-left",
+              "title": "Shifting Left",
+              "description": "Imagine baking a cake, pulling it out of the oven, and realising you forgot the sugar.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/shifting-left.pdf",
+                  "size": "33KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/shifting-left.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "social-media-alt-text",
+              "title": "Social Media: Alt Text",
+              "description": "On social media, images often hold the core message or punchline.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-alt-text.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-alt-text.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "social-media-custom-fonts",
+              "title": "Social Media: Custom Fonts",
+              "description": "People often use generator websites to make their text look unique (e.g.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-custom-fonts.pdf",
+                  "size": "35KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-custom-fonts.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "social-media-emojis",
+              "title": "Social Media: Emojis",
+              "description": "Emojis add personality and tone to messages, but for a screen reader user, they are read aloud as literal text descriptions.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-emojis.pdf",
+                  "size": "31KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-emojis.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "social-media-hashtags",
+              "title": "Social Media: Hashtags",
+              "description": "Imagine trying to read a sentence where all the spaces have been removed.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-hashtags.pdf",
+                  "size": "30KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/social-media-hashtags.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "tap-targets",
+              "title": "Tap Targets",
+              "description": "You should ensure that interactive elements like buttons or links are large enough and have enough space around them, to make them easy to press without accidentally overlapping onto other elements.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/tap-targets.pdf",
+                  "size": "47KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/tap-targets.docx",
+                  "size": "194KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "temporary-and-situational-disabilities",
+              "title": "Temporary & Situational Disabilities",
+              "description": "People often link accessibility with permanent disabilities.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/temporary-and-situational-disabilities.pdf",
+                  "size": "34KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/temporary-and-situational-disabilities.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "text-alternatives-for-complex-images",
+              "title": "Text Alternatives for Complex Images",
+              "description": "Standard 'alt text' is great for simple photos, but it often fails for complex data like charts, graphs, flowcharts, or infographics.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/text-alternatives-for-complex-images.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/text-alternatives-for-complex-images.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "time-limits",
+              "title": "Time Limits",
+              "description": "Time limits refer to when a page sets a time limit on doing a certain action.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/time-limits.pdf",
+                  "size": "29KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/time-limits.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "tooltips-and-popovers",
+              "title": "Tooltips & Popovers",
+              "description": "Tooltips and popovers give users extra info on demand (like for an icon button).",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/tooltips-and-popovers.pdf",
+                  "size": "31KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/tooltips-and-popovers.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "touch-gestures",
+              "title": "Touch Gestures",
+              "description": "Imagine trying to open a heavy door, but the rule is you can only use your pinky fingers.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/touch-gestures.pdf",
+                  "size": "28KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/touch-gestures.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            },
+            {
+              "slug": "zooming",
+              "title": "Zooming",
+              "description": "Some people need to make the text and images on a website bigger to see them clearly.",
+              "updated": "2026-11-02",
+              "files": [
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/zooming.pdf",
+                  "size": "39KB"
+                },
+                {
+                  "path": "inclusion-toolkit/files/highlights/accessibility/zooming.docx",
+                  "size": "112KB"
+                }
+              ],
+              "slides": false,
+              "text": "draft",
+              "todo": [
+                "Check the last updated date",
+                "Check the description",
+                "Check the text drafted for its page",
+                "Check the Word file and PDF"
+              ]
+            }
+          ]
+        }
+      ],
+      "items": []
+    }
+  ],
+  "items": [
+    {
+      "slug": "accessible-meeting-checklist",
+      "title": "Accessible Meeting Checklist",
+      "description": "A checklist of things to ensure meetings are accessible to all attendees.",
+      "updated": "2026-06-16",
+      "files": [
+        {
+          "path": "inclusion-toolkit/files/accessible-meeting-checklist.pdf",
+          "size": "39KB"
+        },
+        {
+          "path": "inclusion-toolkit/files/accessible-meeting-checklist.docx",
+          "size": "117KB"
+        }
+      ],
+      "slides": false,
+      "text": "checked",
+      "todo": []
+    },
+    {
+      "slug": "email-signature-additions",
+      "title": "Email Signature Additions",
+      "description": "Some template examples that can be added to an email signature to share information about accessibility, neurodiversity, and working differences.",
+      "updated": "2026-06-01",
+      "files": [
+        {
+          "path": "inclusion-toolkit/files/email-signature-additions.pdf",
+          "size": "42KB"
+        },
+        {
+          "path": "inclusion-toolkit/files/email-signature-additions.docx",
+          "size": "117KB"
+        }
+      ],
+      "slides": false,
+      "text": "checked",
+      "todo": []
+    },
+    {
+      "slug": "meeting-invite-template",
+      "title": "Meeting Invite Template",
+      "description": "A meeting invite template, created so that no information gets missed when setting up meetings.",
+      "updated": "2026-06-01",
+      "files": [
+        {
+          "path": "inclusion-toolkit/files/meeting-invite-template.pdf",
+          "size": "36KB"
+        },
+        {
+          "path": "inclusion-toolkit/files/meeting-invite-template.docx",
+          "size": "110KB"
+        }
+      ],
+      "slides": false,
+      "text": "checked",
+      "todo": []
+    }
+  ]
+}

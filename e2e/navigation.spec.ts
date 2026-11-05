@@ -93,7 +93,7 @@ test.describe('Navigation on wide screens', () => {
     await page.goto('/');
 
     await expect(menuButton(page)).toBeHidden();
-    await expect(mainNav(page).getByRole('link')).toHaveCount(7);
+    await expect(mainNav(page).getByRole('link')).toHaveCount(8);
     for (const link of await mainNav(page).getByRole('link').all()) {
       await expect(link).toBeVisible();
     }

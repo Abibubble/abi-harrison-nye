@@ -13,6 +13,7 @@
 
 .siteName {
   display: inline-flex;
+  gap: var(--spacer-8);
   align-items: center;
   min-height: var(--size-target-min);
   font-size: var(--font-size-2);
@@ -25,6 +26,17 @@
     color: var(--color-action-hover);
     text-decoration-line: underline;
   }
+}
+
+/* Sized in em, so it grows with the name when the text size setting changes */
+.mark {
+  flex-shrink: 0;
+  inline-size: 1.5em;
+  block-size: 1.5em;
+}
+
+.markSquare {
+  stroke: var(--color-logo-outline);
 }
 
 .subnav {
@@ -48,7 +60,7 @@
 }
 
 /* Should match SiteNav.module.css */
-@container site-header (width >= 62em) {
+@container site-header (width >= 72em) {
   .inner {
     flex-wrap: nowrap;
   }

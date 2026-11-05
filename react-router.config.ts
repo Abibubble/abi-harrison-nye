@@ -5,6 +5,7 @@ import type { Config } from '@react-router/dev/config';
 
 import { BASE_PATH, SITE_URL } from './build-constants.ts';
 import { unreadySlidesFolders } from './src/content/talks.ts';
+import { unpublishedToolkitFiles } from './src/content/toolkit.ts';
 import { withContentSecurityPolicy } from './src/security/contentSecurityPolicy.ts';
 import { pagePaths, robotsTxt, sitemapXml } from './src/seo/sitemap.ts';
 
@@ -46,6 +47,10 @@ export default {
     // Everything in public/ is copied into the build, so slides only go live once their talk is ready
     await Promise.all(
       unreadySlidesFolders().map((path) => rm(join(client, path), { recursive: true })),
+    );
+    // The same for toolkit resources, which only go live once their text is checked
+    await Promise.all(
+      unpublishedToolkitFiles().map((path) => rm(join(client, path), { force: true })),
     );
 
     await rename(join(client, NOT_FOUND_PATH, 'index.html'), join(client, '404.html'));

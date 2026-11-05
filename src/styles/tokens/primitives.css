@@ -24,4 +24,8 @@
   --green-800: #1a5629;
   --white: #fff;
   --black: #000;
+
+  /* The AHN logo's colours, from brand/logo/README.txt. Only for the logo itself */
+  --logo-purple: #5b2a86;
+  --logo-lilac: #c9b6f2;
 }

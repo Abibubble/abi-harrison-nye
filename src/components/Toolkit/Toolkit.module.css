@@ -1,0 +1,107 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(var(--spacer-96) * 3.5)), 1fr));
+  gap: var(--spacer-24);
+  padding: 0;
+  margin: 0;
+
+  > li {
+    display: flex;
+  }
+
+  > li > * {
+    flex: 1;
+  }
+}
+
+.meta {
+  color: var(--color-text-muted);
+}
+
+/* The heading link stands on its own, so it needs a full size target (WCAG 2.5.5). The maximum
+   width lets a long word wrap rather than make the link wider than the screen (WCAG 1.4.10) */
+.title a {
+  display: inline-block;
+  max-width: 100%;
+  min-height: var(--size-target-min);
+  padding-block: var(--spacer-8);
+}
+
+/* Links that stand on their own, rather than in a sentence, need a full size target (WCAG 2.5.5) */
+.standalone a,
+.links a,
+.results a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-8);
+  max-width: var(--size-measure);
+}
+
+/* Search needs JavaScript, so without it only the folders show, which lead to everything */
+:global(:root:not([data-js])) .search {
+  display: none;
+}
+
+.label {
+  font-weight: var(--font-weight-emphasis);
+  letter-spacing: var(--letter-spacing-emphasis);
+}
+
+.searchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-8) var(--spacer-16);
+  align-items: center;
+}
+
+.input {
+  flex: 1 1 var(--size-input-max);
+  width: 100%;
+  max-width: var(--size-input-max);
+  min-height: var(--size-target-min);
+  padding: var(--spacer-8) var(--spacer-16);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-small);
+
+  /* The Clear search button does this, so the browser's own small cross would be a second way */
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+.status {
+  margin: 0;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-16);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  p {
+    margin: 0;
+  }
+}

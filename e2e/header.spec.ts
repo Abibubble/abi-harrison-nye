@@ -4,7 +4,7 @@ import { expectNoHorizontalScroll } from './support/layout';
 import { saveDisplaySettings } from './support/settings';
 import type { DisplaySettings } from '../src/settings/displaySettings';
 
-const SWITCH_POINT_EM = 62;
+const SWITCH_POINT_EM = 72;
 
 const menuButton = (page: Page) => page.getByRole('button', { name: 'Menu' });
 const mainNavLinks = (page: Page) =>
@@ -77,7 +77,7 @@ test.describe('Header layouts', () => {
 
     await menuButton(page).click();
 
-    await expect(mainNavLinks(page)).toHaveCount(7);
+    await expect(mainNavLinks(page)).toHaveCount(8);
     await expect(page.getByRole('combobox', { name: 'Theme' })).toBeVisible();
   });
 

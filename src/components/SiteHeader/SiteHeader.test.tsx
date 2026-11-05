@@ -22,6 +22,18 @@ describe('SiteHeader', () => {
     ).toHaveAttribute('href', '/');
   });
 
+  it('shows the logo’s mark next to the name, hidden from screen readers as the name says the same', () => {
+    renderWithRouter(<SiteHeader />);
+
+    const link = within(screen.getByRole('banner')).getByRole('link', {
+      name: 'Abi Harrison-Nye home page',
+    });
+    const mark = link.querySelector('svg');
+
+    expect(mark).toHaveAttribute('aria-hidden', 'true');
+    expect(mark?.querySelectorAll('rect')).toHaveLength(6);
+  });
+
   it('contains the main navigation', () => {
     renderWithRouter(<SiteHeader />);
 

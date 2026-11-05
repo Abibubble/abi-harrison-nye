@@ -124,7 +124,7 @@ const icon512 = await png(iconHtml(512, true), 512, 512);
 const shareImage = await png(shareHtml, SHARE_IMAGE.width, SHARE_IMAGE.height);
 
 await Promise.all([
-  writeFile(join(PUBLIC, 'favicon.svg'), `${markSvg({ stylesheet: COLOUR_TOKENS })}\n`),
+  writeFile(join(PUBLIC, 'favicon.svg'), `${markSvg()}\n`),
   writeFile(join(PUBLIC, 'favicon.ico'), ico(icon32.image, 32)),
   writeFile(join(PUBLIC, 'apple-touch-icon.png'), appleTouchIcon.image),
   writeFile(join(PUBLIC, 'icon-192.png'), icon192.image),

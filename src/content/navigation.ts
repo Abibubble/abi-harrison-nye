@@ -9,6 +9,7 @@ export const MAIN_NAV: NavItem[] = [
   { label: 'Projects', to: '/projects' },
   { label: 'Talks', to: '/talks' },
   { label: 'Articles', to: '/articles' },
+  { label: 'Inclusion Toolkit', to: '/inclusion-toolkit' },
   { label: 'CV', to: '/cv' },
   { label: 'Contact', to: '/contact' },
 ];

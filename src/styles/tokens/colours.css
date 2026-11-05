@@ -30,6 +30,9 @@
   --color-border-decorative: light-dark(var(--purple-200), var(--mauve-700));
   --color-selection-bg: light-dark(var(--purple-200), var(--purple-700));
   --color-selection-text: light-dark(var(--mauve-900), var(--white));
+
+  /* The logo's outline. On dark backgrounds the logo has a lilac outline, so its purple square stands out */
+  --color-logo-outline: light-dark(var(--logo-purple), var(--logo-lilac));
 }
 
 :root[data-theme='light'] {
@@ -61,4 +64,5 @@
   --color-border-decorative: var(--cream-300);
   --color-selection-bg: var(--purple-200);
   --color-selection-text: var(--mauve-900);
+  --color-logo-outline: var(--logo-purple);
 }
