@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router';
 
+import { PlainAbbreviations } from '../Abbr';
 import { ScreenReaderOnly } from '../ScreenReaderOnly';
 import styles from './Link.module.css';
 
@@ -26,7 +27,7 @@ export function Link({ children, className, ...destination }: LinkProps) {
   if (destination.to !== undefined) {
     return (
       <RouterLink to={destination.to} className={className}>
-        {children}
+        <PlainAbbreviations>{children}</PlainAbbreviations>
       </RouterLink>
     );
   }
@@ -37,7 +38,7 @@ export function Link({ children, className, ...destination }: LinkProps) {
       className={className}
       data-print-url={destination.showsAddress ? 'hide' : undefined}
     >
-      {children}
+      <PlainAbbreviations>{children}</PlainAbbreviations>
       {/* A real space rather than a margin, so every browser keeps it in the link's name */}{' '}
       <svg
         className={styles.externalIcon}

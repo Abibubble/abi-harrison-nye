@@ -92,8 +92,9 @@ async function smallTargets(page: Page): Promise<string[]> {
       .flatMap((element) => {
         const block = element.closest(BLOCKS);
 
+        // Links and abbreviations in a sentence are exempt, as making them bigger would space out the text
         if (
-          element.tagName === 'A' &&
+          (element.tagName === 'A' || 'abbr' in element.dataset) &&
           block &&
           block.textContent.trim() !== element.textContent.trim()
         ) {
@@ -169,6 +170,8 @@ async function invisibleHighContrastControls(page: Page): Promise<string[]> {
         return style.borderStyle === 'none' || parseFloat(style.borderWidth) === 0;
       })
       .filter((element) => !(element instanceof HTMLInputElement && element.type === 'radio'))
+      // Abbreviations are part of the text, so like links they're marked by an underline, not a border
+      .filter((element) => !('abbr' in element.dataset))
       .map((element) => `${element.tagName.toLowerCase()} “${element.textContent.trim()}”`),
   );
 }
@@ -191,7 +194,7 @@ test.describe('Audit', () => {
       expect(await tabOrderProblems(page, browserName)).toEqual([]);
     });
 
-    test(`${name}: every target is at least 44 by 44 pixels, apart from links in text (WCAG 2.5.5)`, async ({
+    test(`${name}: every target is at least 44 by 44 pixels, apart from links and abbreviations in text (WCAG 2.5.5)`, async ({
       page,
     }) => {
       await page.goto(path);

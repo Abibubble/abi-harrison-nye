@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { useLoaderData } from 'react-router';
 
 import { Abbr } from '../components/Abbr';
-import { DISPLAY_SETTINGS_ID, DisplaySettings } from '../components/DisplaySettings';
 import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
 import { PageContents, PageContentsSection, type PageSection } from '../components/PageContents';
@@ -11,6 +10,7 @@ import { Stack } from '../components/Stack';
 import { Time } from '../components/Time';
 import { ABBREVIATIONS, type Abbreviation } from '../content/abbreviations';
 import { GLOSSARY } from '../content/glossary';
+import { DISPLAY_SETTINGS_PATH } from '../content/navigation';
 import { pageTitle } from '../content/site';
 import { ACCESSIBILITY_REVIEWED, MANUAL_TESTING } from '../content/statements';
 import { type KnownIssueTalks, type Talk, knownIssueTalks } from '../content/talks';
@@ -28,7 +28,7 @@ export function meta(): Route.MetaDescriptors {
 }
 
 const SECTIONS = {
-  displaySettings: { id: DISPLAY_SETTINGS_ID, title: 'Display settings' },
+  displaySettings: { id: 'display-settings', title: 'Display settings' },
   howAccessible: { id: 'how-accessible', title: 'How accessible this site is' },
   whatIveDone: { id: 'what-ive-done', title: 'What I’ve done to make it accessible' },
   knownIssues: { id: 'known-issues', title: 'Known issues' },
@@ -110,7 +110,15 @@ export function AccessibilityPage({
         <PageContents sections={Object.values(SECTIONS)} />
       </Stack>
 
-      <DisplaySettings />
+      <PageContentsSection section={SECTIONS.displaySettings}>
+        <p>
+          You can change the theme, text size, spacing, font and motion, to make the site easier for
+          you to use. Your choices are saved in this browser only.
+        </p>
+        <p className={styles.standalone}>
+          <Link to={DISPLAY_SETTINGS_PATH}>Change the display settings</Link>
+        </p>
+      </PageContentsSection>
 
       <PageContentsSection section={SECTIONS.howAccessible}>
         <p>
@@ -138,7 +146,7 @@ export function AccessibilityPage({
           </li>
           <li>
             You can change the theme, text size, spacing, font and motion in the{' '}
-            <a href={`#${DISPLAY_SETTINGS_ID}`}>display settings</a>.
+            <Link to={DISPLAY_SETTINGS_PATH}>display settings</Link>.
           </li>
           <li>The font is Atkinson Hyperlegible, which is designed to be easy to read.</li>
           <li>

@@ -57,6 +57,7 @@ export default [
   route('cv', 'routes/cv.tsx'),
   route('contact', 'routes/contact.tsx'),
   route('accessibility', 'routes/accessibility.tsx'),
+  route('display-settings', 'routes/display-settings.tsx'),
   route('privacy', 'routes/privacy.tsx'),
   route('*', 'routes/not-found.tsx'),
 ] satisfies RouteConfig;

@@ -6,17 +6,13 @@ import { Button } from '../Button';
 import { RadioGroup } from '../RadioGroup';
 import styles from './DisplaySettings.module.css';
 
-export const DISPLAY_SETTINGS_ID = 'display-settings';
-
+/** Every display setting, with a reset button. It has a page of its own, under the page heading */
 export function DisplaySettings() {
   const { settings, update, reset } = useDisplaySettings();
   const [announcement, setAnnouncement] = useState('');
 
   return (
-    <section aria-labelledby={DISPLAY_SETTINGS_ID} className={styles.section}>
-      <h2 id={DISPLAY_SETTINGS_ID} tabIndex={-1}>
-        Display settings
-      </h2>
+    <div className={styles.section}>
       <p className={styles.withoutJavaScript}>
         Display settings need JavaScript, which isn’t running in your browser. You can still make
         text bigger or smaller using your browser’s zoom.
@@ -51,6 +47,6 @@ export function DisplaySettings() {
           <p role="status">{announcement}</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

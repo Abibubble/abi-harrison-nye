@@ -39,6 +39,14 @@
   padding-block: var(--spacer-4);
 }
 
+/* On the narrowest screens, a smaller name leaves room for the menu button on the same line, rather
+   than the button sitting on a line of its own. With larger text, they still wrap */
+@container site-header (width < 23em) {
+  .siteName {
+    font-size: var(--font-size-1);
+  }
+}
+
 /* Should match SiteNav.module.css */
 @container site-header (width >= 62em) {
   .inner {

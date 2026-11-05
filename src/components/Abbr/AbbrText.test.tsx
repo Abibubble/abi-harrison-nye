@@ -97,7 +97,7 @@ describe('AbbrText', () => {
     const { container } = render(<AbbrText>The UK</AbbrText>);
 
     expect(container.textContent).toBe('The UK');
-    expect(container.querySelector('abbr')).toHaveAttribute('title', 'United Kingdom');
+    expect(container.querySelector('button')).toHaveAttribute('aria-description', 'United Kingdom');
   });
 });
 
@@ -118,7 +118,10 @@ describe('Abbr', () => {
     const { container } = renderInScope(<AbbrText>My CV, in the UK.</AbbrText>);
 
     expect(container.textContent).toBe('My CV, in the UK.');
-    expect(container.querySelector('abbr')).toHaveAttribute('title', 'curriculum vitae');
+    expect(container.querySelector('button')).toHaveAttribute(
+      'aria-description',
+      'curriculum vitae',
+    );
   });
 
   it('can still write out one most people know, on purpose', () => {

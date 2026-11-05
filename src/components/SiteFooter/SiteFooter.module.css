@@ -28,4 +28,9 @@
   margin: 0;
   margin-inline-start: auto;
   color: var(--color-text-muted);
+
+  /* Lines up with the links above it, rather than sitting alone on the right */
+  @media (width < 48rem) {
+    margin-inline-start: 0;
+  }
 }

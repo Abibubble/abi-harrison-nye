@@ -51,12 +51,12 @@ describe('ThemeSwitcher', () => {
     expect(themeSelect()).toHaveValue('dark');
   });
 
-  it('links to the rest of the display settings', () => {
+  it('links to the rest of the display settings, on their own page', () => {
     renderWithRouter(<ThemeSwitcher />);
 
     expect(screen.getByRole('link', { name: 'More display settings' })).toHaveAttribute(
       'href',
-      '/accessibility#display-settings',
+      '/display-settings',
     );
   });
 

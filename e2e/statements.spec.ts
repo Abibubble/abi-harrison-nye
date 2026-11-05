@@ -45,9 +45,7 @@ test.describe('Accessibility and Privacy pages', () => {
       .getByRole('link', { name: 'display settings' })
       .click();
 
-    await expect(page).toHaveURL(/\/accessibility#display-settings$/);
-    await expect(
-      page.getByRole('heading', { level: 2, name: 'Display settings' }),
-    ).toBeInViewport();
+    await expect(page).toHaveURL(/\/display-settings$/);
+    await expect(page.getByRole('heading', { level: 1, name: 'Display settings' })).toBeVisible();
   });
 });

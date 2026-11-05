@@ -9,7 +9,7 @@ import {
   displaySettingsStore,
 } from '../../settings/displaySettings';
 import { expectNoAxeViolations } from '../../test/axe';
-import { DISPLAY_SETTINGS_ID, DisplaySettings } from './DisplaySettings';
+import { DisplaySettings } from './DisplaySettings';
 
 const root = document.documentElement;
 const group = (legend: string) => screen.getByRole('group', { name: legend });
@@ -19,14 +19,6 @@ afterEach(() => {
 });
 
 describe('DisplaySettings', () => {
-  it('has a heading that links to the section can move focus to', () => {
-    render(<DisplaySettings />);
-    const heading = screen.getByRole('heading', { level: 2, name: 'Display settings' });
-
-    expect(heading).toHaveAttribute('id', DISPLAY_SETTINGS_ID);
-    expect(heading).toHaveAttribute('tabindex', '-1');
-  });
-
   it('has a group of options for every setting, starting at the defaults', () => {
     render(<DisplaySettings />);
 

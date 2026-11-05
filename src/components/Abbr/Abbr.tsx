@@ -1,6 +1,7 @@
 import { useId } from 'react';
 
 import { ABBREVIATIONS, ALWAYS_SHORT, type Abbreviation } from '../../content/abbreviations';
+import { AbbrTooltip } from './AbbrTooltip';
 import { useFirstUses } from './AbbreviationScope';
 
 interface AbbrProps {
@@ -18,10 +19,10 @@ export function Abbr({ name, expand, spelledOut = false, plural = false }: AbbrP
   const ending = plural ? 's' : '';
   const fullForm = ABBREVIATIONS[name];
   const abbr = (
-    <abbr title={fullForm}>
+    <AbbrTooltip fullForm={fullForm}>
       {name}
       {ending}
-    </abbr>
+    </AbbrTooltip>
   );
 
   if (!(expand ?? (isFirst && !spelledOut))) return abbr;

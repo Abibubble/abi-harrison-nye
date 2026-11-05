@@ -1,10 +1,10 @@
 import { Abbr } from '../components/Abbr';
-import { DISPLAY_SETTINGS_ID } from '../components/DisplaySettings';
 import { PageContents, PageContentsSection, type PageSection } from '../components/PageContents';
 import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { Time } from '../components/Time';
+import { DISPLAY_SETTINGS_PATH } from '../content/navigation';
 import { pageTitle } from '../content/site';
 import { MESSAGE_RETENTION, PRIVACY_CONTACT_FORM_ID, PRIVACY_UPDATED } from '../content/statements';
 import styles from './privacy.module.css';
@@ -106,8 +106,7 @@ export default function Privacy() {
 
       <PageContentsSection section={SECTIONS.displaySettings}>
         <p>
-          If you change the{' '}
-          <Link to={`/accessibility#${DISPLAY_SETTINGS_ID}`}>display settings</Link>, your choices
+          If you change the <Link to={DISPLAY_SETTINGS_PATH}>display settings</Link>, your choices
           are saved in your browser’s local storage, so they’re remembered next time. They’re only
           your preferences, such as the theme and text size, and nothing personal.
         </p>

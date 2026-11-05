@@ -95,7 +95,7 @@ describe('Privacy page', () => {
     expect(section).toHaveTextContent('the time you last sent a message');
     expect(within(section).getByRole('link', { name: 'display settings' })).toHaveAttribute(
       'href',
-      '/accessibility#display-settings',
+      '/display-settings',
     );
   });
 

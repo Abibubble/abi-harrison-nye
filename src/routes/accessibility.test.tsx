@@ -67,11 +67,16 @@ describe('Accessibility page', () => {
     expect(loader()).toEqual(knownIssueTalks());
   });
 
-  it('has the page heading and the display settings', () => {
+  it('has the page heading, and links to the display settings on their own page', () => {
     renderWithRouter(<Accessibility />);
 
     expect(screen.getByRole('heading', { level: 1, name: 'Accessibility' })).toBeInTheDocument();
-    expect(screen.getByRole('region', { name: 'Display settings' })).toBeInTheDocument();
+    expect(
+      within(screen.getByRole('region', { name: 'Display settings' })).getByRole('link', {
+        name: 'Change the display settings',
+      }),
+    ).toHaveAttribute('href', '/display-settings');
+    expect(screen.queryByRole('radio')).not.toBeInTheDocument();
   });
 
   it('lists every section at the top, each linking to a heading that can take focus', () => {

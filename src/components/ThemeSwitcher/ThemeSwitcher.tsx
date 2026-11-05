@@ -3,7 +3,7 @@ import { useId } from 'react';
 import { type DisplaySettings, SETTINGS } from '../../settings/displaySettings';
 import { useDisplaySettings } from '../../settings/useDisplaySettings';
 import { cx } from '../../utils/cx';
-import { DISPLAY_SETTINGS_ID } from '../DisplaySettings';
+import { DISPLAY_SETTINGS_PATH } from '../../content/navigation';
 import { Link } from '../Link';
 import styles from './ThemeSwitcher.module.css';
 
@@ -51,7 +51,7 @@ export function ThemeSwitcher({ layout = 'inline' }: ThemeSwitcherProps) {
           </svg>
         </span>
       </div>
-      <Link to={`/accessibility#${DISPLAY_SETTINGS_ID}`} className={styles.link}>
+      <Link to={DISPLAY_SETTINGS_PATH} className={styles.link}>
         More display settings
       </Link>
     </div>

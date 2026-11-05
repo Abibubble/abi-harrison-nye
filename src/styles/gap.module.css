@@ -25,4 +25,9 @@
 
 .gap7 {
   gap: var(--spacer-96);
+
+  /* Narrow screens show less at once, so the largest gap is halved to keep sections close */
+  @media (width < 48rem) {
+    gap: var(--spacer-48);
+  }
 }

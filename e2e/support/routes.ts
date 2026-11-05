@@ -11,6 +11,7 @@ export const SITE_PAGES = [
   { name: 'CV', path: '/cv' },
   { name: 'Contact', path: '/contact' },
   { name: 'Accessibility', path: '/accessibility' },
+  { name: 'Display settings', path: '/display-settings' },
   { name: 'Privacy', path: '/privacy' },
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;

@@ -1,1 +1,1 @@
-export { DISPLAY_SETTINGS_ID, DisplaySettings } from './DisplaySettings';
+export { DisplaySettings } from './DisplaySettings';

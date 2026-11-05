@@ -39,13 +39,13 @@ test.describe('Theme switcher in the header', () => {
     await expect(themeSelect(page)).toBeVisible();
   });
 
-  test('links to the rest of the display settings, moving focus to them', async ({ page }) => {
+  test('links to the rest of the display settings, on their own page', async ({ page }) => {
     await page.goto('/');
 
     await page.getByRole('link', { name: 'More display settings' }).click();
 
-    await expect(page).toHaveURL('/accessibility#display-settings');
-    await expect(page.getByRole('heading', { name: 'Display settings' })).toBeFocused();
+    await expect(page).toHaveURL('/display-settings');
+    await expect(page.getByRole('heading', { level: 1, name: 'Display settings' })).toBeVisible();
   });
 });
 
@@ -84,7 +84,7 @@ test.describe('Saved settings', () => {
 
 test.describe('Display settings page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/accessibility');
+    await page.goto('/display-settings');
   });
 
   test('makes text bigger', async ({ page }) => {
@@ -153,7 +153,7 @@ test.describe('Without JavaScript', () => {
   test('explains that settings need JavaScript, and hides controls that wouldn’t work', async ({
     page,
   }) => {
-    await page.goto('/accessibility');
+    await page.goto('/display-settings');
 
     await expect(page.getByText('Display settings need JavaScript')).toBeVisible();
     await expect(page.getByRole('radio')).toHaveCount(0);
