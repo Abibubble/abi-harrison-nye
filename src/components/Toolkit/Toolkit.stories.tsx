@@ -8,9 +8,21 @@ const ITEM: ToolkitItem = {
   title: 'Dark mode',
   description: 'A highlight about dark mode, exploring its accessibility pros and cons.',
   updated: '2026-06-01',
-  files: [
-    { path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '120KB' },
-    { path: 'inclusion-toolkit/files/highlights/dark-mode.docx', size: '45KB' },
+  versions: [
+    {
+      name: 'Full guide',
+      files: [
+        { path: 'inclusion-toolkit/files/highlights/dark-mode.docx', size: '45KB' },
+        { path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '120KB' },
+      ],
+    },
+    {
+      name: 'Visual summary',
+      files: [
+        { path: 'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pptx', size: '300KB' },
+        { path: 'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pdf', size: '250KB' },
+      ],
+    },
   ],
 };
 

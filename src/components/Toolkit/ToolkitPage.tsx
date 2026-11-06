@@ -110,6 +110,11 @@ export function ToolkitPage({ data }: { data: ToolkitPageData }) {
           </p>
         </Stack>
         <p>{item.description}</p>
+      </Stack>
+      <Stack as="section" gap={4} aria-labelledby="files">
+        <Heading level={2} id="files">
+          Files
+        </Heading>
         <ToolkitFileLinks item={item} />
       </Stack>
       <Stack as="section" gap={4} aria-labelledby="whats-in-it">

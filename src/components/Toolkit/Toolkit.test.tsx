@@ -14,9 +14,21 @@ const ITEM: ToolkitItem = {
   title: 'Dark mode',
   description: 'A highlight about dark mode.',
   updated: '2026-06-01',
-  files: [
-    { path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '120KB' },
-    { path: 'inclusion-toolkit/files/highlights/dark-mode.docx', size: '45KB' },
+  versions: [
+    {
+      name: 'Full guide',
+      files: [
+        { path: 'inclusion-toolkit/files/highlights/dark-mode.docx', size: '45KB' },
+        { path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '120KB' },
+      ],
+    },
+    {
+      name: 'Visual summary',
+      files: [
+        { path: 'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pptx', size: '300KB' },
+        { path: 'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pdf', size: '250KB' },
+      ],
+    },
   ],
 };
 
@@ -157,12 +169,86 @@ describe('ToolkitPage', () => {
       '/inclusion-toolkit/highlights/dark-mode',
     );
     expect(files.getByText(/Last updated/)).toHaveTextContent('Last updated 1 June 2026');
-    const view = files.getByRole('link', { name: 'View in a new tab: Dark mode, PDF' });
+    // The files are on the resource's own page, so the cards stay short
+    expect(files.queryByRole('link', { name: /^Download/ })).not.toBeInTheDocument();
+  });
+
+  it('shows a resource’s files under headings for the full guide and the visual summary', () => {
+    renderWithRouter(
+      <ToolkitPage
+        data={{
+          kind: 'item',
+          item: ITEM,
+          slugs: ['highlights', 'dark-mode'],
+          trail: TRAIL,
+          textHtml: '<p>Text.</p>',
+        }}
+      />,
+    );
+
+    const files = within(screen.getByRole('region', { name: 'Files' }));
+    expect(
+      files.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent),
+    ).toEqual(['Full guide', 'Visual summary']);
+
+    const guide = within(files.getByRole('region', { name: 'Full guide' }));
+    const view = guide.getByRole('link', {
+      name: 'View: Dark mode, full guide, PDF, opens in a new tab',
+    });
     expect(view).toHaveAttribute('href', '/inclusion-toolkit/files/highlights/dark-mode.pdf');
     expect(view).toHaveAttribute('target', '_blank');
     expect(
-      files.getByRole('link', { name: 'Download: Dark mode, Word document, 45KB' }),
+      guide.getByRole('link', { name: 'Download: Dark mode, full guide, Word document, 45KB' }),
     ).toHaveAttribute('download');
+
+    const summary = within(files.getByRole('region', { name: 'Visual summary' }));
+    expect(
+      summary.getByRole('link', {
+        name: 'View: Dark mode, visual summary, PDF, opens in a new tab',
+      }),
+    ).toHaveAttribute('href', '/inclusion-toolkit/files/highlights/dark-mode-visual-summary.pdf');
+    expect(
+      summary.getByRole('link', { name: 'Download: Dark mode, visual summary, PowerPoint, 300KB' }),
+    ).toHaveAttribute('download');
+  });
+
+  it('keeps the spaces between each file’s words and links, for copying and reader views', () => {
+    renderWithRouter(
+      <ToolkitPage
+        data={{
+          kind: 'item',
+          item: ITEM,
+          slugs: ['highlights', 'dark-mode'],
+          trail: TRAIL,
+          textHtml: '<p>Text.</p>',
+        }}
+      />,
+    );
+
+    const pdf = within(screen.getByRole('region', { name: 'Full guide' })).getAllByRole(
+      'listitem',
+    )[1];
+    expect(pdf?.textContent).toMatch(/^PDF \(120KB\): View.* or Download/);
+  });
+
+  it('doesn’t name the version when a resource only has one', () => {
+    const fullGuideOnly = { ...ITEM, versions: ITEM.versions.slice(0, 1) };
+    renderWithRouter(
+      <ToolkitPage
+        data={{
+          kind: 'item',
+          item: fullGuideOnly,
+          slugs: ['highlights', 'dark-mode'],
+          trail: TRAIL,
+          textHtml: '<p>Text.</p>',
+        }}
+      />,
+    );
+
+    expect(screen.queryByText('Full guide')).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Download: Dark mode, Word document, 45KB' }),
+    ).toBeInTheDocument();
   });
 
   it('shows a resource with everything in it as text', () => {
@@ -185,7 +271,7 @@ describe('ToolkitPage', () => {
         .map((link) => link.textContent),
     ).toEqual(['Inclusion Toolkit', 'Highlights']);
     expect(
-      screen.getByRole('link', { name: 'Download: Dark mode, PDF, 120KB' }),
+      screen.getByRole('link', { name: 'Download: Dark mode, full guide, PDF, 120KB' }),
     ).toBeInTheDocument();
     const text = within(screen.getByRole('region', { name: 'What’s in it' }));
     expect(text.getByRole('heading', { level: 3, name: 'Contrast' })).toBeInTheDocument();

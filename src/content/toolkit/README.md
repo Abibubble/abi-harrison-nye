@@ -15,21 +15,30 @@ Each resource in a folder's `items` has:
 
 - `slug`, `title` and `description`, ending in a full stop
 - `updated`, the date it was last updated, as YYYY-MM-DD
-- `slides`: `true` if it has a slides version
+- `slides`: `true` if it has slides, which are its visual summary
 - `text`: `"draft"` while its text needs checking, then `"checked"`
 - `todo`: what's still to do for it
 
 ## Files
 
-Each resource's files go in `public/inclusion-toolkit/files/`, named after its address. So the
-resource at `/inclusion-toolkit/highlights/accessibility/dark-mode` has:
+Each resource comes in up to 2 versions, each as an editable file and a PDF of it, so people can
+choose the format that works for them:
 
-- `highlights/accessibility/dark-mode.pdf`
+- **Full guide**: the Word file and a PDF of it. Every resource has this.
+- **Visual summary**: the slides, as a PowerPoint file and a PDF of it. Only resources with
+  `"slides": true` have this.
+
+The files go in `public/inclusion-toolkit/files/`, named after the resource's address. The visual
+summary's files have `-visual-summary` added. So the resource at
+`/inclusion-toolkit/highlights/accessibility/dark-mode` has:
+
 - `highlights/accessibility/dark-mode.docx`
-- `highlights/accessibility/dark-mode.pptx`, only if it has `"slides": true`
+- `highlights/accessibility/dark-mode.pdf`
+- `highlights/accessibility/dark-mode-visual-summary.pptx`
+- `highlights/accessibility/dark-mode-visual-summary.pdf`
 
 They aren't listed in `toolkit.json`. The site finds them by their names, and works out their sizes
-when it's built. The PDF's View link opens it in a new tab.
+when it's built. Each PDF's View link opens it in a new tab.
 
 ## When a resource goes live
 
@@ -45,20 +54,28 @@ The Word files are the ones to edit. Everything else is made from them. They're 
 - the 3 small resources, such as `accessible-meeting-checklist.docx`
 - `highlights/accessibility/accessibility-highlights.docx`, the full highlights. The single
   highlights are cut from it, so edit this one rather than them
-- `highlights/accessibility/accessibility-highlights.pptx`, the slides, edited by hand separately
+- `highlights/accessibility/accessibility-highlights.pptx`, the slides, edited by hand separately.
+  The single highlights' slides are cut from it, so edit this one rather than them
 
 After editing, from the repo root, using the Node version from `.nvmrc`:
 
 1. `python3 -I toolkit-sources/rebrand.py` tidies the Word files (the footer, links, fonts and file
-   details) and cuts the full highlights into one Word file for each highlight.
-2. `python3 -I toolkit-sources/export.py` makes a tagged PDF from each Word file, drafts the text for
-   any resource that doesn't have it yet, copies the files here, and adds any new resource to
-   `toolkit.json`. It never changes text, descriptions or to-dos that are already there.
+   details) and cuts the full highlights into one Word file and one PowerPoint file for each
+   highlight.
+2. `python3 -I toolkit-sources/export.py` makes a tagged PDF from each Word file and each
+   PowerPoint file, drafts the text for any resource that doesn't have it yet, copies the files
+   here with the names above, and adds any new resource to `toolkit.json`. It never changes text,
+   descriptions or to-dos that are already there.
 3. `pnpm exec prettier --write src/content/toolkit src/content/toolkit.json`
 
-Without the scripts, you can still do it by hand: save the Word file, save it as a PDF from Word
-(choosing the option that's best for accessibility), put both in the right folder above, and update
-the page's text in this folder.
+Without the scripts, you can still do it by hand:
+
+1. Save the Word file, then save it as a PDF from Word, choosing the option that's best for
+   accessibility.
+2. If it has slides, save the PowerPoint file, then save it as a PDF from PowerPoint, choosing the
+   same option.
+3. Name the files as shown above, and put them in the right folder.
+4. Update the page's text in this folder.
 
 ## Text
 

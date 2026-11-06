@@ -7,4 +7,7 @@
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+  /* Left out when the page is copied, so pasted text matches what's on screen. Screen readers
+     still read it, as they don't use selection */
+  user-select: none;
 }

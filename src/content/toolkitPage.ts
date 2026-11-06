@@ -30,7 +30,13 @@ export function publicFileSize(path: string): string {
 }
 
 function itemWithSizes(item: ToolkitItem, sizeOf: (path: string) => string): ToolkitItem {
-  return { ...item, files: item.files.map((file) => ({ ...file, size: sizeOf(file.path) })) };
+  return {
+    ...item,
+    versions: item.versions.map((version) => ({
+      ...version,
+      files: version.files.map((file) => ({ ...file, size: sizeOf(file.path) })),
+    })),
+  };
 }
 
 function folderWithSizes(folder: ToolkitFolder, sizeOf: (path: string) => string): ToolkitFolder {

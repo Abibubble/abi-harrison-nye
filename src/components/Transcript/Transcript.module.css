@@ -88,4 +88,6 @@
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+  /* Left out when the page is copied, as in the ScreenReaderOnly component */
+  user-select: none;
 }

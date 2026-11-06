@@ -14,17 +14,19 @@ import {
   toolkitFilePaths,
   toolkitItemRecords,
   toolkitPath,
+  toolkitVersions,
   unpublishedToolkitFiles,
-  viewableFile,
 } from './toolkit';
 import { TOOLKIT_TEXT } from './toolkitPage';
 
-/** A top level resource's files, as the site lists them before the build adds their sizes */
-const files = (slug: string, extensions = ['pdf', 'docx']) =>
-  extensions.map((extension) => ({
+/** A top level resource's full guide, as the site lists it before the build adds the sizes */
+const fullGuide = (slug: string) => ({
+  name: 'Full guide',
+  files: ['docx', 'pdf'].map((extension) => ({
     path: `inclusion-toolkit/files/${slug}.${extension}`,
     size: '',
-  }));
+  })),
+});
 
 const item = (slug: string, overrides: Partial<ToolkitItemRecord> = {}): ToolkitItemRecord => ({
   slug,
@@ -79,21 +81,32 @@ describe('publicToolkit', () => {
         title: 'checklist',
         description: 'About checklist.',
         updated: '2026-06-01',
-        files: files('checklist'),
+        versions: [fullGuide('checklist')],
       },
     ]);
     expect(toolkit.folders[0]?.folders[0]?.items.map((entry) => entry.slug)).toEqual(['dark-mode']);
   });
 
-  it('names each resource’s files after the slugs leading to it, adding PowerPoint if it has slides', () => {
-    expect(toolkitFilePaths(['highlights', 'dark-mode'], false)).toEqual([
-      'inclusion-toolkit/files/highlights/dark-mode.pdf',
-      'inclusion-toolkit/files/highlights/dark-mode.docx',
+  it('gives every resource a full guide, and a visual summary if it has slides', () => {
+    expect(toolkitVersions(['checklist'], false)).toEqual([fullGuide('checklist')]);
+    expect(toolkitVersions(['deck'], true)).toEqual([
+      fullGuide('deck'),
+      {
+        name: 'Visual summary',
+        files: [
+          { path: 'inclusion-toolkit/files/deck-visual-summary.pptx', size: '' },
+          { path: 'inclusion-toolkit/files/deck-visual-summary.pdf', size: '' },
+        ],
+      },
     ]);
-    expect(toolkitFilePaths(['deck'], true)).toEqual([
-      'inclusion-toolkit/files/deck.pdf',
-      'inclusion-toolkit/files/deck.docx',
-      'inclusion-toolkit/files/deck.pptx',
+  });
+
+  it('names each resource’s files after the slugs leading to it', () => {
+    expect(toolkitFilePaths(['highlights', 'dark-mode'], true)).toEqual([
+      'inclusion-toolkit/files/highlights/dark-mode.docx',
+      'inclusion-toolkit/files/highlights/dark-mode.pdf',
+      'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pptx',
+      'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pdf',
     ]);
   });
 
@@ -155,22 +168,12 @@ describe('toolkit files', () => {
     expect(fileType({ path: 'a/b.pptx', size: '1KB' })).toBe('PowerPoint');
   });
 
-  it('views the PDF, if there is one', () => {
-    const pdf = { path: 'a/b.pdf', size: '1KB' };
-    const word = { path: 'a/b.docx', size: '1KB' };
-
-    const resource = { slug: 'a', title: 'a', description: 'A.', updated: '2026-06-01' };
-
-    expect(viewableFile({ ...resource, files: [word, pdf] })).toBe(pdf);
-    expect(viewableFile({ ...resource, files: [word] })).toBeUndefined();
-  });
-
   it('lists the files of resources that aren’t ready, for the build to remove', () => {
     expect(unpublishedToolkitFiles(EXAMPLE)).toEqual([
-      'inclusion-toolkit/files/highlights/accessibility/draft.pdf',
       'inclusion-toolkit/files/highlights/accessibility/draft.docx',
-      'inclusion-toolkit/files/empty/not-written.pdf',
+      'inclusion-toolkit/files/highlights/accessibility/draft.pdf',
       'inclusion-toolkit/files/empty/not-written.docx',
+      'inclusion-toolkit/files/empty/not-written.pdf',
     ]);
   });
 });

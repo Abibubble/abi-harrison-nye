@@ -9,7 +9,7 @@ const ITEM = {
   title: 'Dark mode',
   description: 'About dark mode.',
   updated: '2026-06-01',
-  files: [],
+  versions: [],
 };
 
 const metaFor = (loaderData: ToolkitPageData | undefined) =>

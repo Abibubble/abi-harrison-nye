@@ -386,11 +386,10 @@
       "slideText": "none",
       "recording": "youtube"
     },
-    "permission": "needed",
+    "permission": "agreed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript",
-      "Kai’s OK for it to be public"
+      "Check the transcript"
     ]
   },
   {
@@ -415,8 +414,7 @@
     "permission": "needed",
     "todo": [
       "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript. Listen to the video for its 3 parts marked “[check: ...]”: the name of Kai’s group at Teladoc Health, any words missing before “I found my group of people”, and the unclear words after “people who’ve been working for a long time”",
-      "Kai’s OK for it to be public"
+      "Check the transcript. Listen to the video for its 3 parts marked “[check: ...]”: the name of Kai’s group at Teladoc Health, any words missing before “I found my group of people”, and the unclear words after “people who’ve been working for a long time”"
     ]
   },
   {

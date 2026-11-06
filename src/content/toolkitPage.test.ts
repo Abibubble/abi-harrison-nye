@@ -19,7 +19,12 @@ const TOOLKIT: ToolkitFolder = {
           title: 'Dark mode',
           description: 'About dark mode.',
           updated: '2026-06-01',
-          files: [{ path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '' }],
+          versions: [
+            {
+              name: 'Full guide',
+              files: [{ path: 'inclusion-toolkit/files/highlights/dark-mode.pdf', size: '' }],
+            },
+          ],
         },
       ],
     },
@@ -38,7 +43,10 @@ const WITH_SIZES: ToolkitFolder = {
     ...folder,
     items: folder.items.map((item) => ({
       ...item,
-      files: item.files.map((file) => ({ ...file, size: '100KB' })),
+      versions: item.versions.map((version) => ({
+        ...version,
+        files: version.files.map((file) => ({ ...file, size: '100KB' })),
+      })),
     })),
   })),
 };
@@ -86,7 +94,7 @@ describe('loadToolkitPage', () => {
   it('gives a resource, with its text as HTML and each file’s size', () => {
     const page = loadToolkitPage(['highlights', 'dark-mode'], TOOLKIT, TEXTS, sizeOf);
 
-    expect(page.kind === 'item' && page.item.files[0]?.size).toBe('100KB');
+    expect(page.kind === 'item' && page.item.versions[0]?.files[0]?.size).toBe('100KB');
 
     expect(page.kind === 'item' && page.textHtml).toBe(
       '<h3>Dark mode</h3>\n<p>Light text on a dark background.</p>\n',

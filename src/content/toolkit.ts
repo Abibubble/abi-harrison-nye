@@ -19,6 +19,17 @@ export interface ToolkitFile {
   size: string;
 }
 
+export type ToolkitVersionName = 'Full guide' | 'Visual summary';
+
+/**
+ * A version of a resource, in each format it comes in. The full guide is the Word file and a PDF
+ * of it. The visual summary is the slides, as a PowerPoint file and a PDF of it
+ */
+export interface ToolkitVersion {
+  name: ToolkitVersionName;
+  files: ToolkitFile[];
+}
+
 /** A resource, with a page of its own showing everything in it as text */
 export interface ToolkitItem {
   slug: string;
@@ -26,8 +37,8 @@ export interface ToolkitItem {
   description: string;
   /** YYYY-MM-DD */
   updated: string;
-  /** Every format it comes in. The PDF, if there is one, is the one to view */
-  files: ToolkitFile[];
+  /** The full guide, then the visual summary if it has slides */
+  versions: ToolkitVersion[];
 }
 
 export type ToolkitFileType = 'PDF' | 'Word document' | 'PowerPoint';
@@ -55,8 +66,8 @@ export interface ToolkitFolder {
  * A resource in toolkit.json, with what I'm tracking. The text of everything in it is in
  * src/content/toolkit/{folders}/{slug}.md, and its files are named the same way (see toolkitFilePaths)
  */
-export interface ToolkitItemRecord extends Omit<ToolkitItem, 'files'> {
-  /** Whether it has a slides version, which then needs its PowerPoint file too */
+export interface ToolkitItemRecord extends Omit<ToolkitItem, 'versions'> {
+  /** Whether it has slides, which then need their PowerPoint file and PDF too, as the visual summary */
   slides: boolean;
   /** Checked and ready, a draft to check, or not written yet. Only checked ones are on the site */
   text: 'checked' | 'draft' | 'none';
@@ -77,14 +88,28 @@ export const TOOLKIT_RECORD: ToolkitFolderRecord = {
 };
 
 /**
- * Where a resource's files go in public/. Every resource has a PDF and a Word file, and a
- * PowerPoint file if it has slides, named after the slugs leading to it. So
- * highlights/accessibility/dark-mode has inclusion-toolkit/files/highlights/accessibility/dark-mode.pdf
- * and .docx. The PDF comes first, as it's the one to view
+ * Each version of a resource, with where its files go in public/, named after the slugs leading to
+ * it. Every resource has the full guide. So highlights/accessibility/dark-mode has
+ * inclusion-toolkit/files/highlights/accessibility/dark-mode.docx and .pdf. If it has slides, it
+ * also has the visual summary, dark-mode-visual-summary.pptx and .pdf. The sizes are filled in when
+ * the site is built
  */
+export function toolkitVersions(slugs: readonly string[], slides: boolean): ToolkitVersion[] {
+  const start = `inclusion-toolkit/files/${slugs.join('/')}`;
+  const version = (name: ToolkitVersionName, path: string, extensions: string[]) => ({
+    name,
+    files: extensions.map((extension) => ({ path: `${path}.${extension}`, size: '' })),
+  });
+
+  return [
+    version('Full guide', start, ['docx', 'pdf']),
+    ...(slides ? [version('Visual summary', `${start}-visual-summary`, ['pptx', 'pdf'])] : []),
+  ];
+}
+
+/** Every file a resource needs in public/ (see toolkitVersions) */
 export function toolkitFilePaths(slugs: readonly string[], slides: boolean): string[] {
-  const extensions = slides ? ['pdf', 'docx', 'pptx'] : ['pdf', 'docx'];
-  return extensions.map((extension) => `inclusion-toolkit/files/${slugs.join('/')}.${extension}`);
+  return toolkitVersions(slugs, slides).flatMap(({ files }) => files.map(({ path }) => path));
 }
 
 /**
@@ -116,7 +141,7 @@ export function publicToolkit(record: ToolkitFolderRecord, slugs: string[] = [])
         title,
         description,
         updated,
-        files: toolkitFilePaths([...slugs, itemSlug], slides).map((path) => ({ path, size: '' })),
+        versions: toolkitVersions([...slugs, itemSlug], slides),
       })),
   };
 }
@@ -199,11 +224,6 @@ export function findInToolkit(
   }
 
   return { kind: 'folder', folder: root, slugs: [], trail: [] };
-}
-
-/** The PDF, which browsers can show, so it's the one to view */
-export function viewableFile(item: ToolkitItem): ToolkitFile | undefined {
-  return item.files.find((file) => fileType(file) === 'PDF');
 }
 
 /** Every resource in toolkit.json, ready or not, with the slugs leading to it */
