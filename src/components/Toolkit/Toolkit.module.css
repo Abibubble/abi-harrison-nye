@@ -20,6 +20,34 @@
   color: var(--color-text-muted);
 }
 
+/* A card that's one big link. The link's clickable area stretches over the whole card, so the
+   card can be clicked anywhere, while it stays one link with a short name for screen readers */
+.linkCard {
+  position: relative;
+
+  &:hover {
+    border-color: var(--color-action);
+  }
+}
+
+.cardLink::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  border-radius: var(--radius-medium);
+}
+
+/* The focus ring goes round the whole card, as that's what the link covers (WCAG 2.4.7 and
+   2.4.13) */
+.cardLink:focus-visible {
+  outline: none;
+
+  &::after {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
 /* The heading link stands on its own, so it needs a full size target (WCAG 2.5.5). The maximum
    width lets a long word, such as "Photosensitivity" in large text, wrap rather than make the link
    wider than the screen (WCAG 1.4.10) */

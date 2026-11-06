@@ -109,28 +109,35 @@ SITE_URL=https://abibubble.github.io/abi-harrison-nye pnpm test:pages
 | `pnpm test:storybook`    | Tests every Storybook story in a real browser, including axe checks       |
 | `pnpm test:e2e`          | Builds the site and runs Playwright tests in Chromium, Firefox and WebKit |
 | `pnpm test:e2e:chromium` | Runs the same Playwright tests in Chromium only, which is quicker         |
+| `pnpm test:e2e:sample`   | Runs them in Chromium on a sample of the toolkit's resources, not all     |
 | `pnpm test:lighthouse`   | Runs Lighthouse on every page of the build, with minimum scores           |
 | `pnpm test:pages`        | Checks the build works under its base path, as GitHub Pages serves it     |
 | `pnpm storybook`         | Starts Storybook at http://localhost:6006                                 |
 | `pnpm build-storybook`   | Builds a static copy of Storybook into `storybook-static`                 |
 | `pnpm brand-images`      | Redraws the icons and share image in `public/` from the site's mark       |
-| `pnpm commit:check`      | Runs the checks that must pass before committing, in about 2 minutes      |
-| `pnpm commit:check:full` | Runs every check CI runs, in about 9 minutes                              |
+| `pnpm commit:check`      | Runs the checks that must pass before committing, in about 2 to 3 minutes |
+| `pnpm commit:check:full` | Runs every check CI runs, in about 15 minutes                             |
 
 ## Before committing
 
-Run `pnpm commit:check`. It runs these checks, fastest first, and stops at the first failure:
+Run `pnpm commit:check`. It runs these checks in 3 stages, and stops after any stage with a failure:
 
-1. Formatting
-2. CSS lint, including design token enforcement
-3. TypeScript and React lint, with no warnings allowed
-4. Type checks
-5. Unit and component tests, including axe checks and the 90% coverage threshold
-6. Storybook story tests, including axe checks
-7. Storybook build
-8. Production build
-9. End to end tests in Chromium, including axe checks
+1. At the same time (`scripts/check.ts`):
+   - Formatting
+   - CSS lint, including design token enforcement
+   - TypeScript and React lint, with no warnings allowed
+   - Type checks
+2. At the same time, on their own, as some tests time out if the computer is too busy:
+   - Unit and component tests, including axe checks and the 90% coverage threshold
+   - Storybook story tests, including axe checks
+3. The production build, then end to end tests in Chromium, including axe checks. Toolkit
+   resources in a folder's folders, such as each single highlight, share one design, so only a
+   sample of them is tested (`TOOLKIT_SAMPLE` in `e2e/support/routes.ts`)
 
-CI also runs the end to end tests in Firefox and WebKit, and Lighthouse on every page: at least 95 for
-performance, and 100 for accessibility, best practice and SEO. Lighthouse takes about 7 minutes, so
-it's left out of `commit:check`. To run everything CI runs, use `pnpm commit:check:full`.
+Don't run it while another run of the end to end tests is going, as they share a build folder and
+port.
+
+CI also tests every toolkit resource in Chromium, runs the end to end tests in Firefox and WebKit,
+builds Storybook, and runs Lighthouse: at least 95 for performance (90 for the slowest pages), and
+100 for accessibility, best practice and SEO. To run everything CI runs, use
+`pnpm commit:check:full`.

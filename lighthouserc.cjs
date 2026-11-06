@@ -9,9 +9,10 @@ const SITE = 'http://localhost:4173';
 // so only this sample of them is tested, which keeps the run short as the toolkit grows. Every
 // other page is tested. e2e/support/routes.ts uses the same sample
 const TOOLKIT_SAMPLE = [
-  // The biggest page, and a typical one with code in it
+  // The biggest page, a typical one with code in it, and a typical infographic
   'highlights/accessibility/accessibility-highlights',
   'highlights/accessibility/aria',
+  'infographics/accessibility/arthritis',
 ];
 
 function inSample(path) {

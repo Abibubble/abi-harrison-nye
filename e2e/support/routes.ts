@@ -20,17 +20,18 @@ export const SITE_PAGES = [
 ] as const;
 
 /**
- * Tests tagged with this only run in Chromium (see playwright.config.ts). The resources in a
- * toolkit folder's folders, such as each single highlight, all share one design, so Firefox and
- * WebKit test the sample below, which keeps the run short as the toolkit grows. lighthouserc.cjs
- * uses the same sample
+ * Tests tagged with this only run when every page is tested: Chromium in CI (see
+ * playwright.config.ts). The resources in a toolkit folder's folders, such as each single
+ * highlight, all share one design, so Firefox, WebKit and `pnpm commit:check` test the sample
+ * below, which keeps the runs short as the toolkit grows. lighthouserc.cjs uses the same sample
  */
-export const CHROMIUM_ONLY = '@chromium-only';
+export const EVERY_PAGE = '@every-page';
 
 const TOOLKIT_SAMPLE = [
-  // The biggest page, and a typical one with code in it
+  // The biggest page, a typical one with code in it, and a typical infographic
   'highlights/accessibility/accessibility-highlights',
   'highlights/accessibility/aria',
+  'infographics/accessibility/arthritis',
 ];
 
 function isSampledOut(kind: 'folder' | 'item', slugs: readonly string[]): boolean {
@@ -69,7 +70,7 @@ export const ROUTES: readonly { name: string; path: string }[] = [
   ]),
   // Named by address, as two folders can each have a resource with the same title
   ...toolkitEntries(TOOLKIT).map(({ kind, slugs }) => ({
-    name: `Toolkit: ${slugs.join('/')}${isSampledOut(kind, slugs) ? ` ${CHROMIUM_ONLY}` : ''}`,
+    name: `Toolkit: ${slugs.join('/')}${isSampledOut(kind, slugs) ? ` ${EVERY_PAGE}` : ''}`,
     path: toolkitPath(slugs),
   })),
 ];

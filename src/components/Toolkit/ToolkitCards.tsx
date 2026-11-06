@@ -124,14 +124,21 @@ interface FolderCardProps {
   headingLevel: HeadingLevel;
 }
 
+/**
+ * The whole of a folder's or resource's card can be clicked, as it only has one link. It stays one
+ * real link, so screen readers hear its name rather than everything in the card, and it's one Tab
+ * stop. Its clickable area stretches over the card (see .cardLink)
+ */
 export function ToolkitFolderCard({ folder, path, headingLevel }: FolderCardProps) {
   return (
-    <Card as="article">
+    <Card as="article" className={styles.linkCard}>
       <Stack gap={2}>
         <Heading level={headingLevel}>{folder.title}</Heading>
         <p>{folder.description}</p>
         <p className={styles.standalone}>
-          <Link to={path}>Open the {folder.title} folder</Link>
+          <Link to={path} className={styles.cardLink}>
+            Open the {folder.title} folder
+          </Link>
         </p>
       </Stack>
     </Card>
@@ -144,13 +151,18 @@ interface FileCardProps {
   headingLevel: HeadingLevel;
 }
 
-/** A resource's card in a folder. Its files are on its own page, so the cards stay short */
+/**
+ * A resource's card in a folder. Its files are on its own page, so the cards stay short. The whole
+ * card can be clicked, as with folders' cards
+ */
 export function ToolkitFileCard({ item, path, headingLevel }: FileCardProps) {
   return (
-    <Card as="article">
+    <Card as="article" className={styles.linkCard}>
       <Stack gap={2}>
         <Heading level={headingLevel} className={styles.title}>
-          <Link to={path}>{item.title}</Link>
+          <Link to={path} className={styles.cardLink}>
+            {item.title}
+          </Link>
         </Heading>
         <p className={styles.meta}>
           Last updated <Time date={item.updated} />

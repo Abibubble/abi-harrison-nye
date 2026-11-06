@@ -15,15 +15,18 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     trace: 'on-first-retry',
   },
-  // Firefox and WebKit skip tests tagged @chromium-only, which test every toolkit resource when a
-  // sample is enough (see e2e/support/routes.ts)
+  // Firefox and WebKit skip tests tagged @every-page, which test every toolkit resource when a
+  // sample is enough (see e2e/support/routes.ts). `pnpm commit:check` skips them in Chromium too,
+  // and CI's Chromium run tests every page
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] }, grepInvert: /@chromium-only/ },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] }, grepInvert: /@chromium-only/ },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] }, grepInvert: /@every-page/ },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] }, grepInvert: /@every-page/ },
   ],
   // Tests run against the production build, so they see exactly what visitors get.
   webServer: {
+    // The tests build the site themselves, with the made up EmailJS settings below, so
+    // `pnpm commit:check` doesn't build it as well
     command: 'pnpm build && pnpm preview',
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !isCI,

@@ -44,7 +44,13 @@ interface FocusCheck {
 async function checkFocus(page: Page): Promise<FocusCheck> {
   return page.evaluate(() => {
     const element = document.activeElement as HTMLElement;
-    const style = getComputedStyle(element);
+    const own = getComputedStyle(element);
+    // A link that covers a whole card draws its focus ring round the card, with ::after
+    const after = getComputedStyle(element, '::after');
+    const style =
+      own.outlineStyle === 'none' && after.content !== 'none' && after.outlineStyle !== 'none'
+        ? after
+        : own;
     const rect = element.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + Math.min(rect.height / 2, 10);

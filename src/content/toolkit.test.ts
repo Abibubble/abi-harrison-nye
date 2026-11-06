@@ -87,9 +87,23 @@ describe('publicToolkit', () => {
     expect(toolkit.folders[0]?.folders[0]?.items.map((entry) => entry.slug)).toEqual(['dark-mode']);
   });
 
-  it('gives every resource a full guide, and a visual summary if it has slides', () => {
-    expect(toolkitVersions(['checklist'], false)).toEqual([fullGuide('checklist')]);
-    expect(toolkitVersions(['deck'], true)).toEqual([
+  it('gives an infographic only its PowerPoint file and PDF, with no Word file', () => {
+    expect(
+      toolkitVersions(['infographics', 'asthma'], { slides: false, infographic: true }),
+    ).toEqual([
+      {
+        name: 'Infographic',
+        files: [
+          { path: 'inclusion-toolkit/files/infographics/asthma.pptx', size: '' },
+          { path: 'inclusion-toolkit/files/infographics/asthma.pdf', size: '' },
+        ],
+      },
+    ]);
+  });
+
+  it('gives every other resource a full guide, and a visual summary if it has slides', () => {
+    expect(toolkitVersions(['checklist'], { slides: false })).toEqual([fullGuide('checklist')]);
+    expect(toolkitVersions(['deck'], { slides: true })).toEqual([
       fullGuide('deck'),
       {
         name: 'Visual summary',
@@ -102,7 +116,7 @@ describe('publicToolkit', () => {
   });
 
   it('names each resource’s files after the slugs leading to it', () => {
-    expect(toolkitFilePaths(['highlights', 'dark-mode'], true)).toEqual([
+    expect(toolkitFilePaths(['highlights', 'dark-mode'], { slides: true })).toEqual([
       'inclusion-toolkit/files/highlights/dark-mode.docx',
       'inclusion-toolkit/files/highlights/dark-mode.pdf',
       'inclusion-toolkit/files/highlights/dark-mode-visual-summary.pptx',
@@ -205,7 +219,7 @@ describe('toolkit.json', () => {
   it('has every file each ready resource needs, so it can’t go live without them', () => {
     for (const { slugs, item: record } of realItems()) {
       if (record.text !== 'checked') continue;
-      for (const path of toolkitFilePaths(slugs, record.slides)) {
+      for (const path of toolkitFilePaths(slugs, record)) {
         expect(existsSync(`public/${path}`), path).toBe(true);
       }
     }
@@ -213,7 +227,7 @@ describe('toolkit.json', () => {
 
   it('has no files in public/inclusion-toolkit/ that don’t belong to a resource, as they’d go live', () => {
     const expected = new Set(
-      realItems().flatMap(({ slugs, item: record }) => toolkitFilePaths(slugs, record.slides)),
+      realItems().flatMap(({ slugs, item: record }) => toolkitFilePaths(slugs, record)),
     );
     const folder = 'public/inclusion-toolkit';
     const onDisk = existsSync(folder)

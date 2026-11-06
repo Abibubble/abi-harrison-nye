@@ -10,14 +10,326 @@
           "title": "Neurodiversity Infographics",
           "description": "Infographics covering neurodivergent conditions.",
           "folders": [],
-          "items": []
+          "items": [
+            {
+              "slug": "neurodiversity-infographics",
+              "title": "Neurodiversity Infographics",
+              "description": "Every neurodiversity infographic in one file, each covering a condition’s signs, myths, diagnosis and support.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "adhd",
+              "title": "ADHD",
+              "description": "The signs of ADHD, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "anxiety",
+              "title": "Anxiety",
+              "description": "The signs of anxiety, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "auditory-processing-disorder",
+              "title": "Auditory Processing Disorder",
+              "description": "The signs of auditory processing disorder, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "autism",
+              "title": "Autism",
+              "description": "The signs of autism, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "dyscalculia",
+              "title": "Dyscalculia",
+              "description": "The signs of dyscalculia, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "dysgraphia",
+              "title": "Dysgraphia",
+              "description": "The signs of dysgraphia, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "dyslexia",
+              "title": "Dyslexia",
+              "description": "The signs of dyslexia, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "dyspraxia",
+              "title": "Dyspraxia",
+              "description": "The signs of dyspraxia, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "ocd",
+              "title": "OCD",
+              "description": "The signs of OCD, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "sensory-processing-disorder",
+              "title": "Sensory Processing Disorder",
+              "description": "The signs of sensory processing disorder, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "tourettes-syndrome",
+              "title": "Tourette’s Syndrome",
+              "description": "The signs of Tourette’s Syndrome, common myths about it, how it’s diagnosed, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            }
+          ]
         },
         {
           "slug": "accessibility",
           "title": "Accessibility Infographics",
           "description": "Infographics covering disabilities and health conditions.",
           "folders": [],
-          "items": []
+          "items": [
+            {
+              "slug": "accessibility-infographics",
+              "title": "Accessibility Infographics",
+              "description": "Every accessibility infographic in one file, each covering a condition’s symptoms, myths, diagnosis, treatment and support.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "arthritis",
+              "title": "Arthritis",
+              "description": "The symptoms of arthritis, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "asthma",
+              "title": "Asthma",
+              "description": "The symptoms of asthma, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "cancer",
+              "title": "Cancer",
+              "description": "The symptoms of cancer, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "cerebral-palsy",
+              "title": "Cerebral Palsy",
+              "description": "The symptoms of cerebral palsy, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "colour-blindness",
+              "title": "Colour Blindness",
+              "description": "The symptoms of colour blindness, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "crohns-disease",
+              "title": "Crohn’s Disease",
+              "description": "The symptoms of Crohn’s disease, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "dementia",
+              "title": "Dementia",
+              "description": "The symptoms of dementia, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "diabetes",
+              "title": "Diabetes",
+              "description": "The symptoms of diabetes, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "endometriosis",
+              "title": "Endometriosis",
+              "description": "The symptoms of endometriosis, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "epilepsy",
+              "title": "Epilepsy",
+              "description": "The symptoms of epilepsy, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "fibromyalgia",
+              "title": "Fibromyalgia",
+              "description": "The symptoms of fibromyalgia, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "hearing-impairment",
+              "title": "Hearing Impairment",
+              "description": "The symptoms of hearing impairment, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "lupus",
+              "title": "Lupus",
+              "description": "The symptoms of lupus, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "migraine",
+              "title": "Migraine",
+              "description": "The symptoms of migraine, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "multiple-sclerosis",
+              "title": "Multiple Sclerosis (MS)",
+              "description": "The symptoms of multiple sclerosis (MS), common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "parkinsons",
+              "title": "Parkinson’s",
+              "description": "The symptoms of Parkinson’s, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "thyroid-conditions",
+              "title": "Thyroid Conditions",
+              "description": "The symptoms of thyroid conditions, common myths about them, how they’re diagnosed and treated, and how to support someone with them.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "visual-impairment",
+              "title": "Visual Impairment",
+              "description": "The symptoms of visual impairment, common myths about it, how it’s diagnosed and treated, and how to support someone with it.",
+              "updated": "2026-11-06",
+              "slides": false,
+              "infographic": true,
+              "text": "checked",
+              "todo": []
+            }
+          ]
         }
       ],
       "items": []

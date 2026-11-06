@@ -16,6 +16,8 @@ Each resource in a folder's `items` has:
 - `slug`, `title` and `description`, ending in a full stop
 - `updated`, the date it was last updated, as YYYY-MM-DD
 - `slides`: `true` if it has slides, which are its visual summary
+- `infographic`: `true` if it's an infographic, which has a PowerPoint file and PDF, but no Word
+  file
 - `text`: `"draft"` while its text needs checking, then `"checked"`
 - `todo`: what's still to do for it
 
@@ -37,6 +39,12 @@ summary's files have `-visual-summary` added. So the resource at
 - `highlights/accessibility/dark-mode-visual-summary.pptx`
 - `highlights/accessibility/dark-mode-visual-summary.pdf`
 
+An infographic has `"infographic": true`, and only its PowerPoint file and a PDF of it, named
+after its address. So `/inclusion-toolkit/infographics/accessibility/asthma` has:
+
+- `infographics/accessibility/asthma.pptx`
+- `infographics/accessibility/asthma.pdf`
+
 They aren't listed in `toolkit.json`. The site finds them by their names, and works out their sizes
 when it's built. Each PDF's View link opens it in a new tab.
 
@@ -55,7 +63,12 @@ The Word files are the ones to edit. Everything else is made from them. They're 
 - `highlights/accessibility/accessibility-highlights.docx`, the full highlights. The single
   highlights are cut from it, so edit this one rather than them
 - `highlights/accessibility/accessibility-highlights.pptx`, the slides, edited by hand separately.
-  The single highlights' slides are cut from it, so edit this one rather than them
+  The single highlights' slides are cut from it, so edit this one rather than them. The
+  neurodiversity highlights work the same way, in `highlights/neurodiversity/`
+- `infographics/accessibility/accessibility-infographics.pptx` and
+  `infographics/neurodiversity/neurodiversity-infographics.pptx`, every infographic in each
+  category. The single infographics are cut from them, so edit these rather than them. Their page
+  text is drafted from the slides
 
 After editing, from the repo root, using the Node version from `.nvmrc`:
 

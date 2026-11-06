@@ -19,11 +19,12 @@ export interface ToolkitFile {
   size: string;
 }
 
-export type ToolkitVersionName = 'Full guide' | 'Visual summary';
+export type ToolkitVersionName = 'Full guide' | 'Visual summary' | 'Infographic';
 
 /**
  * A version of a resource, in each format it comes in. The full guide is the Word file and a PDF
- * of it. The visual summary is the slides, as a PowerPoint file and a PDF of it
+ * of it. The visual summary is the slides, as a PowerPoint file and a PDF of it. An infographic
+ * is a PowerPoint file and a PDF of it, with no Word file
  */
 export interface ToolkitVersion {
   name: ToolkitVersionName;
@@ -69,6 +70,8 @@ export interface ToolkitFolder {
 export interface ToolkitItemRecord extends Omit<ToolkitItem, 'versions'> {
   /** Whether it has slides, which then need their PowerPoint file and PDF too, as the visual summary */
   slides: boolean;
+  /** Whether it's an infographic, which is a PowerPoint file and PDF, with no Word file */
+  infographic?: boolean;
   /** Checked and ready, a draft to check, or not written yet. Only checked ones are on the site */
   text: 'checked' | 'draft' | 'none';
   todo: string[];
@@ -87,20 +90,28 @@ export const TOOLKIT_RECORD: ToolkitFolderRecord = {
   ...(RECORD as Pick<ToolkitFolderRecord, 'folders' | 'items'>),
 };
 
+/** What a resource comes as, from toolkit.json */
+export type ToolkitFormats = Pick<ToolkitItemRecord, 'slides' | 'infographic'>;
+
 /**
  * Each version of a resource, with where its files go in public/, named after the slugs leading to
- * it. Every resource has the full guide. So highlights/accessibility/dark-mode has
+ * it. Most resources have the full guide. So highlights/accessibility/dark-mode has
  * inclusion-toolkit/files/highlights/accessibility/dark-mode.docx and .pdf. If it has slides, it
- * also has the visual summary, dark-mode-visual-summary.pptx and .pdf. The sizes are filled in when
- * the site is built
+ * also has the visual summary, dark-mode-visual-summary.pptx and .pdf. An infographic only has
+ * its PowerPoint file and PDF, such as infographics/accessibility/asthma.pptx and .pdf. The sizes
+ * are filled in when the site is built
  */
-export function toolkitVersions(slugs: readonly string[], slides: boolean): ToolkitVersion[] {
+export function toolkitVersions(
+  slugs: readonly string[],
+  { slides, infographic = false }: ToolkitFormats,
+): ToolkitVersion[] {
   const start = `inclusion-toolkit/files/${slugs.join('/')}`;
   const version = (name: ToolkitVersionName, path: string, extensions: string[]) => ({
     name,
     files: extensions.map((extension) => ({ path: `${path}.${extension}`, size: '' })),
   });
 
+  if (infographic) return [version('Infographic', start, ['pptx', 'pdf'])];
   return [
     version('Full guide', start, ['docx', 'pdf']),
     ...(slides ? [version('Visual summary', `${start}-visual-summary`, ['pptx', 'pdf'])] : []),
@@ -108,8 +119,8 @@ export function toolkitVersions(slugs: readonly string[], slides: boolean): Tool
 }
 
 /** Every file a resource needs in public/ (see toolkitVersions) */
-export function toolkitFilePaths(slugs: readonly string[], slides: boolean): string[] {
-  return toolkitVersions(slugs, slides).flatMap(({ files }) => files.map(({ path }) => path));
+export function toolkitFilePaths(slugs: readonly string[], formats: ToolkitFormats): string[] {
+  return toolkitVersions(slugs, formats).flatMap(({ files }) => files.map(({ path }) => path));
 }
 
 /**
@@ -136,12 +147,12 @@ export function publicToolkit(record: ToolkitFolderRecord, slugs: string[] = [])
       .filter(hasContent),
     items: record.items
       .filter(isReady)
-      .map(({ slug: itemSlug, title, description, updated, slides }) => ({
+      .map(({ slug: itemSlug, title, description, updated, slides, infographic }) => ({
         slug: itemSlug,
         title,
         description,
         updated,
-        versions: toolkitVersions([...slugs, itemSlug], slides),
+        versions: toolkitVersions([...slugs, itemSlug], { slides, infographic }),
       })),
   };
 }
@@ -244,5 +255,5 @@ export function toolkitItemRecords(
 export function unpublishedToolkitFiles(record: ToolkitFolderRecord = TOOLKIT_RECORD): string[] {
   return toolkitItemRecords(record)
     .filter(({ item }) => !isReady(item))
-    .flatMap(({ slugs, item }) => toolkitFilePaths(slugs, item.slides));
+    .flatMap(({ slugs, item }) => toolkitFilePaths(slugs, item));
 }
