@@ -12,6 +12,7 @@ import {
   toolkitPath,
   toolkitTextKey,
 } from './toolkit';
+import { type ToolkitSearchEntry, type ToolkitSearchIndex, searchIndex } from './toolkitSearch';
 import { renderTranscript } from './transcripts';
 
 /** A size as computers show it, with 1000 bytes to a kilobyte, such as 307KB or 1.2MB */
@@ -65,12 +66,24 @@ export const TOOLKIT_TEXT: Record<string, string> = Object.fromEntries(
   ]),
 );
 
-/** A folder or resource to search, with where it is */
-export interface ToolkitSearchEntry {
-  kind: 'folder' | 'item';
-  title: string;
-  description: string;
-  path: string;
+export type { ToolkitSearchEntry };
+
+/**
+ * The words of every resource's full text, by its address, so search can find words that aren't
+ * in a title or description. It's a file of its own, only fetched once someone starts searching,
+ * so the toolkit's main page stays small
+ */
+export function loadToolkitSearchIndex(
+  toolkit: ToolkitFolder = TOOLKIT,
+  texts: Record<string, string> = TOOLKIT_TEXT,
+): ToolkitSearchIndex {
+  return searchIndex(
+    Object.fromEntries(
+      toolkitEntries(toolkit)
+        .filter(({ kind }) => kind === 'item')
+        .map(({ slugs }) => [toolkitPath(slugs), texts[toolkitTextKey(slugs)] ?? '']),
+    ),
+  );
 }
 
 export type ToolkitPageData =

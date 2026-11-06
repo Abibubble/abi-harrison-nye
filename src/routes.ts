@@ -61,6 +61,8 @@ export default [
   ...otherTalkPages,
   route('articles', 'routes/articles.tsx'),
   route('inclusion-toolkit', 'routes/toolkit.tsx', { id: 'toolkit' }),
+  // SEARCH_INDEX_PATH in src/content/toolkitSearch.ts
+  route('inclusion-toolkit/search.json', 'routes/toolkit-search.ts'),
   ...toolkitPages,
   route('cv', 'routes/cv.tsx'),
   route('contact', 'routes/contact.tsx'),

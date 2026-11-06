@@ -1,13 +1,16 @@
 import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import type { ToolkitFolder, ToolkitItem } from '../../content/toolkit';
-import type { ToolkitSearchEntry } from '../../content/toolkitPage';
+import { type ToolkitSearchEntry, searchToolkit } from '../../content/toolkitSearch';
 import { expectNoAxeViolations } from '../../test/axe';
 import { renderWithRouter } from '../../test/render';
 import { ToolkitPage } from './ToolkitPage';
-import { searchToolkit } from './ToolkitSearch';
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 const ITEM: ToolkitItem = {
   slug: 'dark-mode',
@@ -74,20 +77,6 @@ const TRAIL = [
   { title: 'Highlights', path: '/inclusion-toolkit/highlights' },
 ];
 
-describe('searchToolkit', () => {
-  it('finds entries with every word in their title or description, in any order', () => {
-    expect(searchToolkit(SEARCH, 'MODE dark').map((entry) => entry.title)).toEqual(['Dark mode']);
-    expect(searchToolkit(SEARCH, 'highlight').map((entry) => entry.title)).toEqual([
-      'Highlights',
-      'Dark mode',
-    ]);
-  });
-
-  it('finds nothing until something is typed', () => {
-    expect(searchToolkit(SEARCH, '   ')).toEqual([]);
-  });
-});
-
 describe('ToolkitPage', () => {
   it('shows the main page with search, folders, and a link into each folder', () => {
     renderWithRouter(<ToolkitPage data={{ kind: 'home', toolkit: TOOLKIT, search: SEARCH }} />);
@@ -133,6 +122,35 @@ describe('ToolkitPage', () => {
     expect(searchbox).toHaveValue('');
     expect(searchbox).toHaveFocus();
     expect(screen.getByRole('status')).toHaveTextContent('');
+  });
+
+  it('fetches the full text’s words once someone starts searching, and finds them', async () => {
+    const fetchIndex = vi.fn(() =>
+      Promise.resolve(
+        Response.json({ '/inclusion-toolkit/highlights/head-pointer': 'adhd tremor' }),
+      ),
+    );
+    vi.stubGlobal('fetch', fetchIndex);
+    const user = userEvent.setup();
+    renderWithRouter(<ToolkitPage data={{ kind: 'home', toolkit: TOOLKIT, search: SEARCH }} />);
+
+    expect(fetchIndex).not.toHaveBeenCalled();
+    await user.type(screen.getByRole('searchbox'), 'ADHD');
+
+    expect(fetchIndex).toHaveBeenCalledOnce();
+    expect(await screen.findByRole('link', { name: 'Head pointer' })).toBeInTheDocument();
+    expect(searchToolkit(SEARCH, 'adhd')).toEqual([]);
+  });
+
+  it('says when the words searched for are too common to search for', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<ToolkitPage data={{ kind: 'home', toolkit: TOOLKIT, search: SEARCH }} />);
+
+    await user.type(screen.getByRole('searchbox'), 'the');
+
+    expect(screen.getByRole('status')).toHaveTextContent(
+      '“the” is too common to search for. Try a more specific word.',
+    );
   });
 
   it('marks folders in the results, so they can be told apart from resources', async () => {
