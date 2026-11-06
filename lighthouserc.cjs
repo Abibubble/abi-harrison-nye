@@ -63,9 +63,23 @@ for (const sample of TOOLKIT_SAMPLE) {
 }
 
 const talkSample = biggestTalkPages(paths);
-const urls = paths
+const allUrls = paths
   .filter((path) => inSample(path) && (!talkKind(path) || talkSample.has(path)))
   .map((path) => `${SITE}${path}`);
+
+// CI splits the pages between several jobs that run at the same time, so each tests a share of
+// them. LIGHTHOUSE_SHARD says which share, such as 2/3. Every third page goes to each, so the
+// slower pages, which sit together in the list, are spread out. Without it, every page is tested
+function shareOf(urlList, shard) {
+  if (!shard) return urlList;
+  const [number, total] = shard.split('/').map(Number);
+  if (!(number >= 1 && number <= total)) {
+    throw new Error(`LIGHTHOUSE_SHARD should be like 2/3, not ${shard}.`);
+  }
+  return urlList.filter((_, index) => index % total === number - 1);
+}
+
+const urls = shareOf(allUrls, process.env.LIGHTHOUSE_SHARD);
 
 // Addresses ending like this need 0.9 for performance, rather than 0.95 (see the assertMatrix below)
 const SLOWER_PAGES = '(/slides|/highlights/accessibility/accessibility-highlights)/$';

@@ -51,9 +51,9 @@ jobs:
       - run: pnpm test:storybook
       - run: pnpm build-storybook
 
-  # Split into 2 jobs that run side by side, each running half the tests, so the run is quicker
+  # Split into 3 jobs that run side by side, each running a third of the tests, so the run is quicker
   e2e:
-    name: End to end tests (${{ matrix.shard }} of 2)
+    name: End to end tests (${{ matrix.shard }} of 3)
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2]
+        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -74,7 +74,7 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test:e2e --shard=${{ matrix.shard }}/2
+      - run: pnpm test:e2e --shard=${{ matrix.shard }}/3
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -82,8 +82,10 @@ jobs:
           path: playwright-report/
           retention-days: 14
 
+  # Split into 3 jobs that run side by side, each testing a third of the pages (see
+  # LIGHTHOUSE_SHARD in lighthouserc.cjs), so the run is quicker
   lighthouse:
-    name: Lighthouse
+    name: Lighthouse (${{ matrix.shard }} of 3)
     runs-on: ubuntu-24.04
     # Playwright's ready-made setup, with the browsers and the system libraries they need already
     # installed. Installing them on each run downloads from Ubuntu's servers, which can take an hour.
@@ -92,6 +94,12 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
       options: --user 1001 --ipc=host
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    env:
+      LIGHTHOUSE_SHARD: ${{ matrix.shard }}/3
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -105,7 +113,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: lighthouse-report
+          name: lighthouse-report-${{ matrix.shard }}
           path: lighthouse-report/
           retention-days: 14
 
