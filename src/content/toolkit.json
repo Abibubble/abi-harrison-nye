@@ -32,7 +32,152 @@
           "title": "Neurodiversity",
           "description": "Highlights covering topics related to neurodiversity.",
           "folders": [],
-          "items": []
+          "items": [
+            {
+              "slug": "neurodiversity-highlights",
+              "title": "Neurodiversity Highlights",
+              "description": "Every neurodiversity highlight in one file, each explaining a topic and how to support people, with useful links.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "body-doubling",
+              "title": "Body Doubling",
+              "description": "Body doubling is working alongside someone else, to help you focus and get started on tasks.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "hidden-disabilities-sunflower",
+              "title": "Hidden Disabilities Sunflower",
+              "description": "What the sunflower lanyard means, and how to support someone who wears one.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "infinity-symbol",
+              "title": "Infinity Symbol",
+              "description": "The infinity symbol, which many neurodivergent people prefer to the puzzle piece, and what its colours mean.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "key-terminology",
+              "title": "Key Terminology",
+              "description": "The difference between neurodiversity, neurodivergent, neurodiverse, neurotypical and neurotypes, and when to use each.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "masking",
+              "title": "Masking",
+              "description": "Masking is when neurodivergent people hide their natural traits to fit in, which can be exhausting.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "meetings",
+              "title": "Meetings",
+              "description": "Why standard meetings can be hard for neurodivergent people, and simple changes that help.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "neurospicy",
+              "title": "Neurospicy",
+              "description": "Why many people find the slang word 'neurospicy' a problem, and what to say instead.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "puzzle-piece-symbol",
+              "title": "Puzzle Piece Symbol",
+              "description": "Why many autistic people find the puzzle piece symbol outdated or offensive.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "sensory-series-light",
+              "title": "Sensory Series: Light",
+              "description": "How harsh lighting affects neurodivergent people, and how to make workspaces easier on the eyes.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "sensory-series-sound",
+              "title": "Sensory Series: Sound",
+              "description": "How everyday workplace noise can overwhelm neurodivergent people, and how colleagues can help.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "sensory-series-touch",
+              "title": "Sensory Series: Touch",
+              "description": "How textures, temperature and touch can affect neurodivergent people at work, and how to help.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "spiky-profiles",
+              "title": "Spiky Profiles",
+              "description": "A spiky profile is being brilliant at some things but finding others very hard, which is common for neurodivergent people.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "spoon-theory",
+              "title": "Spoon Theory",
+              "description": "Spoon theory explains living with limited energy, and how to support colleagues who are 'low on spoons'.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "superpowers-debate",
+              "title": "Superpowers Debate",
+              "description": "Why calling neurodivergence a 'superpower' can be tricky, and better ways to recognise strengths.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            },
+            {
+              "slug": "tourettes-syndrome",
+              "title": "Tourette’s Syndrome",
+              "description": "What Tourette's Syndrome is, beyond the myths, and how to be a good ally to someone with tics.",
+              "updated": "2026-11-06",
+              "slides": true,
+              "text": "checked",
+              "todo": []
+            }
+          ]
         },
         {
           "slug": "accessibility",
