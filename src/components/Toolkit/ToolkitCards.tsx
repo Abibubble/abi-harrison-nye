@@ -42,7 +42,8 @@ export function ToolkitFileLinks({ item }: { item: ToolkitItem }) {
                     View in a new tab
                     <ScreenReaderOnly>: {item.title}, PDF</ScreenReaderOnly>
                   </a>
-                  <span>or</span>
+                  {/* Real spaces, so copied text and reader views don't run the words together */}{' '}
+                  <span>or</span>{' '}
                 </>
               )}
               <a href={`${BASE_URL}${file.path}`} download>
