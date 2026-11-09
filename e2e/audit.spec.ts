@@ -10,6 +10,11 @@ async function markFocusable(page: Page): Promise<string[]> {
     const elements = [...document.querySelectorAll<HTMLElement>(selector)].filter((element) => {
       if (element.tabIndex < 0 || element.closest('[aria-hidden="true"], [inert]')) return false;
 
+      // What's inside a closed details element can't be reached until it's opened, apart from its
+      // summary. Newer browsers hide it without removing its size, so the size check misses it
+      const closed = element.closest('details:not([open])');
+      if (closed && !closed.querySelector(':scope > summary')?.contains(element)) return false;
+
       if (element instanceof HTMLInputElement && element.type === 'radio') {
         const group = [
           ...document.querySelectorAll<HTMLInputElement>(
