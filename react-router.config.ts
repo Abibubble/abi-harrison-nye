@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
 
 import { BASE_PATH, SITE_URL } from './build-constants.ts';
+import { withoutRepeatedHtml } from './src/build/repeatedHtml.ts';
 import { unreadySlidesFolders } from './src/content/talks.ts';
 import { unpublishedToolkitFiles } from './src/content/toolkit.ts';
 import { withContentSecurityPolicy } from './src/security/contentSecurityPolicy.ts';
@@ -65,7 +66,9 @@ export default {
     await Promise.all(
       htmlFiles.map(async (file) => {
         const path = join(client, file);
-        await writeFile(path, withContentSecurityPolicy(await readFile(path, 'utf8')));
+        // The policy allows each inline script by its hash, so it must come after any change to them
+        const html = withoutRepeatedHtml(await readFile(path, 'utf8'));
+        await writeFile(path, withContentSecurityPolicy(html));
       }),
     );
   },

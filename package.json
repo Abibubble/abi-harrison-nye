@@ -11,7 +11,11 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "serve>compression": "^1.8.2",
+      "@joshwooding/vite-plugin-react-docgen-typescript>glob": "^14.0.2"
+    }
   },
   "scripts": {
     "dev": "react-router dev",
@@ -50,13 +54,13 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.39.5",
-    "@lhci/cli": "^0.15.1",
+    "@lhci/cli": "^0.16.0",
     "@playwright/test": "^1.63.0",
     "@react-router/dev": "^8.4.0",
-    "@storybook/addon-a11y": "^10.6.1",
-    "@storybook/addon-docs": "^10.6.1",
-    "@storybook/addon-vitest": "^10.6.1",
-    "@storybook/react-vite": "^10.6.1",
+    "@storybook/addon-a11y": "^10.6.6",
+    "@storybook/addon-docs": "^10.6.6",
+    "@storybook/addon-vitest": "^10.6.6",
+    "@storybook/react-vite": "^10.6.6",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -65,28 +69,28 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
-    "@vitest/browser": "^5.0.3",
-    "@vitest/browser-playwright": "^5.0.3",
-    "@vitest/coverage-v8": "^5.0.3",
+    "@vitest/browser": "^5.1.0",
+    "@vitest/browser-playwright": "^5.1.0",
+    "@vitest/coverage-v8": "^5.1.0",
     "axe-core": "^4.13.0",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-storybook": "^10.6.1",
+    "eslint-plugin-storybook": "^10.6.6",
     "globals": "^17.13.0",
     "jsdom": "^30.1.2",
     "playwright": "^1.63.0",
     "prettier": "^3.9.9",
-    "serve": "^14.2.6",
-    "storybook": "^10.6.1",
+    "serve": "^14.2.7",
+    "storybook": "^10.6.6",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-declaration-strict-value": "^1.12.1",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.71.0",
-    "vite": "^8.3.2",
-    "vitest": "^5.0.3"
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
   }
 }

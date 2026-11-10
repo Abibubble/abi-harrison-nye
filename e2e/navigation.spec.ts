@@ -69,6 +69,28 @@ test.describe('Moving between pages', () => {
     expect(await page.evaluate(() => document.activeElement?.tagName)).toBe('BODY');
   });
 
+  test('works when coming back to a page first opened with a slash at the end of its address', async ({
+    page,
+  }) => {
+    const transcript = '/talks/moving-accessibility-from-debt-to-done/transcript';
+    const firstHeading = page.locator('[data-page-html] h2, [data-page-html] h3').first();
+    await page.goto(`${transcript}/`);
+
+    await expect(page).toHaveURL(transcript);
+    const heading = await firstHeading.textContent();
+
+    await page
+      .getByRole('link', { name: /^Back to/ })
+      .first()
+      .click();
+    await expect(page).toHaveURL('/talks/moving-accessibility-from-debt-to-done');
+    await page.goBack();
+
+    await expect(page).toHaveURL(transcript);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Transcript');
+    await expect(firstHeading).toHaveText(heading ?? '');
+  });
+
   const linkedPages = SITE_PAGES.filter(({ name }) => name !== 'Home' && name !== 'Page not found');
 
   for (const route of linkedPages) {

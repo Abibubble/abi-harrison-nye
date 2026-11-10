@@ -20,6 +20,19 @@ import stylesheetUrl from './styles/index.css?url';
 
 const { BASE_URL } = import.meta.env;
 
+/**
+ * Each page is a folder with an index.html in it, so GitHub Pages adds a slash to the end of a
+ * page's address when someone opens it directly. React Router then looks for that page's data in
+ * the wrong file (…/_.data, not ….data), so going back to it failed. This takes the slash off before
+ * React Router starts, which also matches the addresses in links and the sitemap
+ */
+export const WITHOUT_TRAILING_SLASH_SCRIPT = `(function () {
+  var path = location.pathname;
+  if (path.length > 1 && path.charAt(path.length - 1) === '/') {
+    history.replaceState(history.state, '', path.replace(/\\/+$/, '') + location.search + location.hash);
+  }
+})();`;
+
 export const links: Route.LinksFunction = () => [
   {
     rel: 'preload',
@@ -53,6 +66,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="theme-color" content="#f5effa" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#160c24" media="(prefers-color-scheme: dark)" />
+        <script dangerouslySetInnerHTML={{ __html: WITHOUT_TRAILING_SLASH_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: BEFORE_PAINT_SCRIPT }} />
         <Meta />
         <Links />

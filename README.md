@@ -82,6 +82,11 @@ Actions, on the Variables tab. They're variables rather than secrets, as they're
 GitHub Pages can't send custom headers. Every page gets its own Content Security Policy as a meta tag
 at build time, allowing exactly its own inline scripts, and the referrer policy is a meta tag too.
 
+Long pages, such as transcripts, would send their text twice: once as HTML, and again in the page
+data React Router adds so the browser can take over the page. After the build,
+`src/build/repeatedHtml.ts` swaps the copy in the data for a short marker, and the `Transcript`
+component reads the HTML back from the page. This roughly halves the size of the longest pages.
+
 To check the GitHub Pages build locally:
 
 ```bash
