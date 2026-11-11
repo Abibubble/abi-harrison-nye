@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 4173;
+const PORT = 4174;
 const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
@@ -15,13 +15,10 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     trace: 'on-first-retry',
   },
-  // Firefox and WebKit skip tests tagged @every-page, which test every toolkit resource when a
-  // sample is enough (see e2e/support/routes.ts). `pnpm commit:check` skips them in Chromium too,
-  // and CI's Chromium run tests every page
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] }, grepInvert: /@every-page/ },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] }, grepInvert: /@every-page/ },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
   // Tests run against the production build, so they see exactly what visitors get.
   webServer: {

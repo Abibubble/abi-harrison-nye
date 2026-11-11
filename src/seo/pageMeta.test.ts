@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { absolutePageUrl, pageMeta } from './pageMeta';
 import { SHARE_IMAGE } from './shareImage';
 
-const SITE = 'http://localhost:4173';
+const SITE = 'http://localhost:4174';
 
 describe('absolutePageUrl', () => {
   it('puts the site’s address in front of a page, ending in a slash', () => {

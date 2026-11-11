@@ -2,7 +2,7 @@ import { pageUrl } from '../src/seo/siteUrl';
 import { ROUTES } from './support/routes';
 import { expect, test } from './support/test';
 
-const SITE = 'http://localhost:4173';
+const SITE = 'http://localhost:4174';
 const PAGES = ROUTES.filter((route) => route.name !== 'Page not found');
 
 test.describe('Search engines and sharing', () => {

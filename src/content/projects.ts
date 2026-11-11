@@ -14,6 +14,14 @@ export interface Project {
 /** Newest first. Until there are some, the page shows a holding message */
 export const PROJECTS: Project[] = [
   {
+    name: 'Inclusion Toolkit',
+    summary:
+      'A free library of accessibility and neurodiversity resources that anyone can use, including guides, infographics, meeting templates and checklists, as Word, PowerPoint and PDF files. I first made it at giffgaff, and I’ve updated it since.',
+    tech: ['React', 'TypeScript', 'React Router', 'Storybook'],
+    href: 'https://inclusiontoolkit.org',
+    codeHref: 'https://github.com/Abibubble/inclusion-toolkit',
+  },
+  {
     name: 'Coaster Ranker',
     summary:
       'A site for ranking roller coasters and dark rides. It shows two rides at a time, you choose the one you like more, and it builds your full ranking from your choices.',

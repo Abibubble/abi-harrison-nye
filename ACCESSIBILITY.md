@@ -22,8 +22,7 @@ Before a change is committed, `pnpm commit:check` must pass. It includes:
 - strict accessibility lint rules for React
 - a CSS lint that only allows colours and sizes from the design tokens, which are chosen to give a
   contrast of 7 to 1 or more in every theme
-- axe checks in the component tests, on every Storybook story, and on every page (a sample of the
-  toolkit's resources locally, and all of them in CI)
+- axe checks in the component tests, on every Storybook story, and on every page
 - end to end tests that check every page can be used with a keyboard alone, in order, with a visible
   focus outline that isn't hidden behind anything
 - checks that targets are at least 44 by 44 pixels, that abbreviations are written out in full the

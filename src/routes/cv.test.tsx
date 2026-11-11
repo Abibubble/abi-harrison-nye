@@ -122,7 +122,7 @@ describe('CV page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/cv/',
+      href: 'http://localhost:4174/cv/',
     });
   });
 

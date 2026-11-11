@@ -2,7 +2,6 @@ import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
 import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from './content/talkPath';
 import { OTHER_TALKS, TALKS } from './content/talks';
-import { TOOLKIT, toolkitEntries, toolkitPath } from './content/toolkit';
 
 const talkPages = TALKS.flatMap((talk) => [
   route(`talks/${talk.slug}`, 'routes/talk.tsx', { id: `talk-${talk.slug}` }),
@@ -47,11 +46,6 @@ const otherTalkPages = OTHER_TALKS.flatMap((talk) => [
     : []),
 ]);
 
-// Every folder and resource in the Inclusion Toolkit has its own page, all from the same route file
-const toolkitPages = toolkitEntries(TOOLKIT).map(({ slugs }) =>
-  route(toolkitPath(slugs).slice(1), 'routes/toolkit.tsx', { id: `toolkit-${slugs.join('-')}` }),
-);
-
 export default [
   index('routes/home.tsx'),
   route('work', 'routes/work.tsx'),
@@ -60,10 +54,6 @@ export default [
   ...talkPages,
   ...otherTalkPages,
   route('articles', 'routes/articles.tsx'),
-  route('inclusion-toolkit', 'routes/toolkit.tsx', { id: 'toolkit' }),
-  // SEARCH_INDEX_PATH in src/content/toolkitSearch.ts
-  route('inclusion-toolkit/search.json', 'routes/toolkit-search.ts'),
-  ...toolkitPages,
   route('cv', 'routes/cv.tsx'),
   route('contact', 'routes/contact.tsx'),
   route('accessibility', 'routes/accessibility.tsx'),

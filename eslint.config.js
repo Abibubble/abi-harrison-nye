@@ -19,8 +19,6 @@ export default defineConfig([
     '.pages-preview',
     '.lighthouseci',
     'lighthouse-report',
-    // The Inclusion Toolkit's originals and scripts, which aren't committed or part of the site
-    'toolkit-sources',
   ]),
   js.configs.recommended,
   tseslint.configs.strictTypeChecked,

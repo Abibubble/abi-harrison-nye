@@ -3,22 +3,7 @@ const { existsSync, readFileSync, statSync } = require('node:fs');
 
 const { chromium } = require('playwright');
 
-const SITE = 'http://localhost:4173';
-
-// The resources in a toolkit folder's folders, such as each single highlight, all share one design,
-// so only this sample of them is tested, which keeps the run short as the toolkit grows. Every
-// other page is tested. e2e/support/routes.ts uses the same sample
-const TOOLKIT_SAMPLE = [
-  // The biggest page, a typical one with code in it, and a typical infographic
-  'highlights/accessibility/accessibility-highlights',
-  'highlights/accessibility/aria',
-  'infographics/accessibility/arthritis',
-];
-
-function inSample(path) {
-  const toolkit = /\/inclusion-toolkit\/(.+?)\/?$/.exec(path);
-  return !toolkit || toolkit[1].split('/').length <= 2 || TOOLKIT_SAMPLE.includes(toolkit[1]);
-}
+const SITE = 'http://localhost:4174';
 
 // Talks' pages also share one design for each kind, so only the 2 biggest of each kind are tested,
 // as they're the slowest. Kinds are talk pages, Slides pages, transcripts, and transcripts of other
@@ -55,16 +40,9 @@ const paths = [...sitemap.matchAll(/<loc>[^<]*?:\/\/[^/]+(\/[^<]*)<\/loc>/g)].ma
   ([, path]) => path,
 );
 
-// A renamed sample would quietly go untested, so this stops Lighthouse instead
-for (const sample of TOOLKIT_SAMPLE) {
-  if (!paths.some((path) => path.replace(/\/$/, '').endsWith(`/inclusion-toolkit/${sample}`))) {
-    throw new Error(`The toolkit sample ${sample} isn't in the sitemap. Update TOOLKIT_SAMPLE.`);
-  }
-}
-
 const talkSample = biggestTalkPages(paths);
 const allUrls = paths
-  .filter((path) => inSample(path) && (!talkKind(path) || talkSample.has(path)))
+  .filter((path) => !talkKind(path) || talkSample.has(path))
   .map((path) => `${SITE}${path}`);
 
 // CI splits the pages between several jobs that run at the same time, so each tests a share of
@@ -82,7 +60,7 @@ function shareOf(urlList, shard) {
 const urls = shareOf(allUrls, process.env.LIGHTHOUSE_SHARD);
 
 // Addresses ending like this need 0.9 for performance, rather than 0.95 (see the assertMatrix below)
-const SLOWER_PAGES = '(/slides|/highlights/accessibility/accessibility-highlights)/$';
+const SLOWER_PAGES = '/slides/$';
 
 const ASSERTIONS = {
   'categories:performance': ['error', { minScore: 0.95 }],
@@ -107,10 +85,8 @@ module.exports = {
     assert: {
       assertMatrix: [
         {
-          // Pages that score a little lower, as Lighthouse counts everything a slow phone
-          // downloads before the first thing shows:
-          // - talks' Slides pages, which open with a picture of the first slide
-          // - the full Accessibility Highlights, a very long page with every highlight in it
+          // Talks' Slides pages score a little lower, as they open with a picture of the first
+          // slide, and Lighthouse counts everything a slow phone downloads before it shows
           matchingUrlPattern: SLOWER_PAGES,
           assertions: { ...ASSERTIONS, 'categories:performance': ['error', { minScore: 0.9 }] },
         },

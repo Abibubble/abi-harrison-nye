@@ -126,7 +126,7 @@ describe('Privacy page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/privacy/',
+      href: 'http://localhost:4174/privacy/',
     });
   });
 

@@ -170,12 +170,6 @@ blob-report/
 *.pdf
 # Except talk slides. The build leaves out any whose talk isn't ready.
 !public/talks/*/slides.pdf
-# And Inclusion Toolkit files. The build leaves out any whose resource isn't ready.
-!public/inclusion-toolkit/files/**/*.pdf
-!public/inclusion-toolkit/files/**/*.docx
-
-# The original toolkit files, some giffgaff-branded, and the scripts that rebrand and export them
-/toolkit-sources/
 
 # Folder settings that macOS Finder adds
 .DS_Store

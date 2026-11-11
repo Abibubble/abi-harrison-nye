@@ -6,7 +6,7 @@ static site hosted on GitHub Pages, with no logins, accounts or database.
 ## What this covers
 
 - the site itself, including its pages and the contact form
-- the files people can download, such as the Inclusion Toolkit's Word, PowerPoint and PDF files
+- the files people can download, such as talk slides
 - the code and CI workflows in this repository
 
 ## Reporting a problem

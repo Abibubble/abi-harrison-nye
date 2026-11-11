@@ -23,7 +23,7 @@ The dev server runs at http://localhost:5173.
 Canonical addresses, share previews, the sitemap and the base path all come from the `SITE_URL`
 environment variable. It can include a path, such as `https://abibubble.github.io/abi-harrison-nye`,
 and every page and file address then starts with `/abi-harrison-nye/`. Local builds use
-http://localhost:4173 without it. The GitHub Pages build fails without it, so the live site can never
+http://localhost:4174 without it. The GitHub Pages build fails without it, so the live site can never
 point at localhost. When the custom domain is added, changing `SITE_URL` is all it takes.
 
 ## Contact form (EmailJS)
@@ -103,7 +103,7 @@ SITE_URL=https://abibubble.github.io/abi-harrison-nye pnpm test:pages
 | ------------------------ | ------------------------------------------------------------------------- |
 | `pnpm dev`               | Starts the dev server                                                     |
 | `pnpm build`             | Builds the site and prerenders every page into `build/client`             |
-| `pnpm preview`           | Serves the production build at http://localhost:4173                      |
+| `pnpm preview`           | Serves the production build at http://localhost:4174                      |
 | `pnpm typecheck`         | Generates route types and runs the TypeScript compiler                    |
 | `pnpm lint`              | Lints TypeScript and React, including strict accessibility rules          |
 | `pnpm lint:css`          | Lints CSS, and fails on raw colours or sizes outside the token files      |
@@ -114,7 +114,6 @@ SITE_URL=https://abibubble.github.io/abi-harrison-nye pnpm test:pages
 | `pnpm test:storybook`    | Tests every Storybook story in a real browser, including axe checks       |
 | `pnpm test:e2e`          | Builds the site and runs Playwright tests in Chromium, Firefox and WebKit |
 | `pnpm test:e2e:chromium` | Runs the same Playwright tests in Chromium only, which is quicker         |
-| `pnpm test:e2e:sample`   | Runs them in Chromium on a sample of the toolkit's resources, not all     |
 | `pnpm test:lighthouse`   | Runs Lighthouse on every page of the build, with minimum scores           |
 | `pnpm test:pages`        | Checks the build works under its base path, as GitHub Pages serves it     |
 | `pnpm storybook`         | Starts Storybook at http://localhost:6006                                 |
@@ -135,14 +134,12 @@ Run `pnpm commit:check`. It runs these checks in 3 stages, and stops after any s
 2. At the same time, on their own, as some tests time out if the computer is too busy:
    - Unit and component tests, including axe checks and the 90% coverage threshold
    - Storybook story tests, including axe checks
-3. The production build, then end to end tests in Chromium, including axe checks. Toolkit
-   resources in a folder's folders, such as each single highlight, share one design, so only a
-   sample of them is tested (`TOOLKIT_SAMPLE` in `e2e/support/routes.ts`)
+3. The production build, then end to end tests in Chromium, including axe checks
 
 Don't run it while another run of the end to end tests is going, as they share a build folder and
 port.
 
-CI also tests every toolkit resource in Chromium, runs the end to end tests in Firefox and WebKit,
+CI also runs the end to end tests in Firefox and WebKit,
 builds Storybook, and runs Lighthouse: at least 95 for performance (90 for the slowest pages), and
 100 for accessibility, best practice and SEO. To run everything CI runs, use
 `pnpm commit:check:full`.

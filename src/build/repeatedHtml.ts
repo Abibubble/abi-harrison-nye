@@ -1,5 +1,5 @@
 /**
- * Long pages, such as transcripts, slides and toolkit resources, are turned from Markdown into HTML
+ * Long pages, such as transcripts and slides, are turned from Markdown into HTML
  * when the site is built. Each page also carries its loader data in a script, so the browser can
  * take over the page without fetching anything. That data includes the same HTML, so the text was
  * sent twice.

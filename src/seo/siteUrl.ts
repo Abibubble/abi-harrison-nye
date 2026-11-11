@@ -1,4 +1,4 @@
-export const LOCAL_SITE_URL = 'http://localhost:4173';
+export const LOCAL_SITE_URL = 'http://localhost:4174';
 
 export function siteUrlFromEnv(env: Partial<Record<string, string>>): string {
   const value = env.SITE_URL?.trim();

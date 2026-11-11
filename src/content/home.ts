@@ -6,14 +6,13 @@ export const HOME_SIGNPOSTS: Signpost[] = [
     to: '/work',
     description: 'What I do at giffgaff, and the sites I’ve worked on.',
   },
-  { title: 'Projects', to: '/projects', description: 'Things I’ve built outside work.' },
+  {
+    title: 'Projects',
+    to: '/projects',
+    description: 'Things I’ve built outside work, including the Inclusion Toolkit.',
+  },
   { title: 'Talks', to: '/talks', description: 'Talks I’ve given, with videos and transcripts.' },
   { title: 'Articles', to: '/articles', description: 'Things I’ve written.' },
-  {
-    title: 'Inclusion Toolkit',
-    to: '/inclusion-toolkit',
-    description: 'Free resources on accessibility and neurodiversity, for anyone to use.',
-  },
   { title: 'CV', to: '/cv', description: 'My full work history, ready to print.' },
   { title: 'Contact', to: '/contact', description: 'Send me a message.' },
 ];

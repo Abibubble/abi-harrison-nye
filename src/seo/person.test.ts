@@ -11,7 +11,7 @@ describe('personSchema', () => {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Abi Harrison-Nye',
-      url: 'http://localhost:4173/',
+      url: 'http://localhost:4174/',
       jobTitle: 'Software Engineer',
     });
   });

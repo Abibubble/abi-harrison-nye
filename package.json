@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
-    "preview": "serve build/client --listen 4173 --no-clipboard",
+    "preview": "serve build/client --listen 4174 --no-clipboard",
     "typecheck": "react-router typegen && tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
     "lint:css": "stylelint \"src/**/*.css\" --allow-empty-input",
@@ -32,13 +32,12 @@
     "test:storybook": "vitest run --project storybook --passWithNoTests",
     "test:e2e": "playwright test",
     "test:e2e:chromium": "playwright test --project chromium",
-    "test:e2e:sample": "playwright test --project chromium --grep-invert @every-page",
     "test:lighthouse": "lhci autorun",
     "test:pages": "playwright test --config playwright.pages.config.ts",
     "storybook": "storybook dev --port 6006 --no-open",
     "build-storybook": "storybook build --quiet",
     "brand-images": "node scripts/brand-images.ts",
-    "commit:check": "node scripts/check.ts && pnpm test:e2e:sample",
+    "commit:check": "node scripts/check.ts && pnpm test:e2e:chromium",
     "commit:check:full": "node scripts/check.ts && pnpm build-storybook && pnpm test:e2e && pnpm test:lighthouse"
   },
   "dependencies": {

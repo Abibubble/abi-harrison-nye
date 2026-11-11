@@ -41,7 +41,7 @@ describe('Work page', () => {
     expect(tags).toContainEqual({
       tagName: 'link',
       rel: 'canonical',
-      href: 'http://localhost:4173/work/',
+      href: 'http://localhost:4174/work/',
     });
   });
 
