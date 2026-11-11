@@ -1,0 +1,42 @@
+# Dependabot opens pull requests to keep the site's packages and GitHub Actions up to date. Each
+# pull request runs the whole of CI, so updates are grouped and checked once a month to keep the
+# number down. Security problems are still reported straight away by Dependabot alerts, in the
+# Security tab
+version: 2
+
+updates:
+  # "npm" also covers pnpm, using pnpm-lock.yaml
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    # Waits a week after a release before suggesting it. Most harmful releases are found and
+    # removed within days
+    cooldown:
+      default-days: 7
+    # Minor and patch updates come together in one pull request. Major updates come one at a time,
+    # as they're more likely to need changes
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    open-pull-requests-limit: 3
+    ignore:
+      # The site runs on Node 22 (engines in package.json), so its types stay on 22
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # ESLint 10 waits until eslint-plugin-jsx-a11y and eslint-plugin-react support it
+      - dependency-name: eslint
+        update-types: ['version-update:semver-major']
+      # TypeScript 7 waits until typescript-eslint supports it
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns: ['*']
