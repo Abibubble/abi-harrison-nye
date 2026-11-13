@@ -18,7 +18,7 @@ import type { Route } from './+types/accessibility';
 
 export function meta(): Route.MetaDescriptors {
   return pageMeta({
-    title: pageTitle('Accessibility'),
+    title: pageTitle('Accessibility statement'),
     description:
       'How accessible this site is, what doesn’t work yet, how to report a problem, and display settings to make it work for you.',
     path: '/accessibility',
@@ -26,7 +26,7 @@ export function meta(): Route.MetaDescriptors {
 }
 
 const SECTIONS = {
-  displaySettings: { id: 'display-settings', title: 'Display settings' },
+  displaySettings: { id: 'display-settings', title: 'Changing how the site looks' },
   howAccessible: { id: 'how-accessible', title: 'How accessible this site is' },
   whatIveDone: { id: 'what-ive-done', title: 'What I’ve done to make it accessible' },
   knownIssues: { id: 'known-issues', title: 'Known issues' },
@@ -95,7 +95,7 @@ export function AccessibilityPage({
   return (
     <Stack gap={6}>
       <Stack gap={5}>
-        <PageHeading>Accessibility</PageHeading>
+        <PageHeading>Accessibility statement</PageHeading>
         <p>
           I want everyone to be able to use this site. This page explains how accessible it is, what
           doesn’t work yet, and how to tell me about a problem. You can also change how the site
@@ -139,8 +139,8 @@ export function AccessibilityPage({
             Text has a contrast ratio of at least 7 to 1 against its background, in every theme.
           </li>
           <li>
-            You can change the theme, text size, spacing, font and motion in the{' '}
-            <Link to={DISPLAY_SETTINGS_PATH}>display settings</Link>.
+            You can change the theme, text size, spacing, font and motion on the{' '}
+            <Link to={DISPLAY_SETTINGS_PATH}>Display settings page</Link>.
           </li>
           <li>The font is Atkinson Hyperlegible, which is designed to be easy to read.</li>
           <li>
@@ -154,11 +154,12 @@ export function AccessibilityPage({
           <li>
             Abbreviations in the text of each page are written out in full the first time they’re
             used, apart from a few most people know, such as <Abbr name="UK" />. Every abbreviation
-            is listed in the <Link to={`${GLOSSARY_PATH}#abbreviations`}>glossary</Link>.
+            is in the <Link to={`${GLOSSARY_PATH}#abbreviations`}>list of abbreviations</Link> on
+            the Glossary page.
           </li>
           <li>
-            Technical words are explained in the <Link to={GLOSSARY_PATH}>glossary</Link>, and the
-            Work page starts with a short summary in plain words.
+            Technical words are explained in the <Link to={GLOSSARY_PATH}>glossary</Link>. The Work
+            page and the longest talk transcripts start with a short summary in plain words.
           </li>
           <li>
             Every talk has a full, checked transcript. Where I still have the slides, it describes

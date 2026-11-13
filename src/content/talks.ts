@@ -23,6 +23,11 @@ export interface Talk {
   /** YYYY-MM-DD, or YYYY-MM if the day isn't known */
   date: string;
   summary: string;
+  /**
+   * A few short sentences in plain words, shown at the top of a transcript that's harder to read
+   * (WCAG 3.1.5). Any abbreviation in it should be written out, as the transcript expands it later
+   */
+  plainSummary?: string;
   video?: TalkVideo;
   /** The slides on another site */
   slidesHref?: string;
@@ -123,7 +128,18 @@ export const TALK_RECORDS = RECORDS as TalkRecord[];
  * new added for tracking stays private
  */
 export function publicTalk(record: TalkRecord): Talk {
-  const { slug, title, event, date, summary, video, slidesHref, slidesFile, alsoGiven } = record;
+  const {
+    slug,
+    title,
+    event,
+    date,
+    summary,
+    plainSummary,
+    video,
+    slidesHref,
+    slidesFile,
+    alsoGiven,
+  } = record;
 
   return {
     slug,
@@ -131,6 +147,7 @@ export function publicTalk(record: TalkRecord): Talk {
     event,
     date,
     summary,
+    ...(plainSummary && { plainSummary }),
     ...(video && { video }),
     ...(slidesHref && { slidesHref }),
     ...(slidesFile && { slidesFile }),

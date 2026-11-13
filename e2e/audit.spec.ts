@@ -182,6 +182,24 @@ async function abbreviationsNotWrittenOut(page: Page): Promise<string[]> {
   }, ABBREVIATIONS_TO_CHECK);
 }
 
+/** Links with the same text that go to different places, so the text alone doesn't say where */
+async function ambiguousLinks(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const places = new Map<string, Set<string>>();
+    for (const link of document.querySelectorAll<HTMLAnchorElement>('a[href]')) {
+      const name = (link.getAttribute('aria-label') ?? link.textContent)
+        .replace(/\s+/g, ' ')
+        .trim();
+      const url = new URL(link.href);
+      const place = `${url.origin}${url.pathname.replace(/\/$/, '')}${url.hash}`;
+      places.set(name.toLowerCase(), (places.get(name.toLowerCase()) ?? new Set()).add(place));
+    }
+    return [...places.entries()]
+      .filter(([, where]) => where.size > 1)
+      .map(([name, where]) => `“${name}” goes to ${[...where].join(' and ')}`);
+  });
+}
+
 async function invisibleHighContrastControls(page: Page): Promise<string[]> {
   return page.evaluate(() =>
     [
@@ -234,6 +252,14 @@ test.describe('Audit', () => {
       await page.goto(path);
 
       expect(await abbreviationsNotWrittenOut(page)).toEqual([]);
+    });
+
+    test(`${name}: links with the same text go to the same place (WCAG 2.4.9)`, async ({
+      page,
+    }) => {
+      await page.goto(path);
+
+      expect(await ambiguousLinks(page)).toEqual([]);
     });
   }
 

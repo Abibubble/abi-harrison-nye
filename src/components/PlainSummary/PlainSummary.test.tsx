@@ -23,6 +23,14 @@ describe('PlainSummary', () => {
     }
   });
 
+  it('can sum up something else, such as a transcript', () => {
+    renderWithRouter(<PlainSummary summary="A talk about examples." />);
+
+    expect(screen.getByText('In short:').parentElement).toHaveTextContent(
+      'In short: A talk about examples.',
+    );
+  });
+
   it('links to the glossary for the technical words (WCAG 3.1.3)', () => {
     renderWithRouter(<PlainSummary />);
 

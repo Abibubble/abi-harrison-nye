@@ -1,0 +1,23 @@
+/* Each link is on its own line, not in a sentence, so it needs a full size target (WCAG 2.5.5) */
+.list {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: var(--spacer-24);
+  margin: 0;
+
+  /* A talk's own pages sit under it */
+  .list {
+    margin-block-end: var(--spacer-8);
+  }
+
+  /* A long word, such as "neurodivergence" in large text, breaks rather than making the page
+     scroll sideways (WCAG 1.4.10) */
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-width: var(--size-target-min);
+    max-width: 100%;
+    min-height: var(--size-target-min);
+    overflow-wrap: anywhere;
+  }
+}

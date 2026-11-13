@@ -59,6 +59,7 @@ export default [
   route('accessibility', 'routes/accessibility.tsx'),
   route('display-settings', 'routes/display-settings.tsx'),
   route('glossary', 'routes/glossary.tsx'),
+  route('site-map', 'routes/site-map.tsx'),
   route('privacy', 'routes/privacy.tsx'),
   route('*', 'routes/not-found.tsx'),
 ] satisfies RouteConfig;

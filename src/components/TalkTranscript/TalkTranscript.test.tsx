@@ -83,6 +83,26 @@ describe('TalkTranscript', () => {
     );
   });
 
+  it('starts with a summary in plain words, when the talk has one (WCAG 3.1.5)', () => {
+    renderWithRouter(
+      <TalkTranscript
+        talk={{ ...TALK, plainSummary: 'This talk is about examples.' }}
+        transcriptHtml={TWO_SECTIONS.html}
+        sections={TWO_SECTIONS.sections}
+      />,
+    );
+
+    expect(screen.getByText('In short:').parentElement).toHaveTextContent(
+      'In short: This talk is about examples.',
+    );
+  });
+
+  it('has no plain summary when the talk has none', () => {
+    renderTranscript();
+
+    expect(screen.queryByText('In short:')).not.toBeInTheDocument();
+  });
+
   it('lists the sections, linking to each one’s heading', () => {
     renderTranscript();
     const contents = screen.getByRole('navigation', { name: 'On this page' });

@@ -48,7 +48,7 @@ export const WORK: Company[] = [
               'Built and looked after giffgaff’s first React design system, as one of its two main contributors. It had 97 reusable components, used by every frontend team. Later led my team’s work on the current library.',
               'Mentored two apprentices into junior engineer roles. Both have since been promoted to mid-level.',
               'Built micro frontends for the phones journey, including range pages, checkout and landing pages. Used pair programming and TDD, in cross-functional teams.',
-              'Built core features of the Product Catalogue, the internal tool that manages every phone giffgaff sells. These included searching and filtering phones, choosing the phones featured on the homepage, changing the order of the range (as drafts to publish or discard), and controls for stock and finance.',
+              'Built core features of the Product Catalogue, the internal tool that manages every phone giffgaff sells. These included searching and filtering phones, and choosing which phones the homepage features. They also included changing the order of the range, as drafts to publish or discard, and controls for stock and finance.',
               'Built the journeys for buying refurbished phones and paying monthly, including choosing a phone’s condition and how to pay.',
               'Led short investigations into frontend architecture, which helped set the Devices team’s technical direction.',
               'Ran the team’s services in production, as well as building them. This included moving traffic to a new service step by step using feature flags, moving alerts into the team’s own monitoring, and fixing high-severity security problems.',

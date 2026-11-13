@@ -18,8 +18,12 @@ export const DISPLAY_SETTINGS_PATH = '/display-settings';
 /** The page explaining technical words used on the site, in plain words (WCAG 3.1.3) */
 export const GLOSSARY_PATH = '/glossary';
 
+/** Every page on the site, so there's more than one way to find each one (WCAG 2.4.5) */
+export const SITE_MAP_PATH = '/site-map';
+
 export const FOOTER_NAV: NavItem[] = [
-  { label: 'Accessibility', to: '/accessibility' },
+  { label: 'Accessibility statement', to: '/accessibility' },
+  { label: 'Site map', to: SITE_MAP_PATH },
   { label: 'Display settings', to: DISPLAY_SETTINGS_PATH },
   { label: 'Glossary', to: GLOSSARY_PATH },
   { label: 'Privacy', to: '/privacy' },

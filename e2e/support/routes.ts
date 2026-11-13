@@ -10,10 +10,11 @@ export const SITE_PAGES = [
   { name: 'Articles', path: '/articles' },
   { name: 'CV', path: '/cv' },
   { name: 'Contact', path: '/contact' },
-  { name: 'Accessibility', path: '/accessibility' },
+  { name: 'Accessibility statement', path: '/accessibility' },
   { name: 'Display settings', path: '/display-settings' },
   { name: 'Glossary', path: '/glossary' },
   { name: 'Privacy', path: '/privacy' },
+  { name: 'Site map', path: '/site-map' },
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;
 

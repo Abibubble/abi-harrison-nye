@@ -3,6 +3,7 @@ import type { TranscriptSection } from '../../content/transcripts';
 import { Link } from '../Link';
 import { PageContents } from '../PageContents';
 import { PageHeading } from '../PageHeading';
+import { PlainSummary } from '../PlainSummary';
 import { Stack } from '../Stack';
 import { Time } from '../Time';
 import { Transcript } from '../Transcript';
@@ -51,6 +52,7 @@ export function TalkTranscript({ talk, alsoGiven, transcriptHtml, sections }: Ta
             on the day may be a little different.
           </p>
         )}
+        {!alsoGiven && talk.plainSummary && <PlainSummary summary={talk.plainSummary} />}
         {backToTalk}
       </Stack>
 

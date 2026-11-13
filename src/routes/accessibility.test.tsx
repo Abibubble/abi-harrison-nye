@@ -68,13 +68,28 @@ describe('Accessibility page', () => {
   it('has the page heading, and links to the display settings on their own page', () => {
     renderWithRouter(<Accessibility />);
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Accessibility' })).toBeInTheDocument();
     expect(
-      within(sectionNamed('Display settings')).getByRole('link', {
+      screen.getByRole('heading', { level: 1, name: 'Accessibility statement' }),
+    ).toBeInTheDocument();
+    expect(
+      within(sectionNamed('Changing how the site looks')).getByRole('link', {
         name: 'Change the display settings',
       }),
     ).toHaveAttribute('href', '/display-settings');
     expect(screen.queryByRole('radio')).not.toBeInTheDocument();
+  });
+
+  it('names each link so it makes sense on its own (WCAG 2.4.9)', () => {
+    renderWithRouter(<Accessibility />);
+
+    expect(screen.getByRole('link', { name: 'Display settings page' })).toHaveAttribute(
+      'href',
+      '/display-settings',
+    );
+    expect(screen.getByRole('link', { name: 'list of abbreviations' })).toHaveAttribute(
+      'href',
+      '/glossary#abbreviations',
+    );
   });
 
   it('lists every section at the top, each linking to a heading that can take focus', () => {
@@ -233,7 +248,7 @@ describe('Accessibility page', () => {
   it('has a title, description and canonical address', () => {
     const tags = meta();
 
-    expect(tags).toContainEqual({ title: 'Accessibility, Abi Harrison-Nye' });
+    expect(tags).toContainEqual({ title: 'Accessibility statement, Abi Harrison-Nye' });
     expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
     expect(tags).toContainEqual({
       tagName: 'link',
