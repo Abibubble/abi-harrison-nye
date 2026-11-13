@@ -7,8 +7,10 @@ import type { DisplaySettings } from '../src/settings/displaySettings';
 const SWITCH_POINT_EM = 79;
 
 const menuButton = (page: Page) => page.getByRole('button', { name: 'Menu' });
+// The links to the site's pages. The navigation also holds the Menu button, and on narrow screens
+// the theme switcher and its link to the display settings
 const mainNavLinks = (page: Page) =>
-  page.getByRole('navigation', { name: 'Main' }).getByRole('link');
+  page.getByRole('navigation', { name: 'Main' }).getByRole('list').getByRole('link');
 
 async function rootFontSize(page: Page) {
   return page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).fontSize));
@@ -76,6 +78,9 @@ test.describe('Header layouts', () => {
     await page.setViewportSize({ width: 800, height: 800 });
     await page.goto('/');
     await expect(page.getByRole('combobox', { name: 'Theme' })).toBeHidden();
+
+    // The navigation is there while the menu is closed, so screen readers can find the Menu button
+    await expect(page.getByRole('navigation', { name: 'Main' })).toContainText('Menu');
 
     await menuButton(page).click();
 

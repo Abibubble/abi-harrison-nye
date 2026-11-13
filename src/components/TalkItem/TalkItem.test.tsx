@@ -68,10 +68,14 @@ describe('TalkItem', () => {
       />,
     );
 
+    expect(screen.getByRole('link', { name: 'Transcript: Example talk' })).toHaveAttribute(
+      'href',
+      '/talks/example-talk/transcript',
+    );
     expect(
-      screen.getByRole('link', { name: 'Read the transcript of “Example talk”, from my script' }),
-    ).toHaveAttribute('href', '/talks/example-talk/transcript');
-    expect(screen.getByRole('link', { name: 'See the slides for “Example talk”' })).toHaveAttribute(
+      screen.getByRole('link', { name: 'Transcript: Example talk' }).parentElement,
+    ).toHaveTextContent('Transcript: Example talk, from my script');
+    expect(screen.getByRole('link', { name: 'Slides: Example talk' })).toHaveAttribute(
       'href',
       '/talks/example-talk/slides',
     );

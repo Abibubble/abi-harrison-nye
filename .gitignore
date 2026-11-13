@@ -168,8 +168,6 @@ blob-report/
 *.doc
 *.docx
 *.pdf
-# Except talk slides. The build leaves out any whose talk isn't ready.
-!public/talks/*/slides.pdf
 
 # Folder settings that macOS Finder adds
 .DS_Store

@@ -34,7 +34,9 @@ export function SiteNav() {
   }, [isOpen]);
 
   return (
-    <>
+    // The Menu button is inside the navigation, so screen readers list "Main navigation" even while
+    // the menu is closed, and going to it reaches the button that opens it
+    <nav aria-label="Main" className={styles.nav} data-print="hide">
       <button
         ref={toggleRef}
         type="button"
@@ -44,7 +46,6 @@ export function SiteNav() {
         onClick={() => {
           setOpenOnPath(isOpen ? null : pathname);
         }}
-        data-print="hide"
       >
         <svg
           className={styles.icon}
@@ -61,21 +62,19 @@ export function SiteNav() {
         Menu
       </button>
       <div ref={panelRef} id={panelId} className={styles.panel} data-open={isOpen}>
-        <nav aria-label="Main" data-print="hide">
-          <ul role="list" className={styles.list}>
-            {MAIN_NAV.map((item) => (
-              <li key={item.to}>
-                <NavLink to={item.to} end={item.to === '/'} className={styles.link}>
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <ul role="list" className={styles.list}>
+          {MAIN_NAV.map((item) => (
+            <li key={item.to}>
+              <NavLink to={item.to} end={item.to === '/'} className={styles.link}>
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
         <div className={styles.display}>
           <ThemeSwitcher layout="stacked" />
         </div>
       </div>
-    </>
+    </nav>
   );
 }

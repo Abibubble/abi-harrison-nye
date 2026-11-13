@@ -82,12 +82,8 @@
       "captions": "automatic",
       "describedAloud": true
     },
-    "slidesFile": {
-      "path": "talks/moving-accessibility-from-debt-to-done/slides.pdf",
-      "size": "1.3MB"
-    },
     "has": {
-      "slides": "file",
+      "slides": "have",
       "script": false,
       "transcript": "checked",
       "slideText": "checked",
@@ -240,12 +236,8 @@
     "event": "giffgaff OCD Awareness Week",
     "date": "2025-10-13",
     "summary": "What obsessive-compulsive disorder (OCD) really is, beyond the stereotypes, how it’s diagnosed and treated, and why the way we talk about it matters.",
-    "slidesFile": {
-      "path": "talks/ocd-not-just-even-numbers-and-organisation/slides.pdf",
-      "size": "307KB"
-    },
     "has": {
-      "slides": "file",
+      "slides": "have",
       "script": true,
       "transcript": "checked",
       "slideText": "checked",
@@ -445,12 +437,8 @@
       "captions": "accurate",
       "describedAloud": false
     },
-    "slidesFile": {
-      "path": "talks/accessibility-culture-day-welcome/slides.pdf",
-      "size": "321KB"
-    },
     "has": {
-      "slides": "file",
+      "slides": "have",
       "script": true,
       "transcript": "checked",
       "slideText": "checked",
@@ -471,12 +459,8 @@
       "captions": "none",
       "describedAloud": false
     },
-    "slidesFile": {
-      "path": "talks/accessibility-knowledge-sharing/slides.pdf",
-      "size": "127KB"
-    },
     "has": {
-      "slides": "file",
+      "slides": "have",
       "script": false,
       "transcript": "draft",
       "slideText": "checked",
@@ -523,12 +507,8 @@
       "captions": "accurate",
       "describedAloud": false
     },
-    "slidesFile": {
-      "path": "talks/a11y-series-buttons/slides.pdf",
-      "size": "492KB"
-    },
     "has": {
-      "slides": "file",
+      "slides": "have",
       "script": false,
       "transcript": "checked",
       "slideText": "checked",

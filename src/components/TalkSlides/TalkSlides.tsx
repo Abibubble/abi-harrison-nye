@@ -17,7 +17,7 @@ interface TalkSlidesProps {
 const { BASE_URL } = import.meta.env;
 
 /**
- * A talk's slides as a web page, for anyone who can't use the PDF. Each slide's picture is followed
+ * A talk's slides as a web page, rather than a PDF, which is hard to make fully accessible. Each slide's picture is followed
  * by everything on it as real text, so the picture has an empty alt: describing it again would only
  * repeat the text for screen reader users
  */
@@ -45,15 +45,6 @@ export function TalkSlides({ talk, slides }: TalkSlidesProps) {
           There are {slides.length} slides. Each one has a picture of the slide, followed by its
           text and a description of what it shows.
         </p>
-        {talk.slidesFile && (
-          <p>
-            {/* A file rather than a page, so a plain link, which the browser downloads or opens */}
-            <a href={`${BASE_URL}${talk.slidesFile.path}`}>
-              Slides for “{talk.title}” (PDF, {talk.slidesFile.size})
-            </a>
-            . The PDF isn’t fully accessible, but this page has everything it does.
-          </p>
-        )}
         {backToTalk}
       </Stack>
 

@@ -7,6 +7,8 @@ export const ACCESSIBILITY_REVIEWED = '2026-11-13';
  */
 export const MANUAL_TESTING: string[] = [
   'The keyboard alone, with no mouse, in Chrome, Edge and Firefox',
+  'VoiceOver, the screen reader on macOS, in Chrome, Edge and Firefox',
+  'Ongoing testing with neurodivergent and disabled people',
 ];
 
 /** When the privacy notice last changed. Update it whenever the notice does */

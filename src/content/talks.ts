@@ -32,13 +32,9 @@ export interface Talk {
   /** The slides on another site */
   slidesHref?: string;
   /**
-   * The slides as a file in public/, always talks/{slug}/slides.pdf, with its size, such as 5.6MB.
-   * The build leaves out the talk's folder, with its slide pictures, until the talk is ready
-   */
-  slidesFile?: { path: string; size: string };
-  /**
-   * Whether the talk has a Slides page, with a picture and description of each slide, as the PDF
-   * isn't fully accessible. Only once the descriptions are checked
+   * Whether the talk has a Slides page, with a picture and description of each slide. It's
+   * there instead of a PDF of the slides, as PDFs are hard to make fully accessible. Only once the
+   * descriptions are checked
    */
   slidesPage?: boolean;
   /**
@@ -77,8 +73,11 @@ export interface AlsoGivenRecord extends AlsoGiven {
 
 /** What I have for a talk, to keep track of what's still missing */
 export interface TalkHas {
-  /** On the site as a file or link, sent but not on the site, still being searched for, or none */
-  slides: 'file' | 'link' | 'have' | 'searching' | 'none';
+  /**
+   * On another site as a link, sent but not on the site (a Slides page shows them instead, so
+   * there's no PDF), still being searched for, or none
+   */
+  slides: 'link' | 'have' | 'searching' | 'none';
   /** Whether there's a script of what I planned to say */
   script: boolean;
   /**
@@ -128,18 +127,7 @@ export const TALK_RECORDS = RECORDS as TalkRecord[];
  * new added for tracking stays private
  */
 export function publicTalk(record: TalkRecord): Talk {
-  const {
-    slug,
-    title,
-    event,
-    date,
-    summary,
-    plainSummary,
-    video,
-    slidesHref,
-    slidesFile,
-    alsoGiven,
-  } = record;
+  const { slug, title, event, date, summary, plainSummary, video, slidesHref, alsoGiven } = record;
 
   return {
     slug,
@@ -150,7 +138,6 @@ export function publicTalk(record: TalkRecord): Talk {
     ...(plainSummary && { plainSummary }),
     ...(video && { video }),
     ...(slidesHref && { slidesHref }),
-    ...(slidesFile && { slidesFile }),
     ...(record.has.slideText === 'checked' && { slidesPage: true }),
     ...(hasNoRecording(record) && { notRecorded: true }),
     ...(hasNoRecording(record) &&
@@ -205,7 +192,7 @@ export const TALKS_WITH_SLIDES: Talk[] = [...TALKS, ...OTHER_TALKS].filter(
   (talk) => talk.slidesPage,
 );
 
-/** A talk's folder in public/, with its slides PDF and a picture of each slide */
+/** A talk's folder in public/, with a picture of each slide for its Slides page */
 export function slidesFolder(slug: string): string {
   return `talks/${slug}`;
 }
@@ -215,8 +202,8 @@ export function slidesFolder(slug: string): string {
  * the built site, so the build removes these
  */
 export function unreadySlidesFolders(records: readonly TalkRecord[] = TALK_RECORDS): string[] {
-  return records.flatMap(({ slug, ready, slidesFile }) =>
-    !ready && slidesFile ? [slidesFolder(slug)] : [],
+  return records.flatMap(({ slug, ready, has }) =>
+    !ready && has.slideText !== 'none' ? [slidesFolder(slug)] : [],
   );
 }
 

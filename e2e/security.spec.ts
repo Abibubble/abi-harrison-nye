@@ -122,13 +122,13 @@ test.describe('Talks that aren’t ready', () => {
     }
   });
 
-  test('don’t have their slides or slide pictures in the built site, but ready talks do', () => {
-    const slides = TALK_RECORDS.filter((talk) => talk.slidesFile);
+  test('don’t have their slide pictures in the built site, but ready talks do', () => {
+    const slides = TALK_RECORDS.filter((talk) => talk.has.slideText !== 'none');
 
     expect(slides.some((talk) => !talk.ready)).toBe(true);
-    for (const { slug, ready, slidesFile } of slides) {
-      expect(existsSync(join('build/client', slidesFile?.path ?? '')), slug).toBe(ready);
+    for (const { slug, ready } of slides) {
       expect(existsSync(join('build/client', slidePicturePath(slug, 1))), slug).toBe(ready);
+      expect(existsSync(join('build/client', 'talks', slug, 'slides.pdf')), slug).toBe(false);
     }
   });
 });

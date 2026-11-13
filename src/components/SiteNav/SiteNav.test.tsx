@@ -50,8 +50,14 @@ describe('SiteNav', () => {
       const panel = document.getElementById(panelId);
 
       expect(menuButton()).toHaveAttribute('aria-expanded', 'false');
-      expect(panel).toContainElement(mainNav());
+      expect(panel).toContainElement(screen.getByRole('link', { name: 'Home' }));
       expect(panel).toContainElement(screen.getByRole('combobox', { name: 'Theme' }));
+    });
+
+    it('is inside the navigation, so screen readers find the navigation while it’s closed', () => {
+      renderWithRouter(<SiteNav />);
+
+      expect(mainNav()).toContainElement(menuButton());
     });
 
     it('closes with Escape while the theme switcher has focus', async () => {
@@ -140,8 +146,8 @@ describe('SiteNav', () => {
     it('is left out of printed pages, along with the navigation', () => {
       renderWithRouter(<SiteNav />);
 
-      expect(menuButton()).toHaveAttribute('data-print', 'hide');
       expect(mainNav()).toHaveAttribute('data-print', 'hide');
+      expect(mainNav()).toContainElement(menuButton());
     });
   });
 

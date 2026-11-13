@@ -11,21 +11,20 @@ describe('TalkVideo', () => {
   it('links to the video on YouTube, naming the talk so the link makes sense alone', () => {
     renderWithRouter(
       <TalkVideo
-        title="Example talk"
         video={{ href, captions: 'accurate', describedAloud: true }}
         transcriptHref="/talks/example-talk/transcript"
       />,
     );
 
-    expect(
-      screen.getByRole('link', { name: 'Watch “Example talk” on YouTube (external site)' }),
-    ).toHaveAttribute('href', href);
+    expect(screen.getByRole('link', { name: 'Watch on YouTube (external site)' })).toHaveAttribute(
+      'href',
+      href,
+    );
   });
 
   it('says when the video has captions', () => {
     renderWithRouter(
       <TalkVideo
-        title="Example talk"
         video={{ href, captions: 'accurate', describedAloud: true }}
         transcriptHref="/talks/example-talk/transcript"
       />,
@@ -37,7 +36,6 @@ describe('TalkVideo', () => {
   it('says when the captions are automatic, as they may have mistakes', () => {
     renderWithRouter(
       <TalkVideo
-        title="Example talk"
         video={{ href, captions: 'automatic', describedAloud: true }}
         transcriptHref="/talks/example-talk/transcript"
       />,
@@ -55,7 +53,6 @@ describe('TalkVideo', () => {
   it('says when captions aren’t available yet, linking to the transcript instead', () => {
     renderWithRouter(
       <TalkVideo
-        title="Example talk"
         video={{ href, captions: 'none', describedAloud: false }}
         transcriptHref="/talks/example-talk/transcript"
       />,
@@ -71,7 +68,6 @@ describe('TalkVideo', () => {
   it('has no detectable accessibility issues', async () => {
     const { container } = renderWithRouter(
       <TalkVideo
-        title="Example talk"
         video={{ href, captions: 'none', describedAloud: false }}
         transcriptHref="/talks/example-talk/transcript"
       />,

@@ -4,17 +4,16 @@ import { Stack } from '../Stack';
 import styles from './TalkVideo.module.css';
 
 interface TalkVideoProps {
-  title: string;
   video: Video;
   /** The talk's transcript page */
   transcriptHref: string;
 }
 
-export function TalkVideo({ title, video, transcriptHref }: TalkVideoProps) {
+export function TalkVideo({ video, transcriptHref }: TalkVideoProps) {
   return (
     <Stack gap={2}>
       <p className={styles.standalone}>
-        <Link href={video.href}>Watch “{title}” on YouTube</Link>
+        <Link href={video.href}>Watch on YouTube</Link>
       </p>
       {video.captions === 'accurate' && <p>The video has captions.</p>}
       {video.captions === 'automatic' && (

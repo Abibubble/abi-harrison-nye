@@ -17,8 +17,6 @@ interface TalkDetailProps {
   aboutHtml?: string | undefined;
 }
 
-const { BASE_URL } = import.meta.env;
-
 export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
   return (
     <Stack gap={6}>
@@ -40,17 +38,13 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
         )}
       </Stack>
 
-      {(talk.video ?? talk.slidesHref ?? talk.slidesFile) && (
+      {(talk.video ?? talk.slidesHref ?? talk.slidesPage) && (
         <Stack as="section" gap={3}>
           <Heading level={2} id="watch">
             {talk.video ? 'Watch the talk' : 'Slides'}
           </Heading>
           {talk.video && (
-            <TalkVideo
-              title={talk.title}
-              video={talk.video}
-              transcriptHref={transcriptPath(talk.slug)}
-            />
+            <TalkVideo video={talk.video} transcriptHref={transcriptPath(talk.slug)} />
           )}
           {talk.slidesHref && (
             <p>
@@ -59,19 +53,7 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
           )}
           {talk.slidesPage && (
             <p className={styles.standalone}>
-              <Link to={slidesPath(talk.slug)}>See the slides for “{talk.title}”</Link>
-            </p>
-          )}
-          {talk.slidesFile && (
-            <p>
-              {/* A file rather than a page, so a plain link, which the browser downloads or opens */}
-              <a href={`${BASE_URL}${talk.slidesFile.path}`}>
-                Slides for “{talk.title}” (PDF, {talk.slidesFile.size})
-              </a>
-              .{' '}
-              {talk.slidesPage
-                ? 'The PDF isn’t fully accessible, but the slides page has everything it does, with a description of each slide.'
-                : 'The slides aren’t fully accessible, but the transcript describes each one.'}
+              <Link to={slidesPath(talk.slug)}>See the slides</Link>
             </p>
           )}
           {talk.alsoGiven?.map((other) => (
@@ -79,14 +61,12 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
               <p>
                 I also gave {other.description} of this talk at <AbbrText>{other.event}</AbbrText>,
                 on <Time date={other.date} />.{' '}
-                <Link href={other.href}>
-                  Watch {other.description} of “{talk.title}” on YouTube
-                </Link>
+                <Link href={other.href}>Watch {other.description} on YouTube</Link>
               </p>
               {other.slug && (
                 <p className={styles.standalone}>
                   <Link to={alsoGivenTranscriptPath(talk.slug, other.slug)}>
-                    Read the transcript of {other.description} of “{talk.title}”
+                    Read the transcript of {other.description}
                   </Link>
                 </p>
               )}
@@ -101,7 +81,7 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
         </Heading>
         <p>The transcript has everything that was said, on its own page.</p>
         <p className={styles.standalone}>
-          <Link to={transcriptPath(talk.slug)}>Read the transcript of “{talk.title}”</Link>
+          <Link to={transcriptPath(talk.slug)}>Read the transcript</Link>
         </p>
       </Stack>
 

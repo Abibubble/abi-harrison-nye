@@ -13,7 +13,6 @@ const TALK: Talk = {
   event: 'Example meetup',
   date: '2025-03-14',
   summary: 'A talk used to test this component',
-  slidesFile: { path: 'talks/example-talk/slides.pdf', size: '1.2MB' },
   slidesPage: true,
 };
 
@@ -76,23 +75,8 @@ describe('TalkSlides', () => {
     expect(pictures.map((picture) => picture.getAttribute('loading'))).toEqual(['eager', 'lazy']);
   });
 
-  it('links to the PDF, saying its type and size', () => {
+  it('has no PDF to download, as the page has everything the slides do', () => {
     renderTalkSlides();
-
-    expect(
-      screen.getByRole('link', { name: 'Slides for “Example talk” (PDF, 1.2MB)' }),
-    ).toHaveAttribute('href', '/talks/example-talk/slides.pdf');
-  });
-
-  it('leaves out the PDF link when there’s no PDF', () => {
-    renderTalkSlides({
-      slug: TALK.slug,
-      title: TALK.title,
-      event: TALK.event,
-      date: TALK.date,
-      summary: TALK.summary,
-      slidesPage: true,
-    });
 
     expect(screen.queryByRole('link', { name: /PDF/ })).not.toBeInTheDocument();
   });

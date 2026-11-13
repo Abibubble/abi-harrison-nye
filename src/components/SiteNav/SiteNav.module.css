@@ -1,3 +1,10 @@
+/* Lays out the button and the menu as if the navigation weren't there, so they sit in the header's
+   own row. It's still a navigation landmark: display: contents keeps its role in Chrome, Edge,
+   Firefox and Safari */
+.nav {
+  display: contents;
+}
+
 .toggle {
   display: none;
   gap: var(--spacer-8);

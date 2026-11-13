@@ -345,12 +345,11 @@ describe('talks.json', () => {
       event: 'Example meetup',
       date: '2025-01',
       summary: 'An example.',
-      ...(slides && { slidesFile: { path: `talks/${slug}/slides.pdf`, size: '1MB' } }),
       has: {
-        slides: slides ? 'file' : 'none',
+        slides: slides ? 'have' : 'none',
         script: false,
         transcript: 'none',
-        slideText: 'none',
+        slideText: slides ? 'checked' : 'none',
         recording: 'unknown',
       },
       permission: 'not needed',
@@ -368,7 +367,7 @@ describe('talks.json', () => {
 
   it('uses only the listed values for what each talk has', () => {
     for (const { slug, has, permission } of TALK_RECORDS) {
-      expect(['file', 'link', 'have', 'searching', 'none'], slug).toContain(has.slides);
+      expect(['link', 'have', 'searching', 'none'], slug).toContain(has.slides);
       expect(['checked', 'draft', 'raw', 'none'], slug).toContain(has.transcript);
       expect(['checked', 'draft', 'none'], slug).toContain(has.slideText);
       expect(['youtube', 'uploading', 'not recorded', 'not shared', 'unknown'], slug).toContain(
@@ -415,23 +414,19 @@ describe('talks.json', () => {
   });
 
   it('matches the slides and recording to what each talk links to', () => {
-    for (const { slug, has, slidesFile, slidesHref, video } of TALK_RECORDS) {
-      expect(slidesFile !== undefined, `${slug}: slides file`).toBe(has.slides === 'file');
+    for (const { slug, has, slidesHref, video } of TALK_RECORDS) {
       expect(slidesHref !== undefined, `${slug}: slides link`).toBe(has.slides === 'link');
       expect(video !== undefined, `${slug}: video`).toBe(has.recording === 'youtube');
     }
   });
 
-  it('has a folder in public/talks/ for every talk with a slides file, and nothing else', () => {
-    const withSlides = TALK_RECORDS.filter((talk) => talk.slidesFile);
+  it('has a folder in public/talks/ for every talk with slide text, and nothing else', () => {
+    const withSlides = TALK_RECORDS.filter((talk) => talk.has.slideText !== 'none');
 
     // Anything no talk lists would go live, as the build only removes unready talks’ folders
     expect(readdirSync('public/talks').toSorted()).toEqual(
       withSlides.map((talk) => talk.slug).toSorted(),
     );
-    for (const { slug, slidesFile } of withSlides) {
-      expect(slidesFile?.path, slug).toBe(`talks/${slug}/slides.pdf`);
-    }
   });
 
   it('has a description file for every talk whose slide text is written, and no others', () => {
@@ -439,14 +434,15 @@ describe('talks.json', () => {
       expect(slug in SLIDE_TEXT, `${slug}: slide text is "${has.slideText}"`).toBe(
         has.slideText !== 'none',
       );
-      // The pictures for the Slides page are made from the PDF
-      if (has.slideText !== 'none') expect(has.slides, slug).toBe('file');
+      // The pictures for the Slides page are made from the slides I have, which aren't put on the
+      // site themselves
+      if (has.slideText !== 'none') expect(has.slides, slug).toBe('have');
     }
   });
 
-  it('has the PDF, and a picture in both sizes for each described slide, in each talk’s folder', () => {
-    for (const { slug, slidesFile } of TALK_RECORDS) {
-      if (!slidesFile) continue;
+  it('has a picture in both sizes for each described slide, and no PDF, in each talk’s folder', () => {
+    for (const { slug, has } of TALK_RECORDS) {
+      if (has.slideText === 'none') continue;
       const count = renderSlides(SLIDE_TEXT[slug] ?? '').length;
       const pictures = Array.from({ length: count }, (_, index) => [
         slidePicturePath(slug, index + 1),
@@ -458,7 +454,7 @@ describe('talks.json', () => {
           .map((file) => `talks/${slug}/${file}`)
           .toSorted(),
         slug,
-      ).toEqual([slidesFile.path, ...pictures].toSorted());
+      ).toEqual(pictures.toSorted());
     }
   });
 

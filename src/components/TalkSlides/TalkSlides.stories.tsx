@@ -24,10 +24,6 @@ const meta = {
       event: 'Example conference',
       date: '2026-06-12',
       summary: 'An example to show how a talk’s Slides page looks',
-      slidesFile: {
-        path: 'talks/moving-accessibility-from-debt-to-done/slides.pdf',
-        size: '1.3MB',
-      },
       slidesPage: true,
     },
     slides: SLIDES,

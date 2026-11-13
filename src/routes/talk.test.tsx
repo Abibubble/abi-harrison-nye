@@ -45,7 +45,7 @@ describe('Talk page', () => {
     renderTalk();
 
     expect(
-      await screen.findByRole('link', { name: 'Watch “Example talk” on YouTube (external site)' }),
+      await screen.findByRole('link', { name: 'Watch on YouTube (external site)' }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Slides for “Example talk” (external site)' }),

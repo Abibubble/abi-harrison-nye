@@ -40,14 +40,12 @@ export function TalkItem({ talk, headingLevel, hasPage = true }: TalkItemProps) 
           <ul className={styles.links}>
             {talk.transcriptFromScript && (
               <li>
-                <Link to={transcriptPath(talk.slug)}>
-                  Read the transcript of “{talk.title}”, from my script
-                </Link>
+                <Link to={transcriptPath(talk.slug)}>Transcript: {talk.title}</Link>, from my script
               </li>
             )}
             {talk.slidesPage && (
               <li>
-                <Link to={slidesPath(talk.slug)}>See the slides for “{talk.title}”</Link>
+                <Link to={slidesPath(talk.slug)}>Slides: {talk.title}</Link>
               </li>
             )}
           </ul>

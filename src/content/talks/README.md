@@ -68,18 +68,20 @@ places to check with `[check: ...]`. The tests stop a talk being marked ready wh
 
 ## Slides
 
-Slide PDFs aren't fully accessible, so each talk with a PDF can also have a Slides page, at
-`/talks/{slug}/slides`. It shows a picture of each slide, followed by everything on it as real text.
+A talk's slides go on a Slides page, at `/talks/{slug}/slides`, rather than as a PDF, as PDFs are
+hard to make fully accessible. It shows a picture of each slide, followed by everything on it as
+real text. Anyone who wants a copy can print the page, or save it as a PDF from their browser.
 
-- **The PDF and pictures** go in `public/talks/{slug}/`: `slides.pdf`, plus `slide-01.webp` (1600 by 900) and `slide-01-small.webp` (800 by 450) for every slide. The tests check there's a picture in
-  both sizes for every slide described.
+- **The pictures** go in `public/talks/{slug}/`: `slide-01.webp` (1600 by 900) and
+  `slide-01-small.webp` (800 by 450) for every slide, made from the slides. Don't put the PDF there:
+  the tests fail if the folder has anything but pictures, or a picture is missing.
 - **The text** goes in `slides/{slug}.md`. Each slide starts with a `### Slide 1` heading, numbered
   from 1 with no gaps. Under it, quote all the slide's text in curly quotes, then describe what it
   shows. Links on the slide become real links.
 - **Checking:** mark the slide text `"slideText": "draft"` in `talks.json` while it needs checking,
   with `[check: ...]` where needed. The Slides page only appears once it's `"checked"`, and the tests
   stop it being checked while any `[check: ...]` are left.
-- **If the slides change,** export the PDF again, then make new pictures and update the text to match.
+- **If the slides change,** make new pictures and update the text to match.
 
 ### Example
 

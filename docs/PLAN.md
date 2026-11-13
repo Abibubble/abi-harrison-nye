@@ -75,13 +75,13 @@ editing data, not components. TypeScript flags any missing fields.
   plus what I have for it, whether anyone needs to agree, and what's still to do. Only talks marked
   ready go on the site. `talks.ts` has the types and reads the file. See [Video](#video) for how video
   and captions are modelled.
-- **`public/talks/{slug}/`**: a folder for every talk with slides, holding `slides.pdf` and a picture
-  of each slide in 2 sizes, `slide-01.webp` (1600 by 900) and `slide-01-small.webp` (800 by 450). The
+- **`public/talks/{slug}/`**: a folder for every talk with a Slides page, holding a picture of each
+  slide in 2 sizes, `slide-01.webp` (1600 by 900) and `slide-01-small.webp` (800 by 450). The
   build leaves out the folders of talks that aren't ready, so they go live with their talk.
 - **`talks/*.md`**: one Markdown transcript per talk. A talk can't go live without a checked one.
 - **`talks/slides/*.md`**: the text and a description of every slide, for the talk's Slides page,
-  which only appears once its `slideText` is checked in `talks.json`. Slide PDFs aren't fully
-  accessible, so this page gives the same content as real text.
+  which only appears once its `slideText` is checked in `talks.json`. It's there instead of the
+  slides as a PDF, which is hard to make fully accessible.
 - **`talks/about/*.md`**: an optional longer description for a talk.
 - **`articles.ts`**: title, date, publication, summary and URL. Maintained by hand.
 - **`recognition.ts`**: awards and commendations, with name, awarding body, year and result.
