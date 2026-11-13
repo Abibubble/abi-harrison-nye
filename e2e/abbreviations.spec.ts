@@ -1,50 +1,27 @@
-import { type Page, expect, test } from './support/test';
-
-const tooltip = (page: Page, text: string) =>
-  page.locator('[aria-hidden="true"]').getByText(text, { exact: true });
+import { expect, test } from './support/test';
 
 test.describe('Abbreviations', () => {
-  test('show their full form on hover, which stays while the pointer moves onto it', async ({
+  test('are plain text after their first use, with nothing extra to focus or hear', async ({
     page,
   }) => {
-    await page.goto('/');
-    const hand = page.getByRole('button', { name: 'HAND' }).first();
-
-    await hand.hover();
-    await expect(tooltip(page, 'Home of Accessibility and NeuroDiversity')).toBeVisible();
-
-    await tooltip(page, 'Home of Accessibility and NeuroDiversity').hover();
-    await expect(tooltip(page, 'Home of Accessibility and NeuroDiversity')).toBeVisible();
-
-    await page.mouse.move(0, 0);
-    await expect(tooltip(page, 'Home of Accessibility and NeuroDiversity')).toBeHidden();
-  });
-
-  test('show their full form on focus, and hide it with Escape (WCAG 1.4.13)', async ({ page }) => {
-    await page.goto('/');
-    const hand = page.getByRole('button', { name: 'HAND' }).first();
-
-    await hand.focus();
-    await expect(tooltip(page, 'Home of Accessibility and NeuroDiversity')).toBeVisible();
-
-    await page.keyboard.press('Escape');
-    await expect(tooltip(page, 'Home of Accessibility and NeuroDiversity')).toBeHidden();
-    await expect(hand).toBeFocused();
-  });
-
-  test('keep their full form on screen at 320px, without the page scrolling sideways', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 320, height: 640 });
     await page.goto('/cv');
-    const abbreviations = page.locator('button[data-abbr]');
+    const abbreviations = page.getByRole('main').locator('abbr');
 
+    expect(await abbreviations.count()).toBeGreaterThan(10);
+    await expect(page.getByRole('main').locator('abbr button, button abbr')).toHaveCount(0);
     for (const abbreviation of await abbreviations.all()) {
-      await abbreviation.focus();
-      const sideways = await page.evaluate(
-        () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
-      );
-      expect(sideways, (await abbreviation.textContent()) ?? '').toBe(false);
+      await expect(abbreviation).not.toHaveAttribute('tabindex');
+      await expect(abbreviation).not.toHaveAttribute('aria-description');
     }
+  });
+
+  test('write HAND out in full once on the CV, though it’s used in several places', async ({
+    page,
+  }) => {
+    await page.goto('/cv');
+    const main = (await page.getByRole('main').textContent()) ?? '';
+
+    expect(main.match(/Home of Accessibility and NeuroDiversity/g)).toHaveLength(1);
+    expect(main.match(/\bHAND\b/g)?.length).toBeGreaterThan(1);
   });
 });

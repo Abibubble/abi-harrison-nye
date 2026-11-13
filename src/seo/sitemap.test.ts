@@ -4,14 +4,15 @@ import { pagePaths, robotsTxt, sitemapXml } from './sitemap';
 
 describe('pagePaths', () => {
   it('turns each page’s HTML file into its address, Home first, then in order', () => {
-    expect(
-      pagePaths([
-        'work/index.html',
-        'index.html',
-        'talks/debt-to-done/index.html',
-        'cv/index.html',
-      ]),
-    ).toEqual(['/', '/cv', '/talks/debt-to-done', '/work']);
+    expect(pagePaths(['work/index.html', 'index.html', 'talks/debt-to-done/index.html'])).toEqual([
+      '/',
+      '/talks/debt-to-done',
+      '/work',
+    ]);
+  });
+
+  it('leaves out unlisted pages, such as the CV', () => {
+    expect(pagePaths(['index.html', 'cv/index.html'])).toEqual(['/']);
   });
 
   it('leaves out files that aren’t pages, such as the not found page', () => {

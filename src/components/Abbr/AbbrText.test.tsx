@@ -97,7 +97,7 @@ describe('AbbrText', () => {
     const { container } = render(<AbbrText>The UK</AbbrText>);
 
     expect(container.textContent).toBe('The UK');
-    expect(container.querySelector('button')).toHaveAttribute('aria-description', 'United Kingdom');
+    expect(container.querySelector('abbr')).toHaveTextContent('UK');
   });
 });
 
@@ -114,14 +114,11 @@ describe('Abbr', () => {
     expect(container).toHaveTextContent('WCAG then Web Content Accessibility Guidelines (WCAG)');
   });
 
-  it('keeps abbreviations most people know short, marked up with their full form', () => {
+  it('keeps abbreviations most people know short, as they’re listed on the Glossary page', () => {
     const { container } = renderInScope(<AbbrText>My CV, in the UK.</AbbrText>);
 
     expect(container.textContent).toBe('My CV, in the UK.');
-    expect(container.querySelector('button')).toHaveAttribute(
-      'aria-description',
-      'curriculum vitae',
-    );
+    expect(container.querySelectorAll('abbr')).toHaveLength(2);
   });
 
   it('can still write out one most people know, on purpose', () => {

@@ -143,3 +143,14 @@ CI also runs the end to end tests in Firefox and WebKit,
 builds Storybook, and runs Lighthouse: at least 95 for performance (90 for the slowest pages), and
 100 for accessibility, best practice and SEO. To run everything CI runs, use
 `pnpm commit:check:full`.
+
+## Licence
+
+The code is under the [MIT licence](LICENSE), so anyone can reuse it.
+
+The content isn't covered by that licence, and nobody may reuse it without permission. That's:
+
+- the writing on the site, including the CV and work history, in `src/content/`
+- talk transcripts and slides, in `src/content/talks/` and `public/talks/`. Some include other
+  people's words, such as the conversations with Kai Wong
+- the logo and icons, in `brand/` and `public/`

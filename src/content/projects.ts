@@ -5,6 +5,8 @@ export interface Project {
   tech: string[];
   /** The live project, if there is one */
   href?: string;
+  /** The text for the link to the live project, if not "See" and its name, such as its address */
+  hrefText?: string;
   /** The code, if it's public */
   codeHref?: string;
   /** Something people must know before they open it, shown in bold before the links */
@@ -16,9 +18,10 @@ export const PROJECTS: Project[] = [
   {
     name: 'Inclusion Toolkit',
     summary:
-      'A free library of accessibility and neurodiversity resources that anyone can use, including guides, infographics, meeting templates and checklists, as Word, PowerPoint and PDF files. I first made it at giffgaff, and I’ve updated it since.',
+      'Free resources about accessibility and neurodiversity that anyone can use, including guides, infographics, meeting templates and checklists, as Word, PowerPoint and PDF files. I designed, built and wrote it at giffgaff, with Bim Williams and Pranay Gandhi checking the wording and helping to choose the slide layouts. I’ve updated it and added to it since.',
     tech: ['React', 'TypeScript', 'React Router', 'Storybook'],
     href: 'https://inclusiontoolkit.org',
+    hrefText: 'Go to InclusionToolkit.org',
     codeHref: 'https://github.com/Abibubble/inclusion-toolkit',
   },
   {

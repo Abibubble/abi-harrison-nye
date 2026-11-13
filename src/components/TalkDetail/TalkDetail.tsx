@@ -41,7 +41,7 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
       </Stack>
 
       {(talk.video ?? talk.slidesHref ?? talk.slidesFile) && (
-        <Stack as="section" gap={3} aria-labelledby="watch">
+        <Stack as="section" gap={3}>
           <Heading level={2} id="watch">
             {talk.video ? 'Watch the talk' : 'Slides'}
           </Heading>
@@ -95,7 +95,7 @@ export function TalkDetail({ talk, aboutHtml }: TalkDetailProps) {
         </Stack>
       )}
 
-      <Stack as="section" gap={3} aria-labelledby="transcript">
+      <Stack as="section" gap={3}>
         <Heading level={2} id="transcript">
           Transcript
         </Heading>

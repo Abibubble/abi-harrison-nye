@@ -2,10 +2,10 @@ import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import Privacy, { meta } from './privacy';
 
-const region = (name: string) => screen.getByRole('region', { name });
+const region = (name: string) => sectionNamed(name);
 
 describe('Privacy page', () => {
   it('has the page heading, and sums up what’s collected first', () => {

@@ -5,10 +5,10 @@ import { CV_INTERESTS, SKILLS } from '../content/cv';
 import { PROFILE } from '../content/profile';
 import { VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import { CvPage, loader, meta } from './cv';
 
-const section = (name: string | RegExp) => screen.getByRole('region', { name });
+const section = (name: string | RegExp) => sectionNamed(name);
 
 describe('CV page', () => {
   it('has the page heading, and my name, headline and location', () => {

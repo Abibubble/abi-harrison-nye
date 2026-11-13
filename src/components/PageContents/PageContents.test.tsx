@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { expectNoAxeViolations } from '../../test/axe';
 import { PageContents } from './PageContents';
 import { PageContentsSection } from './PageContentsSection';
+import { sectionNamed } from '../../test/render';
 
 const SECTIONS: [{ id: string; title: string }, ...{ id: string; title: string }[]] = [
   { id: 'first', title: 'First section' },
@@ -57,6 +58,6 @@ describe('PageContentsSection', () => {
     const heading = screen.getByRole('heading', { level: 2, name: 'First section' });
     expect(heading).toHaveAttribute('id', 'first');
     expect(heading).toHaveAttribute('tabindex', '-1');
-    expect(screen.getByRole('region', { name: 'First section' })).toHaveTextContent('Content');
+    expect(sectionNamed('First section')).toHaveTextContent('Content');
   });
 });

@@ -41,7 +41,9 @@ test.describe('Accessibility and Privacy pages', () => {
     await page.goto('/privacy');
 
     await page
-      .getByRole('region', { name: 'What’s saved in your browser' })
+      .locator('section', {
+        has: page.getByRole('heading', { name: 'What’s saved in your browser' }),
+      })
       .getByRole('link', { name: 'display settings' })
       .click();
 

@@ -22,12 +22,19 @@ import { pageMeta } from '../seo/pageMeta';
 import type { Route } from './+types/cv';
 import styles from './cv.module.css';
 
+/**
+ * The CV is unlisted: it isn't linked from the site or in the sitemap, and search engines are asked
+ * not to list it, but anyone with the link can open it. See UNLISTED_PATHS in src/seo/sitemap.ts
+ */
 export function meta(): Route.MetaDescriptors {
-  return pageMeta({
-    title: pageTitle('CV'),
-    description: `${SITE_NAME}’s CV: software engineer and accessibility specialist at giffgaff.`,
-    path: '/cv',
-  });
+  return [
+    ...pageMeta({
+      title: pageTitle('CV'),
+      description: `${SITE_NAME}’s CV: software engineer and accessibility specialist at giffgaff.`,
+      path: '/cv',
+    }),
+    { name: 'robots', content: 'noindex' },
+  ];
 }
 
 interface CvSectionProps {
@@ -40,12 +47,7 @@ interface CvSectionProps {
 
 function CvSection({ id, title, children, hideWhenCompact = false }: CvSectionProps) {
   return (
-    <Stack
-      as="section"
-      gap={4}
-      aria-labelledby={id}
-      data-print-compact={hideWhenCompact ? 'hide' : undefined}
-    >
+    <Stack as="section" gap={4} data-print-compact={hideWhenCompact ? 'hide' : undefined}>
       <Heading level={2} id={id}>
         {title}
       </Heading>

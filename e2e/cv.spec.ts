@@ -129,3 +129,23 @@ test.describe('CV', () => {
     await context.close();
   });
 });
+
+test.describe('CV is unlisted', () => {
+  test('opens for anyone with the link, but asks search engines not to list it', async ({
+    page,
+  }) => {
+    const response = await page.goto('/cv');
+
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+  });
+
+  test('isn’t linked from the site, or listed in the sitemap', async ({ page, request }) => {
+    for (const path of ['/', '/work', '/projects', '/talks', '/accessibility']) {
+      await page.goto(path);
+      await expect(page.locator('a[href="/cv"]')).toHaveCount(0);
+    }
+
+    expect(await (await request.get('/sitemap.xml')).text()).not.toMatch(/\/cv</);
+  });
+});

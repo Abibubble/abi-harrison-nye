@@ -110,9 +110,9 @@ async function smallTargets(page: Page): Promise<string[]> {
       .flatMap((element) => {
         const block = element.closest(BLOCKS);
 
-        // Links and abbreviations in a sentence are exempt, as making them bigger would space out the text
+        // Links in a sentence are exempt, as making them bigger would space out the text
         if (
-          (element.tagName === 'A' || 'abbr' in element.dataset) &&
+          element.tagName === 'A' &&
           block &&
           block.textContent.trim() !== element.textContent.trim()
         ) {
@@ -150,7 +150,10 @@ async function abbreviationsNotWrittenOut(page: Page): Promise<string[]> {
       if (pageNames.includes(heading.textContent.trim())) heading.remove();
     }
 
-    main.querySelector('[aria-labelledby="abbreviations"]')?.remove();
+    // The Glossary's list of abbreviations gives every full form, which is its purpose, and
+    // "On this page" lists repeat the headings
+    main.querySelector('#abbreviations')?.closest('section')?.remove();
+    for (const nav of main.querySelectorAll('nav')) nav.remove();
 
     const text = [...main.querySelectorAll('p, li, dt, dd, h2, h3, h4, h5, h6, td, th')]
       .filter((block) => !block.querySelector('p, li, dt, dd'))
@@ -158,11 +161,18 @@ async function abbreviationsNotWrittenOut(page: Page): Promise<string[]> {
       .join(' | ');
 
     return Object.entries(abbreviations).flatMap(([abbreviation, fullForm]) => {
-      const pattern = new RegExp(`(?<![A-Za-z])${abbreviation.replace('/', '\\/')}s?(?![A-Za-z])`);
+      const name = abbreviation.replace('/', '\\/');
+      const pattern = new RegExp(`(?<![A-Za-z])${name}s?(?![A-Za-z])`);
       const match = pattern.exec(text);
 
       if (!match) return [];
       const before = text.slice(0, match.index).toLowerCase();
+      const writtenOut =
+        text.toLowerCase().split(`${fullForm.toLowerCase()} (${abbreviation.toLowerCase()}`)
+          .length - 1;
+
+      if (writtenOut > 1)
+        return [`${abbreviation}: written out in full ${String(writtenOut)} times`];
 
       return before.endsWith(`${fullForm.toLowerCase()} (`) ||
         before.endsWith(`${fullForm.toLowerCase()}s (`)
@@ -186,8 +196,6 @@ async function invisibleHighContrastControls(page: Page): Promise<string[]> {
         return style.borderStyle === 'none' || parseFloat(style.borderWidth) === 0;
       })
       .filter((element) => !(element instanceof HTMLInputElement && element.type === 'radio'))
-      // Abbreviations are part of the text, so like links they're marked by an underline, not a border
-      .filter((element) => !('abbr' in element.dataset))
       .map((element) => `${element.tagName.toLowerCase()} “${element.textContent.trim()}”`),
   );
 }
@@ -210,7 +218,7 @@ test.describe('Audit', () => {
       expect(await tabOrderProblems(page, browserName)).toEqual([]);
     });
 
-    test(`${name}: every target is at least 44 by 44 pixels, apart from links and abbreviations in text (WCAG 2.5.5)`, async ({
+    test(`${name}: every target is at least 44 by 44 pixels, apart from links in text (WCAG 2.5.5)`, async ({
       page,
     }) => {
       await page.goto(path);
@@ -220,7 +228,7 @@ test.describe('Audit', () => {
   }
 
   for (const { name, path } of ROUTES) {
-    test(`${name}: writes out each abbreviation in full the first time it’s used, apart from ones most people know (WCAG 3.1.4)`, async ({
+    test(`${name}: writes out each abbreviation in full the first time it’s used, and only then, apart from ones most people know (WCAG 3.1.4)`, async ({
       page,
     }) => {
       await page.goto(path);

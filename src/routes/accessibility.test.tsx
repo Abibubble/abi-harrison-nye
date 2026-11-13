@@ -5,7 +5,7 @@ import type * as Statements from '../content/statements';
 import { type Talk, knownIssueTalks } from '../content/talks';
 import { displaySettingsStore } from '../settings/displaySettings';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import { AccessibilityPage, loader, meta } from './accessibility';
 
 const fake = vi.hoisted(() => ({ talks: [] as Talk[], manualTesting: [] as string[] }));
@@ -70,7 +70,7 @@ describe('Accessibility page', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'Accessibility' })).toBeInTheDocument();
     expect(
-      within(screen.getByRole('region', { name: 'Display settings' })).getByRole('link', {
+      within(sectionNamed('Display settings')).getByRole('link', {
         name: 'Change the display settings',
       }),
     ).toHaveAttribute('href', '/display-settings');
@@ -95,7 +95,7 @@ describe('Accessibility page', () => {
   it('writes out WCAG in full the first time', () => {
     renderWithRouter(<Accessibility />);
 
-    expect(screen.getByRole('region', { name: 'How accessible this site is' })).toHaveTextContent(
+    expect(sectionNamed('How accessible this site is')).toHaveTextContent(
       'Web Content Accessibility Guidelines (WCAG) version 2.2 at Level AAA',
     );
   });
@@ -105,10 +105,10 @@ describe('Accessibility page', () => {
       fake.talks = [NO_VIDEO];
       renderWithRouter(<Accessibility />);
 
-      expect(screen.getByRole('region', { name: 'Known issues' })).toHaveTextContent(
+      expect(sectionNamed('Known issues')).toHaveTextContent(
         'There are no known issues at the moment.',
       );
-      expect(screen.getByRole('region', { name: 'How accessible this site is' })).toHaveTextContent(
+      expect(sectionNamed('How accessible this site is')).toHaveTextContent(
         'I don’t know of anything on the site that falls short of it.',
       );
     });
@@ -116,9 +116,7 @@ describe('Accessibility page', () => {
     it('doesn’t mention YouTube', () => {
       renderWithRouter(<Accessibility />);
 
-      expect(screen.getByRole('region', { name: 'Content on other sites' })).not.toHaveTextContent(
-        'YouTube',
-      );
+      expect(sectionNamed('Content on other sites')).not.toHaveTextContent('YouTube');
     });
   });
 
@@ -127,7 +125,7 @@ describe('Accessibility page', () => {
       fake.talks = [UNCAPTIONED];
       renderWithRouter(<Accessibility />);
 
-      const region = screen.getByRole('region', { name: 'How accessible this site is' });
+      const region = sectionNamed('How accessible this site is');
       expect(region).toHaveTextContent('It doesn’t fully meet Level AAA yet');
       expect(within(region).getByRole('link', { name: 'known issues' })).toHaveAttribute(
         'href',
@@ -185,7 +183,7 @@ describe('Accessibility page', () => {
       fake.talks = [UNCAPTIONED];
       renderWithRouter(<Accessibility />);
 
-      expect(screen.getByRole('region', { name: 'Content on other sites' })).toHaveTextContent(
+      expect(sectionNamed('Content on other sites')).toHaveTextContent(
         'nothing from YouTube loads here',
       );
     });
@@ -202,7 +200,7 @@ describe('Accessibility page', () => {
     it('says how the site is tested automatically, and when the statement was last checked', () => {
       renderWithRouter(<Accessibility />);
 
-      const region = screen.getByRole('region', { name: 'How I test this site' });
+      const region = sectionNamed('How I test this site');
       expect(region).toHaveTextContent('checked automatically with axe');
       expect(region).toHaveTextContent('This statement was last checked on 6 October 2026.');
     });
@@ -211,7 +209,7 @@ describe('Accessibility page', () => {
       renderWithRouter(<Accessibility />);
 
       expect(
-        within(screen.getByRole('region', { name: 'How I test this site' })).queryByRole('list'),
+        within(sectionNamed('How I test this site')).queryByRole('list'),
       ).not.toBeInTheDocument();
     });
 
@@ -219,16 +217,16 @@ describe('Accessibility page', () => {
       fake.manualTesting = ['VoiceOver with Safari on macOS'];
       renderWithRouter(<Accessibility />);
 
-      expect(
-        within(screen.getByRole('region', { name: 'How I test this site' })).getByRole('listitem'),
-      ).toHaveTextContent('VoiceOver with Safari on macOS');
+      expect(within(sectionNamed('How I test this site')).getByRole('listitem')).toHaveTextContent(
+        'VoiceOver with Safari on macOS',
+      );
     });
   });
 
   it('explains how to report a problem, linking to the contact form', () => {
     renderWithRouter(<Accessibility />);
 
-    const region = screen.getByRole('region', { name: 'Report a problem' });
+    const region = sectionNamed('Report a problem');
     expect(within(region).getByRole('link')).toHaveAttribute('href', '/contact');
   });
 

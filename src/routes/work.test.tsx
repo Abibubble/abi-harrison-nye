@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import { VOLUNTEERING_ROLE, WORK } from '../content/work';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import Work, { meta } from './work';
 
 describe('Work page', () => {
@@ -26,11 +26,11 @@ describe('Work page', () => {
     }
   });
 
-  it('summarises the roles before tech, linking to the CV for the full detail', () => {
+  it('summarises the roles before tech, without linking to the CV, which is unlisted', () => {
     renderWithRouter(<Work />);
 
-    expect(screen.getByRole('region', { name: 'Before tech' })).toHaveTextContent('hospitality');
-    expect(screen.getByRole('link', { name: 'my CV' })).toHaveAttribute('href', '/cv');
+    expect(sectionNamed('Before tech')).toHaveTextContent('hospitality');
+    expect(screen.queryByRole('link', { name: /CV/ })).not.toBeInTheDocument();
   });
 
   it('has a title, description and canonical address', () => {
@@ -48,7 +48,7 @@ describe('Work page', () => {
   it('lists the sites I’ve volunteered on, in their own section', () => {
     renderWithRouter(<Work />);
 
-    const section = within(screen.getByRole('region', { name: 'Volunteering' }));
+    const section = within(sectionNamed('Volunteering'));
     expect(section.getByRole('link', { name: /attractionsource\.com/ })).toHaveAttribute(
       'href',
       'https://attractionsource.com',
@@ -59,14 +59,14 @@ describe('Work page', () => {
   it('says what I do as a volunteer once, not for each site', () => {
     renderWithRouter(<Work />);
 
-    const section = within(screen.getByRole('region', { name: 'Volunteering' }));
+    const section = within(sectionNamed('Volunteering'));
     expect(section.getAllByText(VOLUNTEERING_ROLE)).toHaveLength(1);
   });
 
   it('lists every giffgaff site I’ve worked on under giffgaff', () => {
     renderWithRouter(<Work />);
 
-    const giffgaff = within(screen.getByRole('region', { name: 'giffgaff' }));
+    const giffgaff = within(sectionNamed('giffgaff'));
     for (const name of [/giffgaff\.com/, /giffgaff Inclusion Toolkit/, /giffgaff\.design/]) {
       expect(giffgaff.getByRole('link', { name })).toBeInTheDocument();
     }

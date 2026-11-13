@@ -1,5 +1,3 @@
-import { useId } from 'react';
-
 import type { Company, Role, SiteWorkedOn } from '../../content/work';
 import { AbbrText } from '../Abbr';
 import { Card } from '../Card';
@@ -82,14 +80,11 @@ interface CompanySectionProps {
 }
 
 function CompanySection({ company, headingLevel, briefWhenCompact }: CompanySectionProps) {
-  const headingId = useId();
   const roleLevel = nextLevel(headingLevel);
 
   return (
-    <Stack as="section" gap={4} aria-labelledby={headingId}>
-      <Heading level={headingLevel} id={headingId}>
-        {company.name}
-      </Heading>
+    <Stack as="section" gap={4}>
+      <Heading level={headingLevel}>{company.name}</Heading>
       {company.roles.map((role) => (
         <RoleItem
           key={`${role.title}-${role.from}`}

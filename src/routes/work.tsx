@@ -1,6 +1,5 @@
-import { Abbr, AbbrText } from '../components/Abbr';
+import { AbbrText } from '../components/Abbr';
 import { Heading } from '../components/Heading';
-import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
 import { PlainSummary } from '../components/PlainSummary';
 import { Stack } from '../components/Stack';
@@ -30,7 +29,7 @@ export default function Work() {
         <PlainSummary />
       </Stack>
       <WorkHistory companies={TECH_ROLES} headingLevel={2} />
-      <Stack as="section" gap={4} aria-labelledby="volunteering">
+      <Stack as="section" gap={4}>
         <Heading level={2} id="volunteering">
           Volunteering
         </Heading>
@@ -40,19 +39,12 @@ export default function Work() {
           <AbbrText>{VOLUNTEERING_ROLE}</AbbrText>
         </p>
       </Stack>
-      <Stack as="section" gap={4} aria-labelledby="before-tech">
+      <Stack as="section" gap={4}>
         <Heading level={2} id="before-tech">
           Before tech
         </Heading>
         <p>
           <AbbrText>{BEFORE_TECH_SUMMARY}</AbbrText>
-        </p>
-        <p>
-          You can read about those roles in full on{' '}
-          <Link to="/cv">
-            my <Abbr name="CV" />
-          </Link>
-          .
         </p>
       </Stack>
     </Stack>

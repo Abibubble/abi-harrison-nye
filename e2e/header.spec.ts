@@ -79,7 +79,7 @@ test.describe('Header layouts', () => {
 
     await menuButton(page).click();
 
-    await expect(mainNavLinks(page)).toHaveCount(7);
+    await expect(mainNavLinks(page)).toHaveCount(6);
     await expect(page.getByRole('combobox', { name: 'Theme' })).toBeVisible();
   });
 

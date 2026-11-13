@@ -2,6 +2,7 @@
   "name": "abi-harrison-nye",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Personal website of Abi Harrison-Nye",
   "type": "module",
   "engines": {

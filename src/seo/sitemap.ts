@@ -1,10 +1,14 @@
 import { fileUrl, pageUrl } from './siteUrl';
 
+/** Pages that work for anyone with the link, but aren't linked from the site or listed here */
+export const UNLISTED_PATHS = ['/cv'];
+
 export function pagePaths(htmlFiles: readonly string[]): string[] {
   return htmlFiles
     .map((file) => file.split('\\').join('/'))
     .filter((file) => file === 'index.html' || file.endsWith('/index.html'))
     .map((file) => `/${file.replace(/\/?index\.html$/, '')}`)
+    .filter((path) => !UNLISTED_PATHS.includes(path))
     .sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
 }
 

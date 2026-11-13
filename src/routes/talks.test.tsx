@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import { OTHER_TALKS, TALKS, type Talk } from '../content/talks';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import { TalksPage, loader, meta } from './talks';
 
 const EXAMPLE_TALKS: Talk[] = [
@@ -32,7 +32,7 @@ describe('Talks page', () => {
         ]}
       />,
     );
-    const section = screen.getByRole('region', { name: 'Other talks' });
+    const section = sectionNamed('Other talks');
 
     expect(within(section).getByRole('heading', { level: 3 })).toHaveTextContent('Unrecorded talk');
     expect(within(section).queryByRole('link')).not.toBeInTheDocument();

@@ -91,7 +91,10 @@ test.describe('Moving between pages', () => {
     await expect(firstHeading).toHaveText(heading ?? '');
   });
 
-  const linkedPages = SITE_PAGES.filter(({ name }) => name !== 'Home' && name !== 'Page not found');
+  // The CV is unlisted, so it isn't in the navigation
+  const linkedPages = SITE_PAGES.filter(
+    ({ name }) => name !== 'Home' && name !== 'Page not found' && name !== 'CV',
+  );
 
   for (const route of linkedPages) {
     test(`moves focus to the heading and updates the title after choosing ${route.name}`, async ({
@@ -115,7 +118,7 @@ test.describe('Navigation on wide screens', () => {
     await page.goto('/');
 
     await expect(menuButton(page)).toBeHidden();
-    await expect(mainNav(page).getByRole('link')).toHaveCount(7);
+    await expect(mainNav(page).getByRole('link')).toHaveCount(6);
     for (const link of await mainNav(page).getByRole('link').all()) {
       await expect(link).toBeVisible();
     }

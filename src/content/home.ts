@@ -13,6 +13,5 @@ export const HOME_SIGNPOSTS: Signpost[] = [
   },
   { title: 'Talks', to: '/talks', description: 'Talks I’ve given, with videos and transcripts.' },
   { title: 'Articles', to: '/articles', description: 'Things I’ve written.' },
-  { title: 'CV', to: '/cv', description: 'My full work history, ready to print.' },
   { title: 'Contact', to: '/contact', description: 'Send me a message.' },
 ];

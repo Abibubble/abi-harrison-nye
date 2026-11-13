@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
@@ -9,56 +8,28 @@ import { Link } from '../Link';
 import { Abbr } from './Abbr';
 
 describe('Abbr', () => {
-  it('marks up the abbreviation, with its full form as a description', () => {
-    const { container } = render(<Abbr name="WCAG" />);
+  it('is a plain abbreviation, with nothing to focus or announce again', () => {
+    expect(renderToString(<Abbr name="WCAG" />)).toBe('<abbr>WCAG</abbr>');
 
-    expect(container.querySelector('abbr')).toHaveTextContent('WCAG');
-    expect(screen.getByRole('button', { name: 'WCAG' })).toHaveAttribute(
-      'aria-description',
-      'Web Content Accessibility Guidelines',
-    );
+    render(<Abbr name="WCAG" />);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
-  it('is a plain abbreviation with a title before JavaScript runs, as when prerendered', () => {
-    expect(renderToString(<Abbr name="UK" />)).toBe('<abbr title="United Kingdom">UK</abbr>');
+  it('stays the same once JavaScript runs, so the page doesn’t change after it loads', () => {
+    const { container } = render(<Abbr name="UK" />);
+
+    expect(container.innerHTML).toBe(renderToString(<Abbr name="UK" />));
   });
 
-  it('shows the full form when hovered, and hides it when the pointer leaves', async () => {
-    const user = userEvent.setup();
-    render(<Abbr name="UK" />);
-
-    await user.hover(screen.getByRole('button', { name: 'UK' }));
-    expect(screen.getByText('United Kingdom')).toBeInTheDocument();
-
-    await user.unhover(screen.getByRole('button', { name: 'UK' }));
-    expect(screen.queryByText('United Kingdom')).not.toBeInTheDocument();
-  });
-
-  it('shows the full form when focused or tapped, and hides it with Escape', async () => {
-    const user = userEvent.setup();
-    render(<Abbr name="UK" />);
-
-    await user.tab();
-    expect(screen.getByText('United Kingdom')).toBeInTheDocument();
-
-    await user.keyboard('{Escape}');
-    expect(screen.queryByText('United Kingdom')).not.toBeInTheDocument();
-
-    await user.click(screen.getByRole('button', { name: 'UK' }));
-    expect(screen.getByText('United Kingdom')).toBeInTheDocument();
-  });
-
-  it('stays a plain abbreviation inside a link, as a button can’t go in a link', () => {
+  it('can go inside a link', () => {
     renderWithRouter(
       <Link to="/cv">
         my <Abbr name="CV" />
       </Link>,
     );
 
-    expect(screen.queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.getByRole('link').querySelector('abbr')).toHaveAttribute(
-      'title',
-      'curriculum vitae',
+    expect(screen.getByRole('link', { name: 'my CV' }).querySelector('abbr')).toHaveTextContent(
+      'CV',
     );
   });
 

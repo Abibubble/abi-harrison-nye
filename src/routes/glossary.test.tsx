@@ -5,10 +5,10 @@ import { ABBREVIATIONS } from '../content/abbreviations';
 import { GLOSSARY } from '../content/glossary';
 import { pageMeta } from '../seo/pageMeta';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import Glossary, { meta } from './glossary';
 
-const region = (name: string) => within(screen.getByRole('region', { name }));
+const region = (name: string) => within(sectionNamed(name));
 
 describe('Glossary page', () => {
   it('has the page heading, and lists its sections at the top', () => {

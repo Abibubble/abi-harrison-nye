@@ -11,7 +11,7 @@ interface PageContentsSectionProps {
 
 export function PageContentsSection({ section, children }: PageContentsSectionProps) {
   return (
-    <Stack as="section" gap={4} aria-labelledby={section.id}>
+    <Stack as="section" gap={4}>
       <Heading level={2} id={section.id} tabIndex={-1}>
         {section.title}
       </Heading>

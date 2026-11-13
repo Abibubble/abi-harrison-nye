@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { Company } from '../../content/work';
 import { expectNoAxeViolations } from '../../test/axe';
 import { nth } from '../../test/nth';
-import { renderWithRouter } from '../../test/render';
+import { renderWithRouter, sectionNamed } from '../../test/render';
 import { WorkHistory } from './WorkHistory';
 
 const COMPANIES: Company[] = [
@@ -37,7 +37,7 @@ describe('WorkHistory', () => {
   it('gives each company a section named by its heading, at the level asked for', () => {
     renderWithRouter(<WorkHistory companies={COMPANIES} headingLevel={2} />);
 
-    expect(screen.getByRole('region', { name: 'Example Company' })).toBeInTheDocument();
+    expect(sectionNamed('Example Company')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Earlier Company' })).toBeInTheDocument();
   });
 

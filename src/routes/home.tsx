@@ -54,21 +54,21 @@ export default function Home() {
         </Stack>
       </div>
 
-      <Stack as="section" gap={4} aria-labelledby="find-out-more">
+      <Stack as="section" gap={4}>
         <Heading level={2} id="find-out-more">
           Find out more
         </Heading>
         <SignpostList signposts={HOME_SIGNPOSTS} headingLevel={3} />
       </Stack>
 
-      <Stack as="section" gap={4} aria-labelledby="recognition">
+      <Stack as="section" gap={4}>
         <Heading level={2} id="recognition">
           Recognition
         </Heading>
         <RecognitionList items={RECOGNITION} />
       </Stack>
 
-      <Stack as="section" gap={4} aria-labelledby="outside-work">
+      <Stack as="section" gap={4}>
         <Heading level={2} id="outside-work">
           Outside work
         </Heading>

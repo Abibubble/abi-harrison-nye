@@ -45,7 +45,7 @@ export function TalksPage({
         <p>I’m adding my talks here soon.</p>
       )}
       {otherTalks.length > 0 && (
-        <Stack as="section" gap={4} aria-labelledby="other-talks">
+        <Stack as="section" gap={4}>
           <Heading level={2} id="other-talks">
             Other talks
           </Heading>

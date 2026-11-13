@@ -64,6 +64,17 @@ describe('ProjectItem', () => {
     ).toHaveAttribute('href', 'https://github.com/example/example');
   });
 
+  it('can name the live project’s link another way, such as by its address', () => {
+    renderWithRouter(
+      <ProjectItem project={{ ...PROJECT, hrefText: 'Go to Example.com' }} headingLevel={2} />,
+    );
+
+    expect(screen.getByRole('link', { name: 'Go to Example.com (external site)' })).toHaveAttribute(
+      'href',
+      'https://example.com',
+    );
+  });
+
   it('leaves out tags and links it doesn’t have', () => {
     renderWithRouter(
       <ProjectItem

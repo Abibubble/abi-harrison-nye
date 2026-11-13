@@ -1,3 +1,4 @@
+import { UNLISTED_PATHS } from '../src/seo/sitemap';
 import { pageUrl } from '../src/seo/siteUrl';
 import { ROUTES } from './support/routes';
 import { expect, test } from './support/test';
@@ -46,11 +47,14 @@ test.describe('Search engines and sharing', () => {
     expect(data).toMatchObject({ '@type': 'Person', name: 'Abi Harrison-Nye', url: `${SITE}/` });
   });
 
-  test('the sitemap lists every page except the not found page', async ({ request }) => {
+  test('the sitemap lists every page except the not found page and unlisted ones', async ({
+    request,
+  }) => {
     const sitemap = await (await request.get('/sitemap.xml')).text();
+    const listedPages = PAGES.filter((route) => !UNLISTED_PATHS.includes(route.path));
 
     const listed = [...sitemap.matchAll(/<loc>(.+?)<\/loc>/g)].map(([, loc]) => loc);
-    expect(listed.sort()).toEqual(PAGES.map((route) => pageUrl(SITE, route.path)).sort());
+    expect(listed.sort()).toEqual(listedPages.map((route) => pageUrl(SITE, route.path)).sort());
   });
 
   test('robots.txt allows everything and points to the sitemap', async ({ request }) => {

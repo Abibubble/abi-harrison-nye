@@ -158,7 +158,7 @@ export function AccessibilityPage({
           </li>
           <li>
             Technical words are explained in the <Link to={GLOSSARY_PATH}>glossary</Link>, and the
-            Work and <Abbr name="CV" /> pages start with a short summary in plain words.
+            Work page starts with a short summary in plain words.
           </li>
           <li>
             Every talk has a full, checked transcript. Where I still have the slides, it describes

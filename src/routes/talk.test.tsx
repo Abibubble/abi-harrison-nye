@@ -6,6 +6,7 @@ import type { TalkPageData } from '../content/talkPage';
 import { expectNoAxeViolations } from '../test/axe';
 import { pageMeta } from '../seo/pageMeta';
 import Talk, { loader, meta, slugFrom } from './talk';
+import { sectionNamed } from '../test/render';
 
 const PAGE: TalkPageData = {
   talk: {
@@ -54,7 +55,8 @@ describe('Talk page', () => {
 
   it('links to the transcript, on its own page', async () => {
     renderTalk();
-    const section = await screen.findByRole('region', { name: 'Transcript' });
+    await screen.findByRole('heading', { name: 'Transcript' });
+    const section = sectionNamed('Transcript');
 
     expect(within(section).getByRole('link')).toHaveAttribute(
       'href',

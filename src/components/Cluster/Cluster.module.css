@@ -8,6 +8,10 @@
 
 .cluster > * {
   margin: 0;
+
+  /* An item goes onto its own line first. Only if one long word, such as a web address, still
+     doesn't fit is it broken, so the page never scrolls sideways (WCAG 1.4.10) */
+  overflow-wrap: anywhere;
 }
 
 /* stylelint-disable selector-class-pattern -- these names are built from prop values in Cluster.tsx */

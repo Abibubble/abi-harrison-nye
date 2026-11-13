@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { HOME_SIGNPOSTS } from '../content/home';
 import { RECOGNITION } from '../content/recognition';
 import { expectNoAxeViolations } from '../test/axe';
-import { renderWithRouter } from '../test/render';
+import { renderWithRouter, sectionNamed } from '../test/render';
 import { personSchema } from '../seo/person';
 import Home, { meta } from './home';
 
@@ -26,7 +26,7 @@ describe('Home page', () => {
 
   it('links to every section, with a description of each', () => {
     renderWithRouter(<Home />);
-    const section = screen.getByRole('region', { name: 'Find out more' });
+    const section = sectionNamed('Find out more');
 
     for (const signpost of HOME_SIGNPOSTS) {
       expect(within(section).getByRole('link', { name: signpost.title })).toHaveAttribute(
@@ -38,7 +38,7 @@ describe('Home page', () => {
 
   it('lists my recognition', () => {
     renderWithRouter(<Home />);
-    const section = screen.getByRole('region', { name: 'Recognition' });
+    const section = sectionNamed('Recognition');
 
     expect(within(section).getAllByRole('listitem')).toHaveLength(RECOGNITION.length);
   });
@@ -46,7 +46,7 @@ describe('Home page', () => {
   it('has a section about life outside work', () => {
     renderWithRouter(<Home />);
 
-    expect(screen.getByRole('region', { name: 'Outside work' })).toHaveTextContent('brass bands');
+    expect(sectionNamed('Outside work')).toHaveTextContent('brass bands');
   });
 
   it('has a descriptive page title and description', () => {
