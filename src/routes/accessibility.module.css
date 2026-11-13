@@ -13,7 +13,24 @@
   min-height: var(--size-target-min);
 }
 
+.issue {
+  max-width: var(--size-measure);
+}
+
+/* A full size target, as it stands on its own (WCAG 2.5.5). It stays a list item, as other
+   displays hide the open and close arrow in some browsers */
+.summary {
+  display: list-item;
+  min-height: var(--size-target-min);
+  padding-block: var(--spacer-8);
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-action);
+  letter-spacing: var(--letter-spacing-emphasis);
+  cursor: pointer;
+}
+
 .details {
+  padding-block-start: var(--spacer-8);
   display: flex;
   flex-direction: column;
   gap: var(--spacer-16);

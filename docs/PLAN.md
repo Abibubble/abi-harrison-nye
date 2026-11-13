@@ -302,7 +302,6 @@ appears in a component stylesheet. Only the token files may contain raw values.
 | Theme        | Match my device, Light, Dark, Cream     | Swaps the semantic colour tokens                                                                |
 | Text size    | Default, Large (125%), Larger (150%)    | Sets the root font size as a percentage of the browser's own size. Everything is in `rem`       |
 | Text spacing | Default, Increased                      | At least the WCAG 1.4.12 values for line, letter and word spacing, plus wider paragraph spacing |
-| Motion       | Match my device, Reduce motion          | Turns off all animation and transitions, whatever the device setting                            |
 | Font         | Atkinson Hyperlegible, My device's font | Swaps to the device's own font                                                                  |
 
 Every setting is a group of radio buttons with a visible legend (`RadioGroup`). Each option's label
@@ -658,7 +657,7 @@ Playwright also covers what axe can't detect:
 - Reflow at 320px wide with no horizontal scroll
 - Text resized to 200%, plus each Text size setting
 - The WCAG 1.4.12 text spacing override with no clipped or overlapping text
-- Reduced motion
+- Reduced motion, from the device setting only, as the site has no animation
 - The focus ring never being hidden behind other content
 - The print stylesheet, using Playwright's print media emulation
 

@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { useLoaderData } from 'react-router';
 
 import { Abbr } from '../components/Abbr';
-import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
 import { PageContents, PageContentsSection, type PageSection } from '../components/PageContents';
 import { PageHeading } from '../components/PageHeading';
@@ -42,13 +41,18 @@ interface KnownIssueProps {
   affects: string;
   workaround: ReactNode;
   plan: string;
-  talks: Talk[];
+  /** The talks it affects. Left out when it affects every talk with a video */
+  talks?: Talk[] | undefined;
 }
 
+/**
+ * One known issue, closed to start with, so the list of issues is short to read through. Its title
+ * is the summary, rather than a heading, as a heading inside a summary isn't announced as one
+ */
 function KnownIssue({ title, criteria, affects, workaround, plan, talks }: KnownIssueProps) {
   return (
-    <Stack gap={3}>
-      <Heading level={3}>{title}</Heading>
+    <details className={styles.issue}>
+      <summary className={styles.summary}>{title}</summary>
       <dl className={styles.details}>
         <div>
           <dt>{criteria.length === 1 ? 'Success criterion' : 'Success criteria'}</dt>
@@ -69,19 +73,23 @@ function KnownIssue({ title, criteria, affects, workaround, plan, talks }: Known
           <dd>{plan}</dd>
         </div>
         <div>
-          <dt>{talks.length === 1 ? 'Talk affected' : 'Talks affected'}</dt>
+          <dt>{talks?.length === 1 ? 'Talk affected' : 'Talks affected'}</dt>
           <dd>
-            <ul>
-              {talks.map((talk) => (
-                <li key={talk.slug}>
-                  <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
-                </li>
-              ))}
-            </ul>
+            {talks ? (
+              <ul>
+                {talks.map((talk) => (
+                  <li key={talk.slug}>
+                    <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              'Every talk with a video, including any I add later.'
+            )}
           </dd>
         </div>
       </dl>
-    </Stack>
+    </details>
   );
 }
 
@@ -106,8 +114,8 @@ export function AccessibilityPage({
 
       <PageContentsSection section={SECTIONS.displaySettings}>
         <p>
-          You can change the theme, text size, spacing, font and motion, to make the site easier for
-          you to use. Your choices are saved in this browser only.
+          You can change the theme, text size, spacing and font, to make the site easier for you to
+          use. Your choices are saved in this browser only.
         </p>
         <p className={styles.standalone}>
           <Link to={DISPLAY_SETTINGS_PATH}>Change the display settings</Link>
@@ -139,7 +147,7 @@ export function AccessibilityPage({
             Text has a contrast ratio of at least 7 to 1 against its background, in every theme.
           </li>
           <li>
-            You can change the theme, text size, spacing, font and motion on the{' '}
+            You can change the theme, text size, spacing and font on the{' '}
             <Link to={DISPLAY_SETTINGS_PATH}>Display settings page</Link>.
           </li>
           <li>The font is Atkinson Hyperlegible, which is designed to be easy to read.</li>
@@ -175,7 +183,10 @@ export function AccessibilityPage({
       <PageContentsSection section={SECTIONS.knownIssues}>
         {hasKnownIssues ? (
           <>
-            <p>These are the parts of the site I know don’t meet Level AAA yet.</p>
+            <p>
+              These are the parts of the site I know don’t meet Level AAA yet. Open each one to read
+              who it affects, how to get around it, and what I’m doing about it.
+            </p>
             {withoutCaptions.length > 0 && (
               <KnownIssue
                 title="Some talk videos don’t have accurate captions"
@@ -205,7 +216,6 @@ export function AccessibilityPage({
               affects="People whose first language is a sign language, such as British Sign Language."
               workaround="Each talk’s page has a full transcript, and captions where the video has them."
               plan="I don’t plan to add British Sign Language interpretation. It costs more than I can pay for a personal site. Instead, every talk has a full transcript, and I add captions to the videos I upload myself. If you need a talk in British Sign Language, contact me and I’ll see what I can do."
-              talks={withVideos}
             />
           </>
         ) : (

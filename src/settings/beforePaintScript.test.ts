@@ -47,12 +47,20 @@ describe('the before paint script', () => {
   });
 
   it('ignores values that are not options, so nothing unexpected reaches the page', () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ theme: '"><script>', motion: 'reduce' }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ theme: '"><script>', font: 'system' }));
 
     runScript();
 
     expect(root).not.toHaveAttribute('data-theme');
-    expect(root).toHaveAttribute('data-motion', 'reduce');
+    expect(root).toHaveAttribute('data-font', 'system');
+  });
+
+  it('ignores a motion setting saved before it was removed', () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ motion: 'reduce' }));
+
+    runScript();
+
+    expect(root).not.toHaveAttribute('data-motion');
   });
 
   it.each(['not json', 'null'])('carries on without settings if the saved data is %s', (saved) => {

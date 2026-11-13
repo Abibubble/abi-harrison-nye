@@ -44,7 +44,6 @@ describe('DisplaySettings', () => {
   it.each([
     ['Text size', 'Larger', 'data-text-size', 'larger'],
     ['Text spacing', 'Increased', 'data-text-spacing', 'increased'],
-    ['Motion', 'Reduce motion', 'data-motion', 'reduce'],
     ['Font', 'My device’s font', 'data-font', 'system'],
   ])('changes %s', async (legend, label, attribute, value) => {
     const user = userEvent.setup();

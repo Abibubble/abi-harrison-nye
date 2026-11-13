@@ -140,8 +140,9 @@ em {
 }
 
 /*
- * Motion is opt-in. Declare animation and transition styles only inside
- * @media (prefers-reduced-motion: no-preference). This remains a fallback for reduced-motion users.
+ * The site has no animation, so there's no motion setting. If any is ever added, declare it only
+ * inside @media (prefers-reduced-motion: no-preference). This turns it off for anyone whose device
+ * asks for reduced motion, in case any slips through
  */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -152,13 +153,4 @@ em {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-:root[data-motion='reduce'] *,
-:root[data-motion='reduce'] *::before,
-:root[data-motion='reduce'] *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
 }

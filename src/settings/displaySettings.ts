@@ -45,15 +45,6 @@ export const SETTINGS = {
       },
     ],
   },
-  motion: {
-    legend: 'Motion',
-    attribute: 'data-motion',
-    default: 'system',
-    options: [
-      { value: 'system', label: 'Match my device' },
-      { value: 'reduce', label: 'Reduce motion', hint: 'Turns off all animation and transitions' },
-    ],
-  },
   font: {
     legend: 'Font',
     attribute: 'data-font',

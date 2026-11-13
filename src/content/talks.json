@@ -374,14 +374,14 @@
   },
   {
     "slug": "accessibility-conversation-with-kai-wong-part-2",
-    "ready": true,
+    "ready": false,
     "title": "Accessibility conversation with Kai Wong, part 2",
     "event": "giffgaff Disability Pride Month",
     "date": "2025-06-16",
     "summary": "Part 2 of my conversation with Kai Wong, about active allyship, making fair decisions, accessibility networks, avoiding burnout, and resources for learning.",
     "video": {
       "href": "https://youtu.be/anRqDPCz2tE",
-      "captions": "accurate",
+      "captions": "none",
       "describedAloud": true
     },
     "has": {
@@ -392,7 +392,7 @@
       "recording": "youtube"
     },
     "permission": "agreed",
-    "todo": []
+    "todo": ["Check the captions on YouTube, then mark them as accurate here"]
   },
   {
     "slug": "accessibility-conversation-with-kai-wong-part-1",
@@ -409,15 +409,12 @@
     "has": {
       "slides": "none",
       "script": false,
-      "transcript": "draft",
+      "transcript": "checked",
       "slideText": "none",
       "recording": "youtube"
     },
-    "permission": "needed",
-    "todo": [
-      "Check the captions on YouTube, then mark them as accurate here",
-      "Check the transcript. Listen to the video for its 3 parts marked “[check: ...]”: the name of Kai’s group at Teladoc Health, any words missing before “I found my group of people”, and the unclear words after “people who’ve been working for a long time”"
-    ]
+    "permission": "agreed",
+    "todo": ["Check the captions on YouTube, then mark them as accurate here"]
   },
   {
     "slug": "autism-and-gender",

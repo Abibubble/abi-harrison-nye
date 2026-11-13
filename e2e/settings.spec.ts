@@ -121,12 +121,6 @@ test.describe('Display settings page', () => {
     );
   });
 
-  test('turns off motion', async ({ page }) => {
-    await page.getByRole('radio', { name: 'Reduce motion' }).check();
-
-    await expect(page.locator('html')).toHaveAttribute('data-motion', 'reduce');
-  });
-
   test('stays in step with the header theme switcher', async ({ page }) => {
     await page.getByRole('radio', { name: 'Cream' }).check();
 

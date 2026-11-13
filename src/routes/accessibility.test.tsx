@@ -48,9 +48,10 @@ const UNDESCRIBED = talk('undescribed', {
 });
 const NO_VIDEO = talk('no-video');
 
+/** A known issue, found by its summary, the part that opens and closes it */
 function knownIssue(title: string) {
-  const issue = screen.getByRole('heading', { level: 3, name: title }).parentElement;
-  if (!issue) throw new Error(`The known issue “${title}” isn’t in a container`);
+  const issue = screen.getByText(title, { selector: 'summary' }).closest('details');
+  if (!issue) throw new Error(`The known issue “${title}” isn’t in a details element`);
   return issue;
 }
 
@@ -182,7 +183,17 @@ describe('Accessibility page', () => {
       expect(issue).toHaveTextContent('1.2.6 Sign Language (Prerecorded), Level AAA');
       expect(issue).toHaveTextContent('I don’t plan to add British Sign Language interpretation.');
       expect(issue).toHaveTextContent('If you need a talk in British Sign Language, contact me');
-      expect(within(issue).getAllByRole('link')).toHaveLength(2);
+      expect(issue).toHaveTextContent('Every talk with a video, including any I add later.');
+      expect(within(issue).queryAllByRole('link', { hidden: true })).toHaveLength(0);
+    });
+
+    it('starts with each issue closed, so the list is short to read through', () => {
+      fake.talks = [UNCAPTIONED, UNDESCRIBED];
+      renderWithRouter(<Accessibility />);
+
+      expect(knownIssue('Some talk videos don’t have accurate captions')).not.toHaveAttribute(
+        'open',
+      );
     });
 
     it('only lists the issues that apply', () => {
@@ -190,7 +201,7 @@ describe('Accessibility page', () => {
       renderWithRouter(<Accessibility />);
 
       expect(
-        screen.queryByRole('heading', { name: 'Some talk videos don’t have accurate captions' }),
+        screen.queryByText('Some talk videos don’t have accurate captions'),
       ).not.toBeInTheDocument();
     });
 
@@ -217,7 +228,7 @@ describe('Accessibility page', () => {
 
       const region = sectionNamed('How I test this site');
       expect(region).toHaveTextContent('checked automatically with axe');
-      expect(region).toHaveTextContent('This statement was last checked on 6 October 2026.');
+      expect(region).toHaveTextContent('This statement was last checked on 13 November 2026.');
     });
 
     it('only lists testing by hand that’s been done', () => {

@@ -10,7 +10,7 @@ For a physical description, I’m an average-height woman with brown hair and gl
 
 **Kai:** Hello, yes, thank you so much, Abi. Thanks for having me. Hi, everyone. My name is Kai Wong. For my visual description, I’m half Asian. I’m a non-binary person. I’m also half white. I have short black hair, I wear gold glasses, and I usually have on a big old cheesy smile.
 
-I’m living in Washington, District of Columbia (DC), and I’m currently the Principal of Digital Accessibility at Teladoc Health, a global leader in virtual care. There, I also lead the Accessibility Champions for Change group [check: this part is garbled in the source, so check the group’s name], and I’m part of the Thrive Business Resource Group (BRG) leadership team, which is the business resource group for people with disabilities and allies at Teladoc Health. So, super excited to be here. Thanks so much.
+I’m living in Washington, District of Columbia (DC), and I’m currently the Principal of Digital Accessibility at Teladoc Health, a global leader in virtual care. There, I also lead the Accessibility Champions for Change group, and I’m part of the Thrive Business Resource Group (BRG) leadership team, which is the business resource group for people with disabilities and allies at Teladoc Health. So, super excited to be here. Thanks so much.
 
 Awesome. So, a bit of an introduction for you to giffgaff. We’re a telecoms company. We’re still surprisingly new for the industry, so we’re building ourselves up. We’re not quite a startup any more, but we’re not a massive player at the minute.
 
@@ -40,7 +40,7 @@ Definitely. So, accessibility in general. I’ve harped on about this so much, p
 
 **Kai:** Yeah, accessibility is so, so important. So Abi, don’t feel bad. Keep saying it, keep saying it, and everyone keep listening to Abi, because that’s a solid point. Accessibility is so important, and until everybody understands that, and does the things that need to be done to make sure the world is accessible, that fight will continue. It is the good fight, so keep going.
 
-For me, accessibility all really roots back to when I was growing up. I was really bullied, and I never really felt like I fit in. I am a queer person with attention deficit hyperactivity disorder (ADHD). I’m half Asian. I found my group of people that were like, “Hey, you look like me, you talk like me, your family looks like mine.” [check: some words may be missing before this sentence in the source]
+For me, accessibility all really roots back to when I was growing up. I was really bullied, and I never really felt like I fit in. I am a queer person with attention deficit hyperactivity disorder (ADHD). I’m half Asian. I found my group of people that were like, “Hey, you look like me, you talk like me, your family looks like mine.”
 
 So when I realised that the internet was a place where I could find people like myself, I felt so happy. I found community. I found a new way of life. And then I found out the internet is also excluding people who are different. People with disabilities are often excluded from the internet.
 
@@ -78,7 +78,7 @@ Yeah, 100%. It’s interesting you mention impostor syndrome. We do have imposto
 
 Yeah, it’s such a difficult thing, especially when you’re first starting. But then I think people feel like, “Oh, well, I’ve been doing this for a while. I shouldn’t have impostor syndrome now.” It affects everyone.
 
-**Kai:** Yeah, exactly. It’s new people, and people who’ve been working for a long time [check: a few words are unclear in the source here]. Even the very experienced people, I love it when they mention, “Hey, I don’t know how this works”, or “Hey, I don’t feel confident in this”, because it actually makes it feel safer for other people too. So I would definitely recommend, if you’re a leader, be vulnerable as much as you can, because authenticity really speaks, and can get people to feel safe and build better connections.
+**Kai:** Yeah, exactly. It’s new people, and people who’ve been working for a long time. Even the very experienced people, I love it when they mention, “Hey, I don’t know how this works”, or “Hey, I don’t feel confident in this”, because it actually makes it feel safer for other people too. So I would definitely recommend, if you’re a leader, be vulnerable as much as you can, because authenticity really speaks, and can get people to feel safe and build better connections.
 
 Yeah, completely agree. Once I’d got past feeling like I was brand new, I was still not understanding the questions or the statements that people were saying. I got to a point where I’d just unmute and say, “I’m going to ask the stupid question. What is this? What are we talking about?” And then I’d get messages from people going, “I’m so glad you asked.”
 

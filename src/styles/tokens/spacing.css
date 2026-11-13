@@ -23,8 +23,9 @@
      letters per line stays the same */
   --size-measure: 33em;
 
-  /* Content width for page layouts: 1152px, which is 12 steps of 96px */
-  --size-content-max: calc(var(--spacer-96) * 12);
+  /* Content width for page layouts: 960px, which is 10 steps of 96px. Narrow enough that the
+     header, text and footer line up without a wide empty space beside lines of text */
+  --size-content-max: calc(var(--spacer-96) * 10);
 
   /* Single line form fields: 480px, which is 5 steps of 96px. Wide enough for an email address */
   --size-input-max: calc(var(--spacer-96) * 5);
