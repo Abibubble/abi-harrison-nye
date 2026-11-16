@@ -33,6 +33,43 @@ export const WITHOUT_TRAILING_SLASH_SCRIPT = `(function () {
   }
 })();`;
 
+/** Where the page someone chose is remembered, until it opens */
+const CHOSEN_PAGE_KEY = 'chosen-page';
+
+/**
+ * Each deploy renames the code for each page, and browsers can keep an old copy of a page for a
+ * while. A link on an old copy asks for the next page's code by its old name, which is gone, so
+ * React Router reloads the page they were on. This remembers which link was chosen, and if that
+ * reload happens within a few seconds, it goes on to the page they chose. It forgets once the page
+ * opens normally (see App), so a later reload stays where it is
+ */
+export const CHOSEN_PAGE_SCRIPT = `(function () {
+  var key = ${JSON.stringify(CHOSEN_PAGE_KEY)};
+  try {
+    var chosen = JSON.parse(sessionStorage.getItem(key) || 'null');
+    sessionStorage.removeItem(key);
+    var load = performance.getEntriesByType('navigation')[0];
+    if (
+      chosen && load && load.type === 'reload' && Date.now() - chosen.at < 10000 &&
+      chosen.from === location.pathname + location.search &&
+      chosen.to.charAt(0) === '/' && chosen.to.charAt(1) !== '/'
+    ) {
+      location.replace(chosen.to);
+    }
+  } catch (error) {}
+  document.addEventListener('click', function (event) {
+    var link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link || link.origin !== location.origin || (link.target && link.target !== '_self')) return;
+    try {
+      sessionStorage.setItem(key, JSON.stringify({
+        to: link.pathname + link.search + link.hash,
+        from: location.pathname + location.search,
+        at: Date.now()
+      }));
+    } catch (error) {}
+  }, true);
+})();`;
+
 export const links: Route.LinksFunction = () => [
   {
     rel: 'preload',
@@ -67,6 +104,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="theme-color" content="#f5effa" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#160c24" media="(prefers-color-scheme: dark)" />
         <script dangerouslySetInnerHTML={{ __html: WITHOUT_TRAILING_SLASH_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: CHOSEN_PAGE_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: BEFORE_PAINT_SCRIPT }} />
         <Meta />
         <Links />
@@ -81,7 +119,16 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
+
+  // The chosen page has opened, so there's nothing to go on to (see CHOSEN_PAGE_SCRIPT)
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem(CHOSEN_PAGE_KEY);
+    } catch {
+      // Storage can be blocked, in which case nothing was remembered
+    }
+  }, [key]);
 
   return (
     <SiteShell>

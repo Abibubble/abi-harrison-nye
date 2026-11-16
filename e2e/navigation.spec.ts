@@ -50,6 +50,39 @@ test.describe('Skip link', () => {
   });
 });
 
+test.describe('After a new version of the site is deployed', () => {
+  // A page loaded before a deploy asks for the next page's code by its old name, which is gone.
+  // React Router then reloads the page. That should end up on the page chosen, not the one before
+  test('a link still reaches the page chosen, even if its code has gone', async ({ page }) => {
+    let blocked = false;
+    await page.route(/\/assets\/contact-[^/]+\.js$/, async (route) => {
+      if (blocked) return route.continue();
+      blocked = true;
+      return route.fulfill({ status: 404, body: '' });
+    });
+    await page.goto('/');
+
+    await mainNav(page).getByRole('link', { name: 'Contact' }).click();
+
+    await expect(page).toHaveURL('/contact');
+    await expect(page.getByRole('heading', { level: 1, name: 'Contact' })).toBeVisible();
+    expect(blocked).toBe(true);
+  });
+
+  test('a reload soon after following a link stays on the page it’s on', async ({ page }) => {
+    await page.goto('/');
+    await mainNav(page).getByRole('link', { name: 'Contact' }).click();
+    await expect(page).toHaveURL('/contact');
+    await page.goBack();
+    await expect(page).toHaveURL('/');
+
+    await page.reload();
+
+    await expect(page).toHaveURL('/');
+    await expect(page.getByRole('heading', { level: 1, name: 'Abi Harrison-Nye' })).toBeVisible();
+  });
+});
+
 test.describe('Moving between pages', () => {
   test('marks the current page in the navigation', async ({ page }) => {
     await page.goto('/work');
