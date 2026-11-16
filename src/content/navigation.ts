@@ -12,6 +12,9 @@ export const MAIN_NAV: NavItem[] = [
   { label: 'Contact', to: '/contact' },
 ];
 
+/** The page about the Accessibility Culture Day I organised, linked from the Projects page */
+export const CULTURE_DAY_PATH = '/projects/accessibility-culture-day';
+
 /** The page where visitors can change the theme, text size, spacing and font */
 export const DISPLAY_SETTINGS_PATH = '/display-settings';
 

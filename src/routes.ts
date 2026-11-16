@@ -50,6 +50,7 @@ export default [
   index('routes/home.tsx'),
   route('work', 'routes/work.tsx'),
   route('projects', 'routes/projects.tsx'),
+  route('projects/accessibility-culture-day', 'routes/accessibility-culture-day.tsx'),
   route('talks', 'routes/talks.tsx'),
   ...talkPages,
   ...otherTalkPages,

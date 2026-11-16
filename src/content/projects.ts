@@ -1,3 +1,5 @@
+import { CULTURE_DAY_PATH } from './navigation';
+
 export interface Project {
   name: string;
   summary: string;
@@ -11,7 +13,21 @@ export interface Project {
   codeHref?: string;
   /** Something people must know before they open it, shown in bold before the links */
   warning?: string;
+  /** A page on this site with more about it */
+  page?: string;
 }
+
+/** The inaccessible page for the Culture Day workshop, also linked from the Culture Day page */
+export const BAD_A11Y = {
+  name: 'bad-a11y',
+  summary:
+    'A web page I built for a workshop at giffgaff’s Accessibility Culture Day. Colleagues used it to practise finding and fixing accessibility problems, using a screen reader, a keyboard only and other assistive technology. People who don’t code wrote down the problems they found, then redesigned the page to be accessible.',
+  tech: ['HTML', 'CSS'],
+  href: 'https://abibubble.github.io/bad-a11y/',
+  codeHref: 'https://github.com/Abibubble/bad-a11y',
+  warning:
+    'This page is inaccessible on purpose, for teaching. It may be hard to use with assistive technology, and its code shouldn’t be copied into a real site.',
+} satisfies Project;
 
 /** Newest first. Until there are some, the page shows a holding message */
 export const PROJECTS: Project[] = [
@@ -33,15 +49,13 @@ export const PROJECTS: Project[] = [
     codeHref: 'https://github.com/Abibubble/coaster-ranker',
   },
   {
-    name: 'bad-a11y',
+    name: 'Accessibility Culture Day',
     summary:
-      'A web page I built for a workshop at giffgaff’s Accessibility Culture Day. Colleagues used it to practise finding and fixing accessibility problems, using a screen reader, a keyboard only and other assistive technology. People who don’t code wrote down the problems they found, then redesigned the page to be accessible.',
-    tech: ['HTML', 'CSS'],
-    href: 'https://abibubble.github.io/bad-a11y/',
-    codeHref: 'https://github.com/Abibubble/bad-a11y',
-    warning:
-      'This page is inaccessible on purpose, for teaching. It may be hard to use with assistive technology, and its code shouldn’t be copied into a real site.',
+      'A day of hands-on accessibility workshops I organised for the whole of giffgaff, in the office and from home. About 200 people took an active part, and more teams started testing with screen readers afterwards.',
+    tech: [],
+    page: CULTURE_DAY_PATH,
   },
+  BAD_A11Y,
   {
     name: 'Wedding invitations',
     summary:

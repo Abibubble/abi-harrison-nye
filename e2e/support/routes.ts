@@ -18,8 +18,14 @@ export const SITE_PAGES = [
   { name: 'Page not found', path: '/this-page-does-not-exist' },
 ] as const;
 
+/** Pages that aren't in the navigation, but are linked from another page */
+export const LINKED_PAGES = [
+  { name: 'Accessibility Culture Day', path: '/projects/accessibility-culture-day' },
+] as const;
+
 export const ROUTES: readonly { name: string; path: string }[] = [
   ...SITE_PAGES,
+  ...LINKED_PAGES,
   ...TALKS.flatMap((talk) => [
     { name: `Talk: ${talk.title}`, path: `/talks/${talk.slug}` },
     { name: `Transcript: ${talk.title}`, path: transcriptPath(talk.slug) },

@@ -9,7 +9,7 @@ import type { Route } from './+types/projects';
 export function meta(): Route.MetaDescriptors {
   return pageMeta({
     title: pageTitle('Projects'),
-    description: 'Things I’ve built outside work.',
+    description: 'Things I’ve built and organised.',
     path: '/projects',
   });
 }
@@ -19,7 +19,7 @@ export function ProjectsPage({ projects }: { projects: readonly Project[] }) {
     <Stack gap={6}>
       <Stack gap={4}>
         <PageHeading>Projects</PageHeading>
-        <p>Things I’ve built outside work.</p>
+        <p>Things I’ve built and organised.</p>
       </Stack>
       {projects.length > 0 ? (
         <Stack as="ul" gap={5}>

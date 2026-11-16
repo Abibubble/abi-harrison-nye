@@ -30,8 +30,9 @@ export function ProjectItem({ project, headingLevel }: ProjectItemProps) {
             </strong>
           </p>
         )}
-        {(project.href ?? project.codeHref) && (
+        {(project.page ?? project.href ?? project.codeHref) && (
           <Cluster gap={4}>
+            {project.page && <Link to={project.page}>Read about {project.name}</Link>}
             {project.href && (
               <Link href={project.href}>{project.hrefText ?? `See ${project.name}`}</Link>
             )}

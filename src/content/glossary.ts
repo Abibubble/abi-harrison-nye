@@ -33,9 +33,19 @@ export const GLOSSARY: GlossaryTerm[] = [
       'A short piece of research into a technical approach, to help decide whether to use it.',
   },
   {
+    term: 'Assistive technology',
+    definition:
+      'Tools that help disabled people use computers and phones, such as screen readers, or software that lets people control a computer with their voice.',
+  },
+  {
     term: 'Audio description',
     definition:
       'A spoken description of what’s happening on screen in a video, for people who can’t see it.',
+  },
+  {
+    term: 'Breakout room',
+    definition:
+      'A smaller video call that some people in a larger video call move into, so they can talk in a small group.',
   },
   {
     term: 'Bug bash',
@@ -88,6 +98,11 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition: 'The part of a website that people see and use in their browser.',
   },
   {
+    term: 'Head pointer',
+    definition:
+      'Software that moves the pointer on the screen as you move your head, using a camera, for people who can’t use a mouse.',
+  },
+  {
     term: 'Micro frontends',
     definition:
       'Splitting a large website into smaller parts, so different teams can build and release them separately.',
@@ -112,12 +127,22 @@ export const GLOSSARY: GlossaryTerm[] = [
       'Discomfort, headaches or blurred vision that some people get from stripes and other busy patterns.',
   },
   {
+    term: 'Persona',
+    definition:
+      'A description of a made-up person, used to imagine how different people would use something.',
+  },
+  {
     term: 'Photosensitivity',
     definition: 'When flashing or flickering light can cause discomfort or seizures.',
   },
   {
     term: 'Pigpen cipher',
     definition: 'A simple code that swaps each letter for a symbol, made from parts of a grid.',
+  },
+  {
+    term: 'Purple Pound',
+    definition:
+      'The money spent by households in the United Kingdom where at least one person is disabled.',
   },
   {
     term: 'Refactoring',

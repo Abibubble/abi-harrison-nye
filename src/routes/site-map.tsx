@@ -5,6 +5,7 @@ import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
 import { FOOTER_NAV, MAIN_NAV, SITE_MAP_PATH } from '../content/navigation';
+import { PROJECTS } from '../content/projects';
 import { pageTitle } from '../content/site';
 import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from '../content/talkPath';
 import { OTHER_TALKS, TALKS, type Talk } from '../content/talks';
@@ -24,6 +25,9 @@ export function meta(): Route.MetaDescriptors {
 export function loader() {
   return { talks: TALKS, otherTalks: OTHER_TALKS };
 }
+
+/** Projects with their own page on this site, listed under Projects */
+const PROJECT_PAGES = PROJECTS.flatMap(({ name, page }) => (page ? [{ name, page }] : []));
 
 interface SiteMapPageProps {
   talks: readonly Talk[];
@@ -75,6 +79,15 @@ export function SiteMapPage({ talks, otherTalks }: SiteMapPageProps) {
           {MAIN_NAV.map(({ label, to }) => (
             <li key={to}>
               <Link to={to}>{label}</Link>
+              {to === '/projects' && (
+                <ul className={styles.list}>
+                  {PROJECT_PAGES.map((project) => (
+                    <li key={project.page}>
+                      <Link to={project.page}>{project.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

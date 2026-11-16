@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { FOOTER_NAV, MAIN_NAV } from '../content/navigation';
+import { CULTURE_DAY_PATH, FOOTER_NAV, MAIN_NAV } from '../content/navigation';
 import { OTHER_TALKS, TALKS, type Talk } from '../content/talks';
 import { expectNoAxeViolations } from '../test/axe';
 import { renderWithRouter, sectionNamed } from '../test/render';
@@ -57,10 +57,19 @@ const linksIn = (section: string) =>
     .map((link) => [link.textContent, link.getAttribute('href')]);
 
 describe('Site map page', () => {
-  it('lists every page in the main navigation', () => {
+  it('lists every page in the main navigation, with project pages under Projects', () => {
     renderSiteMap();
 
-    expect(linksIn('Main pages')).toEqual(MAIN_NAV.map(({ label, to }) => [label, to]));
+    expect(linksIn('Main pages')).toEqual(
+      MAIN_NAV.flatMap(({ label, to }) =>
+        to === '/projects'
+          ? [
+              [label, to],
+              ['Accessibility Culture Day', CULTURE_DAY_PATH],
+            ]
+          : [[label, to]],
+      ),
+    );
   });
 
   it('lists each talk with its transcripts and slides, each named in full (WCAG 2.4.9)', () => {

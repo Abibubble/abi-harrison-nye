@@ -9,7 +9,7 @@ export const HOME_SIGNPOSTS: Signpost[] = [
   {
     title: 'Projects',
     to: '/projects',
-    description: 'Things I’ve built outside work, including the Inclusion Toolkit.',
+    description: 'Things I’ve built and organised, including the Inclusion Toolkit.',
   },
   { title: 'Talks', to: '/talks', description: 'Talks I’ve given, with videos and transcripts.' },
   { title: 'Articles', to: '/articles', description: 'Things I’ve written.' },

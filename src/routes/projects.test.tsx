@@ -31,6 +31,19 @@ describe('Projects page', () => {
     expect(screen.queryByText('I’m adding my projects here soon.')).not.toBeInTheDocument();
   });
 
+  it('links to a project’s own page, when it has one', () => {
+    renderWithRouter(
+      <ProjectsPage
+        projects={[{ name: 'An event', summary: 'A day.', tech: [], page: '/projects/an-event' }]}
+      />,
+    );
+
+    expect(screen.getByRole('link', { name: 'Read about An event' })).toHaveAttribute(
+      'href',
+      '/projects/an-event',
+    );
+  });
+
   it('has a title, description and canonical address', () => {
     const tags = meta();
 
