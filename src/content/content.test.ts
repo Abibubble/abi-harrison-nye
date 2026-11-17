@@ -14,7 +14,7 @@ import { BEFORE_TECH_SUMMARY, VOLUNTEERING, VOLUNTEERING_ROLE, WORK } from './wo
 const ROLES = WORK.flatMap((company) => company.roles);
 
 /** Names written in capitals that aren't abbreviations, so have nothing to expand */
-const NAMES_IN_CAPITALS = ['LDX3'];
+const NAMES_IN_CAPITALS = ['AA', 'LDX3', 'SODA'];
 
 /** Every piece of text written for the site, for checks that apply to all of it */
 const ALL_TEXT = [

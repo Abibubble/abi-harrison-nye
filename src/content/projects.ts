@@ -70,4 +70,13 @@ export const PROJECTS: Project[] = [
     href: 'https://hooks-learning.vercel.app/',
     codeHref: 'https://github.com/Abibubble/hooks-learning',
   },
+  {
+    name: 'Noffle My Needs',
+    summary:
+      'A tool for sharing what you need at work that day, such as “Please speak up” or “Working from home”, built with the team A11y Allies for the Trust In SODA and Code Institute Hackathon in September 2021. The theme was building an accessible workplace. I later rebuilt it as a demo that runs only in the browser, with made-up colleagues and no accounts, and fixed every issue found in an audit against WCAG 2.1 Level AA.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    href: 'https://abibubble.github.io/noffle-my-needs-demo/',
+    hrefText: 'Try the Noffle My Needs demo',
+    codeHref: 'https://github.com/Abibubble/noffle-my-needs-demo',
+  },
 ];
