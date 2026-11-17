@@ -12,6 +12,6 @@ export const HOME_SIGNPOSTS: Signpost[] = [
     description: 'Things I’ve built and organised, including the Inclusion Toolkit.',
   },
   { title: 'Talks', to: '/talks', description: 'Talks I’ve given, with videos and transcripts.' },
-  { title: 'Articles', to: '/articles', description: 'Things I’ve written.' },
+  { title: 'Articles', to: '/articles', description: 'Articles I was asked to write.' },
   { title: 'Contact', to: '/contact', description: 'Send me a message.' },
 ];

@@ -24,6 +24,7 @@ export function RecognitionList({ items }: RecognitionListProps) {
           )}
           <span className={styles.awards}>
             , <AbbrText>{item.awards}</AbbrText> {item.year}
+            {item.chosenBy && `, ${item.chosenBy}`}
           </span>
         </li>
       ))}

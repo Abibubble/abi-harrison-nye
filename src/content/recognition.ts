@@ -8,7 +8,12 @@ export interface Recognition {
   /** The awards it was part of */
   awards: string;
   year: number;
+  /** How the winner was chosen, when the awards' name doesn't make it clear */
+  chosenBy?: string;
 }
+
+/** giffgaff's own awards, where every employee could nominate and vote */
+const VOTED_BY_GIFFGAFF = 'nominated and voted for by everyone at giffgaff';
 
 /** Newest first */
 export const RECOGNITION: Recognition[] = [
@@ -42,14 +47,16 @@ export const RECOGNITION: Recognition[] = [
   {
     award: 'Most Up To Good giffgaffer',
     result: 'Winner',
-    awards: 'Grit & Glory Awards',
+    awards: 'giffgaff’s Grit & Glory Awards',
     year: 2025,
+    chosenBy: VOTED_BY_GIFFGAFF,
   },
   {
     award: 'Most Positive Team',
     result: 'Winner',
     recipient: 'the Future Capabilities Team',
-    awards: 'Grit & Glory Awards',
+    awards: 'giffgaff’s Grit & Glory Awards',
     year: 2025,
+    chosenBy: VOTED_BY_GIFFGAFF,
   },
 ];

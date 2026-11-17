@@ -26,6 +26,26 @@ describe('RecognitionList', () => {
     );
   });
 
+  it('says how the winner was chosen, when it’s given', () => {
+    render(
+      <RecognitionList
+        items={[
+          {
+            award: 'Most Up To Good giffgaffer',
+            result: 'Winner',
+            awards: 'giffgaff’s Grit & Glory Awards',
+            year: 2025,
+            chosenBy: 'nominated and voted for by everyone at giffgaff',
+          },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole('listitem')).toHaveTextContent(
+      'Winner: Most Up To Good giffgaffer, giffgaff’s Grit & Glory Awards 2025, nominated and voted for by everyone at giffgaff',
+    );
+  });
+
   it('has an item for every award', () => {
     render(<RecognitionList items={RECOGNITION} />);
 
