@@ -15,6 +15,9 @@ export const MAIN_NAV: NavItem[] = [
 /** The page about the Accessibility Culture Day I organised, linked from the Projects page */
 export const CULTURE_DAY_PATH = '/projects/accessibility-culture-day';
 
+/** Talks with no recording to share, which are all about neurodiversity, linked from the Talks page */
+export const NEURODIVERSITY_TALKS_PATH = '/talks/neurodiversity';
+
 /** The page where visitors can change the theme, text size, spacing and font */
 export const DISPLAY_SETTINGS_PATH = '/display-settings';
 

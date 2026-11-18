@@ -1,3 +1,4 @@
+import { NEURODIVERSITY_TALKS_PATH } from '../../content/navigation';
 import type { AlsoGiven, Talk } from '../../content/talks';
 import type { TranscriptSection } from '../../content/transcripts';
 import { Link } from '../Link';
@@ -27,7 +28,7 @@ export function TalkTranscript({ talk, alsoGiven, transcriptHtml, sections }: Ta
   const backToTalk = (
     <p className={styles.standalone}>
       {talk.notRecorded ? (
-        <Link to="/talks#other-talks">Back to other talks</Link>
+        <Link to={NEURODIVERSITY_TALKS_PATH}>Back to neurodiversity talks</Link>
       ) : (
         <Link to={`/talks/${talk.slug}`}>Back to “{talk.title}”</Link>
       )}

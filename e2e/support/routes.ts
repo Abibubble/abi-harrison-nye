@@ -21,6 +21,7 @@ export const SITE_PAGES = [
 /** Pages that aren't in the navigation, but are linked from another page */
 export const LINKED_PAGES = [
   { name: 'Accessibility Culture Day', path: '/projects/accessibility-culture-day' },
+  { name: 'Neurodiversity talks', path: '/talks/neurodiversity' },
 ] as const;
 
 export const ROUTES: readonly { name: string; path: string }[] = [

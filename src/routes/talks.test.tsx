@@ -17,41 +17,25 @@ const EXAMPLE_TALKS: Talk[] = [
 ];
 
 describe('Talks page', () => {
-  it('lists talks without pages under “Other talks”, with no links', () => {
-    renderWithRouter(
-      <TalksPage
-        talks={EXAMPLE_TALKS}
-        otherTalks={[
-          {
-            slug: 'unrecorded',
-            title: 'Unrecorded talk',
-            event: 'Example chat',
-            date: '2025-07-31',
-            summary: 'A talk that wasn’t recorded.',
-          },
-        ]}
-      />,
-    );
-    const section = sectionNamed('Other talks');
+  it('links to the neurodiversity talks, saying how many there are, so they don’t bury the recorded talks', () => {
+    renderWithRouter(<TalksPage talks={EXAMPLE_TALKS} otherTalkCount={19} />);
+    const section = sectionNamed('More talks');
 
-    expect(within(section).getByRole('heading', { level: 3 })).toHaveTextContent('Unrecorded talk');
-    expect(within(section).queryByRole('link')).not.toBeInTheDocument();
-    expect(section).toHaveTextContent(
-      'There’s no recording of these to share, so they don’t have their own pages. Where I still have my script or slides, you can read them.',
+    expect(within(section).getByRole('link', { name: 'Neurodiversity talks' })).toHaveAttribute(
+      'href',
+      '/talks/neurodiversity',
     );
-    expect(section).toHaveTextContent(
-      'Each one starts with a 10 to 15 minute talk from me, with no slides, followed by 45 minutes of safe space discussion.',
-    );
+    expect(section).toHaveTextContent('19 short talks I’ve given at giffgaff');
   });
 
-  it('leaves out “Other talks” when there are none', () => {
+  it('leaves out “More talks” when there are no neurodiversity talks', () => {
     renderWithRouter(<TalksPage talks={EXAMPLE_TALKS} />);
 
-    expect(screen.queryByRole('heading', { name: 'Other talks' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'More talks' })).not.toBeInTheDocument();
   });
 
   it('gets only the talks that are ready, when the site is built', () => {
-    expect(loader()).toEqual({ talks: TALKS, otherTalks: OTHER_TALKS });
+    expect(loader()).toEqual({ talks: TALKS, otherTalkCount: OTHER_TALKS.length });
   });
 
   it('has the page heading', () => {

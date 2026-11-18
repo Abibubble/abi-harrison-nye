@@ -2,8 +2,10 @@ import { useLoaderData } from 'react-router';
 
 import { Heading } from '../components/Heading';
 import { PageHeading } from '../components/PageHeading';
+import { SignpostList } from '../components/SignpostList';
 import { Stack } from '../components/Stack';
 import { TalkItem } from '../components/TalkItem';
+import { NEURODIVERSITY_TALKS_PATH } from '../content/navigation';
 import { pageTitle } from '../content/site';
 import { OTHER_TALKS, type Talk, TALKS } from '../content/talks';
 import { pageMeta } from '../seo/pageMeta';
@@ -19,10 +21,11 @@ export function meta(): Route.MetaDescriptors {
 
 export function TalksPage({
   talks,
-  otherTalks = [],
+  otherTalkCount = 0,
 }: {
   talks: readonly Talk[];
-  otherTalks?: readonly Talk[];
+  /** How many talks are on the Neurodiversity talks page, which this page links to */
+  otherTalkCount?: number;
 }) {
   return (
     <Stack gap={6}>
@@ -44,24 +47,21 @@ export function TalksPage({
       ) : (
         <p>I’m adding my talks here soon.</p>
       )}
-      {otherTalks.length > 0 && (
+      {otherTalkCount > 0 && (
         <Stack as="section" gap={4}>
-          <Heading level={2} id="other-talks">
-            Other talks
+          <Heading level={2} id="more-talks">
+            More talks
           </Heading>
-          <p>
-            There’s no recording of these to share, so they don’t have their own pages. Where I
-            still have my script or slides, you can read them. Most are neurodiversity monthly chats
-            I run at giffgaff. Each one starts with a 10 to 15 minute talk from me, with no slides,
-            followed by 45 minutes of safe space discussion.
-          </p>
-          <Stack as="ul" gap={5}>
-            {otherTalks.map((talk) => (
-              <li key={talk.slug}>
-                <TalkItem talk={talk} headingLevel={3} hasPage={false} />
-              </li>
-            ))}
-          </Stack>
+          <SignpostList
+            headingLevel={3}
+            signposts={[
+              {
+                title: 'Neurodiversity talks',
+                to: NEURODIVERSITY_TALKS_PATH,
+                description: `${otherTalkCount} short talks I’ve given at giffgaff, mostly in the neurodiversity monthly chats I run. There’s no recording to share, so you can read my scripts instead.`,
+              },
+            ]}
+          />
         </Stack>
       )}
     </Stack>
@@ -70,7 +70,7 @@ export function TalksPage({
 
 /** Runs when the site is built, so talks that aren't ready never reach visitors */
 export function loader() {
-  return { talks: TALKS, otherTalks: OTHER_TALKS };
+  return { talks: TALKS, otherTalkCount: OTHER_TALKS.length };
 }
 
 export default function Talks() {

@@ -89,12 +89,12 @@ describe('TalkSlides', () => {
     for (const link of links) expect(link).toHaveAttribute('href', '/talks/example-talk');
   });
 
-  it('links back to other talks for a talk that wasn’t recorded, as it has no page of its own', () => {
+  it('links back to the neurodiversity talks for a talk that wasn’t recorded, as it has no page of its own', () => {
     renderTalkSlides({ ...TALK, notRecorded: true });
-    const links = screen.getAllByRole('link', { name: 'Back to other talks' });
+    const links = screen.getAllByRole('link', { name: 'Back to neurodiversity talks' });
 
     expect(links).toHaveLength(2);
-    for (const link of links) expect(link).toHaveAttribute('href', '/talks#other-talks');
+    for (const link of links) expect(link).toHaveAttribute('href', '/talks/neurodiversity');
   });
 
   it('has no detectable accessibility issues', async () => {

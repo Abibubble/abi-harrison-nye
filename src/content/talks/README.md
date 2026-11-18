@@ -12,11 +12,11 @@ A longer description, shown in a "More about this talk" section, goes in `about/
 ## Talks with no recording to share
 
 A talk with `"recording": "not recorded"`, or `"not shared"` when it was recorded but the recording
-can't be shared, is listed under "Other talks", with no talk page of its
+can't be shared, is listed on the Neurodiversity talks page, with no talk page of its
 own. If I have my script, it can still have a transcript made from it:
 
 - Put it in `{slug}.md` as usual, and set `"script": true` and `"transcript": "draft"`.
-- Once it's checked, change it to `"transcript": "checked"`. Its "Other talks" entry then links to
+- Once it's checked, change it to `"transcript": "checked"`. Its entry on that page then links to
   the transcript page, which says it's my script, not what I said on the day.
 - If it has slides, its Slides page works the same way as for any other talk.
 

@@ -77,10 +77,9 @@ describe('TalkTranscript', () => {
     expect(screen.getByText(/no recording of this talk/)).toHaveTextContent(
       'There’s no recording of this talk to share, so this transcript is my script. What I said on the day may be a little different.',
     );
-    expect(screen.getAllByRole('link', { name: 'Back to other talks' })[0]).toHaveAttribute(
-      'href',
-      '/talks#other-talks',
-    );
+    expect(
+      screen.getAllByRole('link', { name: 'Back to neurodiversity talks' })[0],
+    ).toHaveAttribute('href', '/talks/neurodiversity');
   });
 
   it('starts with a summary in plain words, when the talk has one (WCAG 3.1.5)', () => {

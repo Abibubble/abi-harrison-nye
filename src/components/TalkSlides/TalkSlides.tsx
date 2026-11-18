@@ -1,3 +1,4 @@
+import { NEURODIVERSITY_TALKS_PATH } from '../../content/navigation';
 import { SLIDE_PICTURE, slidePicturePath } from '../../content/talkPath';
 import type { Talk } from '../../content/talks';
 import type { Slide } from '../../content/transcripts';
@@ -25,7 +26,7 @@ export function TalkSlides({ talk, slides }: TalkSlidesProps) {
   const backToTalk = (
     <p className={styles.standalone}>
       {talk.notRecorded ? (
-        <Link to="/talks#other-talks">Back to other talks</Link>
+        <Link to={NEURODIVERSITY_TALKS_PATH}>Back to neurodiversity talks</Link>
       ) : (
         <Link to={`/talks/${talk.slug}`}>Back to “{talk.title}”</Link>
       )}

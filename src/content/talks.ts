@@ -38,7 +38,7 @@ export interface Talk {
    */
   slidesPage?: boolean;
   /**
-   * There's no recording to share, so the talk is listed under “Other talks”, with no talk page of
+   * There's no recording to share, so the talk is listed on the Neurodiversity talks page, with no talk page of
    * its own. Any transcript is my script, not what I said on the day
    */
   notRecorded?: boolean;
@@ -97,7 +97,7 @@ export interface TalkHas {
   recording: 'youtube' | 'uploading' | 'not recorded' | 'not shared' | 'unknown';
 }
 
-/** Talks with no recording to share are listed under “Other talks”, with no page of their own */
+/** Talks with no recording to share are listed on the Neurodiversity talks page, with no page of their own */
 function hasNoRecording({ has }: TalkRecord): boolean {
   return has.recording === 'not recorded' || has.recording === 'not shared';
 }
@@ -171,7 +171,7 @@ export const TALKS: Talk[] = TALK_RECORDS.filter(
   .sort((a, b) => b.date.localeCompare(a.date));
 
 /**
- * Ready talks that weren't recorded, newest first. They're listed under “Other talks”, with no page
+ * Ready talks that weren't recorded, newest first. They're listed on the Neurodiversity talks page, with no page
  * of their own, as there's no recording to make a full transcript from. Some have a transcript made
  * from my script, or a Slides page, which have their own pages
  */

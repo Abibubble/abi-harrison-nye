@@ -4,7 +4,12 @@ import { Heading } from '../components/Heading';
 import { Link } from '../components/Link';
 import { PageHeading } from '../components/PageHeading';
 import { Stack } from '../components/Stack';
-import { FOOTER_NAV, MAIN_NAV, SITE_MAP_PATH } from '../content/navigation';
+import {
+  FOOTER_NAV,
+  MAIN_NAV,
+  NEURODIVERSITY_TALKS_PATH,
+  SITE_MAP_PATH,
+} from '../content/navigation';
 import { PROJECTS } from '../content/projects';
 import { pageTitle } from '../content/site';
 import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from '../content/talkPath';
@@ -108,13 +113,20 @@ export function SiteMapPage({ talks, otherTalks }: SiteMapPageProps) {
               </ul>
             </li>
           ))}
-          {/* Talks that weren't recorded have no talk page, so their pages are listed on their own */}
-          {otherTalks.flatMap((talk) =>
-            talkPages(talk).map(({ name, to }) => (
-              <li key={to}>
-                <Link to={to}>{name}</Link>
-              </li>
-            )),
+          {/* Talks that weren't recorded have no talk page, so their pages go under the page listing them */}
+          {otherTalks.length > 0 && (
+            <li>
+              <Link to={NEURODIVERSITY_TALKS_PATH}>Neurodiversity talks</Link>
+              <ul className={styles.list}>
+                {otherTalks.flatMap((talk) =>
+                  talkPages(talk).map(({ name, to }) => (
+                    <li key={to}>
+                      <Link to={to}>{name}</Link>
+                    </li>
+                  )),
+                )}
+              </ul>
+            </li>
           )}
         </ul>
       </Stack>

@@ -1,5 +1,6 @@
 import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
+import { NEURODIVERSITY_TALKS_PATH } from './content/navigation';
 import { alsoGivenTranscriptPath, slidesPath, transcriptPath } from './content/talkPath';
 import { OTHER_TALKS, TALKS } from './content/talks';
 
@@ -52,6 +53,7 @@ export default [
   route('projects', 'routes/projects.tsx'),
   route('projects/accessibility-culture-day', 'routes/accessibility-culture-day.tsx'),
   route('talks', 'routes/talks.tsx'),
+  route(NEURODIVERSITY_TALKS_PATH.slice(1), 'routes/neurodiversity-talks.tsx'),
   ...talkPages,
   ...otherTalkPages,
   route('articles', 'routes/articles.tsx'),

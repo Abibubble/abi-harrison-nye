@@ -83,6 +83,7 @@ describe('Site map page', () => {
         '/talks/debt-to-done/shorter-version/transcript',
       ],
       ['Slides: Debt to done', '/talks/debt-to-done/slides'],
+      ['Neurodiversity talks', '/talks/neurodiversity'],
       ['Transcript: Masking', '/talks/masking/transcript'],
       ['Slides: OCD', '/talks/ocd/slides'],
     ]);

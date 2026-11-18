@@ -485,7 +485,7 @@ describe('talks.json', () => {
     for (const talk of ready) {
       const { slug } = talk;
       if (talk.has.recording === 'not recorded' || talk.has.recording === 'not shared') {
-        // Listed under “Other talks”, with a link to its transcript only once it's checked
+        // Listed on the Neurodiversity talks page, with a link to its transcript only once it's checked
         expect(talk.video, `${slug}: video`).toBeUndefined();
         expect(talk.has.transcript, `${slug}: transcript`).not.toBe('raw');
         // Without a recording, the only source for a transcript is my script
